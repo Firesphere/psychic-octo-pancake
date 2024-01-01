@@ -22,6 +22,12 @@
                                     <a class="nav-link $LinkingMode" rel="nofollow" href="$Link">$MenuTitle</a>
                                 </li>
                             <% end_loop %>
+                            <% if $CurrentUser %>
+                                <li class="list-group-item  list-group-item-dark">&nbsp;</li>
+                                <li class="list-group-item $FirstLast $EvenOdd">
+                                    <a class="nav-link" rel="nofollow" href="$LogoutURL">Logout</a>
+                                </li>
+                            <% end_if %>
                         </ul>
                     </li>
                 </ul>
