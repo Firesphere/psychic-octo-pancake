@@ -1,0 +1,110 @@
+<table class="table table-responsive">
+    <thead>
+    <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col"></th>
+        <th scope="col">Role</th>
+        <th scope="col">Application date</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <% loop $Applications %>
+        <tr class="$OddEven">
+            <td rowspan="4"><b>
+                <% if $Company.Link %>
+                    <a href="$Company.Link" target="_blank">$Company.Name</a>
+                <% else %>
+                    $Company.Name
+                <% end_if %>
+            </b></td>
+            <th scope="row"></th>
+            <td><a href="$Link">$Role</a></td>
+            <td>$ApplicationDate.Nice()</td>
+            <td>
+                <div class="badge text-bg-$Status.ColourStyle">$Status.Status</div>
+            </td>
+            <td>
+                <a href="#"
+                   title="Edit application"
+                   class="js-formaction"
+                   data-id="$ID"
+                   data-itemtype="application-edit"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>
+            </td>
+        </tr>
+        <tr class="$OddEven">
+            <th>Notes</th>
+            <td colspan="3">
+                <% loop $Notes %>
+                    <a href="#"
+                       title="Edit note"
+                       class="js-formaction badge text-bg-primary"
+                       data-id="$ID"
+                       data-itemtype="note-edit"
+                       data-bs-toggle="modal"
+                       data-bs-target="#addItemModal">$Title</a>
+                <% end_loop %>
+            </td>
+            <td>
+                <a href="#"
+                   title="Add note"
+                   class="js-formaction"
+                   data-application="$ID"
+                   data-itemtype="note-add"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-file-earmark-plus"></i></a><br/>
+
+            </td>
+        </tr>
+        <tr class="$OddEven">
+            <th scope="row">Status updates</th>
+            <td colspan="3">
+                <% loop $StatusUpdates %>
+                    <a href="#"
+                       title="Edit Status update"
+                       class="js-formaction h6 badge text-bg-$Status.ColourStyle"
+                       data-id="$ID"
+                       data-itemtype="statusupdate-edit"
+                       data-bs-toggle="modal"
+                       data-bs-target="#addItemModal">$Status.Status: $Title</a>
+                <% end_loop %>
+            </td>
+            <td>
+                <a href="#"
+                   title="Add status update"
+                   class="js-formaction"
+                   data-application="$ID"
+                   data-itemtype="statusupdate-add"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a>
+            </td>
+        </tr>
+            <tr>
+                <th scope="row">Interviews</th>
+                <td colspan="3">
+                    <% loop $Interviews %>
+                        <a href="#"
+                           title="Edit interview"
+                           class="js-formaction h6 badge text-bg-secondary"
+                           data-id="$ID"
+                           data-itemtype="interview-edit"
+                           data-bs-toggle="modal"
+                           data-bs-target="#addItemModal">$DateTime.Nice()</a>
+                    <% end_loop %>
+                </td>
+                <td>
+                    <a href="#"
+                       title="Add interview"
+                       class="js-formaction"
+                       data-application="$ID"
+                       data-itemtype="interview-add"
+                       data-bs-toggle="modal"
+                       data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
+                </td>
+            </tr>
+    <% end_loop %>
+    </tbody>
+</table>

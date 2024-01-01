@@ -1,0 +1,6 @@
+---
+Name: memberprofiles-extensions
+---
+SilverStripe\Security\Member:
+  extensions:
+    - Symbiote\MemberProfiles\Extensions\MemberProfileExtension

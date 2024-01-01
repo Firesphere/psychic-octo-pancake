@@ -1,0 +1,30 @@
+---
+Name: jobhunt-sentry
+After:
+  - 'sentry-config'
+---
+
+PhpTek\Sentry\Handler\SentryHandler:
+  # One of the permitted severities: DEBUG|INFO|WARNING|ERROR|FATAL
+  log_level: ERROR
+---
+Only:
+  environment: live
+---
+PhpTek\Sentry\Adaptor\SentryAdaptor:
+  opts:
+    dsn: https://01f1472a227b97ecbebea220f374e154@o299871.ingest.sentry.io/4506488131747845
+---
+Only:
+  environment: test
+---
+PhpTek\Sentry\Adaptor\SentryAdaptor:
+  opts:
+    dsn: null
+---
+Only:
+  environment: dev
+---
+PhpTek\Sentry\Adaptor\SentryAdaptor:
+  opts:
+    dsn: null

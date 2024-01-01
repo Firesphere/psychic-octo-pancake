@@ -1,0 +1,12 @@
+SilverStripe\Security\Group:
+  group:
+    Title: Group
+    Code: group
+
+SilverStripe\Security\Member:
+  unconfirmed:
+    FirstName: Test
+    Surname: User
+    Email: email@domain.com
+    NeedsValidation: 1
+    Groups: =>SilverStripe\Security\Group.group

@@ -1,0 +1,36 @@
+---
+Only:
+  environment: 'dev'
+---
+SilverStripe\View\SSViewer:
+  source_file_comments: false
+SilverLeague\IDEAnnotator\DataObjectAnnotator:
+  enabled: true
+  use_short_name: true
+  enabled_modules:
+    - app
+    - bootswatcher
+    - jobhunt
+    - elliotsawyer/silverstripe-matomo
+LeKoala\DebugBar\DebugBar:
+  enable_storage: true
+  auto_debug: false
+  ajax: false
+  force_proxy: true
+  check_local_ip: false
+  find_source: true
+  enabled_in_admin: false
+  # Let DebugBar include jQuery. Set this to false to include your own jQuery version
+  include_jquery: true
+  # Maximum number of queries to display
+  query_limit: 200
+  # Number of DB queries before a warning will be displayed
+  warn_query_limit: 100
+  # Threshold (seconds) for how long a database query can run for before it will be shown as a warning
+  warn_dbqueries_threshold_seconds: 1.0
+  # Threshold (seconds) for what constitutes a *dangerously* long page request (upper limit)
+  warn_request_time_seconds: 5.0
+  # Ratio to divide the warning request time by to get the *warning* level
+  warn_warning_ratio: 0.5
+SilverStripe\Control\Email\Email:
+  send_all_emails_to: me@casa-laguna.net

@@ -1,0 +1,136 @@
+---
+Name: AppCSPHeaders
+After:
+  - 'CSPHeaders'
+---
+Firesphere\CSPHeaders\Models\SRI:
+  clear_sri_on_build: true
+Firesphere\CSPHeaders\View\CSPBackend:
+  permissions_config:
+    enabled: true
+    accelerator:
+      allow: [ none ]
+    ambient-light-sensor:
+      allow: [ none ]
+    autoplay:
+      self: true
+      allow: [ ]
+    battery:
+      allow: [ none ]
+    camera:
+      allow: [ none ]
+    display-capture:
+      self: true
+      allow: [ '*' ]
+    encrypted-media:
+      self: true
+      allow: [ ]
+    fullscreen:
+      self: true
+      allow: [ ]
+    geolocation:
+      allow: [ none ]
+    interest-cohort:
+      allow: [ none ]
+    microphone:
+      allow: [ none ]
+  referrer: same-origin
+  frame-options: SAMEORIGIN
+  content-type-options: nosniff
+  CORS:
+    enabled: false
+    allow: [ ]
+    self: true
+    methods:
+      - GET
+      - HEAD
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+      - CONNECT
+  HSTS:
+    enabled: true
+    max-age: 31536000
+    include_subdomains: true
+  clear_on_build: true
+  report_to:
+    report_to_uri: 'https://casalaguna.report-uri.com/a/d/g'
+    report: true
+    NEL: true
+  csp_config:
+    enabled: true
+    in_cms: false
+    report-to: 'https://o299871.ingest.sentry.io/api/4506488131747845/security/?sentry_key=01f1472a227b97ecbebea220f374e154'
+    report-uri: 'https://o299871.ingest.sentry.io/api/4506488131747845/security/?sentry_key=01f1472a227b97ecbebea220f374e154'
+    report-only: false
+    base-uri:
+      allow: [ ]
+      self: true
+    default-src:
+      allow:
+        - piwik.firesphere.dev
+      self: true
+    frame-src:
+      allow: []
+      self: false
+    connect-src:
+      allow:
+        - piwik.firesphere.dev
+        - '*.ingest.sentry.io'
+      self: true
+    font-src:
+      allow:
+        - cdn.jsdelivr.net
+        - fonts.gstatic.com
+      self: true
+    form-action:
+      allow: [ ]
+      self: true
+    frame-ancestors:
+      allow: [ ]
+      self: true
+    img-src:
+      allow:
+        - piwik.firesphere.dev
+      self: true
+    media-src:
+      allow: [ ]
+    object-src: [ ]
+    plugin-types: [ ]
+    script-src:
+      allow:
+        - piwik.firesphere.dev
+        - cdn.jsdelivr.net
+        - o299871.ingest.sentry.io
+        - unpkg.com
+      self: true
+      unsafe-inline: false
+      unsafe-eval: false
+    style-src:
+      self: true
+      allow:
+        - fonts.googleapis.com
+        - cdn.jsdelivr.net
+        - unpkg.com
+      unsafe-inline: false
+    worker-src:
+      blob: true
+      self: true
+    upgrade-insecure-requests: true
+  jsSRI: true
+  cssSRI: true
+  useNonce: true
+---
+Only:
+  environment: 'dev'
+---
+Firesphere\CSPHeaders\View\CSPBackend:
+  csp_config:
+    enabled: true
+    report-only: true
+    report-to: 'https://csp-capture.ddev.site/csp/enforce/firesphere-dev'
+    report-uri: 'https://csp-capture.ddev.site/csp/enforce/firesphere-dev'
+  jsSRI: false
+  cssSRI: false
+  useNonce: true

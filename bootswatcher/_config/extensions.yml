@@ -1,0 +1,6 @@
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    theme: Cashware\Bootswatcher\SiteConfigTheme
+SilverStripe\Security\Member:
+  extensions:
+    - Cashware\Bootswatcher\MemberExtension

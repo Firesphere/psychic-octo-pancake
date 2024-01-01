@@ -1,0 +1,7 @@
+---
+Name: memberprofilesroutes
+After: framework/routes#coreroutes
+---
+SilverStripe\Control\Director:
+  rules:
+    member-approval: Symbiote\MemberProfiles\Pages\MemberApprovalController
