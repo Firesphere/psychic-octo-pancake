@@ -15,20 +15,16 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <% if $Sticker %>
-        <meta property="og:image" content="$Sticker.Image.AbsoluteLink()">
-    <% else %>
-        <meta property="og:image" content="https://stickertrade.me/assets/Hans-fullsize-sqr.png?vid=4">
+    <% if $Canonical %>
+        <link rel="canonical" href="$Canonical"/>
     <% end_if %>
-    <meta property="og:title" content="Stickertrade.me">
+    <meta property="og:title" content="Jobhunt helper">
     <meta property="og:url" content="$AbsoluteURL">
     <meta property="og:description"
-          content="Share the sticker love by trading your stickers with other people. Find stickers you like to share. Like at a conference, but from home. Exchange any sticker you like.">
+          content="Keep track of your job applications, add notes, prepare for interviews. All in one place.">
     <meta property="og:type" content="website">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     $SiteConfig.BootswatchTheme
-    <% require themedCss("/_resources/themes/bootswatcher/dist/css/main") %>
+    <% require themedCss("/_resources/themes/jobhunt/dist/css/main") %>
 
 </head>
 <body>

@@ -73,7 +73,7 @@ class Status extends DataObject
     {
         // Funky hack to get the colours :D
         $style = SiteConfig::current_site_config()->Theme;
-        $style = file_get_contents(Director::baseFolder() . "/themes/bootswatcher/dist/css/" . $style . '.min.css');
+        $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/" . $style . '.min.css');
         $parser = new \CSSParser();
         $parser->read_from_string($style);
         $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/@import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap);:root"]);
