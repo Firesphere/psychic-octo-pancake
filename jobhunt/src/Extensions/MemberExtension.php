@@ -22,6 +22,7 @@ use SilverStripe\Security\Member;
  * @property string $URLSegment
  * @method DataList|JobApplication[] JobApplications()
  * @method DataList|BaseNote[] Notes()
+ * @method DataList|StateOfMind[] Moods()
  */
 class MemberExtension extends DataExtension
 {
