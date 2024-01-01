@@ -1,7 +1,7 @@
 {
-    "name": "silverstripe/installer",
+    "name": "firesphere/jobhunt",
     "type": "silverstripe-recipe",
-    "description": "The SilverStripe Framework Installer",
+    "description": "Jobhunting helper to keep track of job applications",
     "require": {
         "php": "^8.1",
         "ext-libxml": "*",
