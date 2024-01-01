@@ -3,7 +3,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" rel="nofollow"
-               href="<% if $Top.URLSegment == 'home' %>#page-top<% else %>/<% end_if %>">$SiteConfig.Title</a>
+               href="<% if $Top.URLSegment == 'home' %>#page-top<% else %>/<% end_if %>">$SiteConfig.Title</a><br />
+            <small>$SiteConfig.Tagline</small>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     data-bs-auto-close="outside" aria-label="Toggle navigation">
