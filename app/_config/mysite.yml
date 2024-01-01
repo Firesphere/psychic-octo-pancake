@@ -3,6 +3,8 @@ Name: myproject
 ---
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
+#SilverStripe\MFA\Service\EnforcementManager:
+#  requires_admin_access: false
 
 # UTF8MB4 has limited support in older MySQL versions.
 # Remove this configuration if you experience issues.

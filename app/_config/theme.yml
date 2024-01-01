@@ -6,3 +6,11 @@ SilverStripe\View\SSViewer:
     - '$public'
     - 'jobhunt'
     - '$default'
+---
+Before:
+  - '#login-forms'
+---
+SilverStripe\LoginForms\EnablerExtension:
+  login_themes:
+    - 'jobhunt'
+    - '$default'
