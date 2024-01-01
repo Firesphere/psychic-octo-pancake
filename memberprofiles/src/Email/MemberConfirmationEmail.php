@@ -2,6 +2,7 @@
 
 namespace Symbiote\MemberProfiles\Email;
 
+use SilverStripe\Control\Director;
 use Symbiote\MemberProfiles\Pages\MemberProfilePage;
 use SilverStripe\Security\Member;
 use SilverStripe\CMS\Model\SiteTree;
@@ -175,7 +176,7 @@ class MemberConfirmationEmail extends Email
 
     public function BaseURL()
     {
-        $absoluteBaseURL = parent::BaseURL();
+        $absoluteBaseURL = Director::absoluteBaseURL();
         $this->extend('updateBaseURL', $absoluteBaseURL);
         return $absoluteBaseURL;
     }
