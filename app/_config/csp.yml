@@ -104,6 +104,7 @@ Firesphere\CSPHeaders\View\CSPBackend:
         - cdn.jsdelivr.net
         - o299871.ingest.sentry.io
         - unpkg.com
+        - browser.sentry-cdn.com
       self: true
       unsafe-inline: false
       unsafe-eval: false
