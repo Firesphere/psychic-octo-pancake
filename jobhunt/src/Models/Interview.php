@@ -32,10 +32,14 @@ class Interview extends DataObject
     ];
 
     private static $many_many = [
-        'Interviewers' => Interviewer::class,
+        'Interviewers' => Interviewer::class
     ];
     private static $has_many = [
-        'Notes' => InterviewNote::class
+        'Notes' => InterviewNote::class . '.ApplicationInterview'
+    ];
+
+    private static $cascade_deletes = [
+        'Notes'
     ];
 
 }

@@ -28,8 +28,8 @@ class Status extends DataObject
     ];
 
     private static $has_many = [
-        'Applications'  => JobApplication::class,
-        'StatusUpdates' => StatusUpdate::class
+        'Applications'  => JobApplication::class . '.Status',
+        'StatusUpdates' => StatusUpdate::class . '.Status'
     ];
 
     private static $default_records = [

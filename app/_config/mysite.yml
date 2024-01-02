@@ -5,6 +5,9 @@ SilverStripe\Core\Manifest\ModuleManifest:
   project: app
 #SilverStripe\MFA\Service\EnforcementManager:
 #  requires_admin_access: false
+SilverStripe\CMS\Model\SiteTree:
+  show_meta_generator_version: false
+  meta_generator: 'Firesphere.dev'
 
 # UTF8MB4 has limited support in older MySQL versions.
 # Remove this configuration if you experience issues.

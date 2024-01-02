@@ -45,10 +45,16 @@ class JobApplication extends DataObject
         'Status'  => Status::class
     ];
 
+    private static $cascade_deletes = [
+        'Notes',
+        'Interviews',
+        'StatusUpdates'
+    ];
+
     private static $has_many = [
-        'Notes'         => ApplicationNote::class,
-        'Interviews'    => Interview::class,
-        'StatusUpdates' => StatusUpdate::class,
+        'Notes'         => ApplicationNote::class . '.JobApplication',
+        'Interviews'    => Interview::class . '.Application',
+        'StatusUpdates' => StatusUpdate::class . '.JobApplication',
     ];
 
     private static $many_many = [

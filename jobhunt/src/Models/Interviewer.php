@@ -31,7 +31,7 @@ class Interviewer extends DataObject
     ];
 
     private static $belongs_many_many = [
-        'Interviews' => Interview::class
+        'Interviews' => Interview::class . '.Interviewers'
     ];
 
 }

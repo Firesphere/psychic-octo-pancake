@@ -2,6 +2,10 @@
 Only:
   environment: 'dev'
 ---
+SilverStripe\Dev\Validation\RelationValidationService:
+  output_enabled: true
+  allow_rules:
+    app: 'Firesphere'
 SilverStripe\View\SSViewer:
   source_file_comments: false
 SilverLeague\IDEAnnotator\DataObjectAnnotator:

@@ -32,10 +32,11 @@ class MemberExtension extends DataExtension
         'PublicCV'   => DBBoolean::class . '(false)',
         'URLSegment' => DBVarchar::class,
     ];
+
     private static $has_many = [
-        'JobApplications' => JobApplication::class,
-        'Notes'           => BaseNote::class,
-        'Moods'           => StateOfMind::class,
+        'JobApplications' => JobApplication::class . '.User',
+        'Notes'           => BaseNote::class . '.Owner',
+        'Moods'           => StateOfMind::class . '.User',
     ];
 
     private static $indexes = [

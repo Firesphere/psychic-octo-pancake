@@ -16,6 +16,7 @@ use SilverStripe\ORM\FieldType\DBVarchar;
  * @property string $Email
  * @property string $Link
  * @method DataList|JobApplication[] Jobs()
+ * @method DataList|Interviewer[] Employees()
  */
 class Company extends DataObject
 {
@@ -30,7 +31,12 @@ class Company extends DataObject
     ];
 
     private static $has_many = [
-        'Jobs' => JobApplication::class,
+        'Jobs'      => JobApplication::class . '.Company',
+        'Employees' => Interviewer::class . '.Company'
+    ];
+
+    private static $cascade_deletes = [
+        'Employees'
     ];
 
     public static function findOrCreate($name)
