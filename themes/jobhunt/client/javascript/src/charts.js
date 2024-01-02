@@ -1,8 +1,7 @@
 const ctx = document.getElementById('moodchart');
 
 export default () => {
-    window.chart = window.chart || [];
-    if (typeof(window.chart)) {
+    if (window.chart) {
 
         let options = {
             type: 'line',
