@@ -1,5 +1,11 @@
 const ctx = document.getElementById('moodchart');
-
+const moods = {
+    1: '😖',
+    2: '️☹️',
+    3: '😐',
+    4: '🙂',
+    5: '😃'
+}
 export default () => {
     if (window.chart) {
 
@@ -18,6 +24,14 @@ export default () => {
                     y: {
                         min: 1,
                         max: 5,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return moods[value] ?? '';
+                            },
+                            font: {
+                                size: 25
+                            }
+                        }
                     }
                 }
             }
