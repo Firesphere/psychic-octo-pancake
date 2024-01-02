@@ -1,3 +1,4 @@
 SilverStripe\Control\Director:
   rules:
     'formhandling//$Action/$ID': Firesphere\JobHunt\Controllers\FormHandler
+    'mood//': Firesphere\JobHunt\Controllers\MoodHandler

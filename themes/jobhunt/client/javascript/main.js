@@ -1,6 +1,10 @@
 import body from './src/body';
+import chart from './src/charts';
 import forms from './src/forms';
+import moods from './src/moods';
 import profile from './src/profile';
 body();
+chart();
 forms();
+moods();
 profile();

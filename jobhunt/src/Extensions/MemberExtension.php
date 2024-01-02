@@ -49,4 +49,14 @@ class MemberExtension extends DataExtension
         }
         parent::onBeforeWrite();
     }
+
+    public function hasMood()
+    {
+        $mood = $this->owner->Moods()->filter(['Created:StartsWith' => date('Y-m-d')]);
+        if ($mood->count()) {
+            return $mood->last()->Mood;
+        }
+
+        return false;
+    }
 }

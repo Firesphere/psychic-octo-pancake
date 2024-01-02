@@ -128,7 +128,7 @@ Only:
 ---
 Firesphere\CSPHeaders\View\CSPBackend:
   csp_config:
-    enabled: true
+    enabled: false
     report-only: true
     report-to: 'https://csp-capture.ddev.site/csp/enforce/firesphere-dev'
     report-uri: 'https://csp-capture.ddev.site/csp/enforce/firesphere-dev'
