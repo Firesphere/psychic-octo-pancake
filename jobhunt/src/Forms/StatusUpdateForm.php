@@ -45,7 +45,8 @@ class StatusUpdateForm extends Form
         $validator = RequiredFields::create(['Title', 'Note', 'StatusID']);
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
-            $status = StatusUpdate::get_by_id($params['OtherID']);
+            $user = Security::getCurrentUser();
+            $status = StatusUpdate::get(['ID' => $params['OtherID'], 'JobApplication.OwnerID' => $user->ID])->first();
             $this->loadDataFrom($status);
         }
     }

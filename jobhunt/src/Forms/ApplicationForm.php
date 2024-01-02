@@ -52,7 +52,8 @@ class ApplicationForm extends Form
         $params = $controller->getURLParams();
         if ($params['ID'] === 'edit') {
             $this->fields->push(HiddenField::create('ID', 'ID', $params['ID']));
-            $application = JobApplication::get_by_id($params['OtherID']);
+            $user = Security::getCurrentUser();
+            $application = JobApplication::get(['ID' => $params['OtherID'], 'OwnerID' => $user->ID])->first();
             $this->loadDataFrom($application);
             $this->fields->replaceField('CoverLetter', LiteralField::create('CoverLetter', $application->CoverLetter));
         }

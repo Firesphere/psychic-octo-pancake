@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Forms;
 
+use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\InterviewNote;
 use Firesphere\JobHunt\Models\JobApplication;
@@ -44,8 +45,9 @@ class InterviewForm extends Form
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
-            $this->fields->push(HiddenField::create('ID', 'ID', $params['OtherID']));
-            $this->loadDataFrom(Interview::get_by_id($params['OtherID']));
+            $user = Security::getCurrentUser();
+            $data = Interview::get(['ID' => $params['OtherID'], 'Application.OwnerID' => $user->ID])->first();
+            $this->loadDataFrom($data);
         }
 
     }
