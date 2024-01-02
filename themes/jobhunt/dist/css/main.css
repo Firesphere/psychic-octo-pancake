@@ -1,1 +1,34 @@
-body main{margin:50px 0}body #mainNav{background-color:#fff}body #mainNav .navbar-brand{color:#000}body #mainNav .nav-link{border-bottom:none;color:#000}body #mainNav .nav-link:hover{color:#222}body #mainNav .nav-link:active{color:#111}body #mainNav .nav-link.active{border-bottom:.25rem solid #000;color:#000;outline:none}@media (min-width:992px){#mainNav{background-color:transparent;border-bottom:none;padding-bottom:0;padding-top:0;transition:background-color .3s ease-in-out}}
+body main {
+  margin: 50px 0;
+}
+body #mainNav {
+  background-color: #FFFFFF;
+}
+body #mainNav .navbar-brand {
+  color: #000000;
+}
+body #mainNav .nav-link {
+  color: #000000;
+  border-bottom: none;
+}
+body #mainNav .nav-link:hover {
+  color: #222222;
+}
+body #mainNav .nav-link:active {
+  color: #111111;
+}
+body #mainNav .nav-link.active {
+  color: #000000;
+  outline: none;
+  border-bottom: 0.25rem solid #000000;
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+  }
+}

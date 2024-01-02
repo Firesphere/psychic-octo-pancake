@@ -1,0 +1,105 @@
+.CalendarPage {
+    .calendar {
+        display: inline-grid;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.3);
+
+        .month {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 300;
+
+            .year {
+                font-weight: 600;
+                margin-left: 10px;
+            }
+
+            .nav {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                color: #0a3d62;
+                width: 40px;
+                height: 40px;
+                border-radius: 40px;
+                transition-duration: .2s;
+                position: relative;
+
+                &:hover {
+                    background: #eee;
+                }
+            }
+        }
+
+        .days {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(7, 1fr);
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 15px;
+
+            span {
+                width: 50px;
+                justify-self: center;
+                align-self: center;
+                text-align: center;
+            }
+        }
+
+        .dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+
+            span {
+                width: 60px;
+                height: 60px;
+                text-align: center;
+                .time {
+                    line-height: 58px;
+                    cursor: pointer;
+                }
+
+                &.day {
+                    cursor: pointer;
+                    outline: 0;
+                    border: 0;
+                    background: transparent;
+                    font-size: 16px;
+                    justify-self: center;
+                    align-self: center;
+                    border-radius: 25px;
+                    margin: 2px;
+                    transition-duration: .2s;
+
+                    &.today {
+                        box-shadow: inset 0px 0px 0px 2px #0a3d62;
+                    }
+
+                    &:hover {
+                        background: #eee;
+                    }
+
+                    &.interviews {
+                        background: #ddd;
+                    }
+
+                    &:focus {
+                        background: #0a3d62;
+                        color: #fff;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}

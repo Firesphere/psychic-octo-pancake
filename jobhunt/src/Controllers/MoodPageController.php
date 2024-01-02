@@ -7,6 +7,9 @@ use SilverStripe\View\Requirements;
 /**
  * Class \Firesphere\JobHunt\Controllers\MoodPageController
  *
+ * @property MoodPage $dataRecord
+ * @method MoodPage data()
+ * @mixin MoodPage
  */
 class MoodPageController extends \PageController
 {
