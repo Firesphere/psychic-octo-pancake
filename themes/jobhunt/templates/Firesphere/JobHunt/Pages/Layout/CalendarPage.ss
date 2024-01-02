@@ -3,9 +3,13 @@
         <h1 class="col-12">$Title</h1>
         <div class="col-9">
             $Content
-            <div class="row">
-                <% loop $Days %>
-                <div class="calendar col-6">
+        </div>
+        <% include UserSidebar Collapse=true %>
+    </div>
+    <div class="row">
+        <% loop $Days %>
+            <div class="col-12 col-md-6">
+                <div class="calendar">
                     <div class="month">
                         <div class="text-center col">$Month <span class="year">$Year</span></div>
                     </div>
@@ -65,9 +69,7 @@
 
                     </div>
                 </div>
-                <% end_loop %>
             </div>
-        </div>
-        <% include UserSidebar %>
+        <% end_loop %>
     </div>
 </div>
