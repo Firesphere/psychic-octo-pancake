@@ -5408,7 +5408,7 @@
         },
         {
             "name": "spomky-labs/cbor-php",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spomky-Labs/cbor-php.git",
@@ -5475,7 +5475,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Spomky-Labs/cbor-php/issues",
-                "source": "https://github.com/Spomky-Labs/cbor-php/tree/3.0.2"
+                "source": "https://github.com/Spomky-Labs/cbor-php/tree/3.0.3"
             },
             "funding": [
                 {
