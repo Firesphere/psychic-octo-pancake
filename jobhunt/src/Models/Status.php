@@ -32,6 +32,11 @@ class Status extends DataObject
         'StatusUpdates' => StatusUpdate::class . '.Status'
     ];
 
+    private static $summary_fields = [
+        'Status',
+        'Colour'
+    ];
+
     private static $default_records = [
         ['Status' => 'Applied'],
         ['Status' => 'Interview'],
@@ -40,7 +45,9 @@ class Status extends DataObject
         ['Status' => 'Accepted'],
         ['Status' => 'Rejected - company'],
         ['Status' => 'Rejected - me'],
-        ['Status' => 'Closed']
+        ['Status' => 'Closed'],
+        ['Status' => 'Ghosted'],
+        ['Status' => 'Withdrawn']
     ];
 
 
@@ -53,7 +60,7 @@ class Status extends DataObject
         'info'      => '--bs-info',
         'light'     => '--bs-light',
         'dark'      => '--bs-dark',
-        'link'      => '--bs-link'
+        'link'      => '--bs-link',
     ];
 
     private static $colourmap = [
@@ -66,17 +73,22 @@ class Status extends DataObject
         'Invited'            => 'info',
         'Response'           => 'info',
         'Closed'             => 'dark',
+        'Ghosted'            => 'dark',
+        'Withdrawn'          => 'warning'
     ];
 
 
     public function getCMSFields()
     {
+        if (!$this->Colour) {
+            $this->Colour = self::$colourmap[$this->Status];
+        }
         // Funky hack to get the colours :D
         $style = SiteConfig::current_site_config()->Theme;
         $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/" . $style . '.min.css');
         $parser = new \CSSParser();
         $parser->read_from_string($style);
-        $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/@import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap);:root"]);
+        $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
         foreach (static::$colours as $key => &$value) {
             if (isset($colours[$value])) {
                 $value = $colours[$value];
