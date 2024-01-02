@@ -3,6 +3,8 @@
 namespace Firesphere\JobHunt\Forms;
 
 use Firesphere\JobHunt\Models\ApplicationNote;
+use Firesphere\JobHunt\Models\Interview;
+use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\FieldList;
@@ -13,6 +15,7 @@ use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\Validator;
+use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
 
 class NoteForm extends Form
@@ -45,6 +48,27 @@ class NoteForm extends Form
             $status = ApplicationNote::get(['ID' => $params['OtherID'], 'JobApplication.OwnerID' => $user->ID])->first();
             $this->loadDataFrom($status);
         }
+    }
 
+    public function submit($data, $form)
+    {
+        $userId = Security::getCurrentUser();
+        if (!empty($data['ID'])) {
+            $note = ApplicationNote::get_by_id($data['ID']);
+            if ($note->Application()->UserID !== $userId) {
+                throw new PermissionFailureException('User does not own this application');
+            }
+            $note->update($data);
+        } else {
+            $application = JobApplication::get_by_id($data['ApplicationID']);
+            if ($application->UserID !== Security::getCurrentUser()->ID) {
+                throw new PermissionFailureException('User does not own this application');
+            }
+
+            $note = ApplicationNote::create($data);
+        }
+        $note->write();
+
+        return json_encode(['success' => true, 'form' => false]);
     }
 }

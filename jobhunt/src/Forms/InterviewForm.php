@@ -38,8 +38,7 @@ class InterviewForm extends Form
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);
-
-        $formAction->addExtraClass('btn btn-default');
+        $formAction->addExtraClass('btn btn-primary');
 
         $validator = RequiredFields::create(['DateTime']);
 
