@@ -1,4 +1,4 @@
-<div class="col-3">
+<div class="col-4">
     <ul class="list-group-flush">
         <li class="list-group-item">
             <% if $Parent %>
