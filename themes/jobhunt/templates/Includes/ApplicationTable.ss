@@ -60,7 +60,7 @@
             </td>
         </tr>
         <tr class="$OddEven">
-            <th scope="row">Status updates</th>
+            <th scope="row">Updates</th>
             <td colspan="3">
                 <% loop $StatusUpdates %>
                     <a href="#"
