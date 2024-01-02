@@ -45,7 +45,7 @@ class InterviewForm extends Form
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
             $user = Security::getCurrentUser();
-            $data = Interview::get(['ID' => $params['OtherID'], 'Application.OwnerID' => $user->ID])->first();
+            $data = Interview::get()->filter(['ID' => $params['OtherID'], 'Application.UserID' => $user->ID])->first();
             $this->loadDataFrom($data);
         }
 

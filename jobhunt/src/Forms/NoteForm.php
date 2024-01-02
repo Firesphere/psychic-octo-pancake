@@ -45,7 +45,7 @@ class NoteForm extends Form
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
             $user = Security::getCurrentUser();
-            $status = ApplicationNote::get(['ID' => $params['OtherID'], 'JobApplication.OwnerID' => $user->ID])->first();
+            $status = ApplicationNote::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
             $this->loadDataFrom($status);
         }
     }
@@ -55,12 +55,12 @@ class NoteForm extends Form
         $userId = Security::getCurrentUser();
         if (!empty($data['ID'])) {
             $note = ApplicationNote::get_by_id($data['ID']);
-            if ($note->Application()->UserID !== $userId) {
+            if ($note->JobApplication()->UserID !== $userId) {
                 throw new PermissionFailureException('User does not own this application');
             }
             $note->update($data);
         } else {
-            $application = JobApplication::get_by_id($data['ApplicationID']);
+            $application = JobApplication::get_by_id($data['JobApplicationID']);
             if ($application->UserID !== Security::getCurrentUser()->ID) {
                 throw new PermissionFailureException('User does not own this application');
             }

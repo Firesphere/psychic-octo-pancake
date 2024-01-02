@@ -53,7 +53,7 @@ class ApplicationForm extends Form
         if ($params['ID'] === 'edit') {
             $this->fields->push(HiddenField::create('ID', 'ID', $params['ID']));
             $user = Security::getCurrentUser();
-            $application = JobApplication::get(['ID' => $params['OtherID'], 'OwnerID' => $user->ID])->first();
+            $application = JobApplication::get()->filter(['ID' => $params['OtherID'], 'UserID' => $user->ID])->first();
             $this->loadDataFrom($application);
             $this->fields->replaceField('CoverLetter', LiteralField::create('CoverLetter', $application->CoverLetter));
         }
