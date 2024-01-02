@@ -56,13 +56,13 @@ class InterviewForm extends Form
         $userId = Security::getCurrentUser();
         if (!empty($data['ID'])) {
             $interview = Interview::get_by_id($data['ID']);
-            if ($interview->Application()->UserID !== $userId) {
+            if ($interview->Application()->UserID !== $userId->ID) {
                 throw new PermissionFailureException('User does not own this application');
             }
             $interview->update($data);
         } else {
             $application = JobApplication::get_by_id($data['ApplicationID']);
-            if ($application->UserID !== Security::getCurrentUser()->ID) {
+            if ($application->UserID !== $userId->ID) {
                 throw new PermissionFailureException('User does not own this application');
             }
 

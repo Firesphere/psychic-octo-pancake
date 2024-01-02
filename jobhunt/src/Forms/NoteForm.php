@@ -55,13 +55,13 @@ class NoteForm extends Form
         $userId = Security::getCurrentUser();
         if (!empty($data['ID'])) {
             $note = ApplicationNote::get_by_id($data['ID']);
-            if ($note->JobApplication()->UserID !== $userId) {
+            if ($note->JobApplication()->UserID !== $userId->ID) {
                 throw new PermissionFailureException('User does not own this application');
             }
             $note->update($data);
         } else {
             $application = JobApplication::get_by_id($data['JobApplicationID']);
-            if ($application->UserID !== Security::getCurrentUser()->ID) {
+            if ($application->UserID !== $userId->ID) {
                 throw new PermissionFailureException('User does not own this application');
             }
 
