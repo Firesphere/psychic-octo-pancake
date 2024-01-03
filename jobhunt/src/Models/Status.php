@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Models;
 
 use Heyday\ColorPalette\Fields\ColorPaletteField;
+use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
@@ -110,5 +111,15 @@ class Status extends DataObject
         }
 
         return $this->Colour;
+    }
+
+    public function getActiveFilter()
+    {
+        if (Controller::has_curr() && Controller::curr()->getRequest()->getVar('filter')) {
+            $filter = Controller::curr()->getRequest()->getVar('filter');
+            return (isset($filter['StatusID']) && (int)$filter['StatusID'] === $this->ID);
+        }
+
+        return false;
     }
 }

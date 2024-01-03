@@ -60,6 +60,18 @@ class JobApplication extends DataObject
     private static $many_many = [
     ];
 
+    public static $filters = [
+        'StatusID' => 'int',
+        'Company'  => 'string',
+    ];
+
+    public static $sort = [
+        'Interview.DateTime' => 'datetime',
+        'ApplicationDate'    => 'date',
+        'ClosingDate'        => 'date',
+        'Company.Name'       => 'string'
+    ];
+
     public function onBeforeWrite()
     {
         if ($this->CoverLetter) {

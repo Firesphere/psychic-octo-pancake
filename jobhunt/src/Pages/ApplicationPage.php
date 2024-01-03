@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Pages;
 
 use Firesphere\JobHunt\Controllers\ApplicationPageController;
+use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 
 /**
@@ -17,10 +18,6 @@ class ApplicationPage extends \Page
         'CanViewType' => 'LoggedInUsers'
     ];
 
-    public function getApplications()
-    {
-        return Security::getCurrentUser()->JobApplications();
-    }
 
     public function onBeforeWrite()
     {

@@ -15,8 +15,10 @@
             </button>
             <div class="py-3">
                 <h3>Applications</h3>
+                <% include ListFilters %>
                 <% include ApplicationTable %>
             </div>
         </div>
     </div>
-</div>,
+    <% include Pagination PaginatedMatches=$Applications %>
+</div>
