@@ -8,6 +8,8 @@ const applyMoods = (score) => {
             mood.parentElement.classList.add('text-muted');
             mood.children[0].classList.remove('h3');
             mood.children[0].classList.add('h4');
+        } else {
+            mood.classList.add('active');
         }
         mood.outerHTML = mood.outerHTML;
     });

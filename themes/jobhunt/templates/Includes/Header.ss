@@ -1,6 +1,5 @@
-<% cached 'page-nav-cache', $URLSegment %>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" rel="nofollow"
                    href="<% if $Top.URLSegment == 'home' %>#page-top<% else %>/<% end_if %>">$SiteConfig.Title</a><br/>
@@ -51,5 +50,7 @@
                 </div>
             </div>
         </nav>
+        <% if $CurrentUser %>
+            <% include SecondaryNav %>
+        <% end_if %>
     </header>
-<% end_cached %>

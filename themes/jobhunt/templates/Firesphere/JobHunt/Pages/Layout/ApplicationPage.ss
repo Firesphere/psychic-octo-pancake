@@ -3,8 +3,7 @@
         <h1 class="col-12">$Title</h1>
     </div>
     <div class="row">
-        <% include UserSidebar Collapse=true %>
-        <div class="col-xs-12 col-md-9 order-md-first">
+        <div class="col-12 order-md-first">
             $Content
             <div class="my-2">&nbsp;</div>
             <button type="button" class="btn btn-primary js-formaction"
