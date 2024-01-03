@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th scope="col">
-            <span class="<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>border-bottom border-primary h5<% end_if %>">
+            <span class="<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>border-bottom border-primary h5 active<% end_if %>">
                 <a href="$Top.Link?sort[Company.Name]=<% if $SortDirection == 'Company.NameASC' %>DESC<% else %>ASC<% end_if %>"><i
                     class="bi bi-sort-alpha-down<% if $SortDirection == 'Company.NameDESC' %>-alt<% end_if %>"></i></a>
             </span>
@@ -11,7 +11,7 @@
         <th scope="col"></th>
         <th scope="col">Role</th>
         <th scope="col">
-            <span class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>border-bottom border-primary h5<% end_if %>">
+            <span class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>border-bottom border-primary h5 active<% end_if %>">
                 <a href="$Top.Link?sort[ApplicationDate]=<% if $SortDirection == 'ApplicationDateASC' %>DESC<% else %>ASC<% end_if %>"><i
                     class="bi bi-sort-numeric-<% if $SortDirection == 'ApplicationDateASC' %>up<% else %>down<% end_if %>"></i></a>
             </span>
