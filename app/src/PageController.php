@@ -42,12 +42,22 @@ namespace {
             Requirements::block("symbiote/silverstripe-memberprofiles: client/javascript/ConfirmedPasswordField.js");
             /** @var SiteConfigExtension|SiteConfigTheme $SiteConfig */
             $SiteConfig = SiteConfig::current_site_config();
-//<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
             Requirements::css('//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
             Requirements::css('_resources/themes/jobhunt/dist/css/main.css');
             Requirements::css('_resources/themes/jobhunt/dist/css/' . $SiteConfig->Theme . '.min.css');
             Requirements::javascript('//cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js');
             Requirements::javascript('_resources/themes/jobhunt/dist/js/main.js');
         }
+
+        public function getYear($year)
+        {
+            $now = date('Y');
+            if ((int)$year === (int)$now) {
+                return $now;
+            }
+
+            return sprintf('%s - %s', $year, $now);
+        }
+
     }
 }
