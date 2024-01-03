@@ -66,10 +66,8 @@ class JobApplication extends DataObject
     ];
 
     public static $sort = [
-        'Interview.DateTime' => 'datetime',
-        'ApplicationDate'    => 'date',
-        'ClosingDate'        => 'date',
-        'Company.Name'       => 'string'
+        'ApplicationDate',
+        'Company.Name',
     ];
 
     public function onBeforeWrite()

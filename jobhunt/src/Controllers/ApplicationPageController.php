@@ -18,7 +18,10 @@ use SilverStripe\View\Requirements;
  */
 class ApplicationPageController extends \PageController
 {
-    public $HasFilter;
+    protected $HasFilter;
+    protected $SortDirection;
+    protected $sort;
+    protected $filter;
     private static $allowed_actions = [
         'application'
     ];
@@ -28,7 +31,29 @@ class ApplicationPageController extends \PageController
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
         Requirements::css('silverstripe/admin:client/dist/styles/editor.css');
         parent::init();
-        $this->HasFilter = !empty($this->getRequest()->getVar('filter'));
+
+        $this->filter = [];
+        if ($this->getRequest()->getVar('filter')) {
+            $requestFilter = $this->getRequest()->getVar('filter');
+            foreach (JobApplication::$filters as $filterfield => $type) {
+                if (array_key_exists($filterfield, $requestFilter)) {
+                    $this->filter[$filterfield] = $requestFilter[$filterfield];
+                    $this->HasFilter = true;
+                }
+            }
+        }
+        $this->sort = ['ApplicationDate' => 'DESC'];
+        if ($this->getRequest()->getVar('sort')) {
+            $requestsort = $this->getRequest()->getVar('sort');
+            foreach (JobApplication::$sort as $sortfield) {
+                if (array_key_exists($sortfield, $requestsort)) {
+                    $direction = strtoupper($requestsort[$sortfield]);
+                    $this->sort[$sortfield] = $direction === 'ASC' ? 'ASC' : 'DESC';
+                    $this->SortDirection = $sortfield . $direction;
+                }
+            }
+        }
+
     }
 
     public function getStatusFilters()
@@ -40,17 +65,7 @@ class ApplicationPageController extends \PageController
     {
         $applications = Security::getCurrentUser()->JobApplications();
 
-        $filter = [];
-        if ($this->getRequest()->getVar('filter')) {
-            $requestFilter = $this->getRequest()->getVar('filter');
-            foreach (JobApplication::$filters as $filterfield => $type) {
-                if (array_key_exists($filterfield, $requestFilter)) {
-                    $filter[$filterfield] = $requestFilter[$filterfield];
-                }
-            }
-        }
-
-        $applications = $applications->filter($filter);
+        $applications = $applications->filter($this->filter)->sort($this->sort);
 
         return PaginatedList::create($applications, $this->getRequest());
     }

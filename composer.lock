@@ -9515,12 +9515,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "cbce83127406d8e91ec92b053a44cf917800646b"
+                "reference": "1aea1926c92a90ccf2f17c1f9539fa7cee6a7fe0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/cbce83127406d8e91ec92b053a44cf917800646b",
-                "reference": "cbce83127406d8e91ec92b053a44cf917800646b",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/1aea1926c92a90ccf2f17c1f9539fa7cee6a7fe0",
+                "reference": "1aea1926c92a90ccf2f17c1f9539fa7cee6a7fe0",
                 "shasum": ""
             },
             "conflict": {
@@ -9919,6 +9919,7 @@
                 "pimcore/perspective-editor": "<1.5.1",
                 "pimcore/pimcore": "<11.1.1",
                 "pixelfed/pixelfed": "<=0.11.4",
+                "plotly/plotly.js": "<2.25.2",
                 "pocketmine/bedrock-protocol": "<8.0.2",
                 "pocketmine/pocketmine-mp": "<=4.23|>=5,<5.3.1",
                 "pocketmine/raklib": ">=0.14,<0.14.6|>=0.15,<0.15.1",
@@ -10229,7 +10230,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-29T19:04:11+00:00"
+            "time": "2024-01-03T20:04:30+00:00"
         },
         {
             "name": "sebastian/cli-parser",

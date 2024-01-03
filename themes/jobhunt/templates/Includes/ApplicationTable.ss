@@ -1,11 +1,25 @@
 <table class="table table-responsive">
     <thead>
     <tr>
-        <th scope="col">Company Name</th>
+        <th scope="col">
+            <span class="text-end">
+                <a href="$Top.Link?sort[Company.Name]=<% if $SortDirection == 'Company.NameASC' %>DESC<% else %>ASC<% end_if %>"><i
+                    class="bi bi-sort-alpha-<% if $SortDirection == 'Company.NameASC' %>up<% else %>down<% end_if %>"></i></a>
+            </span>
+            Company
+        </th>
         <th scope="col"></th>
         <th scope="col">Role</th>
-        <th scope="col">Application date</th>
-        <th scope="col">Status</th>
+        <th scope="col" class=" justify-content-between">
+            <span class="text-end">
+                <a href="$Top.Link?sort[ApplicationDate]=<% if $SortDirection == 'ApplicationDateASC' %>DESC<% else %>ASC<% end_if %>"><i
+                    class="bi bi-sort-numeric-<% if $SortDirection == 'ApplicationDateASC' %>up<% else %>down<% end_if %>"></i></a>
+            </span>
+            Application date
+        </th>
+        <th scope="col" class=" justify-content-between">
+            Status
+        </th>
         <th scope="col"></th>
     </tr>
     </thead>
@@ -82,29 +96,29 @@
                    data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a>
             </td>
         </tr>
-            <tr>
-                <th scope="row">Interviews</th>
-                <td colspan="3">
-                    <% loop $Interviews %>
-                        <a href="#"
-                           title="Edit interview"
-                           class="js-formaction h6 badge text-bg-secondary"
-                           data-id="$ID"
-                           data-itemtype="interview-edit"
-                           data-bs-toggle="modal"
-                           data-bs-target="#addItemModal">$DateTime.Nice()</a>
-                    <% end_loop %>
-                </td>
-                <td>
+        <tr>
+            <th scope="row">Interviews</th>
+            <td colspan="3">
+                <% loop $Interviews %>
                     <a href="#"
-                       title="Add interview"
-                       class="js-formaction"
-                       data-application="$ID"
-                       data-itemtype="interview-add"
+                       title="Edit interview"
+                       class="js-formaction h6 badge text-bg-secondary"
+                       data-id="$ID"
+                       data-itemtype="interview-edit"
                        data-bs-toggle="modal"
-                       data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
-                </td>
-            </tr>
+                       data-bs-target="#addItemModal">$DateTime.Nice()</a>
+                <% end_loop %>
+            </td>
+            <td>
+                <a href="#"
+                   title="Add interview"
+                   class="js-formaction"
+                   data-application="$ID"
+                   data-itemtype="interview-add"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
+            </td>
+        </tr>
     <% end_loop %>
     </tbody>
 </table>
