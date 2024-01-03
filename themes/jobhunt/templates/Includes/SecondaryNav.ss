@@ -3,22 +3,22 @@
             aria-controls="secondaryNav" aria-expanded="false" aria-label="Toggle secondary navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="secondaryNav">
+    <div class="collapse navbar-collapse justify-content-end px-4 px-lg-5" id="secondaryNav">
         <ul class="navbar-nav mb-2 mb-lg-0">
             <% loop $Menu(2) %>
                 <li class="nav-item $FirstLast $EvenOdd">
-                    <a class="nav-link $LinkingMode" rel="nofollow" href="$Link">$MenuTitle</a>
+                    <a class="nav-link $LinkingMode <% if $IsCurrent %>active<% end_if %>" rel="nofollow" href="$Link">$MenuTitle</a>
                 </li>
             <% end_loop %>
             <li class="nav-item">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                   aria-expanded="false">
+                   aria-expanded="true">
                     How's the job hunt going?
                 </a>
-                <ul class="dropdown-menu border-0">
-                    <li class="nav-item">
-                        <table class="dropdown-item table table-borderless align-middle js-dayscore"
+                <ul class="dropdown-menu border-0 show dropdown-menu-end py-0">
+                    <li class="">
+                        <table class="table table-borderless align-middle js-dayscore"
                                <% if $CurrentUser.hasMood %>data-dayscore="$CurrentUser.hasMood"<% end_if %>>
                             <tr>
                                 <td class="text-bg-danger text-center">
