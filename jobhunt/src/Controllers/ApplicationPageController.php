@@ -18,6 +18,7 @@ use SilverStripe\View\Requirements;
  */
 class ApplicationPageController extends \PageController
 {
+    public $HasFilter;
     private static $allowed_actions = [
         'application'
     ];
@@ -27,6 +28,7 @@ class ApplicationPageController extends \PageController
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
         Requirements::css('silverstripe/admin:client/dist/styles/editor.css');
         parent::init();
+        $this->HasFilter = !empty($this->getRequest()->getVar('filter'));
     }
 
     public function getStatusFilters()
