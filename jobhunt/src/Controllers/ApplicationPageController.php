@@ -42,7 +42,6 @@ class ApplicationPageController extends \PageController
                 }
             }
         }
-        $this->sort = ['ApplicationDate' => 'DESC'];
         if ($this->getRequest()->getVar('sort')) {
             $requestsort = $this->getRequest()->getVar('sort');
             foreach (JobApplication::$sort as $sortfield) {
@@ -52,6 +51,8 @@ class ApplicationPageController extends \PageController
                     $this->SortDirection = $sortfield . $direction;
                 }
             }
+        } else {
+            $this->sort = ['ApplicationDate' => 'DESC'];
         }
 
     }
