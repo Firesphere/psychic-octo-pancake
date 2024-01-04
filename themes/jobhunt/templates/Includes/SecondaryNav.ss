@@ -16,7 +16,7 @@
                    aria-expanded="true">
                     How's the job hunt going?
                 </a>
-                <ul class="dropdown-menu border-0 show dropdown-menu-end py-0">
+                <ul class="dropdown-menu border-0 show dropdown-menu-end py-0" data-bs-popper="static">
                     <li class="">
                         <table class="table table-borderless align-middle js-dayscore"
                                <% if $CurrentUser.hasMood %>data-dayscore="$CurrentUser.hasMood"<% end_if %>>
@@ -47,7 +47,7 @@
                 </ul>
             </li>
             <li class="nav-item $FirstLast $EvenOdd">
-                <a class="nav-link" rel="nofollow" href="$LogoutURL">Logout</a>
+                <a class="nav-link" rel="nofollow" href="$LogoutURL" title="Logout" aria-description="Logout button"><i class="bi bi-box-arrow-right" title="Logout"></i></a>
             </li>
         </ul>
     </div>

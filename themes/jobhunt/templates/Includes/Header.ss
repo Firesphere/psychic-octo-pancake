@@ -41,7 +41,7 @@
                                         <% end_loop %>
                                     </ul>
                                 <% else %>
-                                    <a class="nav-link <% if $LinkingMode == 'current' %>active<% end_if %>"
+                                    <a class="nav-link $LinkingMode <% if $LinkingMode == 'current' || $LinkingMode == 'section' %>active<% end_if %>"
                                        rel="nofollow" href="$Link">$MenuTitle.XML</a>
                                 <% end_if %>
                             </li>
