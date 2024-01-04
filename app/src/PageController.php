@@ -6,8 +6,10 @@ namespace {
     use Firesphere\AdblockWarning\Extensions\SiteConfigExtension;
     use Firesphere\ModuleHelpers\Extensions\PageControllerExtension;
     use SilverStripe\CMS\Controllers\ContentController;
+    use SilverStripe\Security\Security;
     use SilverStripe\SiteConfig\SiteConfig;
     use SilverStripe\View\Requirements;
+    use Symbiote\MemberProfiles\Pages\MemberProfilePage;
 
     /**
  * Class \PageController
@@ -18,6 +20,7 @@ namespace {
  */
     class PageController extends ContentController
     {
+        protected $SecondaryNav;
         /**
          * An array of actions that can be accessed via a request. Each array element should be an action name, and the
          * permissions or conditions required to allow the user to access it.
@@ -47,6 +50,9 @@ namespace {
             Requirements::css('_resources/themes/jobhunt/dist/css/' . $SiteConfig->Theme . '.min.css');
             Requirements::javascript('//cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js');
             Requirements::javascript('_resources/themes/jobhunt/dist/js/main.js');
+            if (Security::getCurrentUser()) {
+                $this->SecondaryNav = MemberProfilePage::get()->first()->Children();
+            }
         }
 
         public function getYear($year)

@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end px-4 px-lg-5" id="secondaryNav">
         <ul class="navbar-nav mb-2 mb-lg-0">
-            <% loop $Menu(2) %>
+            <% loop $SecondaryNav %>
                 <li class="nav-item $FirstLast $EvenOdd">
                     <a class="nav-link $LinkingMode <% if $IsCurrent %>active<% end_if %>" rel="nofollow" href="$Link">$MenuTitle</a>
                 </li>
