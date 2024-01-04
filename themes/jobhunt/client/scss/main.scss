@@ -1,4 +1,8 @@
 body {
+    .dropdown-menu {
+        z-index: 9999;
+    }
+
     main {
         margin: 50px 0;
     }
