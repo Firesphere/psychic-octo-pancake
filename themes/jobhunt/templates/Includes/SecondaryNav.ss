@@ -12,7 +12,7 @@
             <% end_loop %>
             <li class="nav-item">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle show" href="#" role="button" data-bs-toggle="dropdown"
                    aria-expanded="true">
                     How's the job hunt going?
                 </a>
