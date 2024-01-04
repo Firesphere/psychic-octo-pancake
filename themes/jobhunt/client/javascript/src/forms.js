@@ -10,8 +10,10 @@ const typemap = {
 
 const updateFormContent = () => {
     formcontainer.innerHTML = '';
-    formcontainer.insertAdjacentHTML('beforeend', '<div class="spinner-border" role="status">' +
-        '<span class="visually-hidden">Loading...</span>' +
+    formcontainer.insertAdjacentHTML('beforeend', '<div class="text-center">\n' +
+        '  <div class="spinner-border" role="status">\n' +
+        '    <span class="visually-hidden">Loading...</span>\n' +
+        '  </div>\n' +
         '</div>');
     tinyMCE.remove();
 }
