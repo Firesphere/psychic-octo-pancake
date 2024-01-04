@@ -2,6 +2,9 @@ body {
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         z-index: 9999;
     }
+    .dropdown-menu.border-0.show.dropdown-menu-end.py-0 {
+        z-index: 999;
+    }
 
     main {
         margin: 50px 0;
