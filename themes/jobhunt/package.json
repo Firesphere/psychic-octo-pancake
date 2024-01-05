@@ -16,6 +16,8 @@
     "vue-template-compiler": "*"
   },
   "dependencies": {
-    "@sentry/browser": "^7"
+    "@sentry/browser": "^7",
+    "chart.js": "^4",
+    "chartjs-chart-sankey": "^0.12.0"
   }
 }

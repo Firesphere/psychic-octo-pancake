@@ -1,4 +1,10 @@
-const ctx = document.getElementById('moodchart');
+import {Chart} from 'chart.js/auto';
+import {Flow, SankeyController} from 'chartjs-chart-sankey';
+
+Chart.register(SankeyController, Flow,);
+
+const moodchart = document.getElementById('moodchart');
+const sankeychart = document.getElementById('sankeychart');
 const moods = {
     1: '😖',
     2: '️☹️',
@@ -8,7 +14,6 @@ const moods = {
 }
 export default () => {
     if (window.chart) {
-
         let options = {
             type: 'line',
             data: {
@@ -25,7 +30,7 @@ export default () => {
                         min: 1,
                         max: 5,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return moods[value] ?? '';
                             },
                             font: {
@@ -36,6 +41,11 @@ export default () => {
                 }
             }
         };
-        new Chart(ctx, options);
+        new Chart(moodchart, options);
+    }
+
+    if (window.sankey) {
+        let options = {};
+        new Chart(sankeychart, options)
     }
 }

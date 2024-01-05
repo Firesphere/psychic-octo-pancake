@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
+use Firesphere\JobHunt\Pages\MoodPage;
 use SilverStripe\View\Requirements;
 
 /**
@@ -16,7 +17,7 @@ class MoodPageController extends \PageController
 
     public function init()
     {
-        Requirements::javascript('//cdn.jsdelivr.net/npm/chart.js');
+        Requirements::javascript('_resources/themes/jobhunt/dist/js/charts.js');
         $js = $this->getChartScript();
         Requirements::insertHeadTags("<script type='text/javascript'>window.chart = $js</script>");
         parent::init();
