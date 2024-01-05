@@ -2,10 +2,11 @@
 
 namespace Firesphere\JobHunt\Forms;
 
-use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\InterviewNote;
 use Firesphere\JobHunt\Models\JobApplication;
+use Firesphere\JobHunt\Models\Status;
+use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\FieldList;
@@ -67,27 +68,38 @@ class InterviewForm extends Form
             }
 
             $interview = Interview::create($data);
-        }
-        $interview->write();
-        if ($data['Note']) {
-            if (!InterviewNote::get()->filter(['Note' => $data['Note']])->count()) {
-                $title = sprintf('%s - %s',
-                    $interview->dbObject('DateTime')->Long(),
-                    $interview->Application()->Company()->Name
-                );
-                /** @var InterviewNote $note */
-                $note = InterviewNote::create([
-                    'Title'                  => $title,
-                    'Note'                   => $data['Note'],
-                    'ApplicationInterviewID' => $interview->ID
+            $interview->write();
+            if ($data['Note']) {
+                if (!InterviewNote::get()->filter(['Note' => $data['Note']])->count()) {
+                    $title = sprintf('%s - %s',
+                        $interview->dbObject('DateTime')->Short(),
+                        $interview->Application()->Company()->Name
+                    );
+                    $note = InterviewNote::create([
+                        'Title'                  => $title,
+                        'Note'                   => $data['Note'],
+                        'ApplicationInterviewID' => $interview->ID
+                    ]);
+                    $note->write();
+                }
+            }
+            /** @var StatusUpdate $last */
+            $count = $application->StatusUpdates()->filter(['Status.Status' => 'Interview'])->count();
+            if ($count !== $application->Interviews()->count()) {
+                $interviewStatus = Status::get()->filter(['Status' => 'Interview'])->first();
+                $stat = StatusUpdate::create([
+                    'Title'         => 'Automated update: Interview',
+                    'StatusID'      => $interviewStatus->ID,
+                    'JobApplicationID' => $application->ID,
+                    'Hidden'        => true
                 ]);
-                $note->write();
+                $stat->write();
             }
         }
 
         return json_encode([
             'success' => true,
             'form'    => false
-        ]);
+        ], JSON_THROW_ON_ERROR);
     }
 }

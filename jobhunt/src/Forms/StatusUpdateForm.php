@@ -82,6 +82,7 @@ class StatusUpdateForm extends Form
         }
         $form->saveInto($update);
         $update->JobApplicationID = $appId;
+        $update->OwnerID = Security::getCurrentUser()->ID;
         $update->write();
         $returnForm = false;
 

@@ -2,18 +2,17 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
-use Firesphere\JobHunt\Pages\MoodPage;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
 
 /**
- * Class \Firesphere\JobHunt\Controllers\MoodPageController
+ * Class \Firesphere\JobHunt\Controllers\SankeyPageController
  *
- * @property MoodPage $dataRecord
- * @method MoodPage data()
- * @mixin MoodPage
+ * @property SankeyPage $dataRecord
+ * @method SankeyPage data()
+ * @mixin SankeyPage
  */
-class MoodPageController extends \PageController
+class SankeyPageController extends \PageController
 {
     private static $allowed_actions = [
         'getChartData' => '->isLoggedIn()'
@@ -27,16 +26,14 @@ class MoodPageController extends \PageController
 
     public function getChartData()
     {
-        $data = $this->dataRecord->moods();
+        $data = $this->dataRecord->sankeyFlow();
 
-        return json_encode([
-            'labels' => array_keys($data),
-            'values' => array_values($data)
-        ], JSON_THROW_ON_ERROR);
+        return json_encode($data, JSON_THROW_ON_ERROR);
     }
 
     protected function isLoggedIn()
     {
         return Security::getCurrentUser() !== null;
     }
+
 }

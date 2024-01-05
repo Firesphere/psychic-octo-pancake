@@ -76,7 +76,7 @@
         <tr class="$OddEven">
             <th scope="row">Updates</th>
             <td colspan="3">
-                <% loop $StatusUpdates %>
+                <% loop $StatusUpdates.Filter('Hidden', 0) %>
                     <a href="#"
                        title="Edit Status update"
                        class="js-formaction h6 badge text-bg-$Status.ColourStyle"

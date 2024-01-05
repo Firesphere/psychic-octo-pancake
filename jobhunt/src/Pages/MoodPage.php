@@ -23,7 +23,9 @@ class MoodPage extends \Page
         $user = Security::getCurrentUser();
 
         $moods = $user->Moods()
-            ->filter(['Created:GreaterThan' => date('Y-m-d 00:00:00', strtotime('-1 month'))]);
+            ->filter([
+                'Created:GreaterThan' => date('Y-m-d 00:00:00', strtotime('-1 month'))
+            ]);
 
         $return = [];
         $formatter = IntlDateFormatter::create($user->getLocale(), \IntlDateFormatter::MEDIUM, \IntlDateFormatter::NONE);

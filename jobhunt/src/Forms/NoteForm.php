@@ -67,6 +67,7 @@ class NoteForm extends Form
 
             $note = ApplicationNote::create($data);
         }
+        $note->OwnerID = $userId->ID;
         $note->write();
 
         return json_encode(['success' => true, 'form' => false]);
