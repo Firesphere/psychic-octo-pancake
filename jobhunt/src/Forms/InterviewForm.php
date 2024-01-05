@@ -88,10 +88,10 @@ class InterviewForm extends Form
             if ($count !== $application->Interviews()->count()) {
                 $interviewStatus = Status::get()->filter(['Status' => 'Interview'])->first();
                 $stat = StatusUpdate::create([
-                    'Title'         => 'Automated update: Interview',
-                    'StatusID'      => $interviewStatus->ID,
+                    'Title'            => 'Automated update: Interview',
+                    'StatusID'         => $interviewStatus->ID,
                     'JobApplicationID' => $application->ID,
-                    'Hidden'        => true
+                    'Hidden'           => true
                 ]);
                 $stat->write();
             }
