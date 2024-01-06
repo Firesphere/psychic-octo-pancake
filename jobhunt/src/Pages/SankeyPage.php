@@ -37,7 +37,6 @@ class SankeyPage extends Page
                 $this->countFlow(1, $application->StatusID);
             } else {
                 $currentFlow = 1; // We've not started yet, so everything is at least "applied"
-                /** @var Map $updates */
                 $updates = $application->StatusUpdates()->map('Created', 'StatusID')->toArray();
                 foreach ($updates as $when => $update) {
                     if ($update === $currentFlow) {
@@ -45,6 +44,9 @@ class SankeyPage extends Page
                     }
                     $this->countFlow($currentFlow, $update);
                     $currentFlow = $update;
+                }
+                if ($update !== $application->StatusID) {
+                    $this->countFlow($update, $application->StatusID);
                 }
             }
         }
