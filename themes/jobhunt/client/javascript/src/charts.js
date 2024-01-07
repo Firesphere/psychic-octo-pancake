@@ -12,8 +12,9 @@ const colors = {
     5: 'green',
     6: 'red',
     7: 'orange',
-    8: 'black',
-    9: 'lightgreen'
+    8: 'lightgrey',
+    9: 'black',
+    10: 'lightgrey'
 };
 const endpoint = `${window.location.href.split('?')[0]}/getChartData`
 let moodOptions = {
