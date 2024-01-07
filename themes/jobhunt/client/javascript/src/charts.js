@@ -5,14 +5,15 @@ const moodchart = document.getElementById('moodchart');
 const sankeychart = document.getElementById('sankeychart');
 const moods = ['😖', '️☹️', '😐', '🙂', '😃']
 const colors = {
-    1: 'red',
+    1: 'blue',
     2: 'green',
-    3: 'blue',
-    4: 'gray',
-    5: 'black',
-    6: 'orange',
-    7: 'yellow',
-    8: 'purple'
+    3: 'lightblue',
+    4: 'yellow',
+    5: 'green',
+    6: 'red',
+    7: 'orange',
+    8: 'black',
+    9: 'lightgreen'
 };
 const endpoint = `${window.location.href.split('?')[0]}/getChartData`
 let moodOptions = {
