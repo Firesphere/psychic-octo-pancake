@@ -61,6 +61,7 @@ class InterviewForm extends Form
                 throw new PermissionFailureException('User does not own this application');
             }
             $interview->update($data);
+            $application = $interview->Application();
         } else {
             $application = JobApplication::get_by_id($data['ApplicationID']);
             if ($application->UserID !== $userId->ID) {
@@ -83,18 +84,18 @@ class InterviewForm extends Form
                     $note->write();
                 }
             }
-            /** @var StatusUpdate $last */
-            $count = $application->StatusUpdates()->filter(['Status.Status' => 'Interview'])->count();
-            if ($count !== $application->Interviews()->count()) {
-                $interviewStatus = Status::get()->filter(['Status' => 'Interview'])->first();
-                $stat = StatusUpdate::create([
-                    'Title'            => 'Automated update: Interview',
-                    'StatusID'         => $interviewStatus->ID,
-                    'JobApplicationID' => $application->ID,
-                    'Hidden'           => true
-                ]);
-                $stat->write();
-            }
+        }
+        /** @var StatusUpdate $last */
+        $count = $application->StatusUpdates()->filter(['Status.Status' => 'Interview'])->count();
+        if ($count !== $application->Interviews()->count()) {
+            $interviewStatus = Status::get()->filter(['Status' => 'Interview'])->first();
+            $stat = StatusUpdate::create([
+                'Title'            => 'Automated update: Interview',
+                'StatusID'         => $interviewStatus->ID,
+                'JobApplicationID' => $application->ID,
+                'Hidden'           => true
+            ]);
+            $stat->write();
         }
 
         return json_encode([

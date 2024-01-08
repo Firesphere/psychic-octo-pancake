@@ -38,6 +38,10 @@ class Status extends DataObject
         'Colour'
     ];
 
+    private static $indexes = [
+        'Status' => true
+    ];
+
     private static $default_records = [
         ['Status' => 'Applied'],
         ['Status' => 'Interview'],

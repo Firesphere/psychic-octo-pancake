@@ -48,17 +48,16 @@ let sankeyOptions = {
             data: [],
             colorFrom: (c) => getColor(c.dataset.data[c.dataIndex].from),
             colorTo: (c) => getColor(c.dataset.data[c.dataIndex].to),
-            colorMode: 'gradient', // or 'from' or 'to'
+            colorMode: 'flow', // or 'from' or 'to'
             /* optional labels */
-            labels: {},
-            size: 'max', // or 'min' if flow overlap is preferred
+            labels: {}
+            // size: 'min', // or 'min' if flow overlap is preferred
         }]
     },
 };
 
 
 const getColor = (key) => {
-    console.log(colors);
     return colors[key];
 }
 

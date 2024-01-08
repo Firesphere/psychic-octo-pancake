@@ -37,16 +37,16 @@ class SankeyPage extends Page
                 $this->countFlow(1, $application->StatusID);
             } else {
                 $currentFlow = 1; // We've not started yet, so everything is at least "applied"
-                $updates = $application->StatusUpdates()->map('Created', 'StatusID')->toArray();
-                foreach ($updates as $when => $update) {
-                    if ($update === $currentFlow) {
+                $updates = $application->StatusUpdates()->Sort('Created ASC');
+                foreach ($updates as $update) {
+                    if ($update->StatusID === $currentFlow) {
                         continue;
                     }
-                    $this->countFlow($currentFlow, $update);
-                    $currentFlow = $update;
+                    $this->countFlow($currentFlow, $update->StatusID);
+                    $currentFlow = $update->StatusID;
                 }
-                if ($update !== $application->StatusID) {
-                    $this->countFlow($update, $application->StatusID);
+                if ($update->StatusID !== $application->StatusID) {
+                    $this->countFlow($update->StatusID, $application->StatusID);
                 }
             }
         }
@@ -76,6 +76,5 @@ class SankeyPage extends Page
             'to'   => $to,
             'flow' => 1
         ];
-
     }
 }
