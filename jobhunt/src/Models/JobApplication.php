@@ -73,6 +73,7 @@ class JobApplication extends DataObject
 
     public function onBeforeWrite()
     {
+        parent::onBeforeWrite();
         if ($this->CoverLetter) {
             try {
                 $dom = new DOMDocument();
@@ -92,6 +93,5 @@ class JobApplication extends DataObject
                 //ignore
             }
         }
-        parent::onBeforeWrite();
     }
 }

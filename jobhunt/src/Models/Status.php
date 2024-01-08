@@ -84,6 +84,18 @@ class Status extends DataObject
         if (!$this->Colour) {
             $this->Colour = self::$colourmap[$this->Status];
         }
+        static::set_colour_map();
+        $fields = parent::getCMSFields();
+
+        $fields->addFieldToTab('Root.Main',
+            ColorPaletteField::create('Colour', 'Colour', static::$colours)
+        );
+
+        return $fields;
+    }
+
+    public static function set_colour_map()
+    {
         // Funky hack to get the colours :D
         $style = SiteConfig::current_site_config()->Theme;
         $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/" . $style . '.min.css');
@@ -95,13 +107,8 @@ class Status extends DataObject
                 $value = $colours[$value];
             }
         }
-        $fields = parent::getCMSFields();
 
-        $fields->addFieldToTab('Root.Main',
-            ColorPaletteField::create('Colour', 'Colour', static::$colours)
-        );
-
-        return $fields;
+        return static::$colours;
     }
 
     public function getColourStyle()

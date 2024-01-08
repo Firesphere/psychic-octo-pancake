@@ -52,12 +52,13 @@ class SankeyPage extends Page
         }
 
         /** @var DataList|Status[] $colours */
-        $colours = Status::get();
+        $stats = Status::get();
+        $colours = Status::set_colour_map();
         $colour = [];
         $status = [];
-        foreach ($colours as $stat) {
-//            $colour[$stat->ID] = $stat->getColourStyle();
+        foreach ($stats as $stat) {
             $status[$stat->ID] = $stat->Status;
+            $colour[$stat->ID] = $colours[$stat->getColourStyle()];
         }
         return ['values' => $this->fromTo, 'labels' => $status, 'colours' => $colour];
     }
