@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1203f590a352307526eb8c13794ebb7",
+    "content-hash": "43c8ac5385d6193f0129c93cb3df6327",
     "packages": [
         {
             "name": "brick/math",
@@ -864,16 +864,16 @@
         },
         {
             "name": "firesphere/cspheaders",
-            "version": "1.7.2",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://codeberg.org/Firesphere/silverstripe-csp-headers",
-                "reference": "ab8136c5801549847f09e2d88d251c7b4c0e5b6b"
+                "reference": "7f5c04830b2cba987d3af693167f29bf3918d95b"
             },
             "require": {
                 "ext-simplexml": "*",
                 "guzzlehttp/guzzle": ">=6",
-                "paragonie/csp-builder": "^2.9",
+                "paragonie/csp-builder": "^3.0.0",
                 "php": "^8.1",
                 "silverstripe/admin": "^1|^2",
                 "silverstripe/framework": "^4|^5",
@@ -889,6 +889,7 @@
                 "phpunit/phpunit": "^9",
                 "squizlabs/php_codesniffer": "3.*"
             },
+            "default-branch": true,
             "type": "silverstripe-vendormodule",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -914,7 +915,7 @@
                 "issues": "https://codeberg.org/Firesphere/silverstripe-csp-headers/issues",
                 "source": "https://codeberg.org/Firesphere/silverstripe-csp-headers"
             },
-            "time": "2023-12-22T23:24:26+00:00"
+            "time": "2024-01-08T10:12:41+00:00"
         },
         {
             "name": "firesphere/module-helpers",
@@ -11675,16 +11676,10 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "paragonie/csp-builder",
-            "version": "3.0.0.0",
-            "alias": "2.99999.99999",
-            "alias_normalized": "2.99999.99999.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "firesphere/cspheaders": 20,
         "silverstripe/login-forms": 0,
         "silverstripe/recipe-cms": 0,
         "silverstripe/recipe-plugin": 0,
