@@ -12,6 +12,7 @@ use SilverStripe\Security\Security;
  */
 class ApplicationPage extends \Page
 {
+    private static $table_name = 'ApplicationPage';
     private static $controller_name = ApplicationPageController::class;
 
     private static $defaults = [

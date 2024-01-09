@@ -20,7 +20,8 @@
         "silverstripe/vendor-plugin": "~2.0.1@stable",
         "silverstripe/webauthn-authenticator": "^5",
         "symbiote/silverstripe-gridfieldextensions": "^4.0",
-        "symfony/mailjet-mailer": "^7.0"
+        "symfony/mailjet-mailer": "^7.0",
+        "paragonie/csp-builder": "3.0.0 as 2.99999.99999"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",

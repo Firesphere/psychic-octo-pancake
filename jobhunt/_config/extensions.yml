@@ -1,3 +1,6 @@
 SilverStripe\Security\Member:
   extensions:
     - Firesphere\JobHunt\Extensions\MemberExtension
+Symbiote\MemberProfiles\Pages\MemberProfilePageController:
+  extensions:
+    - Firesphere\JobHunt\Extensions\MemberProfilePageControllerExtension

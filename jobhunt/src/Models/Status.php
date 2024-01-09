@@ -17,6 +17,7 @@ use SilverStripe\SiteConfig\SiteConfig;
  * @property string $Colour
  * @method DataList|JobApplication[] Applications()
  * @method DataList|StatusUpdate[] StatusUpdates()
+ * @method DataList|ExcludedStatus[] FilterExclusions()
  */
 class Status extends DataObject
 {
@@ -30,7 +31,8 @@ class Status extends DataObject
 
     private static $has_many = [
         'Applications'  => JobApplication::class . '.Status',
-        'StatusUpdates' => StatusUpdate::class . '.Status'
+        'StatusUpdates' => StatusUpdate::class . '.Status',
+        'FilterExclusions' => ExcludedStatus::class . '.Status'
     ];
 
     private static $summary_fields = [

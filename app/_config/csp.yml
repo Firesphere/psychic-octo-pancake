@@ -54,15 +54,16 @@ Firesphere\CSPHeaders\View\CSPBackend:
     max-age: 31536000
     include_subdomains: true
   clear_on_build: true
-  report_to:
-    report_to_uri: 'https://casalaguna.report-uri.com/a/d/g'
-    report: true
-    NEL: true
+  report-to:
+      - group: csp-endpoint
+        max_age: 10886400
+        endpoints:
+          - url: https://o299871.ingest.sentry.io/api/4506488131747845/security/?sentry_key=01f1472a227b97ecbebea220f374e154
   csp_config:
     enabled: true
     in_cms: false
-    report-to: 'https://o299871.ingest.sentry.io/api/4506488131747845/security/?sentry_key=01f1472a227b97ecbebea220f374e154'
     report-uri: 'https://o299871.ingest.sentry.io/api/4506488131747845/security/?sentry_key=01f1472a227b97ecbebea220f374e154'
+    report-to: 'csp-endpoint'
     report-only: false
     base-uri:
       allow: [ ]
@@ -128,9 +129,8 @@ Only:
 ---
 Firesphere\CSPHeaders\View\CSPBackend:
   csp_config:
-    enabled: false
+    enabled: true
     report-only: true
-    report-to: 'https://csp-capture.ddev.site/csp/enforce/firesphere-dev'
     report-uri: 'https://csp-capture.ddev.site/csp/enforce/firesphere-dev'
   jsSRI: false
   cssSRI: false

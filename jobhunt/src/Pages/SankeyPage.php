@@ -7,8 +7,6 @@ use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\Status;
 use Page;
 use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\Map;
-use SilverStripe\ORM\SS_List;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 
@@ -60,6 +58,7 @@ class SankeyPage extends Page
             $status[$stat->ID] = $stat->Status;
             $colour[$stat->ID] = $colours[$stat->getColourStyle()];
         }
+
         return ['values' => $this->fromTo, 'labels' => $status, 'colours' => $colour];
     }
 
@@ -68,6 +67,7 @@ class SankeyPage extends Page
         foreach ($this->fromTo as $key => &$flow) {
             if ($flow['from'] === $from && $flow['to'] === $to) {
                 $flow['flow']++;
+
                 return;
             }
         }
