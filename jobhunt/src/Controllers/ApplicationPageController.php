@@ -41,6 +41,11 @@ class ApplicationPageController extends \PageController
                     $this->HasFilter = true;
                 }
             }
+        } else {
+            if (Security::getCurrentUser()->HideClosed) {
+                $closed = Status::get()->filter(['AutoHide' => true])->column('ID');
+                $this->filter['StatusID:Not'] = $closed;
+            }
         }
         if ($this->getRequest()->getVar('sort')) {
             $requestsort = $this->getRequest()->getVar('sort');
@@ -75,7 +80,9 @@ class ApplicationPageController extends \PageController
     public function application()
     {
         $params = $this->getURLParams();
-        $this->Application = $params['ID'];
+        $this->Application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID]);
+
+        return $this;
     }
 
 }

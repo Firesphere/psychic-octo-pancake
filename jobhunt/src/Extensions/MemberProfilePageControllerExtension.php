@@ -11,7 +11,7 @@ use SilverStripe\Forms\Form;
 /**
  * Class \Firesphere\JobHunt\Extensions\MemberProfilePageControllerExtension
  *
- * @property MemberProfilePageControllerExtension $owner
+ * @property MemberProfilePageController|MemberProfilePageControllerExtension $owner
  */
 class MemberProfilePageControllerExtension extends Extension
 {

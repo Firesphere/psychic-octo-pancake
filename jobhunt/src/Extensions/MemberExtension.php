@@ -21,6 +21,7 @@ use SilverStripe\Security\Member;
  * @property string $CV
  * @property bool $PublicCV
  * @property string $URLSegment
+ * @property bool $HideClosed
  * @method DataList|JobApplication[] JobApplications()
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
@@ -33,6 +34,7 @@ class MemberExtension extends DataExtension
         'CV'         => DBText::class,
         'PublicCV'   => DBBoolean::class . '(false)',
         'URLSegment' => DBVarchar::class,
+        'HideClosed' => DBBoolean::class . '(false)'
     ];
 
     private static $has_many = [

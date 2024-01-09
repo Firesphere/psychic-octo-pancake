@@ -7,6 +7,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBBoolean;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\SiteConfig\SiteConfig;
 
@@ -15,6 +16,7 @@ use SilverStripe\SiteConfig\SiteConfig;
  *
  * @property string $Status
  * @property string $Colour
+ * @property bool $AutoHide
  * @method DataList|JobApplication[] Applications()
  * @method DataList|StatusUpdate[] StatusUpdates()
  * @method DataList|ExcludedStatus[] FilterExclusions()
@@ -25,13 +27,14 @@ class Status extends DataObject
     private static $table_name = 'ApplicationStatus';
 
     private static $db = [
-        'Status' => DBVarchar::class,
-        'Colour' => DBVarchar::class,
+        'Status'   => DBVarchar::class,
+        'Colour'   => DBVarchar::class,
+        'AutoHide' => DBBoolean::class . '(false)'
     ];
 
     private static $has_many = [
-        'Applications'  => JobApplication::class . '.Status',
-        'StatusUpdates' => StatusUpdate::class . '.Status',
+        'Applications'     => JobApplication::class . '.Status',
+        'StatusUpdates'    => StatusUpdate::class . '.Status',
         'FilterExclusions' => ExcludedStatus::class . '.Status'
     ];
 
@@ -130,6 +133,7 @@ class Status extends DataObject
     {
         if (Controller::has_curr() && Controller::curr()->getRequest()->getVar('filter')) {
             $filter = Controller::curr()->getRequest()->getVar('filter');
+
             return (isset($filter['StatusID']) && (int)$filter['StatusID'] === $this->ID);
         }
 
