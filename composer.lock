@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e23754a334196597ab7d3b086eaf75c7",
+    "content-hash": "43c8ac5385d6193f0129c93cb3df6327",
     "packages": [
         {
             "name": "brick/math",
@@ -564,80 +564,6 @@
                 }
             ],
             "time": "2022-12-15T16:57:16+00:00"
-        },
-        {
-            "name": "donatj/phpuseragentparser",
-            "version": "v1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/donatj/PhpUserAgent.git",
-                "reference": "b8c16fd6e963651c6d86f66cb782ce599d62418e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/donatj/PhpUserAgent/zipball/b8c16fd6e963651c6d86f66cb782ce599d62418e",
-                "reference": "b8c16fd6e963651c6d86f66cb782ce599d62418e",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "camspiers/json-pretty": "~1.0",
-                "donatj/drop": "*",
-                "ext-json": "*",
-                "phpunit/phpunit": "~4.8|~9"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/UserAgentParser.php"
-                ],
-                "psr-4": {
-                    "donatj\\UserAgent\\": "src/UserAgent"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jesse G. Donat",
-                    "email": "donatj@gmail.com",
-                    "homepage": "https://donatstudios.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Lightning fast, minimalist PHP UserAgent string parser.",
-            "homepage": "https://donatstudios.com/PHP-Parser-HTTP_USER_AGENT",
-            "keywords": [
-                "browser",
-                "browser detection",
-                "parser",
-                "user agent",
-                "useragent"
-            ],
-            "support": {
-                "issues": "https://github.com/donatj/PhpUserAgent/issues",
-                "source": "https://github.com/donatj/PhpUserAgent/tree/v1.8.0"
-            },
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/donatj/15",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/donatj",
-                    "type": "github"
-                },
-                {
-                    "url": "https://ko-fi.com/donatj",
-                    "type": "ko_fi"
-                }
-            ],
-            "time": "2023-10-27T05:22:44+00:00"
         },
         {
             "name": "dynamic/silverstripe-country-dropdown-field",
@@ -4138,16 +4064,16 @@
         },
         {
             "name": "silverstripe/admin",
-            "version": "2.1.5",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-admin.git",
-                "reference": "0755502de7eedfc21f2ab02870c85a07d9d8fc03"
+                "reference": "bc92e1f14f7ef7f2093875866ec35fae74825404"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-admin/zipball/0755502de7eedfc21f2ab02870c85a07d9d8fc03",
-                "reference": "0755502de7eedfc21f2ab02870c85a07d9d8fc03",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-admin/zipball/bc92e1f14f7ef7f2093875866ec35fae74825404",
+                "reference": "bc92e1f14f7ef7f2093875866ec35fae74825404",
                 "shasum": ""
             },
             "require": {
@@ -4201,9 +4127,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-admin/issues",
-                "source": "https://github.com/silverstripe/silverstripe-admin/tree/2.1.5"
+                "source": "https://github.com/silverstripe/silverstripe-admin/tree/2.1.6"
             },
-            "time": "2023-12-19T04:30:02+00:00"
+            "time": "2024-01-11T02:00:08+00:00"
         },
         {
             "name": "silverstripe/asset-admin",
@@ -4619,16 +4545,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "5.1.9",
+            "version": "5.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "3311794bd3779992c9c42820bb0364e975ed0c8d"
+                "reference": "ff3a6f72df39cca2bf40e46c10a6a9e20b39f78f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/3311794bd3779992c9c42820bb0364e975ed0c8d",
-                "reference": "3311794bd3779992c9c42820bb0364e975ed0c8d",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/ff3a6f72df39cca2bf40e46c10a6a9e20b39f78f",
+                "reference": "ff3a6f72df39cca2bf40e46c10a6a9e20b39f78f",
                 "shasum": ""
             },
             "require": {
@@ -4742,9 +4668,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-framework/issues",
-                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.1.9"
+                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.1.10"
             },
-            "time": "2023-12-14T20:27:31+00:00"
+            "time": "2024-01-11T02:00:24+00:00"
         },
         {
             "name": "silverstripe/graphql",
@@ -9181,16 +9107,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.7.3",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419"
+                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419",
-                "reference": "3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/fad452781b3d774e3337b0c0b245dd8e5a4455fc",
+                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc",
                 "shasum": ""
             },
             "require": {
@@ -9233,9 +9159,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.3"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.0"
             },
-            "time": "2023-08-12T11:01:26+00:00"
+            "time": "2024-01-11T11:49:22+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -9781,12 +9707,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "b3fcb6d7942e8ad987f8cccc11bb2ba496789ce4"
+                "reference": "3aeeaaaaf57836ed6184047f88f744db41e8922d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/b3fcb6d7942e8ad987f8cccc11bb2ba496789ce4",
-                "reference": "b3fcb6d7942e8ad987f8cccc11bb2ba496789ce4",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3aeeaaaaf57836ed6184047f88f744db41e8922d",
+                "reference": "3aeeaaaaf57836ed6184047f88f744db41e8922d",
                 "shasum": ""
             },
             "conflict": {
@@ -10072,10 +9998,12 @@
                 "lms/routes": "<2.1.1",
                 "localizationteam/l10nmgr": "<7.4|>=8,<8.7|>=9,<9.2",
                 "luyadev/yii-helpers": "<1.2.1",
-                "magento/community-edition": "<=2.4",
+                "magento/community-edition": "<2.4.3.0-patch3|>=2.4.4,<2.4.5",
+                "magento/core": "<=1.9.4.5",
                 "magento/magento1ce": "<1.9.4.3-dev",
                 "magento/magento1ee": ">=1,<1.14.4.3-dev",
                 "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.2.0-patch2",
+                "magneto/core": "<1.9.4.4-dev",
                 "maikuolan/phpmussel": ">=1,<1.6",
                 "mainwp/mainwp": "<=4.4.3.3",
                 "mantisbt/mantisbt": "<=2.25.7",
@@ -10165,6 +10093,7 @@
                 "phenx/php-svg-lib": "<0.5.1",
                 "php-mod/curl": "<2.3.2",
                 "phpbb/phpbb": "<3.2.10|>=3.3,<3.3.1",
+                "phpems/phpems": ">=6,<=6.1.3",
                 "phpfastcache/phpfastcache": "<6.1.5|>=7,<7.1.2|>=8,<8.0.7",
                 "phpmailer/phpmailer": "<6.5",
                 "phpmussel/phpmussel": ">=1,<1.6",
@@ -10181,9 +10110,10 @@
                 "phpxmlrpc/phpxmlrpc": "<4.9.2",
                 "pi/pi": "<=2.5",
                 "pimcore/admin-ui-classic-bundle": "<1.2.2",
-                "pimcore/customer-management-framework-bundle": "<3.4.2",
+                "pimcore/customer-management-framework-bundle": "<4.0.6",
                 "pimcore/data-hub": "<1.2.4",
                 "pimcore/demo": "<10.3",
+                "pimcore/ecommerce-framework-bundle": "<1.0.10",
                 "pimcore/perspective-editor": "<1.5.1",
                 "pimcore/pimcore": "<11.1.1",
                 "pixelfed/pixelfed": "<=0.11.4",
@@ -10498,7 +10428,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-09T18:04:23+00:00"
+            "time": "2024-01-11T20:04:14+00:00"
         },
         {
             "name": "sebastian/cli-parser",
