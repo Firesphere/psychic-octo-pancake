@@ -27,10 +27,9 @@
 </head>
 <body class="$ClassName.ShortName">
 <% include Header %>
-<main role="main">
-    <div class="container">
-        $Layout
-    </div>
+<main role="main" class="py-4 container">
+    $Layout
+    <div class="spacer pb-5 row">&nbsp;</div>
 </main>
 <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemLabel"
      aria-hidden="true">
@@ -50,20 +49,10 @@
         </div>
     </div>
 </div>
-
 <% cached %>
-    <footer class="text-muted bg-dark py-4 row footer bg-black small text-center text-white-50 fixed-bottom">
+    <footer class="bg-primary py-4 row footer small text-center fixed-bottom">
         <% include Footer %>
     </footer>
-    <% if $isLive %>
-        <script src="https://browser.sentry-cdn.com/7.37.1/bundle.tracing.min.js"
-                integrity="sha384-1JKZyj097HID3/SGPzRlmpftSQF7R92wUqwgs4d+PVy/YtHxgNNVQOau9PS4tWFn"
-                crossorigin="anonymous"
-        ></script>
-    <% end_if %>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-            crossorigin="anonymous"></script>
 <% end_cached %>
 $AdblockWarning
 </body>

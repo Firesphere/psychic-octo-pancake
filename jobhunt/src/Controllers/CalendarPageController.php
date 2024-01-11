@@ -35,13 +35,14 @@ class CalendarPageController extends \PageController
             $m = date('m', strtotime($i . ' months'));
             $y = date('Y', strtotime($i . ' months'));
             $data = ArrayData::create([
-                'Year' => $y,
+                'Year'  => $y,
                 'Month' => date('F', strtotime('01-' . $m . '-2020')),
-                'Cal' => $this->getCalendarForMonth($m, $y)
+                'Cal'   => $this->getCalendarForMonth($m, $y)
             ]);
             $list->push($data);
             $i++;
         }
+
         return $list;
     }
 

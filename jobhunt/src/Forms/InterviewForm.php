@@ -31,11 +31,13 @@ class InterviewForm extends Form
         }
         $name = self::DEFAULT_NAME;
         $fields = FieldList::create([
+            /** @var $dtField DatetimeField */
             $dtField = DatetimeField::create('DateTime', 'When is the interview'),
             TextareaField::create('Note', 'Notes'),
             HiddenField::create($hiddenField, $hiddenField, $params['OtherID'])
         ]);
 
+        $dtField->setDescription('Please make sure to use the full year, month, day with leading zeroes, and 24 hour clock');
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);

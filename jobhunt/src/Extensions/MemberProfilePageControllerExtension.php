@@ -7,6 +7,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\ConfirmedPasswordField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\Form;
+use Symbiote\MemberProfiles\Pages\MemberProfilePageController;
 
 /**
  * Class \Firesphere\JobHunt\Extensions\MemberProfilePageControllerExtension
@@ -18,11 +19,6 @@ class MemberProfilePageControllerExtension extends Extension
     public function updateProfileForm(Form $form)
     {
         $form->addExtraClass('col-8');
-        $this->bootstrapForms($form);
-    }
-
-    public function updateRegisterForm(Form $form)
-    {
         $this->bootstrapForms($form);
     }
 
@@ -44,5 +40,10 @@ class MemberProfilePageControllerExtension extends Extension
         foreach ($form->Actions() as $action) {
             $action->addExtraClass('btn btn-outline-primary');
         }
+    }
+
+    public function updateRegisterForm(Form $form)
+    {
+        $this->bootstrapForms($form);
     }
 }

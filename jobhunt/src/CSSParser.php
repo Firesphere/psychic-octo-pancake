@@ -105,7 +105,8 @@ class CSSParser
         if (isset($this->css[$parent])) {
             return $this->css[$parent];
         }
-            return [];
+
+        return [];
 
     }
 

@@ -2,10 +2,7 @@
 
 namespace Firesphere\JobHunt\Models;
 
-use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
-use SilverStripe\ORM\FieldType\DBText;
-use SilverStripe\ORM\FieldType\DBVarchar;
 
 /**
  * Class \Firesphere\JobHunt\Models\StatusUpdate

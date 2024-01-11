@@ -3,9 +3,7 @@
 namespace Firesphere\JobHunt\Forms;
 
 use Firesphere\JobHunt\Models\ApplicationNote;
-use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\JobApplication;
-use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -14,7 +12,6 @@ use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\Validator;
 use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
 

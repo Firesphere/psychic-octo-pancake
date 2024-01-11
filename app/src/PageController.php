@@ -48,7 +48,6 @@ namespace {
             Requirements::css('//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
             Requirements::css('_resources/themes/jobhunt/dist/css/' . $SiteConfig->Theme . '.min.css');
             Requirements::css('_resources/themes/jobhunt/dist/css/main.css');
-            Requirements::javascript('//cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js');
             Requirements::javascript('_resources/themes/jobhunt/dist/js/main.js');
             if (Security::getCurrentUser()) {
                 $this->SecondaryNav = MemberProfilePage::get()->first()->Children();
@@ -64,6 +63,5 @@ namespace {
 
             return sprintf('%s - %s', $year, $now);
         }
-
     }
 }

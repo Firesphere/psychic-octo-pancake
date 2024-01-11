@@ -2,7 +2,6 @@
 
 namespace Firesphere\JobHunt\Admins;
 
-use Firesphere\JobHunt\Models\Company;
 use Firesphere\JobHunt\Models\Status;
 use SilverStripe\Admin\ModelAdmin;
 

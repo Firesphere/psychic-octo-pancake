@@ -3,8 +3,6 @@
 namespace Firesphere\JobHunt\Pages;
 
 use Firesphere\JobHunt\Controllers\ApplicationPageController;
-use SilverStripe\ORM\PaginatedList;
-use SilverStripe\Security\Security;
 
 /**
  * Class \Firesphere\JobHunt\Pages\ApplicationPage

@@ -30,8 +30,15 @@ use SilverStripe\Security\Member;
  */
 class JobApplication extends DataObject
 {
+    public static $filters = [
+        'StatusID' => 'int',
+        'Company'  => 'string',
+    ];
+    public static $sort = [
+        'ApplicationDate',
+        'Company.Name',
+    ];
     private static $table_name = 'JobApplication';
-
     private static $db = [
         'Role'            => DBVarchar::class,
         'ApplicationDate' => DBDate::class,
@@ -39,36 +46,22 @@ class JobApplication extends DataObject
         'Link'            => DBVarchar::class,
         'CoverLetter'     => DBHTMLText::class,
     ];
-
     private static $has_one = [
         'User'    => Member::class,
         'Company' => Company::class,
         'Status'  => Status::class
     ];
-
     private static $cascade_deletes = [
         'Notes',
         'Interviews',
         'StatusUpdates'
     ];
-
     private static $has_many = [
         'Notes'         => ApplicationNote::class . '.JobApplication',
         'Interviews'    => Interview::class . '.Application',
         'StatusUpdates' => StatusUpdate::class . '.JobApplication',
     ];
-
     private static $many_many = [
-    ];
-
-    public static $filters = [
-        'StatusID' => 'int',
-        'Company'  => 'string',
-    ];
-
-    public static $sort = [
-        'ApplicationDate',
-        'Company.Name',
     ];
 
     public function onBeforeWrite()

@@ -3,7 +3,6 @@
 namespace Firesphere\JobHunt\Models;
 
 use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\FieldType\DBEnum;
 use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\Security\Member;
 

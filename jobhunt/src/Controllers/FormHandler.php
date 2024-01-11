@@ -51,6 +51,7 @@ class FormHandler extends Controller
         parent::init();
         if (!Security::getCurrentUser()) {
             $this->httpError(403);
+
             return;
         }
         $this->getResponse()->addHeader('content-type', 'application/json');

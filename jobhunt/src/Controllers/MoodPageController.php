@@ -21,8 +21,8 @@ class MoodPageController extends \PageController
 
     public function init()
     {
-        Requirements::javascript('_resources/themes/jobhunt/dist/js/charts.js');
         parent::init();
+        Requirements::javascript('_resources/themes/jobhunt/dist/js/charts.js');
     }
 
     public function getChartData()

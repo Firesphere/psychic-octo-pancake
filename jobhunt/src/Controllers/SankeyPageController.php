@@ -2,8 +2,8 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
+use Firesphere\JobHunt\Pages\SankeyPage;
 use SilverStripe\Security\Security;
-use SilverStripe\View\Requirements;
 
 /**
  * Class \Firesphere\JobHunt\Controllers\SankeyPageController
@@ -12,18 +12,8 @@ use SilverStripe\View\Requirements;
  * @method SankeyPage data()
  * @mixin SankeyPage
  */
-class SankeyPageController extends \PageController
+class SankeyPageController extends MoodPageController
 {
-    private static $allowed_actions = [
-        'getChartData' => '->isLoggedIn()'
-    ];
-
-    public function init()
-    {
-        Requirements::javascript('_resources/themes/jobhunt/dist/js/charts.js');
-        parent::init();
-    }
-
     public function getChartData()
     {
         $data = $this->dataRecord->sankeyFlow();

@@ -18,13 +18,14 @@ use SilverStripe\View\Requirements;
  */
 class ApplicationPageController extends \PageController
 {
-    protected $HasFilter;
-    protected $SortDirection;
-    protected $sort;
-    protected $filter;
     private static $allowed_actions = [
         'application'
     ];
+    protected $HasFilter;
+    protected $SortDirection;
+    protected $sort;
+    protected $filter = [];
+    protected $JobApplication;
 
     public function init()
     {
@@ -32,7 +33,6 @@ class ApplicationPageController extends \PageController
         Requirements::css('silverstripe/admin:client/dist/styles/editor.css');
         parent::init();
 
-        $this->filter = [];
         if ($this->getRequest()->getVar('filter')) {
             $requestFilter = $this->getRequest()->getVar('filter');
             foreach (JobApplication::$filters as $filterfield => $type) {
@@ -80,7 +80,12 @@ class ApplicationPageController extends \PageController
     public function application()
     {
         $params = $this->getURLParams();
-        $this->Application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID]);
+        $application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID])->first();
+        $this->JobApplication = $application->first();
+
+        if (!$this->JobApplication || !$this->JobApplication->exists()) {
+            $this->httpError(404, 'No job application found');
+        }
 
         return $this;
     }

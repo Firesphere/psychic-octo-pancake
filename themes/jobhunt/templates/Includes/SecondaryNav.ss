@@ -47,7 +47,8 @@
                 </ul>
             </li>
             <li class="nav-item $FirstLast $EvenOdd">
-                <a class="nav-link" rel="nofollow" href="$LogoutURL" title="Logout" aria-description="Logout button"><i class="bi bi-box-arrow-right" title="Logout"></i></a>
+                <a class="nav-link d-flex justify-content-start" rel="nofollow" href="$LogoutURL" title="Logout" aria-description="Logout button">
+                    <i class="bi bi-box-arrow-right" title="Logout"></i><span class="d-block d-md-none">&nbsp;Log out</span></a>
             </li>
         </ul>
     </div>
