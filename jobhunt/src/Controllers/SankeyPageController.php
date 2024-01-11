@@ -14,16 +14,13 @@ use SilverStripe\Security\Security;
  */
 class SankeyPageController extends MoodPageController
 {
+    private static $allowed_actions = [
+        'getChartData'
+    ];
     public function getChartData()
     {
         $data = $this->dataRecord->sankeyFlow();
 
         return json_encode($data, JSON_THROW_ON_ERROR);
     }
-
-    protected function isLoggedIn()
-    {
-        return Security::getCurrentUser() !== null;
-    }
-
 }
