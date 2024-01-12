@@ -76,8 +76,8 @@ class InterviewForm extends Form
             }
 
             $interview = Interview::create($data);
-            $interview->write();
         }
+        $interview->write();
         if ($data['Note']) {
             if (!InterviewNote::get()->filter(['Note' => $data['Note']])->count()) {
                 $title = sprintf('Note on %s - %s',
