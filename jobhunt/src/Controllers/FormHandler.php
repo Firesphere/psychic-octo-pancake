@@ -14,6 +14,7 @@ use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\Control\Controller;
 use SilverStripe\Security\Security;
+use SilverStripe\View\SSViewer;
 
 /**
  * Class \Firesphere\JobHunt\Controllers\FormHandler
@@ -61,7 +62,7 @@ class FormHandler extends Controller
     {
         $form = ApplicationForm::create($this);
         if ($this->getRequest()->isGET()) {
-            return json_encode(['success' => true, 'form' => $form->forAjaxTemplate()->getValue()]);
+            return json_encode(['success' => true, 'form' => $form->forAjaxTemplate()->getValue()], JSON_THROW_ON_ERROR);
         }
 
         return $form;
@@ -71,7 +72,14 @@ class FormHandler extends Controller
     {
         $form = InterviewForm::create($this);
         if ($this->getRequest()->isGET()) {
-            return json_encode(['success' => true, 'form' => $form->forAjaxTemplate()->getValue()]);
+            $formHtml = $form->forAjaxTemplate()->getValue();
+            $noteHtml = '';
+            if ($form->notes) {
+                $noteHtml = SSViewer::execute_template('Firesphere\\JobHunt\\NoteList', $form);
+                $formHtml = sprintf("<div class='row'><div class='col'>%s</div><div class='col'>%s</div>", $formHtml, $noteHtml->getValue());
+            }
+
+            return json_encode(['success' => true, 'form' => $formHtml], JSON_THROW_ON_ERROR);
         }
 
         return $form;
@@ -81,7 +89,7 @@ class FormHandler extends Controller
     {
         $form = StatusUpdateForm::create($this);
         if ($this->getRequest()->isGET()) {
-            return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()]);
+            return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()], JSON_THROW_ON_ERROR);
         }
 
         return $form;

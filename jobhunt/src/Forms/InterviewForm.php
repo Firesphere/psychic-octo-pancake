@@ -15,12 +15,15 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
 
 class InterviewForm extends Form
 {
     const DEFAULT_NAME = 'InterviewForm';
+
+    public $notes;
 
     public function __construct(RequestHandler $controller = null)
     {
@@ -48,7 +51,9 @@ class InterviewForm extends Form
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
             $user = Security::getCurrentUser();
+            /** @var Interview $data */
             $data = Interview::get()->filter(['ID' => $params['OtherID'], 'Application.UserID' => $user->ID])->first();
+            $this->notes = $data->Notes();
             $this->loadDataFrom($data);
         }
 
@@ -72,19 +77,19 @@ class InterviewForm extends Form
 
             $interview = Interview::create($data);
             $interview->write();
-            if ($data['Note']) {
-                if (!InterviewNote::get()->filter(['Note' => $data['Note']])->count()) {
-                    $title = sprintf('%s - %s',
-                        $interview->dbObject('DateTime')->Short(),
-                        $interview->Application()->Company()->Name
-                    );
-                    $note = InterviewNote::create([
-                        'Title'                  => $title,
-                        'Note'                   => $data['Note'],
-                        'ApplicationInterviewID' => $interview->ID
-                    ]);
-                    $note->write();
-                }
+        }
+        if ($data['Note']) {
+            if (!InterviewNote::get()->filter(['Note' => $data['Note']])->count()) {
+                $title = sprintf('Note on %s - %s',
+                    DBDatetime::now()->Long(),
+                    $interview->Application()->Company()->Name
+                );
+                $note = InterviewNote::create([
+                    'Title'                  => $title,
+                    'Note'                   => $data['Note'],
+                    'ApplicationInterviewID' => $interview->ID
+                ]);
+                $note->write();
             }
         }
         /** @var StatusUpdate $last */
