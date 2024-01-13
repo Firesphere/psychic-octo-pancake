@@ -3,7 +3,7 @@
     "type": "silverstripe-recipe",
     "description": "Jobhunting helper to keep track of job applications",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-libxml": "*",
         "dynamic/silverstripe-country-dropdown-field": "^2.0",
         "elliotsawyer/silverstripe-matomo": "^0.0.2",

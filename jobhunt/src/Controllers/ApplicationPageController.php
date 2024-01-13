@@ -80,12 +80,12 @@ class ApplicationPageController extends \PageController
     public function application()
     {
         $params = $this->getURLParams();
-        $application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID])->first();
-        $this->JobApplication = $application->first();
+        $application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID]);
 
-        if (!$this->JobApplication || !$this->JobApplication->exists()) {
+        if (!$application || !$application->exists()) {
             $this->httpError(404, 'No job application found');
         }
+        $this->JobApplication = $application->first();
 
         return $this;
     }

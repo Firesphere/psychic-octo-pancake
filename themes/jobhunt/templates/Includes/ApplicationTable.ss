@@ -21,6 +21,7 @@
             Status
         </th>
         <th scope="col"></th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -34,7 +35,7 @@
                 <% end_if %>
             </b></td>
             <th scope="row"></th>
-            <td><a href="$Link">$Role</a></td>
+            <td><a href="$Link" target="_blank">$Role</a></td>
             <td>$ApplicationDate.Nice()</td>
             <td>
                 <div class="badge text-bg-$Status.ColourStyle">$Status.Status</div>
@@ -48,10 +49,11 @@
                    data-bs-toggle="modal"
                    data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>
             </td>
+            <td><a href="$Up.Link('application')/$ID" title="View application"><i class="bi bi-eye-fill"></i></a></td>
         </tr>
         <tr class="$OddEven">
             <th>Notes</th>
-            <td colspan="3">
+            <td colspan="4">
                 <% loop $Notes %>
                     <a href="#"
                        title="Edit note"
@@ -75,7 +77,7 @@
         </tr>
         <tr class="$OddEven">
             <th scope="row">Updates</th>
-            <td colspan="3">
+            <td colspan="4">
                 <% loop $StatusUpdates.Filter('Hidden', 0) %>
                     <a href="#"
                        title="Edit Status update"
@@ -98,7 +100,7 @@
         </tr>
         <tr>
             <th scope="row">Interviews</th>
-            <td colspan="3">
+            <td colspan="4">
                 <% loop $Interviews %>
                     <a href="#"
                        title="Edit interview"
