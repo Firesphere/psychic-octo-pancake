@@ -3,10 +3,12 @@
         <h1 class="col-12">$Title</h1>
     </div>
     <div class="row">
+        <% if $Content %>
         <div class="col-12 order-md-first">
             $Content
         </div>
-        <div class="col col-xs-12 col-md-11 d-flex justify-content-between">
+        <% end_if %>
+        <div class="col col-xs-12 d-flex justify-content-between">
             <div class="my-2">
                 <button type="button" class="btn btn-primary js-formaction"
                         data-itemtype="application"
