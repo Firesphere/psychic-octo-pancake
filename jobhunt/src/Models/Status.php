@@ -134,9 +134,21 @@ class Status extends DataObject
         if (Controller::has_curr() && Controller::curr()->getRequest()->getVar('filter')) {
             $filter = Controller::curr()->getRequest()->getVar('filter');
 
-            return (isset($filter['StatusID']) && (int)$filter['StatusID'] === $this->ID);
+            return (isset($filter['StatusID']) && in_array($this->ID, $filter['StatusID']));
         }
 
         return false;
+    }
+
+    public function getFilterLink()
+    {
+        $controller = Controller::curr();
+        $vars = $controller->getRequest()->getVars();
+
+        if (!isset($vars['filter']['StatusID']) || !in_array($this->ID, $vars['filter']['StatusID'])) {
+            $vars['filter']['StatusID'][] = $this->ID;
+        }
+
+        return http_build_query($vars);
     }
 }

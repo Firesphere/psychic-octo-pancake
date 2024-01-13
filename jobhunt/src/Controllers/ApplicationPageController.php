@@ -22,6 +22,7 @@ class ApplicationPageController extends \PageController
         'application'
     ];
     protected $HasFilter;
+    protected $HasShowAll;
     protected $SortDirection;
     protected $sort;
     protected $filter = [];
@@ -42,7 +43,7 @@ class ApplicationPageController extends \PageController
                 }
             }
         } else {
-            $this->ShowAll = $this->getRequest()->getVar('showall');
+            $this->HasShowAll = $this->getRequest()->getVar('showall') ?? false;
             if (Security::getCurrentUser()->HideClosed && !$this->getRequest()->getVar('showall')) {
                 $closed = Status::get()->filter(['AutoHide' => true])->column('ID');
                 $this->filter['StatusID:Not'] = $closed;
@@ -91,4 +92,15 @@ class ApplicationPageController extends \PageController
         return $this;
     }
 
+    public function getShowAll()
+    {
+        $vars = $this->getRequest()->getVars();
+        if (!isset($vars['showall'])) {
+            $vars['showall'] = true;
+        } else {
+            unset($vars['showall']);
+        }
+
+        return http_build_query($vars);
+    }
 }
