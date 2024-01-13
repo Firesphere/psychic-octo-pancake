@@ -2,10 +2,11 @@
     <% with $JobApplication %>
         <div class="row">
             <h1 class="col-12">$Role at $Company.Name</h1>
-            <div class="col-12">
+            <div class="col-12 pb-2">
                 Application date: $ApplicationDate.Nice()<br/>
                 <a href="$Link" target="_blank">Link</a><br/>
             </div>
+            <hr class="col-12 pb-1" />
             <% if $StatusUpdates %>
                 <div class="col-12 col-md-4">
                     <h3>Status updates</h3>
