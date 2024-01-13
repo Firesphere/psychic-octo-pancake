@@ -11,10 +11,17 @@
             </button>
             <ul class="dropdown-menu">
                 <% loop $StatusFilters %>
-                    <li><a class="dropdown-item<% if $ActiveFilter %> active<% end_if %>" href="$Top.Link?filter[StatusID]=$ID">
+                    <li><a class="dropdown-item<% if $ActiveFilter %> active<% end_if %>"
+                           href="$Top.Link?filter[StatusID]=$ID">
                         <span class="text-$ColourStyle">&nbsp;&#9679;&nbsp;</span>&nbsp;$Status</a></li>
                 <% end_loop %>
             </ul>
         </div>
+        <% if $CurrentUser.HideClosed && not $ShowAll %>
+            <a class="btn btn-primary btn-sm<% if $HasFilter %> active<% end_if %>" type="button"
+               href="$Top.Link?showall=true">
+                Show all items
+            </a>
+        <% end_if %>
     </div>
 </div>
