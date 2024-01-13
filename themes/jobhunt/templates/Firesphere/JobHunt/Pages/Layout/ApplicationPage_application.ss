@@ -10,7 +10,7 @@
             <% if $StatusUpdates %>
                 <div class="col-12 col-md-4">
                     <h3>Status updates</h3>
-                    <% loop $StatusUpdates.Filter('Hidden', 1) %>
+                    <% loop $StatusUpdates.Filter('Hidden', false) %>
                         <% include Note %>
                     <% end_loop %>
                 </div>
