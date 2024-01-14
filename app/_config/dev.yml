@@ -16,6 +16,7 @@ SilverLeague\IDEAnnotator\DataObjectAnnotator:
     - bootswatcher
     - jobhunt
     - elliotsawyer/silverstripe-matomo
+    - firesphere/notebook
 LeKoala\DebugBar\DebugBar:
   enable_storage: true
   auto_debug: false

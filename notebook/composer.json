@@ -1,0 +1,21 @@
+{
+    "name": "firesphere/notebook",
+    "description": "Silverstripe frontend notebook for frontend users",
+    "minimum-stability": "stable",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Simon `firesphere` Erkelens",
+            "email": "simon@firesphere.dev"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "silverstripe/framework": "^4|^5"
+    },
+    "extra": {
+        "expose": [
+            "dist"
+        ]
+    }
+}

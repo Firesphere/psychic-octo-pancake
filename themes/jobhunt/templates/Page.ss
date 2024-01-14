@@ -31,24 +31,14 @@
     $Layout
     <div class="spacer pb-5 row">&nbsp;</div>
 </main>
-<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addItemLabel">Add <span class="item-title"></span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% if $CurrentUser %>
+    <button class="btn btn-light position-sticky bottom-50 start-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotes" aria-controls="offcanvasNotes">
+        <i class="bi bi-journal-text"></i>
+    </button>
 
-            </div>
-            <div class="modal-body" id="formcontainer">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+    <% include OffCanvas %>
+<% end_if %>
+<% include Modal %>
 <% cached %>
     <footer class="bg-primary py-4 row footer small text-center fixed-bottom">
         <% include Footer %>

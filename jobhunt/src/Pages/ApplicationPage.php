@@ -17,11 +17,9 @@ class ApplicationPage extends \Page
         'CanViewType' => 'LoggedInUsers'
     ];
 
-
     public function onBeforeWrite()
     {
         $this->CanViewType = 'LoggedInUsers';
         parent::onBeforeWrite();
     }
-
 }

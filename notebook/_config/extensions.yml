@@ -1,0 +1,6 @@
+SilverStripe\Security\Member:
+  extensions:
+    - Firesphere\Notebook\Extensions\MemberExtension
+PageController:
+  extensions:
+    - Firesphere\Notebook\Extensions\PageControllerExtension

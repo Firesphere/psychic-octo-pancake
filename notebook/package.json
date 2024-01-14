@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "watch": "webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
+    "watch-prod": "NODE_ENV=production webpack-modules --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
+    "build": "webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "package": "NODE_ENV=production webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint": "yarn lint-js; yarn lint-sass",
+    "lint-js": "node_modules/.bin/eslint src/js",
+    "lint-sass": "node_modules/.bin/sass-lint -v"
+  },
+  "devDependencies": {
+    "laravel-mix": "*",
+    "resolve-url-loader": "*",
+    "sass": "*",
+    "sass-loader": "*",
+    "vue-template-compiler": "*"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.2"
+  }
+}

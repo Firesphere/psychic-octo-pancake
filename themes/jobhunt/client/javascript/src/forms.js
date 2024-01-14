@@ -21,7 +21,6 @@ export default () => {
     const myModalEl = document.getElementById('addItemModal')
     myModalEl.addEventListener('hidden.bs.modal', event => {
         updateFormContent();
-        tinyMCE.remove();
     });
 
     actions.forEach(action => {
@@ -52,7 +51,7 @@ export default () => {
                     if (response['success'] && response['form'] !== false) {
                         formcontainer.insertAdjacentHTML('beforeend', response['form']);
                         tinyMCE.init({
-                            selector: 'textarea.htmleditor',
+                            selector: '.formcontainer textarea.htmleditor',
                             skin: 'silverstripe',
                             max_height: 250,
                             menubar: false,
