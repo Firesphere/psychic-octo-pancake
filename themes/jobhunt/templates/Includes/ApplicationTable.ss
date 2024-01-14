@@ -72,7 +72,6 @@
                    data-itemtype="note-add"
                    data-bs-toggle="modal"
                    data-bs-target="#addItemModal"><i class="bi bi-file-earmark-plus"></i></a><br/>
-
             </td>
         </tr>
         <tr class="$OddEven">
