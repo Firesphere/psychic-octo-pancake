@@ -64,6 +64,12 @@ class JobApplication extends DataObject
     private static $many_many = [
     ];
 
+    private static $summary_fields = [
+        'Company.Name',
+        'Role',
+        'ApplicationDate'
+    ];
+
     public function onBeforeWrite()
     {
         parent::onBeforeWrite();

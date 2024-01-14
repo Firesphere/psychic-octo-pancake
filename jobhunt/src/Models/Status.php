@@ -43,6 +43,8 @@ class Status extends DataObject
         'Colour'
     ];
 
+    private static $default_sort = 'Status ASC';
+
     private static $indexes = [
         'Status' => true
     ];
