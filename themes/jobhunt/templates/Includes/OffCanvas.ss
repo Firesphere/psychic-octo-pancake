@@ -1,13 +1,13 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNotes" aria-labelledby="offcanvasNotes">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNotes">Your notes</h5>
+        <h5 class="offcanvas-title" id="offcanvasNotes">Your notebook</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <button id="notebookFormToggle" class="btn btn-light btn-sm mb-2"
                 type="button" data-bs-toggle="collapse" data-bs-target="#NotebookForm_NotebookForm"
                 aria-expanded="false" aria-controls="NotebookForm_NotebookForm">
-            Add note
+            Write a note
         </button>
         $NotebookForm
         <% loop $CurrentUser.NotebookNotes %>
