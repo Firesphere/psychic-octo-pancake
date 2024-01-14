@@ -8,7 +8,9 @@ SilverStripe\Core\Manifest\ModuleManifest:
 SilverStripe\CMS\Model\SiteTree:
   show_meta_generator_version: false
   meta_generator: 'Firesphere.dev'
-
+JonoM\BetterNavigator:
+  developers:
+    - 'simon@firesphere.dev'
 # UTF8MB4 has limited support in older MySQL versions.
 # Remove this configuration if you experience issues.
 ---
