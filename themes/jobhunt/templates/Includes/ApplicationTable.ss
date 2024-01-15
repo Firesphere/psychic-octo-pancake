@@ -117,7 +117,7 @@
                    data-application="$ID"
                    data-itemtype="interview-add"
                    data-bs-toggle="modal"
-                   data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
+                   data-bs-target="#addItemModal"><i class="bi bi-person-add"></i></a>
             </td>
         </tr>
     <% end_loop %>

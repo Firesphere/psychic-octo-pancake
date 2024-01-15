@@ -1,7 +1,7 @@
 <div class="row">
     <h3>Notes:</h3>
     <% loop $notes %>
-        <div class="col-6">
+        <div class="col-12 col-lg-6 mb-2">
             <div class="card">
                 <a class="card-header" data-bs-toggle="collapse" href="#id_$ID" role="button" aria-expanded="false"
                    aria-controls="id_$ID">

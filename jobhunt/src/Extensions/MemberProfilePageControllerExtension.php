@@ -18,7 +18,7 @@ class MemberProfilePageControllerExtension extends Extension
 {
     public function updateProfileForm(Form $form)
     {
-        $form->addExtraClass('col-8');
+        $form->addExtraClass('col-md-4 col-sm-12');
         $this->bootstrapForms($form);
     }
 
