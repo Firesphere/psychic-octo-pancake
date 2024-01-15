@@ -1,5 +1,5 @@
 <div class="">
-<% with $JobApplication %>
+    <% with $JobApplication %>
         <div class="row">
             <h1 class="col-12">$Role at $Company.Name</h1>
             <h3><a href="#"
@@ -59,7 +59,7 @@
                 </div>
             <% end_if %>
         </div>
-    <% if $Interviews.Count %>
+        <% if $Interviews.Count %>
             <div class="row d-flex justify-content-between">
                 <h3 class="col-12">Interviews:</h3>
                 <% loop $Interviews %>
@@ -97,8 +97,6 @@
                     </div>
                 <% end_loop %>
             </div>
-
-    <% end_if %>
-    </div>
-<% end_with %>
+        <% end_if %>
+    <% end_with %>
 </div>
