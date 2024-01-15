@@ -29,10 +29,7 @@ class MoodPageController extends \PageController
     {
         $data = $this->dataRecord->moods();
 
-        return json_encode([
-            'labels' => array_keys($data),
-            'values' => array_values($data)
-        ], JSON_THROW_ON_ERROR);
+        return json_encode($data, JSON_THROW_ON_ERROR);
     }
 
     protected function isLoggedIn()

@@ -34,6 +34,9 @@ class MoodPage extends \Page
             $return[$date] = $mood->Mood;
         }
 
-        return $return;
+        return [
+            'labels' => array_keys($return),
+            'values' => array_values($return)
+        ];
     }
 }

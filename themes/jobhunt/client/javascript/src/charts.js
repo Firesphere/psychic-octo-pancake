@@ -19,7 +19,8 @@ let colors = {
     11: 'purple',
     12: 'darkgrey'
 };
-const endpoint = `${window.location.href.split('?')[0]}/getChartData`
+let URL = window.location.href.split('?')[0];
+URL = (URL.slice(-1) === '/') ? `${URL}home` : URL;
 let moodOptions = {
     type: 'line',
     data: {
@@ -63,6 +64,9 @@ const getColor = (key) => {
 
 export default () => {
     if (moodchart) {
+        const attr = moodchart.getAttribute('data-name') ?? 'getChartData';
+        const endpoint = `${URL}/${attr}`
+
         fetch(endpoint, {
             method: 'GET',
             headers: {
@@ -78,21 +82,23 @@ export default () => {
             });
     }
     if (sankeychart) {
+        const attr = sankeychart.getAttribute('data-name') ?? 'getChartData';
+        const endpoint = `${URL}/${attr}`
+
         Chart.register(SankeyController, Flow);
-        if (sankeychart)
-            fetch(endpoint, {
-                method: 'GET',
-                headers: {
-                    "x-requested-with": "XMLHttpRequest",
-                }
-            }).then(response => response.json())
-                .then(response => {
-                    colors = response['colours'];
-                    sankeyOptions['data']['datasets'][0]['labels'] = response['labels'];
-                    sankeyOptions['data']['datasets'][0]['data'] = response['values'];
-                })
-                .then(() => {
-                    new Chart(sankeychart, sankeyOptions);
-                });
+        fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                "x-requested-with": "XMLHttpRequest",
+            }
+        }).then(response => response.json())
+            .then(response => {
+                colors = response['colours'];
+                sankeyOptions['data']['datasets'][0]['labels'] = response['labels'];
+                sankeyOptions['data']['datasets'][0]['data'] = response['values'];
+            })
+            .then(() => {
+                new Chart(sankeychart, sankeyOptions);
+            });
     }
 }

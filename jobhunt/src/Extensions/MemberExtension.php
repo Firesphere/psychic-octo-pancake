@@ -4,8 +4,10 @@ namespace Firesphere\JobHunt\Extensions;
 
 use Firesphere\JobHunt\Models\BaseNote;
 use Firesphere\JobHunt\Models\ExcludedStatus;
+use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StateOfMind;
+use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
@@ -64,5 +66,33 @@ class MemberExtension extends DataExtension
         }
 
         return false;
+    }
+
+    public function getInterviews()
+    {
+        return Interview::get()->filter([
+            'ApplicationID' => $this->owner->JobApplications()->column('ID')
+        ]);
+    }
+
+    public function getStatusUpdates()
+    {
+        return StatusUpdate::get()->filter([
+            'JobApplicationID' => $this->owner->JobApplications()->column('ID'),
+            'Hidden'           => false
+        ]);
+    }
+
+    public function getStatusNumbers()
+    {
+        $applications = $this->owner->JobApplications()->shuffle();
+
+        $return = [];
+        foreach ($applications as $application) {
+            $status = $application->Status()->Status;
+            $return[$status] = isset($return[$status]) ? $return[$status] + 1 : 1;
+        }
+
+        return $return;
     }
 }
