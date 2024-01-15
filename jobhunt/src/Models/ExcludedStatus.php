@@ -15,7 +15,6 @@ use SilverStripe\Security\Member;
  */
 class ExcludedStatus extends DataObject
 {
-
     private static $table_name = 'ExcludedStatus';
 
     private static $has_one = [

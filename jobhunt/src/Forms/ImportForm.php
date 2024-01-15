@@ -14,14 +14,13 @@ use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\ORM\DB;
 use SilverStripe\Security\Security;
 
 class ImportForm extends Form
 {
-    const DEFAULT_NAME = 'ImportForm';
+    public const DEFAULT_NAME = 'ImportForm';
 
-    const HELPTEXT = '<p>For a CSV to be imported successfully, it must be formatted as below</p>
+    public const HELPTEXT = '<p>For a CSV to be imported successfully, it must be formatted as below</p>
 <pre>Company,Role,ApplicationDate,Status,Interview,Note
 "TestCompany","Tester","15-06-2023","Applied","30-06-2023 12:00:00;02-07-2023 10:00:00","This is a note"
 </pre>
@@ -65,6 +64,7 @@ Interview and Note are optional fields.</p>';
         });
         array_shift($csvAsArray); # remove column header
         $defaultStatus = Status::get()->filter(['Status' => 'Applied'])->first();
+        $count = 0;
         foreach ($csvAsArray as $application) {
             if (!is_array($application) ||
                 empty($application['Company']) ||
@@ -73,6 +73,7 @@ Interview and Note are optional fields.</p>';
             ) {
                 continue;
             }
+            $count++;
             foreach ($application as $key => &$value) {
                 $value = trim($value);
             }
@@ -112,6 +113,8 @@ Interview and Note are optional fields.</p>';
         }
 
         unlink($attachment['tmp_name']);
+
+        $this->controller->flashMessage('Imported ' . $count . ' applications', 'success');
 
         return json_encode(['success' => true, 'form' => false]);
     }

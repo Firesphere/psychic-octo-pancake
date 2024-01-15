@@ -11,7 +11,6 @@ use SilverStripe\Admin\ModelAdmin;
  */
 class HuntAdmin extends ModelAdmin
 {
-
     private static $url_segment = 'jobhuntadmin';
 
     private static $menu_title = 'Job hunt';

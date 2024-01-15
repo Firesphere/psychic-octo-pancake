@@ -5,6 +5,7 @@ namespace Firesphere\JobHunt\Controllers;
 use Firesphere\JobHunt\Models\StateOfMind;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Security;
 
 /**
@@ -13,10 +14,10 @@ use SilverStripe\Security\Security;
  */
 class MoodHandler extends Controller
 {
-
     /**
      * @param HTTPRequest $request
      * @return string|void
+     * @throws ValidationException
      */
     public function index($request)
     {

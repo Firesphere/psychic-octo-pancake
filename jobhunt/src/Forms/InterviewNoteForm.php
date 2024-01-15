@@ -9,12 +9,10 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\Validator;
 
 class InterviewNoteForm extends Form
 {
-
-    const DEFAULT_NAME = 'InterviewNoteForm';
+    public const DEFAULT_NAME = 'InterviewNoteForm';
 
     public function __construct(RequestHandler $controller = null, $name = self::DEFAULT_NAME)
     {

@@ -19,8 +19,7 @@ use SilverStripe\Security\Security;
 
 class StatusUpdateForm extends Form
 {
-
-    const DEFAULT_NAME = 'StatusUpdateForm';
+    public const DEFAULT_NAME = 'StatusUpdateForm';
 
     public function __construct(RequestHandler $controller = null)
     {
@@ -98,6 +97,8 @@ class StatusUpdateForm extends Form
         if ($returnForm && $this->controller->getRequest()->isAjax()) {
             return json_encode(['success' => true, 'form' => $returnForm->forAjaxTemplate()->getValue()]);
         }
+
+        $this->controller->flashMessage('Status update saved', 'success');
 
         return json_encode(['success' => true, 'form' => false]);
     }

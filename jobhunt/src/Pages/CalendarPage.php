@@ -10,7 +10,6 @@ use Firesphere\JobHunt\Controllers\CalendarPageController;
  */
 class CalendarPage extends \Page
 {
-
     private static $table_name = 'CalendarPage';
 
     private static $controller_name = CalendarPageController::class;

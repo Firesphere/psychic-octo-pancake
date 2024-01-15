@@ -75,7 +75,6 @@ class FormHandler extends Controller
         $form = InterviewForm::create($this);
         if ($this->getRequest()->isGET()) {
             $formHtml = $form->forAjaxTemplate()->getValue();
-            $noteHtml = '';
             if ($form->notes) {
                 $noteHtml = SSViewer::execute_template('Firesphere\\JobHunt\\NoteList', $form);
                 $formHtml = sprintf("<div class='row'><div class='col'>%s</div><div class='col'>%s</div>", $formHtml, $noteHtml->getValue());

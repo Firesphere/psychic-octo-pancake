@@ -15,7 +15,6 @@ use SilverStripe\Security\Member;
  */
 class StateOfMind extends DataObject
 {
-
     private static $table_name = 'StateOfMind';
 
     private static $db = [

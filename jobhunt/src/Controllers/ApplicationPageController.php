@@ -5,6 +5,7 @@ namespace Firesphere\JobHunt\Controllers;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Pages\ApplicationPage;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -19,7 +20,8 @@ use SilverStripe\View\Requirements;
 class ApplicationPageController extends \PageController
 {
     private static $allowed_actions = [
-        'application'
+        'application',
+        'delete'
     ];
     protected $HasFilter;
     protected $HasShowAll;
@@ -90,6 +92,26 @@ class ApplicationPageController extends \PageController
         $this->JobApplication = $application->first();
 
         return $this;
+    }
+
+    public function delete(HTTPRequest $request)
+    {
+        $user = Security::getCurrentUser();
+        if (!$user) {
+            $this->httpError(403);
+
+            return;
+        }
+        $params = $this->getURLParams();
+        $application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID])->first();
+
+        if ($application) {
+            $application->delete();
+        }
+
+        $this->flashMessage('Application removed', 'warning');
+
+        return $this->redirect($this->dataRecord->Link());
     }
 
     public function getShowAll()

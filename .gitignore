@@ -8,3 +8,4 @@
 node_modules
 .idea
 /feedback
+.php-cs-fixer.cache

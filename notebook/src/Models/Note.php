@@ -18,7 +18,6 @@ use SilverStripe\Security\Member;
  */
 class Note extends DataObject
 {
-
     private static $table_name = 'NotebookNote';
 
     private static $db = [

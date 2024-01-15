@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Models\Status;
+use Firesphere\JobHunt\Pages\HomePage;
 use Firesphere\JobHunt\Pages\MoodPage;
 use Firesphere\JobHunt\Pages\SankeyPage;
 use SilverStripe\ORM\ArrayList;
@@ -14,26 +15,18 @@ use SilverStripe\View\Requirements;
 /**
  * Class \Firesphere\JobHunt\Controllers\HomePageController
  *
+ * @property HomePage $dataRecord
+ * @method HomePage data()
+ * @mixin HomePage
  */
 class HomePageController extends \PageController
 {
-    protected $CurrentMonth;
     private static $allowed_actions = [
         'getDoughnut',
         'getSankey',
         'getMood'
     ];
-
-    protected function init()
-    {
-        if (Security::getCurrentUser()) {
-            Requirements::javascript('_resources/themes/jobhunt/dist/js/dashboard.js');
-            Requirements::javascript('_resources/themes/jobhunt/dist/js/charts.js');
-            Requirements::css('_resources/themes/jobhunt/dist/css/calendar.css');
-            $this->CurrentMonth = $this->getMonth();
-        }
-        parent::init();
-    }
+    protected $CurrentMonth;
 
     public function getDoughnut()
     {
@@ -59,10 +52,10 @@ class HomePageController extends \PageController
         $response->addHeader('content-type', 'application/json');
 
         $response->setBody(json_encode([
-            'data'             => array_values($statusCount),
-            'labels'           => array_keys($statusCount),
+            'data'            => array_values($statusCount),
+            'labels'          => array_keys($statusCount),
             'backgroundColor' => $colour,
-            'hoverOffset'      => 4,
+            'hoverOffset'     => 4,
         ]));
 
         return $response;
@@ -92,6 +85,17 @@ class HomePageController extends \PageController
         return $response;
     }
 
+    protected function init()
+    {
+        if (Security::getCurrentUser()) {
+            Requirements::javascript('_resources/themes/jobhunt/dist/js/dashboard.js');
+            Requirements::javascript('_resources/themes/jobhunt/dist/js/charts.js');
+            Requirements::css('_resources/themes/jobhunt/dist/css/calendar.css');
+            $this->CurrentMonth = $this->getMonth();
+        }
+        parent::init();
+    }
+
     public function getMonth()
     {
         $list = ArrayList::create();
@@ -104,6 +108,7 @@ class HomePageController extends \PageController
             'Cal'   => $page->getCalendarForMonth($m, $y)
         ]);
         $list->push($data);
+
         return $list;
     }
 }

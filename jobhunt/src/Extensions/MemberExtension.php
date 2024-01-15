@@ -31,7 +31,6 @@ use SilverStripe\Security\Member;
  */
 class MemberExtension extends DataExtension
 {
-
     private static $db = [
         'CV'         => DBText::class,
         'PublicCV'   => DBBoolean::class . '(false)',

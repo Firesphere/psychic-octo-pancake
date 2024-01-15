@@ -23,7 +23,6 @@ use SilverStripe\SiteConfig\SiteConfig;
  */
 class Status extends DataObject
 {
-
     private static $table_name = 'ApplicationStatus';
 
     private static $db = [
@@ -98,7 +97,8 @@ class Status extends DataObject
         static::set_colour_map();
         $fields = parent::getCMSFields();
 
-        $fields->addFieldToTab('Root.Main',
+        $fields->addFieldToTab(
+            'Root.Main',
             ColorPaletteField::create('Colour', 'Colour', static::$colours)
         );
 

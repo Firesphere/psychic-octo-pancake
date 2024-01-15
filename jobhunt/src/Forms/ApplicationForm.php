@@ -24,8 +24,7 @@ use SilverStripe\Security\Security;
 
 class ApplicationForm extends Form
 {
-
-    const DEFAULT_NAME = 'ApplicationForm';
+    public const DEFAULT_NAME = 'ApplicationForm';
 
     public function __construct(RequestHandler $controller = null)
     {
@@ -102,6 +101,8 @@ class ApplicationForm extends Form
         if ($returnForm && $this->controller->getRequest()->isAjax()) {
             return json_encode(['success' => true, 'form' => $returnForm->forAjaxTemplate()->getValue()]);
         }
+
+        $this->controller->flashMessage('Application saved', 'success');
 
         return json_encode(['success' => true, 'form' => false]);
     }

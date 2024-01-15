@@ -30,6 +30,9 @@
                    data-itemtype="interview-add"
                    data-bs-toggle="modal"
                    data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
+                <a href="$Up.Link/delete/$ID"
+                   class="pull-right text-warning"
+                   title="Delete this application"><i class="bi bi-x-octagon-fill"></i></a>
             </h3>
             <div class="col-12 pb-2">
                 Application date: $ApplicationDate.Nice()<br/>

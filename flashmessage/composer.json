@@ -1,0 +1,31 @@
+{
+    "name": "cheddam/silverstripe-flash-messages",
+    "description": "A simple module for sending flash messages in your SilverStripe app.",
+    "type": "silverstripe-vendormodule",
+    "require": {
+        "php" : ">=5.6",
+        "silverstripe/framework": "^4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cheddam\\SilverStripeFlashMessages\\": "src/",
+            "Cheddam\\SilverStripeFlashMessages\\Tests\\": "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Garion Herman",
+            "email": "garion@silverstripe.com"
+        }
+    ],
+    "extra": {
+        "installer-name": "flash-messages"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

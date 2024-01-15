@@ -7,7 +7,6 @@ use Symfony\Component\Yaml\Exception\ParseException;
  */
 class CSSParser
 {
-
     /**
      * @var
      */
@@ -182,11 +181,11 @@ class CSSParser
         if (!empty($parent)) {
             $parent = $this->clean($parent);
             if (isset($this->css[$parent]) == false) {
-                if (is_array($value) == TRUE) {
+                if (is_array($value) == true) {
                     $this->css[$parent] = $value;
 
                     return true;
-                } else if (empty($value) == TRUE) {
+                } elseif (empty($value) == true) {
                     $this->css[$parent] = array();
 
                     return true;
@@ -195,7 +194,7 @@ class CSSParser
                     exit(0);
                 }
             } else {
-                if (is_array($value) == TRUE && !empty($value)) {
+                if (is_array($value) == true && !empty($value)) {
                     foreach ($value as $k => $v) {
                         $this->css[$parent][$k] = $v;
 
@@ -222,7 +221,7 @@ class CSSParser
         $current_name = $this->clean($current_name);
         $new_name = $this->clean($new_name);
         if (!empty($current_name) && !empty($new_name) && ($current_name != $new_name)) {
-            if (isset($this->css[$current_name]) == TRUE) {
+            if (isset($this->css[$current_name]) == true) {
                 $this->css[$new_name] = $this->css[$current_name];
                 $this->remove_parent($current_name);
 
@@ -243,7 +242,7 @@ class CSSParser
     public function remove_parent($parent)
     {
         $parent = $this->clean($parent);
-        if (isset($this->css[$parent]) == TRUE) {
+        if (isset($this->css[$parent]) == true) {
             unset($this->css[$parent]);
 
             return true;
@@ -331,7 +330,7 @@ class CSSParser
      */
     public function save()
     {
-        if (isset($this->file) == TRUE && !empty($file) && file_exists($file)) {
+        if (isset($this->file) == true && !empty($file) && file_exists($file)) {
             $css = $this->export_css();
             $fh = fopen($this->file, "w") or die("Fail to open " . $file . " with write permission.");
             fwrite($fh, $css);

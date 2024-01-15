@@ -28,6 +28,14 @@
 <body class="$ClassName.ShortName">
 <% include Header %>
 <main role="main" class="py-4 container">
+    <% if $FlashMessagesPresent %>
+        <% loop $FlashMessages.Limit(1) %>
+            <div class="alert alert-$Type alert-dismissible fade show" role="alert">
+                $Message
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% end_loop %>
+    <% end_if %>
     $Layout
     <div class="spacer pb-5 row">&nbsp;</div>
 </main>

@@ -24,10 +24,11 @@
         "symfony/mailjet-mailer": "^7.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
+        "friendsofphp/php-cs-fixer": "^3.47",
+        "lekoala/silverstripe-debugbar": "*",
         "phpunit/phpunit": "^9.6",
-        "silverleague/ideannotator": "*",
-        "lekoala/silverstripe-debugbar": "*"
+        "roave/security-advisories": "dev-latest",
+        "silverleague/ideannotator": "*"
     },
     "extra": {
         "project-files": [

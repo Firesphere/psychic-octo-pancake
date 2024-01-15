@@ -19,8 +19,7 @@ use SilverStripe\Security\Security;
 
 class NotebookForm extends Form
 {
-
-    const DEFAULT_NAME = 'NotebookForm';
+    public const DEFAULT_NAME = 'NotebookForm';
 
     public function __construct(RequestHandler $controller = null, $name = self::DEFAULT_NAME)
     {

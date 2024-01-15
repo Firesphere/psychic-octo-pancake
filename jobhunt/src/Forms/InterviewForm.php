@@ -21,7 +21,7 @@ use SilverStripe\Security\Security;
 
 class InterviewForm extends Form
 {
-    const DEFAULT_NAME = 'InterviewForm';
+    public const DEFAULT_NAME = 'InterviewForm';
 
     public $notes;
 
@@ -80,7 +80,8 @@ class InterviewForm extends Form
         $interview->write();
         if ($data['Note']) {
             if (!InterviewNote::get()->filter(['Note' => $data['Note']])->count()) {
-                $title = sprintf('Note on %s - %s',
+                $title = sprintf(
+                    'Note on %s - %s',
                     DBDatetime::now()->Long(),
                     $interview->Application()->Company()->Name
                 );
@@ -104,6 +105,8 @@ class InterviewForm extends Form
             ]);
             $stat->write();
         }
+
+        $this->controller->flashMessage('Interview saved', 'success');
 
         return json_encode([
             'success' => true,

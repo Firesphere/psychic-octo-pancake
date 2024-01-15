@@ -13,7 +13,6 @@ use SilverStripe\ORM\DataExtension;
  */
 class MemberExtension extends DataExtension
 {
-
     private static $has_many = [
         'NotebookNotes' => Note::class . '.Member'
     ];

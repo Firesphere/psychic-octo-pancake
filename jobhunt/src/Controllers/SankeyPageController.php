@@ -3,7 +3,6 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Pages\SankeyPage;
-use SilverStripe\Security\Security;
 
 /**
  * Class \Firesphere\JobHunt\Controllers\SankeyPageController
@@ -17,6 +16,7 @@ class SankeyPageController extends MoodPageController
     private static $allowed_actions = [
         'getChartData'
     ];
+
     public function getChartData()
     {
         $data = $this->dataRecord->sankeyFlow();

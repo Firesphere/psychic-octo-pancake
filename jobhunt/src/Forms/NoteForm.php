@@ -17,7 +17,7 @@ use SilverStripe\Security\Security;
 
 class NoteForm extends Form
 {
-    const DEFAULT_NAME = 'NoteForm';
+    public const DEFAULT_NAME = 'NoteForm';
 
     public function __construct(RequestHandler $controller = null)
     {
@@ -66,6 +66,8 @@ class NoteForm extends Form
         }
         $note->OwnerID = $userId->ID;
         $note->write();
+
+        $this->controller->flashMessage('Note saved', 'success');
 
         return json_encode(['success' => true, 'form' => false]);
     }
