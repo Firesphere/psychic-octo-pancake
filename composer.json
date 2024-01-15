@@ -12,6 +12,7 @@
         "firesphere/module-helpers": "^0.4.0",
         "heyday/silverstripe-colorpalette": "^2.1|^3",
         "phptek/sentry": "^5.0",
+        "silverstripe/googlesitemaps": "^3.0",
         "silverstripe/login-forms": "~5.1.0@stable",
         "silverstripe/mfa": "^5",
         "silverstripe/recipe-cms": "~5.1.0@stable",

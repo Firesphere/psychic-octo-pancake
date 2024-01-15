@@ -16,6 +16,12 @@
                         data-bs-target="#addItemModal">
                     Add new application
                 </button>
+<%--                    <button type="button" class="btn btn-primary js-formaction"--%>
+<%--                            data-itemtype="import"--%>
+<%--                            data-bs-toggle="modal"--%>
+<%--                            data-bs-target="#addItemModal">--%>
+<%--                        Import from CSV--%>
+<%--                    </button>--%>
             </div>
             <div class="my-2">
                 <% include ListFilters %>

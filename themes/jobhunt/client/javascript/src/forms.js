@@ -5,7 +5,8 @@ const typemap = {
     'application': 'ApplicationForm',
     'note': 'NoteForm',
     'interview': 'InterviewForm',
-    'statusupdate': 'StatusUpdateForm'
+    'statusupdate': 'StatusUpdateForm',
+    'import': 'ImportForm'
 }
 
 const updateFormContent = () => {
