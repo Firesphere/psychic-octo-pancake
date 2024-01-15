@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  apache:
+    image: brettt89/silverstripe-web:8.2-apache # Decent PHP-Apache test/dev container
+    restart: always
+    volumes: # Change for your own location
+      - /home/username/jobhunt:/var/www/html:rw
+    environment:
+      - DOCUMENT_ROOT=/var/www/html/public
+      - SS_TRUSTED_PROXY_IPS=*
+      - SS_ENVIRONMENT_TYPE=dev
+      - SS_DATABASE_SERVER=db
+      - SS_DATABASE_NAME=db
+      - SS_DATABASE_USERNAME=db
+      - SS_DATABASE_PASSWORD=db
+      - SS_ENVIRONMENT_LABEL=Development
+      - SS_BASE_URL=https://your.domain.example.com
+      # If you use mailjet
+      - MAILER_DSN=mailjet+api://userid:usersecret@default
+      - SS_MFA_SECRET_KEY="randomgeneratedkey"
+    ports:
+      - '127.0.0.1:8081:80'
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_USER: db
+      MYSQL_PASSWORD: db
+      MYSQL_DATABASE: db
+      MYSQL_ROOT_PASSWORD: db
+
+volumes:
+  db:
+
