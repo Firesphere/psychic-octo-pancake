@@ -115,7 +115,7 @@ Firesphere\CSPHeaders\View\CSPBackend:
         - fonts.googleapis.com
         - cdn.jsdelivr.net
         - unpkg.com
-      unsafe-inline: false
+      unsafe-inline: true # Needed for tinyMCE
     worker-src:
       blob: true
       self: true
