@@ -34,6 +34,7 @@ class StatusUpdate extends BaseNote
         'Title',
         'Status.Status',
         'Hidden.Nice',
-        'Owner.FirstName'
+        'Owner.FirstName',
+        'JobApplication.ID'
     ];
 }
