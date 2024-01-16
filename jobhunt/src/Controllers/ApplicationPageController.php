@@ -2,8 +2,12 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
+use Firesphere\JobHunt\Models\ApplicationNote;
+use Firesphere\JobHunt\Models\Interview;
+use Firesphere\JobHunt\Models\InterviewNote;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\Status;
+use Firesphere\JobHunt\Models\StatusUpdate;
 use Firesphere\JobHunt\Pages\ApplicationPage;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\PaginatedList;
@@ -33,7 +37,6 @@ class ApplicationPageController extends \PageController
     public function init()
     {
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
-        Requirements::css('silverstripe/admin:client/dist/styles/editor.css');
         parent::init();
 
         if ($this->getRequest()->getVar('filter')) {
@@ -110,13 +113,62 @@ class ApplicationPageController extends \PageController
             return;
         }
         $params = $this->getURLParams();
-        $application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID])->first();
+        $types = [
+            'application'     => [
+                'name'   => 'application',
+                'class'  => JobApplication::class,
+                'filter' => [
+                    'ID'     => $params['OtherID'],
+                    'UserID' => $user->ID
+                ]
+            ],
+            'interview'       => [
+                'name'   => 'interview',
+                'class'  => Interview::class,
+                'filter' => [
+                    'ID'                 => $params['OtherID'],
+                    'Application.UserID' => $user->ID
+                ]
+            ],
+            'status'          => [
+                'name'   => 'status update',
+                'class'  => StatusUpdate::class,
+                'filter' => [
+                    'ID'                    => $params['OtherID'],
+                    'JobApplication.UserID' => $user->ID
+                ]
+            ],
+            'applicationnote' => [
+                'name'   => 'application note',
+                'class'  => ApplicationNote::class,
+                'filter' => [
+                    'ID'                    => $params['OtherID'],
+                    'JobApplication.UserID' => $user->ID
+                ]
+            ],
+            'interviewnote'   => [
+                'name'   => 'interview note',
+                'class'  => InterviewNote::class,
+                'filter' => [
+                    'ID'                           => $params['OtherID'],
+                    'Interview.Application.UserID' => $user->ID
+                ]
+            ],
+        ];
+        if (!array_key_exists($params['ID'], $types)) {
+            $this->httpError(404);
 
-        if ($application) {
-            $application->delete();
+            return;
+        }
+        $type = $params['ID'];
+        $class = $types[$type]['class'];
+        $toDelete = $class::get()->filter($types[$type]['filter'])->first();
+
+        if ($toDelete) {
+            $toDelete->delete();
         }
 
-        $this->flashMessage('Application removed', 'warning');
+        $this->flashMessage(sprintf('%s removed', ucfirst($types[$type]['name'])), 'warning');
 
         return $this->redirect($this->dataRecord->Link());
     }

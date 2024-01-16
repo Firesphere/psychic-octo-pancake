@@ -28,6 +28,9 @@
                                        aria-controls="Update-$ID">
                                         $Title
                                     </a>
+                                    <a href="$deleteLink"
+                                       class="pull-right text-warning"
+                                       title="Delete this status"><i class="bi bi-x-octagon-fill"></i></a>
                                     <div class="collapse card-text" id="Update-$ID">
                                         <p class="card-text">
                                             $Note
@@ -61,15 +64,28 @@
                                            aria-controls="Interview-$ID">
                                             $DateTime.Nice
                                         </a>
-                                    <div class="collapse card-text" id="Interview-$ID">
-                                        <% loop $Notes %>
-                                            <h6>$Title</h6>
-                                            <p class="card-text">
-                                                $Note
-                                            </p>
-                                        <% end_loop %>
+                                        <a href="$deleteLink"
+                                           class="pull-right text-warning"
+                                           title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
+                                        <div class="collapse card-text" id="Interview-$ID">
+                                            <% loop $Notes %>
+                                                <h6>$Title
+                                                    <a href="$deleteLink"
+                                                       class="pull-right text-warning"
+                                                       title="Delete this application"><i
+                                                        class="bi bi-x-octagon-fill"></i></a>
+                                                </h6>
+                                                <p class="card-text">
+                                                    $Note
+                                                </p>
+                                                <hr/>
+                                            <% end_loop %>
+                                        </div>
                                     <% else %>
                                         $DateTime.Nice
+                                        <a href="$deleteLink"
+                                           class="pull-right text-warning"
+                                           title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
                                     <% end_if %>
                                     <div class="card-link">
                                         <a href="#"
@@ -78,9 +94,8 @@
                                            data-id="$ID"
                                            data-itemtype="interview-edit"
                                            data-bs-toggle="modal"
-                                           data-bs-target="#addItemModal">Edit</a>
+                                           data-bs-target="#addItemModal">Edit interview</a>
                                     </div>
-                                </div>
                                 </li>
                             <% end_loop %>
                         </ul>
@@ -96,6 +111,9 @@
                                        aria-controls="Note-$ID">
                                         $Title
                                     </a>
+                                    <a href="$deleteLink"
+                                       class="pull-right text-warning"
+                                       title="Delete this note"><i class="bi bi-x-octagon-fill"></i></a>
                                     <div class="collapse card-text" id="Note-$ID">
                                         $Note
                                         <hr/>

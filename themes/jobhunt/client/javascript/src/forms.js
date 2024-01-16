@@ -6,12 +6,30 @@ const actionTitleSpan = document.getElementById('modal-item-title');
 
 const endpoint = 'formhandling/'
 const typemap = {
-    'application': ['ApplicationForm', 'application'],
-    'note': ['NoteForm', 'note'],
-    'interview': ['InterviewForm', 'interview'],
-    'interviewnote': ['InterviewNoteForm', 'interview note'],
-    'statusupdate': ['StatusUpdateForm', 'status update'],
-    'import': ['ImportForm', 'import']
+    'application': [
+        'ApplicationForm',
+        'application'
+    ],
+    'note': [
+        'ApplicationNoteForm',
+        'note'
+    ],
+    'interview': [
+        'InterviewForm',
+        'interview'
+    ],
+    'interviewnote': [
+        'InterviewNoteForm',
+        'interview note'
+    ],
+    'statusupdate': [
+        'StatusUpdateForm',
+        'status update'
+    ],
+    'import': [
+        'ImportForm',
+        'import'
+    ]
 }
 
 const updateFormContent = () => {
@@ -24,20 +42,20 @@ const updateFormContent = () => {
     tinyMCE.remove();
 }
 export default () => {
-    bindActions();
+    bindActions(actions);
     myModalEl.addEventListener('hidden.bs.modal', event => {
         updateFormContent();
     });
 
     myModalEl.addEventListener('shown.bs.modal', event => {
-        actions = Array.from(document.getElementsByClassName('js-formaction'));
-        bindActions();
+        let cardlist = Array.from(document.getElementsByClassName('js-formaction card-link'));
+        bindActions(cardlist);
     });
 
 }
 
-const bindActions = () => {
-    actions.forEach(action => {
+const bindActions = (list) => {
+    list.forEach(action => {
         action.addEventListener('click', (e) => {
             e.preventDefault();
             let type = action.getAttribute('data-itemtype').split('-');
@@ -69,8 +87,7 @@ const bindActions = () => {
                     if (response['success'] && response['form'] !== false) {
                         formcontainer.insertAdjacentHTML('beforeend', response['form']);
                         tinyMCE.init({
-                            selector: '.formcontainer textarea.htmleditor',
-                            skin: 'silverstripe',
+                            selector: '#formcontainer textarea.htmleditor',
                             max_height: 250,
                             menubar: false,
                             statusbar: false
@@ -110,7 +127,6 @@ const addFormHook = () => {
                         formcontainer.insertAdjacentHTML('beforeend', response['form']);
                         tinyMCE.init({
                             selector: 'textarea.htmleditor',
-                            skin: 'silverstripe',
                             max_height: 250,
                             menubar: false,
                             statusbar: false

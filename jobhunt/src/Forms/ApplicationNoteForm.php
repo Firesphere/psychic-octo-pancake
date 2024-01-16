@@ -9,15 +9,16 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
 
-class NoteForm extends Form
+class ApplicationNoteForm extends Form
 {
-    public const DEFAULT_NAME = 'NoteForm';
+    public const DEFAULT_NAME = 'ApplicationNoteForm';
 
     public function __construct(RequestHandler $controller = null)
     {
@@ -34,7 +35,7 @@ class NoteForm extends Form
             HiddenField::create($hiddenType, $hiddenType, $params['OtherID'])
         ]);
         $actions = FieldList::create([
-            $formAction = FormAction::create('submit', 'Save')
+            $formAction = FormAction::create('submit', 'Save'),
         ]);
         $formAction->addExtraClass('btn btn-primary');
         $validator = RequiredFields::create(['Title', 'Note']);
@@ -42,8 +43,12 @@ class NoteForm extends Form
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
             $user = Security::getCurrentUser();
-            $status = ApplicationNote::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
-            $this->loadDataFrom($status);
+            $note = ApplicationNote::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
+            $this->loadDataFrom($note);
+            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $note->deleteLink());
+            $actions->push(
+                $deleteButton = LiteralField::create('delete', $deleteLink)
+            );
         }
     }
 

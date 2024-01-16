@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Models;
 
+use Firesphere\JobHunt\Pages\ApplicationPage;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBText;
 use SilverStripe\ORM\FieldType\DBVarchar;
@@ -28,6 +29,20 @@ class BaseNote extends DataObject
     private static $has_one = [
         'Owner' => Member::class,
     ];
+
+    protected static $deleteList = [
+        InterviewNote::class => 'interviewnote',
+        ApplicationNote::class => 'applicationnote',
+        StatusUpdate::class => 'status'
+    ];
+
+    public function deleteLink()
+    {
+        /** @var ApplicationPage $page */
+        $page = ApplicationPage::get()->first();
+        $deletePart = sprintf('delete/%s/%d', self::$deleteList[static::class], $this->ID);
+        return $page->Link($deletePart);
+    }
 
     public function onBeforeWrite()
     {

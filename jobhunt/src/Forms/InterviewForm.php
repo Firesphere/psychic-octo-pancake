@@ -13,6 +13,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\FieldType\DBDatetime;
@@ -55,6 +56,11 @@ class InterviewForm extends Form
             $data = Interview::get()->filter(['ID' => $params['OtherID'], 'Application.UserID' => $user->ID])->first();
             $this->notes = $data->Notes();
             $this->loadDataFrom($data);
+            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $data->deleteLink());
+            $actions->push(
+                $deleteButton = LiteralField::create('delete', $deleteLink)
+            );
+
         }
     }
 
@@ -93,8 +99,8 @@ class InterviewForm extends Form
             }
         }
         /** @var StatusUpdate $last */
-        $count = $application->StatusUpdates()->filter(['Status.Status' => 'Interview'])->count();
-        if ($count !== $application->Interviews()->count()) {
+        $updates = $application->StatusUpdates()->filter(['Status.Status' => 'Interview']);
+        if ($updates->count() !== $application->Interviews()->count()) {
             $interviewStatus = Status::get()->filter(['Status' => 'Interview'])->first();
             $stat = StatusUpdate::create([
                 'Title'            => 'Automated update: Interview',
@@ -103,7 +109,12 @@ class InterviewForm extends Form
                 'Hidden'           => true
             ]);
             $stat->write();
+            $interview->StatusUpdateID = $stat->ID;
+        } else {
+            $interview->StatusUpdateID = $updates->last()->ID;
         }
+
+        $interview->write();
 
         $this->controller->flashMessage('Interview saved', 'success');
 

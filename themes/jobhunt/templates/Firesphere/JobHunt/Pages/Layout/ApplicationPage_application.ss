@@ -30,7 +30,7 @@
                    data-itemtype="interview-add"
                    data-bs-toggle="modal"
                    data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
-                <a href="$Up.Link/delete/$ID"
+                <a href="$Top.Link/delete/application/$ID"
                    class="pull-right text-warning"
                    title="Delete this application"><i class="bi bi-x-octagon-fill"></i></a>
             </h3>

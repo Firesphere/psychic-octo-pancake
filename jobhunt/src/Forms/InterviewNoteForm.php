@@ -8,6 +8,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -49,6 +50,10 @@ class InterviewNoteForm extends Form
                 'ApplicationInterview.Application.UserID' => $user->ID
             ])->first();
             $this->loadDataFrom($data);
+            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $data->deleteLink());
+            $actions->push(
+                $deleteButton = LiteralField::create('delete', $deleteLink)
+            );
         }
     }
 

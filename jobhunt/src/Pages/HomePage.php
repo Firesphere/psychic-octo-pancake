@@ -10,5 +10,6 @@ use Firesphere\JobHunt\Controllers\HomePageController;
  */
 class HomePage extends \Page
 {
+    private static $table_name = 'HomePage';
     private static $controller_name = HomePageController::class;
 }

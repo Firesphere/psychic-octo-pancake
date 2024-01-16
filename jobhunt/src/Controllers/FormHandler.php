@@ -6,7 +6,7 @@ use Firesphere\JobHunt\Forms\ApplicationForm;
 use Firesphere\JobHunt\Forms\ImportForm;
 use Firesphere\JobHunt\Forms\InterviewForm;
 use Firesphere\JobHunt\Forms\InterviewNoteForm;
-use Firesphere\JobHunt\Forms\NoteForm;
+use Firesphere\JobHunt\Forms\ApplicationNoteForm;
 use Firesphere\JobHunt\Forms\StatusUpdateForm;
 use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\BaseNote;
@@ -30,7 +30,7 @@ class FormHandler extends Controller
         'InterviewForm',
         'InterviewNoteForm',
         'StatusUpdateForm',
-        'NoteForm',
+        'ApplicationNoteForm',
         'ImportForm'
     ];
     /**
@@ -108,9 +108,9 @@ class FormHandler extends Controller
         return $form;
     }
 
-    public function NoteForm()
+    public function ApplicationNoteForm()
     {
-        $form = NoteForm::create($this);
+        $form = ApplicationNoteForm::create($this);
         if ($this->getRequest()->isGET()) {
             return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()]);
         }

@@ -12,6 +12,7 @@ use SilverStripe\ORM\FieldType\DBBoolean;
  * @property int $JobApplicationID
  * @method Status Status()
  * @method JobApplication JobApplication()
+ * @method Interview Interview()
  */
 class StatusUpdate extends BaseNote
 {
@@ -20,8 +21,19 @@ class StatusUpdate extends BaseNote
     private static $db = [
         'Hidden' => DBBoolean::class . '(false)'
     ];
+
+    private static $belongs_to = [
+        'Interview' => Interview::class,
+    ];
     private static $has_one = [
         'Status'         => Status::class,
         'JobApplication' => JobApplication::class,
+    ];
+
+    private static $summary_fields = [
+        'Title',
+        'Status.Status',
+        'Hidden.Nice',
+        'Owner.FirstName'
     ];
 }

@@ -11,6 +11,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -47,6 +48,11 @@ class StatusUpdateForm extends Form
             $user = Security::getCurrentUser();
             $status = StatusUpdate::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
             $this->loadDataFrom($status);
+            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $status->deleteLink());
+            $actions->push(
+                $deleteButton = LiteralField::create('delete', $deleteLink)
+            );
+
         }
     }
 
