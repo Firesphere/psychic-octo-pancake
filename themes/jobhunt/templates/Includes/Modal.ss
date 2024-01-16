@@ -1,6 +1,6 @@
 <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl  modal-fullscreen-md-down" role="document">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl modal-fullscreen-md-down" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addItemLabel">Add <span class="item-title"></span></h5>
