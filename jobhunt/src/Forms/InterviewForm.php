@@ -56,7 +56,6 @@ class InterviewForm extends Form
             $this->notes = $data->Notes();
             $this->loadDataFrom($data);
         }
-
     }
 
     public function submit($data, $form)

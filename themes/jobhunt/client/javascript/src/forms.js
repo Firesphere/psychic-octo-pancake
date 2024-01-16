@@ -1,10 +1,13 @@
-const actions = Array.from(document.getElementsByClassName('js-formaction'));
+let actions = Array.from(document.getElementsByClassName('js-formaction'));
 const formcontainer = document.getElementById('formcontainer');
+const myModalEl = document.getElementById('addItemModal')
+
 const endpoint = 'formhandling/'
 const typemap = {
     'application': 'ApplicationForm',
     'note': 'NoteForm',
     'interview': 'InterviewForm',
+    'interviewnote': 'InterviewNoteForm',
     'statusupdate': 'StatusUpdateForm',
     'import': 'ImportForm'
 }
@@ -19,13 +22,22 @@ const updateFormContent = () => {
     tinyMCE.remove();
 }
 export default () => {
-    const myModalEl = document.getElementById('addItemModal')
+    bindActions();
     myModalEl.addEventListener('hidden.bs.modal', event => {
         updateFormContent();
     });
 
+    myModalEl.addEventListener('shown.bs.modal', event => {
+        actions = Array.from(document.getElementsByClassName('js-formaction'));
+        bindActions();
+    });
+
+}
+
+const bindActions = () => {
     actions.forEach(action => {
-        action.addEventListener('click', () => {
+        action.addEventListener('click', (e) => {
+            e.preventDefault();
             let type = action.getAttribute('data-itemtype').split('-');
             let url = `${endpoint}${typemap[type[0]]}`;
             let id = 0;
@@ -70,7 +82,6 @@ export default () => {
         });
     });
 }
-
 const addFormHook = () => {
     let forms = Array.from(document.getElementsByTagName('form'));
     forms.forEach((form) => {

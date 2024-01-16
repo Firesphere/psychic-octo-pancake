@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Admins;
 
+use Firesphere\JobHunt\Models\InterviewQuestion;
 use Firesphere\JobHunt\Models\Status;
 use SilverStripe\Admin\ModelAdmin;
 
@@ -17,5 +18,6 @@ class HuntAdmin extends ModelAdmin
 
     private static $managed_models = [
         Status::class,
+        InterviewQuestion::class
     ];
 }
