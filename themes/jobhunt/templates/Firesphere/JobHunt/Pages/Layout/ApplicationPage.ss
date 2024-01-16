@@ -19,13 +19,16 @@
             </div>
             <div class="my-2">
                 <% include ListFilters %>
-
             </div>
         </div>
 
         <div class="col-12">
             <div class="py-3">
-                <% include ApplicationTable %>
+                <% if $CurrentUser.ViewStyle != 'Card' %>
+                    <% include ApplicationTable %>
+                <% else %>
+                    <% include ApplicationCards %>
+                <% end_if %>
             </div>
         </div>
     </div>

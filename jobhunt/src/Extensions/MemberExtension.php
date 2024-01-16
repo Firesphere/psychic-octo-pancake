@@ -12,6 +12,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\FieldType\DBBoolean;
+use SilverStripe\ORM\FieldType\DBEnum;
 use SilverStripe\ORM\FieldType\DBText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\Security\Member;
@@ -24,6 +25,7 @@ use SilverStripe\Security\Member;
  * @property bool $PublicCV
  * @property string $URLSegment
  * @property bool $HideClosed
+ * @property string $ViewStyle
  * @method DataList|JobApplication[] JobApplications()
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
@@ -35,7 +37,8 @@ class MemberExtension extends DataExtension
         'CV'         => DBText::class,
         'PublicCV'   => DBBoolean::class . '(false)',
         'URLSegment' => DBVarchar::class,
-        'HideClosed' => DBBoolean::class . '(false)'
+        'HideClosed' => DBBoolean::class . '(false)',
+        'ViewStyle'  => DBEnum::class . '("Table,Card", "Table")'
     ];
 
     private static $has_many = [

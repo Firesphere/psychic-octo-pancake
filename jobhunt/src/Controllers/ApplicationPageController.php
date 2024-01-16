@@ -73,11 +73,18 @@ class ApplicationPageController extends \PageController
 
     public function getApplications()
     {
-        $applications = Security::getCurrentUser()->JobApplications();
+        $user = Security::getCurrentUser();
 
-        $applications = $applications->filter($this->filter)->sort($this->sort);
+        $applications = $user->JobApplications()
+            ->filter($this->filter)
+            ->sort($this->sort);
 
-        return PaginatedList::create($applications, $this->getRequest());
+        $list = PaginatedList::create($applications, $this->getRequest());
+        if ($user->ViewStyle === 'Card') {
+            $list->setPageLength(12);
+        }
+
+        return $list;
     }
 
 
