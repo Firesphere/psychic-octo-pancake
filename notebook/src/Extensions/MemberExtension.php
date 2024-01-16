@@ -4,6 +4,8 @@ namespace Firesphere\Notebook\Extensions;
 
 use Firesphere\Notebook\Models\Note;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataList;
+use SilverStripe\Security\Member;
 
 /**
  * Class \Firesphere\Notebook\Extensions\MemberExtension

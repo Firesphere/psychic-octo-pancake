@@ -73,12 +73,16 @@ Firesphere\CSPHeaders\View\CSPBackend:
         - piwik.firesphere.dev
       self: true
     frame-src:
-      allow: []
+      allow:
+        - hcaptcha.com
+        - '*.hcaptcha.com'
       self: false
     connect-src:
       allow:
         - piwik.firesphere.dev
         - '*.ingest.sentry.io'
+        - hcaptcha.com
+        - '*.hcaptcha.com'
       self: true
     font-src:
       allow:
@@ -106,6 +110,8 @@ Firesphere\CSPHeaders\View\CSPBackend:
         - o299871.ingest.sentry.io
         - unpkg.com
         - browser.sentry-cdn.com
+        - hcaptcha.com
+        - '*.hcaptcha.com'
       self: true
       unsafe-inline: false
       unsafe-eval: false
@@ -115,6 +121,8 @@ Firesphere\CSPHeaders\View\CSPBackend:
         - fonts.googleapis.com
         - cdn.jsdelivr.net
         - unpkg.com
+        - hcaptcha.com
+        - '*.hcaptcha.com'
       unsafe-inline: true # Needed for tinyMCE
     worker-src:
       blob: true

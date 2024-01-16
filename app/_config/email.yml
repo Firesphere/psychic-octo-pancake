@@ -1,3 +1,9 @@
 SilverStripe\Control\Email\Email:
   admin_email:
     jobhunt@firesphere.dev: 'Jobhunt support'
+SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+  default_spam_protector: X3dgoo\HCaptcha\Forms\HCaptchaProtector
+
+X3dgoo\HCaptcha\Forms\HCaptchaField:
+  site_key: "a77875dd-aee4-4f69-8fb8-b94d493e2a15"
+  secret_key: "0xbc656F08f3897E182322f643E12321388d7e7eac"

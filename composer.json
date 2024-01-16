@@ -5,6 +5,7 @@
     "require": {
         "php": "^8.2",
         "ext-libxml": "*",
+        "3dgoo/silverstripe-hcaptcha": "^2",
         "dynamic/silverstripe-country-dropdown-field": "^2.0",
         "elliotsawyer/silverstripe-matomo": "^0.0.2",
         "firesphere/adblockwarning": "^1.0",
