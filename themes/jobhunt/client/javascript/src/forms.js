@@ -1,15 +1,17 @@
 let actions = Array.from(document.getElementsByClassName('js-formaction'));
 const formcontainer = document.getElementById('formcontainer');
-const myModalEl = document.getElementById('addItemModal')
+const myModalEl = document.getElementById('addItemModal');
+const actionTypeSpan = document.getElementById('modal-item-type');
+const actionTitleSpan = document.getElementById('modal-item-title');
 
 const endpoint = 'formhandling/'
 const typemap = {
-    'application': 'ApplicationForm',
-    'note': 'NoteForm',
-    'interview': 'InterviewForm',
-    'interviewnote': 'InterviewNoteForm',
-    'statusupdate': 'StatusUpdateForm',
-    'import': 'ImportForm'
+    'application': ['ApplicationForm', 'application'],
+    'note': ['NoteForm', 'note'],
+    'interview': ['InterviewForm', 'interview'],
+    'interviewnote': ['InterviewNoteForm', 'interview note'],
+    'statusupdate': ['StatusUpdateForm', 'status update'],
+    'import': ['ImportForm', 'import']
 }
 
 const updateFormContent = () => {
@@ -39,15 +41,18 @@ const bindActions = () => {
         action.addEventListener('click', (e) => {
             e.preventDefault();
             let type = action.getAttribute('data-itemtype').split('-');
-            let url = `${endpoint}${typemap[type[0]]}`;
+            let url = `${endpoint}${typemap[type[0]][0]}`;
             let id = 0;
             if (type.length > 1) {
                 if (type[1] === 'add') {
-                    id = action.getAttribute('data-application')
+                    id = action.getAttribute('data-application');
+                    actionTypeSpan.innerText = 'Add';
                 }
                 if (type[1] === 'edit') {
                     id = action.getAttribute('data-id');
+                    actionTypeSpan.innerText = 'Edit'
                 }
+                actionTitleSpan.innerText = typemap[type[0]][1];
                 url = `${url}/${type[1]}/${id}`
             }
             updateFormContent();
