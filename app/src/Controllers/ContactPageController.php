@@ -14,6 +14,7 @@ use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ValidationException;
+use SilverStripe\ORM\ValidationResult;
 use SilverStripe\View\Requirements;
 use X3dgoo\HCaptcha\Forms\HCaptchaField;
 
@@ -31,7 +32,7 @@ class ContactPageController extends PageController
     public function init()
     {
         parent::init();
-        Requirements::javascript('https://hcaptcha.com/1/api.js?hl=en');
+        Requirements::javascript('_resources/themes/jobhunt/dist/api.js');
     }
 
     public function ContactForm()
