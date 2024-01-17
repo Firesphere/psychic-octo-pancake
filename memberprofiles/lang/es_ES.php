@@ -3,6 +3,7 @@
 use SilverStripe\i18n\i18n;
 use Symbiote\MemberProfiles\Model\MemberProfileField;
 use Symbiote\MemberProfiles\Pages\MemberProfilePage;
+
 /**
  * Spanish (Spain) language pack.
  *
@@ -16,30 +17,30 @@ i18n::include_locale_file('memberprofiles', 'en_US');
 global $lang;
 
 if(array_key_exists('es_ES', $lang) && is_array($lang['es_ES'])) {
-	$lang['es_ES'] = array_merge($lang['en_US'], $lang['es_ES']);
+    $lang['es_ES'] = array_merge($lang['en_US'], $lang['es_ES']);
 } else {
-	$lang['es_ES'] = $lang['en_US'];
+    $lang['es_ES'] = $lang['en_US'];
 }
 
 $lang['es_ES'][MemberProfileField::class]['PLURALNAME'] = array(
-	'Campos del Perfil del Miembro',
-	50,
-	'Nombre del objeto en plural, usado en las listas y generalmente identifica una coleccion de este objeto en la interface'
+    'Campos del Perfil del Miembro',
+    50,
+    'Nombre del objeto en plural, usado en las listas y generalmente identifica una coleccion de este objeto en la interface'
 );
 $lang['es_ES'][MemberProfileField::class]['SINGULARNAME'] = array(
-	'Campo del perfil del miembro',
-	50,
-	'Nombre del objeto en singular, usado en las listas y generalmente identifica un único objeto en la interface'
+    'Campo del perfil del miembro',
+    50,
+    'Nombre del objeto en singular, usado en las listas y generalmente identifica un único objeto en la interface'
 );
 $lang['es_ES'][MemberProfilePage::class]['PLURALNAME'] = array(
-	'Páginas del Perfil del Miembro',
-	50,
-	'Nombre del objeto en plural, usado en las listas y generalmente identifica una coleccion de este objeto en la interface'
+    'Páginas del Perfil del Miembro',
+    50,
+    'Nombre del objeto en plural, usado en las listas y generalmente identifica una coleccion de este objeto en la interface'
 );
 $lang['es_ES'][MemberProfilePage::class]['SINGULARNAME'] = array(
-	'Página del Perfil del Miembro',
-	50,
-	'Nombre del objeto en singular, usado en las listas y generalmente identifica un único objeto en la interface'
+    'Página del Perfil del Miembro',
+    50,
+    'Nombre del objeto en singular, usado en las listas y generalmente identifica un único objeto en la interface'
 );
 
 $lang['es_ES']['MemberProfiles']['AFTERRED'] = 'Después de la inscripción';
@@ -82,9 +83,9 @@ $lang['es_ES']['MemberProfiles']['VALIDEMAILSUBJECT'] = 'Asunto del correo elect
 $lang['es_ES']['MemberProfiles']['VALIDOPTIONS'] = 'Opciones de validación';
 
 $lang['es_ES']['OrderableCTF.ss']['ADDITEM'] = array(
-	'Adicionar %s',
-	PR_MEDIUM,
-	'Adicionar [nombre]'
+    'Adicionar %s',
+    PR_MEDIUM,
+    'Adicionar [nombre]'
 );
 
 $lang['es_ES']['OrderableCTF.ss']['CSVEXPORT'] = 'Exportar a CSV';

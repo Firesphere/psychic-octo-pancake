@@ -14,6 +14,7 @@ use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
 
 class ImportForm extends Form
@@ -29,6 +30,11 @@ Interview and Note are optional fields.</p>';
 
     public function __construct(RequestHandler $controller = null, $name = self::DEFAULT_NAME)
     {
+        $user = Security::getCurrentUser();
+        if (!$user) {
+            throw new PermissionFailureException('You need to be logged in.');
+        }
+
         $fields = FieldList::create(
             LiteralField::create('help', self::HELPTEXT),
             FileField::create('Attachment', 'Attachments')

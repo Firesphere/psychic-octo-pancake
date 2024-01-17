@@ -28,6 +28,10 @@ class ApplicationForm extends Form
 
     public function __construct(RequestHandler $controller = null)
     {
+        $user = Security::getCurrentUser();
+        if (!$user) {
+            throw new PermissionFailureException('You need to be logged in.');
+        }
         $fields = FieldList::create([
             TextField::create('Company.Name', 'Company name'),
             TextField::create('Role', 'Role'),
@@ -52,11 +56,11 @@ class ApplicationForm extends Form
         $params = $controller->getURLParams();
         if ($params['ID'] === 'edit') {
             $this->fields->push(HiddenField::create('ID', 'ID', $params['ID']));
-            $user = Security::getCurrentUser();
             $application = JobApplication::get()->filter(['ID' => $params['OtherID'], 'UserID' => $user->ID])->first();
             $this->loadDataFrom($application);
             if ($application->CoverLetter) {
-                $this->fields->replaceField('CoverLetter', LiteralField::create('CoverLetter',
+                $this->fields->replaceField('CoverLetter', LiteralField::create(
+                    'CoverLetter',
                     sprintf('<div class="col-12 m-1 mt-2"><h6>Cover letter</h6>%s</div>', $application->CoverLetter)
                 ));
             }

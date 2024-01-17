@@ -22,6 +22,11 @@ class ApplicationNoteForm extends Form
 
     public function __construct(RequestHandler $controller = null)
     {
+        $user = Security::getCurrentUser();
+        if (!$user) {
+            throw new PermissionFailureException('You need to be logged in.');
+        }
+
         $hiddenType = 'JobApplicationID';
         $params = $controller->getURLParams();
         if ($params['ID'] === 'edit') {
@@ -42,7 +47,6 @@ class ApplicationNoteForm extends Form
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
-            $user = Security::getCurrentUser();
             $note = ApplicationNote::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
             $this->loadDataFrom($note);
             $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $note->deleteLink());

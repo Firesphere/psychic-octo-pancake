@@ -74,8 +74,7 @@ use SilverStripe\ORM\ValidationResult;
  */
 class MemberProfilePage extends Page
 {
-
-    private static $db = array (
+    private static $db = array(
         'ProfileTitle'             => 'Varchar(255)',
         'RegistrationTitle'        => 'Varchar(255)',
         'AfterRegistrationTitle'   => 'Varchar(255)',
@@ -100,7 +99,7 @@ class MemberProfilePage extends Page
         'PostRegistrationTarget' => SiteTree::class,
     );
 
-    private static $has_many = array (
+    private static $has_many = array(
         'Fields'   => MemberProfileField::class,
         'Sections' => MemberProfileFieldsSection::class
     );
@@ -115,13 +114,13 @@ class MemberProfilePage extends Page
         'Sections',
     ];
 
-    private static $many_many = array (
+    private static $many_many = array(
         'Groups'           => Group::class,
         'SelectableGroups' => Group::class,
         'ApprovalGroups'   => Group::class,
     );
 
-    private static $defaults = array (
+    private static $defaults = array(
         'ProfileTitle'             => 'Edit Profile',
         'RegistrationTitle'        => 'Register / Log In',
         'AfterRegistrationTitle'   => 'Registration Successful',

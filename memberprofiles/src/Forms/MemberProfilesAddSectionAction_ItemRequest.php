@@ -7,7 +7,6 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
 
 class MemberProfilesAddSectionAction_ItemRequest extends GridFieldDetailForm_ItemRequest
 {
-
     public function Link($action = null)
     {
         if ($this->record->ID) {

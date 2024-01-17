@@ -19,7 +19,6 @@ use SilverStripe\ORM\FieldType\DBField;
  */
 class MemberApprovalController extends PageController
 {
-
     private static $url_handlers = array(
         '$ID' => 'index'
     );

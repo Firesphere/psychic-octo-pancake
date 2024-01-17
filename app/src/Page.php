@@ -12,7 +12,7 @@ namespace {
  * @method ManyManyList|CSPDomain[] CSPDomains()
  * @mixin PageExtension
  */
-class Page extends SiteTree
+    class Page extends SiteTree
     {
         private static $db = [];
 

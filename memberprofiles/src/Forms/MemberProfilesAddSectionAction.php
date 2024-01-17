@@ -21,7 +21,6 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
  */
 class MemberProfilesAddSectionAction extends GridFieldDetailForm implements GridField_HTMLProvider
 {
-
     public function getURLHandlers($gridField)
     {
         return array(

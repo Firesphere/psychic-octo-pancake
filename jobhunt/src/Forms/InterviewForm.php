@@ -28,6 +28,11 @@ class InterviewForm extends Form
 
     public function __construct(RequestHandler $controller = null)
     {
+        $user = Security::getCurrentUser();
+        if (!$user) {
+            throw new PermissionFailureException('You need to be logged in.');
+        }
+
         $params = $controller->getURLParams();
         $hiddenField = 'ApplicationID';
         if ($params['ID'] === 'edit') {
@@ -51,7 +56,6 @@ class InterviewForm extends Form
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
-            $user = Security::getCurrentUser();
             /** @var Interview $data */
             $data = Interview::get()->filter(['ID' => $params['OtherID'], 'Application.UserID' => $user->ID])->first();
             $this->notes = $data->Notes();

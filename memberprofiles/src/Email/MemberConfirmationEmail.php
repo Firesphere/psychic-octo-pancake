@@ -33,14 +33,14 @@ class MemberConfirmationEmail extends Email
      *
      * @var string
      */
-    const DEFAULT_SUBJECT = '$SiteName Member Activation';
+    public const DEFAULT_SUBJECT = '$SiteName Member Activation';
 
     /**
      * The default email template to use if none is provided.
      *
      * @var string
      */
-    const DEFAULT_TEMPLATE = '
+    public const DEFAULT_TEMPLATE = '
 <p>
 	Dear $Member.Email,
 </p>
@@ -78,7 +78,7 @@ class MemberConfirmationEmail extends Email
      *
      * @var string
      */
-    const TEMPLATE_NOTE = '
+    public const TEMPLATE_NOTE = '
 <p>
 	The following special variables will be replaced in the email template and subject line:
 </p>

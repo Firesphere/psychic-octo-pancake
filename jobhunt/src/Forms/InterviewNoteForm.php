@@ -12,6 +12,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
 
 class InterviewNoteForm extends Form
@@ -20,6 +21,11 @@ class InterviewNoteForm extends Form
 
     public function __construct(RequestHandler $controller = null, $name = self::DEFAULT_NAME)
     {
+        $user = Security::getCurrentUser();
+        if (!$user) {
+            throw new PermissionFailureException('You need to be logged in.');
+        }
+
         $params = $controller->getURLParams();
         $hiddenField = 'InterviewID';
         if ($params['ID'] === 'edit') {
@@ -33,7 +39,7 @@ class InterviewNoteForm extends Form
             HiddenField::create($hiddenField, $hiddenField, $params['OtherID'])
         ]);
         $title->setDescription('Title, question or other "thing" you might want to ask, or remember');
-//        $int->setDescription('Optional, if this question is asked by an interviewer, you can record who it was');
+        //        $int->setDescription('Optional, if this question is asked by an interviewer, you can record who it was');
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);
@@ -43,7 +49,6 @@ class InterviewNoteForm extends Form
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
-            $user = Security::getCurrentUser();
             /** @var InterviewNote $data */
             $data = InterviewNote::get()->filter([
                 'ID'                                      => $params['OtherID'],

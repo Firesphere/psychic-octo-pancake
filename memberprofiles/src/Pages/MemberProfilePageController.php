@@ -242,7 +242,7 @@ class MemberProfilePageController extends PageController
      */
     public function afterregistration()
     {
-        return array (
+        return array(
             'Title'   => $this->obj('AfterRegistrationTitle'),
             'Content' => $this->obj('AfterRegistrationContent')
         );
@@ -644,14 +644,14 @@ class MemberProfilePageController extends PageController
             switch ($this->EmailType) {
                 case 'None':
                     // Does not require anything
-                break;
+                    break;
 
                 case 'Confirmation':
                 case 'Validation':
                     // Must activate themselves via the confirmation email
                     $email = MemberConfirmationEmail::create($this->data(), $member);
                     $email->send();
-                break;
+                    break;
             }
         }
 
@@ -736,7 +736,7 @@ class MemberProfilePageController extends PageController
             }
 
             $canSetVisibility = (
-                   $this->AllowProfileViewing
+                $this->AllowProfileViewing
                 && $profileField->PublicVisibility != 'Hidden'
             );
             if ($canSetVisibility) {

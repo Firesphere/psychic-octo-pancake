@@ -147,7 +147,7 @@ class MemberProfileExtension extends DataExtension
                 'MemberProfiles.NOLOGINTILLCONFIRMED',
                 'The member cannot log in until their account is confirmed.'
             ) . '</p>'),
-            new DropdownField('ManualEmailValidation', '', array (
+            new DropdownField('ManualEmailValidation', '', array(
                 'unconfirmed' => _t('MemberProfiles.UNCONFIRMED', 'Unconfirmed'),
                 'resend'      => _t('MemberProfiles.RESEND', 'Resend confirmation email'),
                 'confirm'     => _t('MemberProfiles.MANUALLYCONFIRM', 'Manually confirm')
