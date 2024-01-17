@@ -6,6 +6,8 @@ An application to keep track of the status of your job hunt.
 
 You are free to host this somewhere yourself, an example docker compose file is included.
 
+As well as a working [DDEV](https://ddev.com) configuration
+
 # License:
 
 LGPL 3.0 or later
