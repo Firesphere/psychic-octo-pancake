@@ -38,7 +38,7 @@
             <td><a href="$Link" target="_blank">$Role</a></td>
             <td>$ApplicationDate.Nice()</td>
             <td>
-                <div class="badge text-bg-$Status.ColourStyle">$Status.Status</div>
+                <div class="badge text-bg-$Status.ColourStyle">$Status.Name</div>
             </td>
             <td>
                 <a href="#"
@@ -84,7 +84,7 @@
                        data-id="$ID"
                        data-itemtype="statusupdate-edit"
                        data-bs-toggle="modal"
-                       data-bs-target="#addItemModal">$Status.Status: $Title</a>
+                       data-bs-target="#addItemModal">$Status.Name: $Title</a>
                 <% end_loop %>
             </td>
             <td>

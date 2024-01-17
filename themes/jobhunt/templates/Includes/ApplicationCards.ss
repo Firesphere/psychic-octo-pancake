@@ -3,7 +3,7 @@
         <div class="col-sm-12 col-md-4 pb-3 d-flex flex-grow-0">
             <div class="card">
                 <div class="card-header">
-                    <h4><span class="text-$Status.ColourStyle" title="$Status.Status">&nbsp;&#9679;&nbsp;</span><a
+                    <h4><span class="text-$Status.ColourStyle" title="$Status.Name">&nbsp;&#9679;&nbsp;</span><a
                         href="$Link" target="_blank">$Role</a> at
                         <% if $Company.Link %>
                             <a href="$Company.Link" target="_blank">$Company.Name</a>

@@ -88,6 +88,26 @@ class Status extends DataObject
         'Withdrawn'          => 'warning'
     ];
 
+    public static $id_map;
+
+    /**
+     * @return mixed
+     */
+    public static function getIdMap()
+    {
+        if (!self::$id_map) {
+            self::$id_map = self::get()->map('ID', 'Status')->toArray();
+        }
+        return self::$id_map;
+    }
+
+    public function getName()
+    {
+        self::getIdMap();
+
+        return (self::$id_map[$this->ID]);
+    }
+
 
     public function getCMSFields()
     {
@@ -107,6 +127,9 @@ class Status extends DataObject
 
     public static function set_colour_map()
     {
+        if (static::$colours['primary'] !== '--bs-primary') {
+            return static::$colours;
+        }
         // Funky hack to get the colours :D
         $style = SiteConfig::current_site_config()->Theme;
         $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/" . $style . '.min.css');

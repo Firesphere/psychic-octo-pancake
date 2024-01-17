@@ -63,7 +63,7 @@ class HomePageController extends \PageController
 
     public function getSankey()
     {
-        $sankey = new SankeyPage();
+        $sankey = SankeyPage::singleton();
         $data = $sankey->sankeyFlow();
         $response = $this->getResponse();
         $response->addHeader('content-type', 'application/json');
@@ -75,7 +75,7 @@ class HomePageController extends \PageController
 
     public function getMood()
     {
-        $mood = new MoodPage();
+        $mood = MoodPage::singleton();
         $data = $mood->moods();
         $response = $this->getResponse();
         $response->addHeader('content-type', 'application/json');

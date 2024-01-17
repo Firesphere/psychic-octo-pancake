@@ -11,16 +11,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <% if $URLSegment == 'home' %>
-                        <% loop $ElementalArea.Elements %>
-                            <% if $ShowTitle %>
-                                <li class="nav-item scroll-spy">
-                                    <a class="nav-link" rel="nofollow" href="#e$ID"
-                                       data-bs-target="#e$ID">$Title</a>
-                                </li>
-                            <% end_if %>
-                        <% end_loop %>
-                    <% end_if %>
                     <% loop $Menu(1) %>
                         <li class="nav-item $FirstLast <% if $Children.Count %>dropdown<% end_if %>">
                             <% if $Title != 'Profile' && $Children.Count %>

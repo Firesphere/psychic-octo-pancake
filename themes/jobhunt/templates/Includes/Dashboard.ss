@@ -10,6 +10,15 @@
             </div>
         </div>
         <div class="col-lg-3 col-6 mb-4">
+            <div class="card bg-primary-subtle">
+                <div class="card-header">Total ongoing/outstanding</div>
+                <div class="card-body d-flex justify-content-between">
+                    <h2 class="card-title">$OpenOutstanding.Count()</h2>
+                    <h3 class="text-primary bi bi-arrow-repeat"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6 mb-4">
             <div class="card bg-success-subtle">
                 <div class="card-header">Total interviews</div>
                 <div class="card-body d-flex justify-content-between">
@@ -24,15 +33,6 @@
                 <div class="card-body d-flex justify-content-between">
                     <h2 class="card-title">$StatusUpdates.Filter('Status.Status', 'Response').Count()</h2>
                     <h3 class="text-warning bi bi-envelope-paper"></h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6 mb-4">
-            <div class="card bg-primary-subtle">
-                <div class="card-header">Total status updates</div>
-                <div class="card-body d-flex justify-content-between">
-                    <h2 class="card-title">$StatusUpdates.Count()</h2>
-                    <h3 class="text-primary bi bi-arrow-repeat"></h3>
                 </div>
             </div>
         </div>

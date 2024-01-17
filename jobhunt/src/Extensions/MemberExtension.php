@@ -7,6 +7,7 @@ use Firesphere\JobHunt\Models\ExcludedStatus;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StateOfMind;
+use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DataExtension;
@@ -52,6 +53,9 @@ class MemberExtension extends DataExtension
         'URLSegment' => true,
     ];
 
+    protected static $_job_applications;
+    protected static $_job_application_ids;
+
     public function onBeforeWrite()
     {
         if (!$this->owner->URLSegment) {
@@ -72,29 +76,48 @@ class MemberExtension extends DataExtension
 
     public function getInterviews()
     {
+        if (!self::$_job_applications) {
+            self::$_job_applications = $this->owner->JobApplications();
+            self::$_job_application_ids = self::$_job_applications->column('ID');
+        }
         return Interview::get()->filter([
-            'ApplicationID' => $this->owner->JobApplications()->column('ID')
+            'ApplicationID' => self::$_job_application_ids
         ]);
     }
 
     public function getStatusUpdates()
     {
+        if (!self::$_job_applications) {
+            self::$_job_applications = $this->owner->JobApplications();
+            self::$_job_application_ids = self::$_job_applications->column('ID');
+        }
         return StatusUpdate::get()->filter([
-            'JobApplicationID' => $this->owner->JobApplications()->column('ID'),
+            'JobApplicationID' => self::$_job_application_ids,
             'Hidden'           => false
         ]);
     }
 
     public function getStatusNumbers()
     {
-        $applications = $this->owner->JobApplications()->shuffle();
+        if (!self::$_job_applications) {
+            self::$_job_applications = $this->owner->JobApplications();
+            self::$_job_application_ids = self::$_job_applications->column('ID');
+        }
+        $applications = self::$_job_applications->shuffle();
 
         $return = [];
+        $statusMap = Status::getIdMap();
         foreach ($applications as $application) {
-            $status = $application->Status()->Status;
+            $status = $statusMap[$application->StatusID];
             $return[$status] = isset($return[$status]) ? $return[$status] + 1 : 1;
         }
 
         return $return;
+    }
+
+    public function getOpenOutstanding()
+    {
+        $numbers = $this->getStatusNumbers();
+        return self::$_job_applications->filter('Status.AutoHide', false);
     }
 }

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="px-4 px-lg-5 py-3">
             <div class="col-12">
-                <ul class="pagination pagination-sm justify-content-center">
+                <ul class="pagination pagination-$Sizing justify-content-center">
                     <% with $PaginatedMatches %>
                         <% if $NotFirstPage %>
                             <li class="page-item">
