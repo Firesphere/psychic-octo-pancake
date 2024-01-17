@@ -55,7 +55,11 @@ class ApplicationForm extends Form
             $user = Security::getCurrentUser();
             $application = JobApplication::get()->filter(['ID' => $params['OtherID'], 'UserID' => $user->ID])->first();
             $this->loadDataFrom($application);
-            $this->fields->replaceField('CoverLetter', LiteralField::create('CoverLetter', $application->CoverLetter));
+            if ($application->CoverLetter) {
+                $this->fields->replaceField('CoverLetter', LiteralField::create('CoverLetter',
+                    sprintf('<div class="col-12 m-1 mt-2"><h6>Cover letter</h6>%s</div>', $application->CoverLetter)
+                ));
+            }
         }
     }
 
