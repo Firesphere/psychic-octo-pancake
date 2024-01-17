@@ -1,0 +1,14 @@
+---
+Name: MyPwnConfig
+after:
+  - HaveIBeenPwnedConfig
+---
+Firesphere\HaveIBeenPwned\Services\HaveIBeenPwnedService:
+  allow_pwnd: false
+  save_pwnd: true
+---
+Only:
+  environment: dev
+---
+Firesphere\HaveIBeenPwned\Services\HaveIBeenPwnedService:
+  allow_pwnd: true

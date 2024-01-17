@@ -18,7 +18,7 @@ class ContactPage extends Page
 {
     private static $table_name = 'ContactPage';
     private static $has_many = [
-        'Contacts' => Contact::class
+        'Contacts' => Contact::class . '.ContactPage'
     ];
     public $hasLayout = true;
 

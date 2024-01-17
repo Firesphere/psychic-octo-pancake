@@ -10,6 +10,7 @@
         "elliotsawyer/silverstripe-matomo": "^0.0.2",
         "firesphere/adblockwarning": "^1.0",
         "firesphere/cspheaders": "dev-main",
+        "firesphere/haveibeenpwnd": "^2.1",
         "firesphere/module-helpers": "^0.4.0",
         "heyday/silverstripe-colorpalette": "^2.1|^3",
         "phptek/sentry": "^5.0",

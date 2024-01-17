@@ -23,7 +23,7 @@ class StatusUpdate extends BaseNote
     ];
 
     private static $belongs_to = [
-        'Interview' => Interview::class,
+        'Interview' => Interview::class . '.StatusUpdate',
     ];
     private static $has_one = [
         'Status'         => Status::class,
