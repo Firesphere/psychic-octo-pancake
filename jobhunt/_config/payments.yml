@@ -15,4 +15,5 @@ SilverStripe\Omnipay\GatewayInfo:
       testMode: true
   Stripe:
     parameters:
-
+      apiKey: SECRET-KEY-FOR-YOUR-TEST-ACCOUNT
+      publishableKey: PUBLISHABLE-KEY-FOR-TEST-ACCOUNT
