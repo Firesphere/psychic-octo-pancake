@@ -26,7 +26,7 @@
                                        role="button"
                                        aria-expanded="false"
                                        aria-controls="Update-$ID">
-                                        $Title
+                                        $Title ($Created.Date())
                                     </a>
                                     <a href="$deleteLink"
                                        class="pull-right text-warning"
@@ -58,18 +58,19 @@
                         <ul class="list-group list-group-flush">
                             <% loop $Interviews %>
                                 <li class="list-group-item border-secondary border-1">
-                                    <% if $Notes.Count %>
-                                        <a data-bs-toggle="collapse" href="#Interview-$ID" role="button"
-                                           aria-expanded="false"
-                                           aria-controls="Interview-$ID">
-                                            $DateTime.Nice
-                                        </a>
-                                        <a href="$deleteLink"
-                                           class="pull-right text-warning"
-                                           title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
-                                        <div class="collapse card-text" id="Interview-$ID">
+                                    <a data-bs-toggle="collapse" href="#Interview-$ID" role="button"
+                                       aria-expanded="false"
+                                       aria-controls="Interview-$ID">
+                                        $DateTime.Nice
+                                    </a>
+                                    <a href="$deleteLink"
+                                       class="pull-right text-warning"
+                                       title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
+                                    <div class="collapse card-text" id="Interview-$ID">
+                                        <% if $Notes.Count %>
+                                            <hr />
                                             <% loop $Notes %>
-                                                <h6>$Title
+                                                <h6>$Title ($Created.Date())
                                                     <a href="$deleteLink"
                                                        class="pull-right text-warning"
                                                        title="Delete this application"><i
@@ -80,21 +81,16 @@
                                                 </p>
                                                 <hr/>
                                             <% end_loop %>
+                                        <% end_if %>
+                                        <div class="card-link">
+                                            <a href="#"
+                                               title="Edit interview"
+                                               class="js-formaction"
+                                               data-id="$ID"
+                                               data-itemtype="interview-edit"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#addItemModal">Edit</a>
                                         </div>
-                                    <% else %>
-                                        $DateTime.Nice
-                                        <a href="$deleteLink"
-                                           class="pull-right text-warning"
-                                           title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
-                                    <% end_if %>
-                                    <div class="card-link">
-                                        <a href="#"
-                                           title="Edit interview"
-                                           class="js-formaction"
-                                           data-id="$ID"
-                                           data-itemtype="interview-edit"
-                                           data-bs-toggle="modal"
-                                           data-bs-target="#addItemModal">Edit interview</a>
                                     </div>
                                 </li>
                             <% end_loop %>
@@ -109,7 +105,7 @@
                                 <li class="list-group-item border-secondary border-1">
                                     <a data-bs-toggle="collapse" href="#Note-$ID" role="button" aria-expanded="false"
                                        aria-controls="Note-$ID">
-                                        $Title
+                                        $Title ($Created.Date())
                                     </a>
                                     <a href="$deleteLink"
                                        class="pull-right text-warning"

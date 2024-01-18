@@ -57,11 +57,11 @@
                 <% loop $Notes %>
                     <a href="#"
                        title="Edit note"
-                       class="js-formaction badge text-bg-primary"
+                       class="js-formaction text-start link-underline link-underline-opacity-0 link-underline-opacity-75-hover badge text-bg-primary"
                        data-id="$ID"
                        data-itemtype="note-edit"
                        data-bs-toggle="modal"
-                       data-bs-target="#addItemModal">$Title</a>
+                       data-bs-target="#addItemModal">Created: $Created.Date()<br />$Title</a>
                 <% end_loop %>
             </td>
             <td>
@@ -80,11 +80,11 @@
                 <% loop $StatusUpdates.Filter('Hidden', 0) %>
                     <a href="#"
                        title="Edit Status update"
-                       class="js-formaction h6 badge text-bg-$Status.ColourStyle"
+                       class="js-formaction text-start badge text-bg-$Status.ColourStyle link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                        data-id="$ID"
                        data-itemtype="statusupdate-edit"
                        data-bs-toggle="modal"
-                       data-bs-target="#addItemModal">$Status.Name: $Title</a>
+                       data-bs-target="#addItemModal">Created: $Created.Date()<br />$Status.Name: $Title</a>
                 <% end_loop %>
             </td>
             <td>
@@ -103,7 +103,7 @@
                 <% loop $Interviews %>
                     <a href="#"
                        title="Edit interview"
-                       class="js-formaction h6 badge text-bg-secondary"
+                       class="js-formaction badge text-bg-secondary link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                        data-id="$ID"
                        data-itemtype="interview-edit"
                        data-bs-toggle="modal"
