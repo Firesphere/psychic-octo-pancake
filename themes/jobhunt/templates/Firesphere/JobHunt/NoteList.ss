@@ -1,6 +1,6 @@
 <div class='row'>
     <div class='col'>$ForTemplate</div>
-    <div class='col'>
+    <div class='col-6'>
         <h3>Notes:</h3>
         <div class="row">
             <% loop $notes %>
