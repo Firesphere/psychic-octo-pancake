@@ -2,43 +2,51 @@
     <% with $JobApplication %>
         <div class="row">
             <h1 class="col-12">$Role at $Company.Name</h1>
-            <h3><a href="#"
-                   title="Edit application"
-                   class="js-formaction"
-                   data-id="$ID"
-                   data-itemtype="application-edit"
-                   data-bs-toggle="modal"
-                   data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>&nbsp;|&nbsp;
-                <a href="#"
-                   title="Add note"
-                   class="js-formaction"
-                   data-application="$ID"
-                   data-itemtype="note-add"
-                   data-bs-toggle="modal"
-                   data-bs-target="#addItemModal"><i class="bi bi-file-earmark-plus"></i></a>&nbsp;|&nbsp;
-                <a href="#"
-                   title="Add status update"
-                   class="js-formaction"
-                   data-application="$ID"
-                   data-itemtype="statusupdate-add"
-                   data-bs-toggle="modal"
-                   data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a>&nbsp;|&nbsp;
-                <a href="#"
-                   title="Add interview"
-                   class="js-formaction"
-                   data-application="$ID"
-                   data-itemtype="interview-add"
-                   data-bs-toggle="modal"
-                   data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
-                <a href="$Top.Link/delete/application/$ID"
-                   class="pull-right text-warning"
-                   title="Delete this application"><i class="bi bi-x-octagon-fill"></i></a>
-            </h3>
+            <div class="row">
+                <div class="d-flex justify-content-start pb-2">
+                    <span class="col-1"><a href="#"
+                                           title="Edit application"
+                                           class="js-formaction h3 "
+                                           data-id="$ID"
+                                           data-itemtype="application-edit"
+                                           data-bs-toggle="modal"
+                                           data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>
+                    </span>
+                    <span class="col-1"><a href="#"
+                                           title="Add note"
+                                           class="js-formaction h3 "
+                                           data-application="$ID"
+                                           data-itemtype="note-add"
+                                           data-bs-toggle="modal"
+                                           data-bs-target="#addItemModal"><i
+                        class="bi bi-file-earmark-plus"></i></a></span>
+                    <span class="col-1"><a href="#"
+                                           title="Add status update"
+                                           class="js-formaction h3 "
+                                           data-application="$ID"
+                                           data-itemtype="statusupdate-add"
+                                           data-bs-toggle="modal"
+                                           data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a></span>
+                    <span class="col-1"><a href="#"
+                                           title="Add interview"
+                                           class="js-formaction h3 "
+                                           data-application="$ID"
+                                           data-itemtype="interview-add"
+                                           data-bs-toggle="modal"
+                                           data-bs-target="#addItemModal"><i
+                        class="bi bi-person-fill-add"></i></a></span>
+                    <span class="col text-end"><a href="$Top.Link/delete/application/$ID"
+                                                  class="text-warning h3 "
+                                                  title="Delete this application"><i
+                        class="bi bi-x-octagon-fill"></i></a>
+                    </span>
+                </div>
+            </div>
             <div class="col-12 pb-2">
                 Application date: $ApplicationDate.Nice()<br/>
                 <a href="$Link" target="_blank">Link</a><br/>
             </div>
-            <hr class="col-12 pb-1"/>
+            <hr class="pb-1"/>
             <% if $StatusUpdates.Filter('Hidden', false).Count() %>
                 <div class="col-12 col-md-4">
                     <h3>Status updates</h3>
