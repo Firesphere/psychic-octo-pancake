@@ -1,0 +1,15 @@
+SilverStripe\Omnipay\Model\Payment:
+  allowed_gateways:
+    - 'Stripe'
+    - 'PayPal_Express'
+---
+Only:
+  environment: dev
+---
+SilverStripe\Omnipay\GatewayInfo:
+  PayPal_Express:
+    parameters:
+      username: 'sb-xvwhh29327033_api1.business.example.com'
+      password: '762XMU7SSCJCKS7B'
+      signature: 'Auws8IWWSoaohcV-2ghoRMAxzAGCA0fsTruB0LB.DgykCYWcYh1XzSTJ'
+      testMode: true

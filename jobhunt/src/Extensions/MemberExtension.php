@@ -5,6 +5,7 @@ namespace Firesphere\JobHunt\Extensions;
 use Firesphere\JobHunt\Models\BaseNote;
 use Firesphere\JobHunt\Models\ExcludedStatus;
 use Firesphere\JobHunt\Models\Interview;
+use Firesphere\JobHunt\Models\InterviewQuestion;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StateOfMind;
 use Firesphere\JobHunt\Models\Status;
@@ -32,6 +33,7 @@ use SilverStripe\Security\Security;
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
  * @method DataList|ExcludedStatus[] ExcludedStatus()
+ * @method DataList|InterviewQuestion[] InterviewQuestions()
  */
 class MemberExtension extends DataExtension
 {
@@ -44,10 +46,11 @@ class MemberExtension extends DataExtension
     ];
 
     private static $has_many = [
-        'JobApplications' => JobApplication::class . '.User',
-        'Notes'           => BaseNote::class . '.Owner',
-        'Moods'           => StateOfMind::class . '.User',
-        'ExcludedStatus'  => ExcludedStatus::class . '.User'
+        'JobApplications'    => JobApplication::class . '.User',
+        'Notes'              => BaseNote::class . '.Owner',
+        'Moods'              => StateOfMind::class . '.User',
+        'ExcludedStatus'     => ExcludedStatus::class . '.User',
+        'InterviewQuestions' => InterviewQuestion::class . '.User'
     ];
 
     private static $indexes = [
@@ -88,7 +91,7 @@ class MemberExtension extends DataExtension
         self::set_job_applications();
 
         return Interview::get()->filter([
-            'ApplicationID'        => self::$_job_application_ids,
+            'ApplicationID' => self::$_job_application_ids,
         ]);
     }
 
@@ -97,8 +100,8 @@ class MemberExtension extends DataExtension
         self::set_job_applications();
 
         return StatusUpdate::get()->filter([
-            'JobApplicationID'        => self::$_job_application_ids,
-            'Hidden'                  => false
+            'JobApplicationID' => self::$_job_application_ids,
+            'Hidden'           => false
         ]);
     }
 

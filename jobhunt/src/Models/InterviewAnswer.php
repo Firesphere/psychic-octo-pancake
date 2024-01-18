@@ -3,51 +3,30 @@
 namespace Firesphere\JobHunt\Models;
 
 use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\FieldType\DBBoolean;
-use SilverStripe\ORM\FieldType\DBEnum;
-use SilverStripe\ORM\FieldType\DBVarchar;
-use SilverStripe\Security\Member;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\Security\Security;
 
 /**
- * Class \Firesphere\JobHunt\Models\InterviewQuestion
+ * Class \Firesphere\JobHunt\Models\InterviewAnswer
  *
- * @property string $Question
- * @property string $Type
- * @property bool $Private
- * @property string $Locale
- * @property int $UserID
- * @method Member User()
- * @method DataList|InterviewAnswer[] Answers()
- * @method ManyManyList|InterviewPreparation[] Preparations()
+ * @property string $Content
+ * @property int $QuestionID
+ * @property int $PreparationID
+ * @method InterviewQuestion Question()
+ * @method InterviewPreparation Preparation()
  */
-class InterviewQuestion extends DataObject
+class InterviewAnswer extends DataObject
 {
-    private static $table_name = 'InterviewQuestion';
+    private static $table_name = 'InterviewAnswer';
 
     private static $db = [
-        'Question' => DBVarchar::class,
-        'Type'     => DBEnum::class . '("Ask,Answer","Ask")',
-        'Private'  => DBBoolean::class . '(false)',
-        'Locale'   => DBVarchar::class,
+        'Content' => DBHTMLText::class
     ];
 
     private static $has_one = [
-        'User' => Member::class
+        'Question'    => InterviewQuestion::class,
+        'Preparation' => InterviewPreparation::class
     ];
-
-    private static $has_many = [
-        'Answers' => InterviewAnswer::class . '.Question'
-    ];
-
-    private static $belongs_many_many = [
-        'Preparations' => InterviewPreparation::class . '.Questions'
-    ];
-
-    private static $summary_fields = [
-        'Question'
-    ];
-
     public function canCreate($member = null, $context = [])
     {
         $member = $member ?? Security::getCurrentUser();
@@ -91,5 +70,4 @@ class InterviewQuestion extends DataObject
 
         return parent::canDelete($member);
     }
-
 }

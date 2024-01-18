@@ -19,21 +19,18 @@ use SilverStripe\Security\Security;
  */
 class BaseNote extends DataObject
 {
+    protected static $deleteList = [
+        InterviewNote::class   => 'interviewnote',
+        ApplicationNote::class => 'applicationnote',
+        StatusUpdate::class    => 'status'
+    ];
     private static $table_name = 'BaseNote';
-
     private static $db = [
         'Title' => DBVarchar::class,
         'Note'  => DBText::class
     ];
-
     private static $has_one = [
         'Owner' => Member::class,
-    ];
-
-    protected static $deleteList = [
-        InterviewNote::class => 'interviewnote',
-        ApplicationNote::class => 'applicationnote',
-        StatusUpdate::class => 'status'
     ];
 
     public function deleteLink()
@@ -41,6 +38,7 @@ class BaseNote extends DataObject
         /** @var ApplicationPage $page */
         $page = ApplicationPage::get()->first();
         $deletePart = sprintf('delete/%s/%d', self::$deleteList[static::class], $this->ID);
+
         return $page->Link($deletePart);
     }
 

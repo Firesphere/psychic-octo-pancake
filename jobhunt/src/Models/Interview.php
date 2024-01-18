@@ -10,7 +10,7 @@ use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\ManyManyList;
 
 /**
- * Class \Firesphere\JobHunt\Models\ApplicationInterview
+ * Class \Firesphere\JobHunt\Models\Interview
  *
  * @property string $DateTime
  * @property int $Duration
@@ -19,6 +19,7 @@ use SilverStripe\ORM\ManyManyList;
  * @method JobApplication Application()
  * @method StatusUpdate StatusUpdate()
  * @method DataList|InterviewNote[] Notes()
+ * @method DataList|InterviewPreparation[] Preparations()
  * @method ManyManyList|Interviewer[] Interviewers()
  */
 class Interview extends DataObject
@@ -39,7 +40,8 @@ class Interview extends DataObject
         'Interviewers' => Interviewer::class
     ];
     private static $has_many = [
-        'Notes' => InterviewNote::class . '.ApplicationInterview'
+        'Notes'        => InterviewNote::class . '.ApplicationInterview',
+        'Preparations' => InterviewPreparation::class . '.Interview'
     ];
 
     private static $summary_fields = [
