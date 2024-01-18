@@ -13,3 +13,6 @@ SilverStripe\Omnipay\GatewayInfo:
       password: '762XMU7SSCJCKS7B'
       signature: 'Auws8IWWSoaohcV-2ghoRMAxzAGCA0fsTruB0LB.DgykCYWcYh1XzSTJ'
       testMode: true
+  Stripe:
+    parameters:
+
