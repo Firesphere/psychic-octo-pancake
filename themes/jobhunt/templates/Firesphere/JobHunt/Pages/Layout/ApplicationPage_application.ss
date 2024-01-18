@@ -34,7 +34,7 @@
                                            data-itemtype="interview-add"
                                            data-bs-toggle="modal"
                                            data-bs-target="#addItemModal"><i
-                        class="bi bi-person-fill-add"></i></a></span>
+                        class="bi bi-person-add"></i></a></span>
                     <span class="col text-end"><a href="$Top.Link/delete/application/$ID"
                                                   class="text-warning h3 "
                                                   title="Delete this application"><i
