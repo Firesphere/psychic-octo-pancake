@@ -48,7 +48,7 @@
     <% include OffCanvas %>
 <% end_if %>
 <% include Modal %>
-<footer class="bg-primary py-4 row footer small text-center fixed-bottom">
+<footer class="bg-light-subtle py-2 footer text-center sticky-bottom">
     <% include Footer %>
 </footer>
 $AdblockWarning
