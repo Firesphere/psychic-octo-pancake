@@ -5,7 +5,11 @@ namespace Firesphere\JobHunt\Admins;
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Omnipay\Model\Payment;
 
-class PaymentAdmin extends ModelAdmin
+/**
+ * Class \Firesphere\JobHunt\Admins\PaymentAdmin
+ *
+ */
+class SubscriptionAdmin extends ModelAdmin
 {
 
     private static $managed_models = [

@@ -4,6 +4,3 @@ SilverStripe\Security\Member:
 Symbiote\MemberProfiles\Pages\MemberProfilePageController:
   extensions:
     - Firesphere\JobHunt\Extensions\MemberProfilePageControllerExtension
-SilverStripe\Omnipay\Service:
-  extensions:
-    - Firesphere\JobHunt\Extensions\PurchaseServiceExtension
