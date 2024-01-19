@@ -29,8 +29,13 @@
 </head>
 <body>
 <% include Header %>
-<% if $SiteConfig.SiteBanners.Count %>
-    <% include SiteBanner %>
+<% if $FlashMessagesPresent %>
+    <% loop $FlashMessages.Limit(1) %>
+        <div class="col-12 alert alert-$Type alert-dismissible fade show" role="alert">
+            $Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% end_loop %>
 <% end_if %>
 <main class="login-form">
 
