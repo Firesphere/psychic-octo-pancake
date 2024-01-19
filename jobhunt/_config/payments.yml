@@ -1,19 +1,8 @@
-SilverStripe\Omnipay\Model\Payment:
-  allowed_gateways:
-    - 'Stripe'
-    - 'PayPal_Express'
 ---
 Only:
   environment: dev
 ---
-SilverStripe\Omnipay\GatewayInfo:
-  PayPal_Express:
-    parameters:
-      username: 'sb-xvwhh29327033_api1.business.example.com'
-      password: '762XMU7SSCJCKS7B'
-      signature: 'Auws8IWWSoaohcV-2ghoRMAxzAGCA0fsTruB0LB.DgykCYWcYh1XzSTJ'
-      testMode: true
+Firesphere\JobHunt\Models\Subscription:
   Stripe:
-    parameters:
-      apiKey: SECRET-KEY-FOR-YOUR-TEST-ACCOUNT
-      publishableKey: PUBLISHABLE-KEY-FOR-TEST-ACCOUNT
+    secretKey: sk_test_51OZoysBOYqZIV6mRqCyzwuT43xZTk6F4jAq0O4x5Bj6Mi8xcrqv0Nb9PQWwHRbl7HyIEgmTARCOUyPcexI9oqDrq00zSEgKecM
+    publishableKey: pk_test_51OZoysBOYqZIV6mRHSqwpONnVgjdhXmx2z1IsGiCulwKdRsClLYF9RXWqnU9o5QBOvkbW8ngcpOZC1OPK2BZO5Np00zJCUPhvt

@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Models;
 
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Config\Configurable;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBInt;
@@ -19,6 +20,7 @@ use SilverStripe\ORM\FieldType\DBVarchar;
  */
 class Subscription extends DataObject
 {
+    use Configurable;
     private static $table_name = 'Subscription';
 
     private static $db = [

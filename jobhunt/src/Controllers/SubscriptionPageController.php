@@ -30,7 +30,6 @@ class SubscriptionPageController extends \PageController
 
     private static $allowed_actions = [
         'plan',
-        'PayPalForm',
         'complete'
     ];
 
@@ -54,52 +53,6 @@ class SubscriptionPageController extends \PageController
         $this->Plan = $plan;
 
         return $this;
-    }
-
-    public function PayPalForm()
-    {
-        $this->method = 'PayPal_Express';
-
-        return $this->PayForm();
-    }
-
-    protected function PayForm()
-    {
-        $factory = GatewayFieldsFactory::create($this->method);
-
-        $form = Form::create(
-            $this,
-            "PayPalForm",
-            $factory->getFields(),
-            FieldList::create(
-                $actions = FormAction::create(
-                "doSubmit",
-                "Pay with PayPal"
-            ))
-        );
-
-        $actions->addExtraClass('btn btn-primary');
-
-        return $form;
-    }
-
-    public function doSubmit($data, $form)
-    {
-        error_reporting(E_ALL & ~E_USER_DEPRECATED);        // Create the payment object. We pass the desired success
-        // and failure URLs as parameter to the payment
-        $payment = Payment::create()
-            ->init($this->method, 100, "NZD")
-            ->setSuccessUrl($this->Link('complete'))
-            ->setFailureUrl($this->Link() . "?message=payment cancelled");
-
-        // Save it to the database to generate an ID
-        $payment->write();
-
-        $response = ServiceFactory::create()
-            ->getService($payment, ServiceFactory::INTENT_PAYMENT)
-            ->initiate($data);
-
-        return $response->redirectOrRespond();
     }
 
     public function complete(HTTPRequest $request)

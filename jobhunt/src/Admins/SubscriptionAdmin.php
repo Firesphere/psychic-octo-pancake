@@ -13,7 +13,6 @@ class SubscriptionAdmin extends ModelAdmin
 {
 
     private static $managed_models = [
-        Payment::class
     ];
 
     private static $url_segment = 'payment-admin';
