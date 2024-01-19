@@ -1,7 +1,7 @@
 <div class="">
     <div class="row">
         <% loop $SiteConfig.SiteBanners %>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-$Type alert-dismissible fade show" role="alert">
                 <i class="h4 bi
                 <% if $Type == 'info' %>
                     bi-info text-bg-$Type-subtle
