@@ -18,7 +18,7 @@
     <% if $Canonical %>
         <link rel="canonical" href="$Canonical"/>
     <% end_if %>
-    <meta property="og:title" content="Jobhunt helper">
+    <meta property="og:title" content="My Job Quest: Jobhunt helper">
     <meta property="og:url" content="$AbsoluteURL">
     <meta property="og:description"
           content="Keep track of your job applications, add notes, prepare for interviews. All in one place.">
@@ -40,18 +40,17 @@
     <div class="spacer pb-5 row">&nbsp;</div>
 </main>
 <% if $CurrentUser %>
-    <button class="btn btn-light position-sticky bottom-50 start-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotes" aria-controls="offcanvasNotes">
+    <button class="btn btn-light position-sticky bottom-50 start-0" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNotes" aria-controls="offcanvasNotes">
         <i class="bi bi-journal-text"></i>
     </button>
 
     <% include OffCanvas %>
 <% end_if %>
 <% include Modal %>
-<% cached %>
-    <footer class="bg-primary py-4 row footer small text-center fixed-bottom">
-        <% include Footer %>
-    </footer>
-<% end_cached %>
+<footer class="bg-primary py-4 row footer small text-center fixed-bottom">
+    <% include Footer %>
+</footer>
 $AdblockWarning
 </body>
 </html>
