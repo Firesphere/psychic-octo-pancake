@@ -8,7 +8,7 @@
     <div class="row">
         <% loop $Days %>
             <div class="col-xs-12 col-md-6">
-                <% include CalendarItem %>
+                <% include CalendarMonth %>
             </div>
         <% end_loop %>
     </div>
