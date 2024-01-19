@@ -78,8 +78,14 @@ class ApplicationPageController extends \PageController
     {
         $user = Security::getCurrentUser();
 
-        $applications = $user->JobApplications()
-            ->filter($this->filter)
+        if (!$user) {
+            $this->httpError(404);
+
+            return $this;
+        }
+        $applications = $user->JobApplications();
+        $applications = $applications->filter($this->filter)
+            ->exclude(['Archived' => true])
             ->sort($this->sort);
 
         $list = PaginatedList::create($applications, $this->getRequest());
@@ -94,7 +100,10 @@ class ApplicationPageController extends \PageController
     public function application()
     {
         $params = $this->getURLParams();
-        $application = JobApplication::get()->filter(['ID' => $params['ID'], 'UserID' => Security::getCurrentUser()->ID]);
+        $application = JobApplication::get()->filter([
+            'ID' => $params['ID'],
+            'UserID' => Security::getCurrentUser()->ID
+        ]);
 
         if (!$application || !$application->exists()) {
             $this->httpError(404, 'No job application found');

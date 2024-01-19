@@ -23,7 +23,8 @@
         "silverstripe/vendor-plugin": "~2.0.1@stable",
         "silverstripe/webauthn-authenticator": "^5",
         "symbiote/silverstripe-gridfieldextensions": "^4.0",
-        "symfony/mailjet-mailer": "^7.0"
+        "symfony/mailjet-mailer": "^7.0",
+        "ext-intl": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.47",

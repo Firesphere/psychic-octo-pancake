@@ -56,7 +56,7 @@ class HomePageController extends \PageController
             'labels'          => array_keys($statusCount),
             'backgroundColor' => $colour,
             'hoverOffset'     => 4,
-        ]));
+        ], JSON_THROW_ON_ERROR));
 
         return $response;
     }

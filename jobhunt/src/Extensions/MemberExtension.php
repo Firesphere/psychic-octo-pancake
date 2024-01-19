@@ -17,6 +17,7 @@ use SilverStripe\ORM\FieldType\DBEnum;
 use SilverStripe\ORM\FieldType\DBText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\Security\Member;
+use SilverStripe\Security\Security;
 
 /**
  * Class \Firesphere\JobHunt\Extensions\MemberExtension
@@ -74,35 +75,37 @@ class MemberExtension extends DataExtension
         return false;
     }
 
-    public function getInterviews()
+    private static function set_job_applications()
     {
         if (!self::$_job_applications) {
-            self::$_job_applications = $this->owner->JobApplications();
+            self::$_job_applications = Security::getCurrentUser()->owner->JobApplications()->filter(['Archived' => false]);
             self::$_job_application_ids = self::$_job_applications->column('ID');
         }
+    }
+
+    public function getInterviews()
+    {
+        self::set_job_applications();
+
         return Interview::get()->filter([
-            'ApplicationID' => self::$_job_application_ids
+            'ApplicationID'        => self::$_job_application_ids,
         ]);
     }
 
     public function getStatusUpdates()
     {
-        if (!self::$_job_applications) {
-            self::$_job_applications = $this->owner->JobApplications();
-            self::$_job_application_ids = self::$_job_applications->column('ID');
-        }
+        self::set_job_applications();
+
         return StatusUpdate::get()->filter([
-            'JobApplicationID' => self::$_job_application_ids,
-            'Hidden'           => false
+            'JobApplicationID'        => self::$_job_application_ids,
+            'Hidden'                  => false
         ]);
     }
 
     public function getStatusNumbers()
     {
-        if (!self::$_job_applications) {
-            self::$_job_applications = $this->owner->JobApplications();
-            self::$_job_application_ids = self::$_job_applications->column('ID');
-        }
+        self::set_job_applications();
+
         $applications = self::$_job_applications->shuffle();
 
         $return = [];
@@ -117,7 +120,8 @@ class MemberExtension extends DataExtension
 
     public function getOpenOutstanding()
     {
-        $numbers = $this->getStatusNumbers();
+        self::set_job_applications();
+
         return self::$_job_applications->filter('Status.AutoHide', false);
     }
 }

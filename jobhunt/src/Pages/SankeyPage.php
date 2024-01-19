@@ -29,7 +29,7 @@ class SankeyPage extends Page
         /** @var Member|MemberExtension $user */
         $user = Security::getCurrentUser();
 
-        $applications = $user->JobApplications();
+        $applications = $user->JobApplications()->filter(['Archived' => false]);
         foreach ($applications as $application) {
             if (!$application->StatusUpdates()->count() && !$application->Interviews()->count()) {
                 $this->countFlow(1, $application->StatusID);

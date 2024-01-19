@@ -72,8 +72,9 @@ class CalendarPageController extends \PageController
             }
             $todayFilter = $filterDate . str_pad($i, 2, '0', STR_PAD_LEFT);
             $data['Interviews'] = Interview::get()->filter([
-                'Application.UserID'  => $user->ID,
-                'DateTime:StartsWith' => $todayFilter
+                'Application.UserID'   => $user->ID,
+                'Application.Archived' => false,
+                'DateTime:StartsWith'  => $todayFilter
             ]);
             $list->push(ArrayData::create($data));
             $i++;

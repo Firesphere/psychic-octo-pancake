@@ -13,6 +13,14 @@
                 data-bs-target="#addItemModal">
             Import from CSV
         </button>
-
+        <% if $CurrentUser.InGroup('administrators') %>
+            <hr/>
+            <h3>Archive</h3>
+            <p>Archive all job applications you currently have.</p>
+            <form action="$Link/archive" method="POST">
+                <input type="hidden" value="$SecurityID" name="SecurityID"/>
+                <input type="submit" name="action_archive" class="action btn btn-warning" value="Archive"/>
+            </form>
+        <% end_if %>
     </div>
 </div>

@@ -5,6 +5,7 @@ namespace Firesphere\JobHunt\Models;
 use DOMDocument;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBBoolean;
 use SilverStripe\ORM\FieldType\DBDate;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBVarchar;
@@ -18,6 +19,8 @@ use SilverStripe\Security\Member;
  * @property string $ClosingDate
  * @property string $Link
  * @property string $CoverLetter
+ * @property bool $Archived
+ * @property string $ArchiveDate
  * @property int $UserID
  * @property int $CompanyID
  * @property int $StatusID
@@ -45,6 +48,8 @@ class JobApplication extends DataObject
         'ClosingDate'     => DBDate::class,
         'Link'            => DBVarchar::class,
         'CoverLetter'     => DBHTMLText::class,
+        'Archived'        => DBBoolean::class,
+        'ArchiveDate'     => DBDate::class,
     ];
     private static $has_one = [
         'User'    => Member::class,
