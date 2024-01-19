@@ -11,7 +11,7 @@
                 <div class="card-header">Calendar</div>
 
                 <% with $Up.CurrentMonth.First() %>
-                    <% include CalendarItem %>
+                    <% include CalendarMonth %>
                 <% end_with %>
             </div>
         </div>
