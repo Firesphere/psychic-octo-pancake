@@ -3,14 +3,27 @@
         <div class="col-sm-12 col-md-4 pb-3 d-flex flex-grow-0">
             <div class="card">
                 <div class="card-header">
+                    <div class="d-flex justify-content-between">
                     <h4><span class="text-$Status.ColourStyle" title="$Status.Name">&nbsp;&#9679;&nbsp;</span><a
                         href="$Link" target="_blank">$Role</a> at
-                        <% if $Company.Link %>
-                            <a href="$Company.Link" target="_blank">$Company.Name</a>
-                        <% else %>
-                            $Company.Name
-                        <% end_if %>
-                    </h4>
+                        <% with $Company %>
+                            <% if $Link %>
+                                <a href="$Link" target="_blank">$Name</a>
+                            <% else %>
+                                $Name
+                            <% end_if %>
+                        </h4>
+                            <% if $CurrentUser.CanEditCompany %>
+                                <a href="#"
+                                   title="Edit company"
+                                   class="js-formaction"
+                                   data-id="$ID"
+                                   data-itemtype="company-edit"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
+                            <% end_if %>
+                        <% end_with %>
+                    </div>
                     <small class="pull-left">Application date: $ApplicationDate.Nice()</small>
                     <a href="$Up.Link('application')/$ID" class="pull-right" title="View application"><i
                         class="bi bi-eye-fill"></i></a>
@@ -68,7 +81,7 @@
                                        title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
                                     <div class="collapse card-text" id="Interview-$ID">
                                         <% if $Notes.Count %>
-                                            <hr />
+                                            <hr/>
                                             <% loop $Notes %>
                                                 <h6>$Title ($Created.Date())
                                                     <a href="$deleteLink"

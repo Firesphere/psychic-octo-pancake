@@ -21,6 +21,7 @@
         "silverstripe/mfa": "^5",
         "silverstripe/recipe-cms": "~5.1.0@stable",
         "silverstripe/recipe-plugin": "~2.0.0@stable",
+        "silverstripe/tagfield": "^3.1",
         "silverstripe/totp-authenticator": "^5",
         "silverstripe/vendor-plugin": "~2.0.1@stable",
         "silverstripe/webauthn-authenticator": "^5",

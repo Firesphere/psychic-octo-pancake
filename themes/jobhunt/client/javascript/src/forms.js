@@ -29,6 +29,10 @@ const typemap = {
     'import': [
         'ImportForm',
         'import'
+    ],
+    'company': [
+        'CompanyForm',
+        'company'
     ]
 }
 

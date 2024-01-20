@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Forms\ApplicationForm;
+use Firesphere\JobHunt\Forms\CompanyForm;
 use Firesphere\JobHunt\Forms\ImportForm;
 use Firesphere\JobHunt\Forms\InterviewForm;
 use Firesphere\JobHunt\Forms\InterviewNoteForm;
@@ -31,7 +32,8 @@ class FormHandler extends Controller
         'InterviewNoteForm',
         'StatusUpdateForm',
         'ApplicationNoteForm',
-        'ImportForm'
+        'ImportForm',
+        'CompanyForm',
     ];
     /**
      * @var JobApplication
@@ -106,6 +108,20 @@ class FormHandler extends Controller
         }
 
         return $form;
+    }
+
+    public function CompanyForm()
+    {
+        if (Security::getCurrentUser()->getCanEditCompany()) {
+            $form = CompanyForm::create($this);
+            if ($this->getRequest()->isGET()) {
+                return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()], JSON_THROW_ON_ERROR);
+            }
+
+            return $form;
+        }
+
+        return json_encode(['success' => false, 'form' => false]);
     }
 
     public function ApplicationNoteForm()

@@ -124,4 +124,9 @@ class MemberExtension extends DataExtension
 
         return self::$_job_applications->filter('Status.AutoHide', false);
     }
+
+    public function getCanEditCompany()
+    {
+        return $this->owner->inGroups(["administrators","legacy","subscriber"]);
+    }
 }

@@ -16,7 +16,7 @@
                    aria-expanded="true">
                     How's the job hunt going?
                 </a>
-                <ul class="dropdown-menu border-0 show dropdown-menu-end py-0" data-bs-popper="static">
+                <ul class="dropdown-menu border-0 show dropdown-menu-end py-0 bg-transparent" data-bs-popper="static">
                     <li class="">
                         <table class="table table-borderless align-middle js-dayscore"
                                <% if $CurrentUser.hasMood %>data-dayscore="$CurrentUser.hasMood"<% end_if %>>

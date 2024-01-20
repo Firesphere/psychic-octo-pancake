@@ -1,17 +1,19 @@
-<table class="table table-responsive">
+<table class="table table-responsive table-responsive-sm table-sm">
     <thead>
     <tr>
         <th scope="col">
-            <span class="<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>border-bottom border-primary h5 active<% end_if %>">
+            <span
+                class="<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>border-bottom border-primary h5 active<% end_if %>">
                 <a href="$Top.Link?sort[Company.Name]=<% if $SortDirection == 'Company.NameASC' %>DESC<% else %>ASC<% end_if %>"><i
                     class="bi bi-sort-alpha-down<% if $SortDirection == 'Company.NameDESC' %>-alt<% end_if %>"></i></a>
             </span>
             Company
         </th>
+        <th scope="col" class="col-lg-1">Role</th>
         <th scope="col"></th>
-        <th scope="col">Role</th>
         <th scope="col">
-            <span class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>border-bottom border-primary h5 active<% end_if %>">
+            <span
+                class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>border-bottom border-primary h5 active<% end_if %>">
                 <a href="$Top.Link?sort[ApplicationDate]=<% if $SortDirection == 'ApplicationDateASC' %>DESC<% else %>ASC<% end_if %>"><i
                     class="bi bi-sort-numeric-<% if $SortDirection == 'ApplicationDateASC' %>up<% else %>down<% end_if %>"></i></a>
             </span>
@@ -27,20 +29,34 @@
     <tbody class="table-group-divider">
     <% loop $Applications %>
         <tr class="$OddEven">
-            <td rowspan="4"><b>
-                <% if $Company.Link %>
-                    <a href="$Company.Link" target="_blank">$Company.Name</a>
-                <% else %>
-                    $Company.Name
-                <% end_if %>
-            </b></td>
-            <th scope="row"></th>
-            <td><a href="$Link" target="_blank">$Role</a></td>
-            <td>$ApplicationDate.Nice()</td>
-            <td>
+            <td rowspan="4" class="col-lg">
+                <div class="d-flex justify-content-between">
+                    <% with $Company %>
+                        <b>
+                            <% if $Link %>
+                                <a href="$Link" target="_blank">$Name</a>
+                            <% else %>
+                                $Name
+                            <% end_if %>
+                        </b>
+                        <% if $CurrentUser.CanEditCompany %>
+                            <a href="#"
+                               title="Edit company"
+                               class="js-formaction"
+                               data-id="$ID"
+                               data-itemtype="company-edit"
+                               data-bs-toggle="modal"
+                               data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
+                        <% end_if %>
+                    <% end_with %>
+                </div>
+            </td>
+            <td class="col-lg" colspan="2"><a href="$Link" target="_blank">$Role</a></td>
+            <td class="col-lg">$ApplicationDate.Nice()</td>
+            <td class="col-lg">
                 <div class="badge text-bg-$Status.ColourStyle">$Status.Name</div>
             </td>
-            <td>
+            <td class="col-lg">
                 <a href="#"
                    title="Edit application"
                    class="js-formaction"
@@ -49,7 +65,8 @@
                    data-bs-toggle="modal"
                    data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>
             </td>
-            <td><a href="$Up.Link('application')/$ID" title="View application"><i class="bi bi-eye-fill"></i></a></td>
+            <td class="col-lg"><a href="$Up.Link('application')/$ID" title="View application"><i
+                class="bi bi-eye-fill"></i></a></td>
         </tr>
         <tr class="$OddEven">
             <th>Notes</th>
@@ -61,7 +78,7 @@
                        data-id="$ID"
                        data-itemtype="note-edit"
                        data-bs-toggle="modal"
-                       data-bs-target="#addItemModal">Created: $Created.Date()<br />$Title</a>
+                       data-bs-target="#addItemModal">Created: $Created.Date()<br/>$Title</a>
                 <% end_loop %>
             </td>
             <td>
@@ -84,7 +101,7 @@
                        data-id="$ID"
                        data-itemtype="statusupdate-edit"
                        data-bs-toggle="modal"
-                       data-bs-target="#addItemModal">Created: $Created.Date()<br />$Status.Name: $Title</a>
+                       data-bs-target="#addItemModal">Created: $Created.Date()<br/>$Status.Name: $Title</a>
                 <% end_loop %>
             </td>
             <td>

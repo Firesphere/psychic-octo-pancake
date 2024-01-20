@@ -3,13 +3,21 @@
 namespace Firesphere\JobHunt\Models;
 
 use DOMDocument;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\MultiSelectField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
 use SilverStripe\ORM\FieldType\DBDate;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\Security\Member;
+use SilverStripe\TagField\TagField;
 
 /**
  * Class \Firesphere\JobHunt\Models\JobApplication
@@ -18,6 +26,7 @@ use SilverStripe\Security\Member;
  * @property string $ApplicationDate
  * @property string $ClosingDate
  * @property string $Link
+ * @property int $Pay
  * @property string $CoverLetter
  * @property bool $Archived
  * @property string $ArchiveDate
@@ -30,6 +39,7 @@ use SilverStripe\Security\Member;
  * @method DataList|ApplicationNote[] Notes()
  * @method DataList|Interview[] Interviews()
  * @method DataList|StatusUpdate[] StatusUpdates()
+ * @method ManyManyList|Tag[] Tags()
  */
 class JobApplication extends DataObject
 {
@@ -47,6 +57,7 @@ class JobApplication extends DataObject
         'ApplicationDate' => DBDate::class,
         'ClosingDate'     => DBDate::class,
         'Link'            => DBVarchar::class,
+        'Pay'             => DBInt::class,
         'CoverLetter'     => DBHTMLText::class,
         'Archived'        => DBBoolean::class,
         'ArchiveDate'     => DBDate::class,
@@ -67,6 +78,7 @@ class JobApplication extends DataObject
         'StatusUpdates' => StatusUpdate::class . '.JobApplication',
     ];
     private static $many_many = [
+        'Tags' => Tag::class
     ];
 
     private static $summary_fields = [
