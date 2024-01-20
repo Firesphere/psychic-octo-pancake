@@ -1,10 +1,10 @@
 <div class='row'>
-    <div class='col'>$ForTemplate</div>
+    <div class='col-6'>$ForTemplate</div>
     <div class='col-6'>
         <h3>Notes:</h3>
         <div class="row">
             <% loop $notes %>
-                <div class="col-12 col-lg-6 mb-2">
+                <div class="col-12 mb-2">
                     <div class="card">
                         <a class="card-header" data-bs-toggle="collapse" href="#id_$ID" role="button"
                            aria-expanded="false"
