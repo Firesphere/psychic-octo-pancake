@@ -53,6 +53,13 @@ class Company extends DataObject
         'Employees'
     ];
 
+    private static $summary_fields = [
+        'Name',
+        'Email',
+        'Link',
+        'Slug'
+    ];
+
     public static function findOrCreate($name)
     {
         $slug = SiteTree::singleton()->generateURLSegment($name);
