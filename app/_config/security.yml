@@ -5,7 +5,7 @@ after:
 ---
 Firesphere\HaveIBeenPwned\Services\HaveIBeenPwnedService:
   allow_pwnd: false
-  save_pwnd: true
+  save_pwnd: false
 ---
 Only:
   environment: dev
