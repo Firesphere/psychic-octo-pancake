@@ -3,12 +3,6 @@
 namespace Firesphere\JobHunt\Models;
 
 use DOMDocument;
-use SilverStripe\Control\Controller;
-use SilverStripe\Forms\CheckboxSetField;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\Form;
-use SilverStripe\Forms\FormAction;
-use SilverStripe\Forms\MultiSelectField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
@@ -17,7 +11,6 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\Security\Member;
-use SilverStripe\TagField\TagField;
 
 /**
  * Class \Firesphere\JobHunt\Models\JobApplication
@@ -30,6 +23,7 @@ use SilverStripe\TagField\TagField;
  * @property string $CoverLetter
  * @property bool $Archived
  * @property string $ArchiveDate
+ * @property bool $Favourite
  * @property int $UserID
  * @property int $CompanyID
  * @property int $StatusID
@@ -61,6 +55,7 @@ class JobApplication extends DataObject
         'CoverLetter'     => DBHTMLText::class,
         'Archived'        => DBBoolean::class,
         'ArchiveDate'     => DBDate::class,
+        'Favourite'       => DBBoolean::class . '(false)',
     ];
     private static $has_one = [
         'User'    => Member::class,

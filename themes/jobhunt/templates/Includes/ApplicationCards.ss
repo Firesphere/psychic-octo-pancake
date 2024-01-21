@@ -12,6 +12,10 @@
                             <% else %>
                                 $Name
                             <% end_if %>
+                            <a href="#" class="js-fav pe-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" data-id="$Up.ID" title="Favourite this application">
+                                <i class="bi bi-star<% if $Up.Favourite %>-fill text-warning<% end_if %>"></i>
+                            </a>
+
                         </h4>
                             <% if $CurrentUser.CanEditCompany %>
                                 <a href="#"
@@ -141,6 +145,7 @@
                         </ul>
                     </div>
                 <% end_if %>
+                <div class="card-body"></div>
                 <div class="card-footer text-body-secondary">
                     <a href="#"
                        title="Edit application"

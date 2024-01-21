@@ -10,6 +10,8 @@ use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use Firesphere\JobHunt\Pages\ApplicationPage;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -38,9 +40,10 @@ class ApplicationPageController extends \PageController
     {
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
         parent::init();
+        $this->FavLink = Status::create(['Status' => 'Favourites', 'Colour' => 'success']);
 
-        if ($this->getRequest()->getVar('filter')) {
-            $requestFilter = $this->getRequest()->getVar('filter');
+        $requestFilter = $this->getRequest()->getVar('filter');
+        if ($requestFilter) {
             foreach (JobApplication::$filters as $filterfield => $type) {
                 if (array_key_exists($filterfield, $requestFilter)) {
                     $this->filter[$filterfield] = $requestFilter[$filterfield];
@@ -53,6 +56,10 @@ class ApplicationPageController extends \PageController
                 $closed = Status::get()->filter(['AutoHide' => true])->column('ID');
                 $this->filter['StatusID:Not'] = $closed;
             }
+        }
+        if ($this->getRequest()->getVar('fav')) {
+            $this->filter['Favourite'] = true;
+            $this->FavSet = true;
         }
         if ($this->getRequest()->getVar('sort')) {
             $requestsort = $this->getRequest()->getVar('sort');

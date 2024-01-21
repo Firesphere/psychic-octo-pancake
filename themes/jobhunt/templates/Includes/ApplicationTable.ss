@@ -30,24 +30,29 @@
     <% loop $Applications %>
         <tr class="$OddEven">
             <td rowspan="4" class="col-lg">
-                <div class="d-flex justify-content-between">
+                <div class="justify-content-start">
                     <% with $Company %>
-                        <b>
-                            <% if $Link %>
-                                <a href="$Link" target="_blank">$Name</a>
-                            <% else %>
-                                $Name
+                        <div class="d-flex justify-content-between">
+                            <b>
+                                <a href="#" class="js-fav pe-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" data-id="$Up.ID" title="Favourite this application">
+                                    <i class="bi bi-star<% if $Up.Favourite %>-fill text-warning<% end_if %>"></i>
+                                </a>
+                                <% if $Link %>
+                                    <a href="$Link" class="text-" target="_blank">$Name</a>
+                                <% else %>
+                                    $Name
+                                <% end_if %>
+                            </b>
+                            <% if $CurrentUser.CanEditCompany %>
+                                <a href="#"
+                                   title="Edit company"
+                                   class="js-formaction"
+                                   data-id="$ID"
+                                   data-itemtype="company-edit"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
                             <% end_if %>
-                        </b>
-                        <% if $CurrentUser.CanEditCompany %>
-                            <a href="#"
-                               title="Edit company"
-                               class="js-formaction"
-                               data-id="$ID"
-                               data-itemtype="company-edit"
-                               data-bs-toggle="modal"
-                               data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
-                        <% end_if %>
+                        </div>
                     <% end_with %>
                 </div>
             </td>

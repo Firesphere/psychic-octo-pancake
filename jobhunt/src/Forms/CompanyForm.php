@@ -8,7 +8,6 @@ use SilverStripe\Assets\Folder;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
@@ -36,14 +35,14 @@ class CompanyForm extends Form
             $country = CountryDropdownField::create('Country', 'Country'),
             $email = EmailField::create('Email', 'Generic contact email address'),
             $link = TextField::create('Link', 'Website URL'),
-            $logo = FileField::create('Logo'),
+            //            $logo = FileAttachmentField::create('Logo'),
             HiddenField::create('ID', 'ID', $params['OtherID'])
         ]);
         $address->setRows(3);
         $country->addExtraClass('form-select');
-        $logo->addExtraClass('form-control');
-        $logo->setAllowedFileCategories('image');
-        $logo->setFolderName('company-logos');
+//        $logo->addExtraClass('form-control');
+//        $logo->setAllowedFileCategories('image');
+//        $logo->setFolderName('company-logos');
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);

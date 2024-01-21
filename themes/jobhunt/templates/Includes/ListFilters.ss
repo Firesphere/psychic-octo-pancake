@@ -13,21 +13,24 @@
                     <% end_if %>
                 </a>
             <% end_if %>
-            <a class="btn btn-sm btn-secondary <% if $HasFilter %>active<% else %>dropdown-toggle dropdown-toggle-split<% end_if %>"
+            <a class="btn btn-sm btn-secondary <% if $HasFilter || $FavSet %>active<% else %>dropdown-toggle dropdown-toggle-split<% end_if %>"
                type="button" href="$Top.Link"
-                <% if not $HasFilter %>
-               data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span>Filters&nbsp;&nbsp;&nbsp;
+                <% if not $HasFilter && not $FavSet %>
+               data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span>
+                   Filters&nbsp;&nbsp;&nbsp;
                 <% else %>
                     >Reset Filters
                 <% end_if %>
             </a>
-            <% if $HasFilter %>
+            <% if $HasFilter || $FavSet %>
                 <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden">Toggle Dropdown</span>
                 </button>
             <% end_if %>
             <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item <% if $FavSet %>text-bg-warning-outline<% end_if %>" href="$Top.Link?<% if not $FavSet %>fav=true<% else %>$filterLink<% end_if %>">
+                    <span class="text-success">&nbsp;<i class=" text-warning bi bi-star<% if $FavSet %>-fill<% end_if %>"></i>&nbsp;</span>&nbsp;Favourites</a></li>
                 <% loop $StatusFilters.Sort('Status ASC') %>
                     <li><a class="dropdown-item<% if $ActiveFilter %> active<% end_if %>"
                            href="$Top.Link?$filterLink">

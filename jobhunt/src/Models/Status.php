@@ -97,6 +97,7 @@ class Status extends DataObject
     {
         if (!self::$id_map) {
             self::$id_map = self::get()->map('ID', 'Status')->toArray();
+            self::$id_map[0] = 'Favourite';
         }
         return self::$id_map;
     }
