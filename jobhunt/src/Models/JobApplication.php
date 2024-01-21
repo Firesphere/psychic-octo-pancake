@@ -3,6 +3,12 @@
 namespace Firesphere\JobHunt\Models;
 
 use DOMDocument;
+use Firesphere\JobHunt\Pages\ApplicationPage;
+use LeKoala\FormElements\BsTagsMultiField;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
@@ -81,6 +87,28 @@ class JobApplication extends DataObject
         'Role',
         'ApplicationDate'
     ];
+
+
+    public function TagForm()
+    {
+        $fields = FieldList::create([
+            $fieldTag = BsTagsMultiField::create('Tags', ''),
+            HiddenField::create('ID', 'ID', $this->ID)
+        ]);
+
+        $page = ApplicationPage::get()->first();
+        $fieldTag->setAttribute('data-allow-new', "true");
+        $fieldTag->setAttribute('data-server', $page->Link('/tags'));
+        $fieldTag->setAttribute('data-config', json_encode([
+            'noCache' => "false",
+            'addOnBlur' => "true"
+        ]));
+
+        $action = FieldList::create();
+
+        return Form::create(Controller::curr(), 'tags', $fields, $action);
+    }
+
 
     public function onBeforeWrite()
     {

@@ -8,8 +8,13 @@ use Firesphere\JobHunt\Models\InterviewNote;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
+use Firesphere\JobHunt\Models\Tag;
 use Firesphere\JobHunt\Pages\ApplicationPage;
+use LeKoala\FormElements\BsTagsMultiField;
+use LeKoala\FormElements\TagsField;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\PaginatedList;
@@ -27,7 +32,9 @@ class ApplicationPageController extends \PageController
 {
     private static $allowed_actions = [
         'application',
-        'delete'
+        'delete',
+        'TagForm',
+        'tags'
     ];
     protected $HasFilter;
     protected $HasShowAll;
@@ -199,5 +206,15 @@ class ApplicationPageController extends \PageController
         }
 
         return http_build_query($vars);
+    }
+
+    public function tags(HTTPRequest $request)
+    {
+        $filter = [];
+        if ($request->getVar('query')) {
+            $filter['Title:PartialMatch'] = $request->getVar('query');
+        }
+        $tags = Tag::get()->filter($filter)->map('ID', 'Title')->toArray();
+        return json_encode($tags);
     }
 }
