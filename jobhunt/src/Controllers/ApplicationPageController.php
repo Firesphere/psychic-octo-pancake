@@ -13,10 +13,6 @@ use Firesphere\JobHunt\Pages\ApplicationPage;
 use LeKoala\FormElements\BsTagsMultiField;
 use LeKoala\FormElements\TagsField;
 use SilverStripe\Control\HTTPRequest;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\Form;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -45,6 +41,9 @@ class ApplicationPageController extends \PageController
 
     public function init()
     {
+        if (!Security::getCurrentUser()) {
+            $this->httpError(403);
+        }
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
         parent::init();
         $this->FavLink = Status::create(['Status' => 'Favourites', 'Colour' => 'success']);
@@ -92,11 +91,6 @@ class ApplicationPageController extends \PageController
     {
         $user = Security::getCurrentUser();
 
-        if (!$user) {
-            $this->httpError(404);
-
-            return $this;
-        }
         $applications = $user->JobApplications();
         $applications = $applications->filter($this->filter)
             ->exclude(['Archived' => true])
@@ -115,7 +109,7 @@ class ApplicationPageController extends \PageController
     {
         $params = $this->getURLParams();
         $application = JobApplication::get()->filter([
-            'ID' => $params['ID'],
+            'ID'     => $params['ID'],
             'UserID' => Security::getCurrentUser()->ID
         ]);
 
@@ -130,11 +124,7 @@ class ApplicationPageController extends \PageController
     public function delete(HTTPRequest $request)
     {
         $user = Security::getCurrentUser();
-        if (!$user) {
-            $this->httpError(403);
 
-            return;
-        }
         $params = $this->getURLParams();
         $types = [
             'application'     => [
@@ -215,6 +205,7 @@ class ApplicationPageController extends \PageController
             $filter['Title:PartialMatch'] = $request->getVar('query');
         }
         $tags = Tag::get()->filter($filter)->map('ID', 'Title')->toArray();
+
         return json_encode($tags);
     }
 }
