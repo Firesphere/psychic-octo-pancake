@@ -4,7 +4,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                    <h4><span class="text-$Status.ColourStyle" title="$Status.Name">&nbsp;&#9679;&nbsp;</span><a
+                    <h4><a href="#"
+                           class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                           data-id="$ID" title="Favourite this application">
+                            <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;
+                        <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
                         href="$Up.Link('application')/$ID" title="View application">$Role</a> at
                         <% with $Company %>
                             <% if $Link %>
@@ -12,12 +16,6 @@
                             <% else %>
                                 $Name
                             <% end_if %>
-                            <a href="#"
-                               class="js-fav pe-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                               data-id="$Up.ID" title="Favourite this application">
-                                <i class="bi bi-star<% if $Up.Favourite %>-fill text-warning<% end_if %>"></i>
-                            </a>
-
                         </h4>
                             <% if $CurrentUser.CanEditCompany %>
                                 <a href="#"
@@ -30,13 +28,12 @@
                             <% end_if %>
                         <% end_with %>
                     </div>
-                    <div class="justify-content-between">
+                    <div class="d-flex justify-content-between">
                         <small class="pull-left">Application date: $ApplicationDate.Nice()</small>
-                        <a href="$Up.Link('application')/$ID" class="pull-right" title="View application"><i
+                        <a href="$Up.Link('application')/$ID" class="h4 mb-0" title="View application"><i
                             class="bi bi-eye-fill"></i></a>
                     </div>
                     <% if $Link %>
-                        <br/>
                         <a href="$Link" class="small" target="_blank">Job description</a>
                     <% end_if %>
                 </div>
