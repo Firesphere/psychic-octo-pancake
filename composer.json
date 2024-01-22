@@ -14,6 +14,7 @@
         "firesphere/haveibeenpwnd": "dev-main",
         "firesphere/module-helpers": "^0.4.0",
         "heyday/silverstripe-colorpalette": "^2.1|^3",
+        "lekoala/silverstripe-form-elements": "dev-master",
         "nzta/silverstripe-sitebanner": "^4.0",
         "phptek/sentry": "^5.0",
         "silverstripe/googlesitemaps": "^3.0",

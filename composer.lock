@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99b6d202610c9932cf0cc9c3b87b36b7",
+    "content-hash": "3a97701a6dd022e64f2f4dcfa66ce821",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -2127,6 +2127,76 @@
                 }
             ],
             "time": "2023-10-17T14:13:20+00:00"
+        },
+        {
+            "name": "lekoala/silverstripe-form-elements",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lekoala/silverstripe-form-elements.git",
+                "reference": "0ead64cd8fd226d63575965f5a933c9348e6b3a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lekoala/silverstripe-form-elements/zipball/0ead64cd8fd226d63575965f5a933c9348e6b3a7",
+                "reference": "0ead64cd8fd226d63575965f5a933c9348e6b3a7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8",
+                "silverstripe/recipe-core": "^5",
+                "silverstripe/recipe-plugin": "^2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "default-branch": true,
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "installer-name": "form-elements",
+                "expose": [
+                    "client"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "LeKoala\\FormElements\\": "src/",
+                    "LeKoala\\FormElements\\Test\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "LeKoala",
+                    "email": "thomas@lekoala.be"
+                }
+            ],
+            "description": "A set of form elements for SilverStripe",
+            "keywords": [
+                "cms",
+                "custom-element",
+                "elements",
+                "extensions",
+                "form",
+                "module",
+                "silverstripe",
+                "webcomponent"
+            ],
+            "support": {
+                "issues": "https://github.com/lekoala/silverstripe-form-elements/issues",
+                "source": "https://github.com/lekoala/silverstripe-form-elements/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lekoala",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-19T10:49:58+00:00"
         },
         {
             "name": "m1/env",

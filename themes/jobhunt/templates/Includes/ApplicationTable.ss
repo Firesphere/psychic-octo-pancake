@@ -28,8 +28,8 @@
     </thead>
     <tbody class="table-group-divider">
     <% loop $Applications %>
-        <tr class="$OddEven">
-            <td rowspan="4" class="col-lg">
+        <tr class="$EvenOdd table-group-divider">
+            <td class="col-lg">
                 <div class="justify-content-start">
                     <% with $Company %>
                         <div class="d-flex justify-content-between">
@@ -74,6 +74,7 @@
                 class="bi bi-eye-fill"></i></a></td>
         </tr>
         <tr class="$OddEven">
+            <td rowspan="3"></td>
             <th>Notes</th>
             <td colspan="4">
                 <% loop $Notes %>

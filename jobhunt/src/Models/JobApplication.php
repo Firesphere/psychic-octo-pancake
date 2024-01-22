@@ -99,10 +99,11 @@ class JobApplication extends DataObject
         $page = ApplicationPage::get()->first();
         $fieldTag->setAttribute('data-allow-new', "true");
         $fieldTag->setAttribute('data-server', $page->Link('/tags'));
-        $fieldTag->setAttribute('data-config', json_encode([
+        $fieldTag->setAttribute('data-separator', " |,|  ");
+        $fieldTag->setAttribute('data-config', [
             'noCache' => "false",
             'addOnBlur' => "true"
-        ]));
+        ]);
 
         $action = FieldList::create();
 
