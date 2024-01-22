@@ -3,3 +3,4 @@ SilverStripe\Control\Director:
     'formhandling//$Action/$ID': Firesphere\JobHunt\Controllers\FormHandler
     'mood//': Firesphere\JobHunt\Controllers\MoodHandler
     'fav//$Action/$ID': Firesphere\JobHunt\Controllers\FavController
+    'ics': Firesphere\JobHunt\Controllers\ICSController
