@@ -29,13 +29,6 @@ class ContactPageController extends PageController
         'submit'
     ];
 
-    public function init()
-    {
-        parent::init();
-        Requirements::block('https://hcaptcha.com/1/api.js?hl=en');
-        Requirements::javascript('_resources/themes/jobhunt/dist/api.js');
-    }
-
     public function ContactForm()
     {
         $fields = FieldList::create([

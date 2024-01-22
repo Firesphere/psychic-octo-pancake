@@ -49,6 +49,9 @@ namespace {
             Requirements::css('_resources/themes/jobhunt/dist/css/' . $SiteConfig->Theme . '.min.css');
             Requirements::css('_resources/themes/jobhunt/dist/css/main.css');
             Requirements::javascript('_resources/themes/jobhunt/dist/js/main.js');
+            Requirements::block('https://hcaptcha.com/1/api.js?hl=en');
+            Requirements::javascript('_resources/themes/jobhunt/dist/api.js');
+
             if (Security::getCurrentUser()) {
                 $this->SecondaryNav = MemberProfilePage::get()->first()->Children();
             }
