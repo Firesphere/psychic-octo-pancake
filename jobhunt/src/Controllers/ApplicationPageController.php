@@ -38,10 +38,12 @@ class ApplicationPageController extends \PageController
     protected $sort;
     protected $filter = [];
     protected $JobApplication;
+    private $user;
 
     public function init()
     {
-        if (!Security::getCurrentUser()) {
+        $this->user = Security::getCurrentUser();
+        if (!$this->user) {
             $this->httpError(403);
         }
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
@@ -58,7 +60,7 @@ class ApplicationPageController extends \PageController
             }
         } else {
             $this->HasShowAll = $this->getRequest()->getVar('showall') ?? false;
-            if (Security::getCurrentUser()->HideClosed && !$this->getRequest()->getVar('showall')) {
+            if ($this->user->HideClosed && !$this->getRequest()->getVar('showall')) {
                 $closed = Status::get()->filter(['AutoHide' => true])->column('ID');
                 $this->filter['StatusID:Not'] = $closed;
             }
@@ -89,15 +91,13 @@ class ApplicationPageController extends \PageController
 
     public function getApplications()
     {
-        $user = Security::getCurrentUser();
-
-        $applications = $user->JobApplications();
+        $applications = $this->user->JobApplications();
         $applications = $applications->filter($this->filter)
             ->exclude(['Archived' => true])
             ->sort($this->sort);
 
         $list = PaginatedList::create($applications, $this->getRequest());
-        if ($user->ViewStyle === 'Card') {
+        if ($this->user->ViewStyle === 'Card') {
             $list->setPageLength(12);
         }
 
@@ -110,7 +110,7 @@ class ApplicationPageController extends \PageController
         $params = $this->getURLParams();
         $application = JobApplication::get()->filter([
             'ID'     => $params['ID'],
-            'UserID' => Security::getCurrentUser()->ID
+            'UserID' => $this->user->ID
         ]);
 
         if (!$application || !$application->exists()) {
@@ -123,8 +123,6 @@ class ApplicationPageController extends \PageController
 
     public function delete(HTTPRequest $request)
     {
-        $user = Security::getCurrentUser();
-
         $params = $this->getURLParams();
         $types = [
             'application'     => [
@@ -132,7 +130,7 @@ class ApplicationPageController extends \PageController
                 'class'  => JobApplication::class,
                 'filter' => [
                     'ID'     => $params['OtherID'],
-                    'UserID' => $user->ID
+                    'UserID' => $this->user->ID
                 ]
             ],
             'interview'       => [
@@ -140,7 +138,7 @@ class ApplicationPageController extends \PageController
                 'class'  => Interview::class,
                 'filter' => [
                     'ID'                 => $params['OtherID'],
-                    'Application.UserID' => $user->ID
+                    'Application.UserID' => $this->user->ID
                 ]
             ],
             'status'          => [
@@ -148,7 +146,7 @@ class ApplicationPageController extends \PageController
                 'class'  => StatusUpdate::class,
                 'filter' => [
                     'ID'                    => $params['OtherID'],
-                    'JobApplication.UserID' => $user->ID
+                    'JobApplication.UserID' => $this->user->ID
                 ]
             ],
             'applicationnote' => [
@@ -156,7 +154,7 @@ class ApplicationPageController extends \PageController
                 'class'  => ApplicationNote::class,
                 'filter' => [
                     'ID'                    => $params['OtherID'],
-                    'JobApplication.UserID' => $user->ID
+                    'JobApplication.UserID' => $this->user->ID
                 ]
             ],
             'interviewnote'   => [
@@ -164,7 +162,7 @@ class ApplicationPageController extends \PageController
                 'class'  => InterviewNote::class,
                 'filter' => [
                     'ID'                           => $params['OtherID'],
-                    'Interview.Application.UserID' => $user->ID
+                    'Interview.Application.UserID' => $this->user->ID
                 ]
             ],
         ];
