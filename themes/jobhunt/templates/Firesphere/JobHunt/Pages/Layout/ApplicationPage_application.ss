@@ -42,27 +42,29 @@
                     </span>
                 </div>
             </div>
-            <div class="col-12 pb-2">
+            <div class="col-sm-6 col-xs-12 pb-2">
                 Application date: $ApplicationDate.Nice()<br/>
-                <a href="$Link" target="_blank">Link</a><br/>
+                <a href="$Link" target="_blank">Link to job description</a><br/>
             </div>
+            <% if $CoverLetter %>
+                <div class="col-sm-6 col-xs-12 pb-2">
+                    <a href="#coverletter-$ID"
+                       data-bs-toggle="modal"
+                       data-bs-target="#coverletter-$ID">Cover letter</a>
+                </div>
+            <% end_if %>
+
             <hr class="pb-1"/>
             <% if $StatusUpdates.Filter('Hidden', false).Count() %>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-6">
                     <h3>Status updates</h3>
                     <% loop $StatusUpdates.Filter('Hidden', false) %>
                         <% include Note Type=statusupdate %>
                     <% end_loop %>
                 </div>
             <% end_if %>
-            <% if $CoverLetter %>
-                <div class="col-12 col-md-4">
-                    <h3>Cover letter</h3>
-                    $CoverLetter
-                </div>
-            <% end_if %>
             <% if $Notes.Count %>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-6">
                     <h3>Notes:</h3>
                     <% loop $Notes %>
                         <% include Note Type=note %>
@@ -74,20 +76,25 @@
             <div class="row d-flex justify-content-between">
                 <h3 class="col-12">Interviews:</h3>
                 <% loop $Interviews %>
-                    <div class=" mb-5 col-6">
+                    <div class=" b-5 col-12">
                         <div class="card">
                             <div class="card-body p-3">
-                                <h5 class="card-title">Interview</h5>
+                                <h5 class="card-title">
+                                    Interview</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary">Interview
                                     date/time: $DateTime.Nice()</h6>
-                                <div class="card-text row">
+                                <div class="card-text">
                                     <% if $Notes %>
-                                        <h4>Notes on this interview</h4>
-                                        <% loop $Notes %>
-                                            <div class="col-6 mb-2">
-                                                <% include Note Type=0 %>
-                                            </div>
-                                        <% end_loop %>
+                                        <h4><a data-bs-toggle="collapse" href="#details-$ID"
+                                               aria-expanded="false"
+                                               aria-controls="details-$ID">Notes on this interview</a></h4>
+                                        <div class="collapse row" id="details-$ID">
+                                            <% loop $Notes %>
+                                                <div class="col-6 mb-2">
+                                                    <% include Note Type=0 %>
+                                                </div>
+                                            <% end_loop %>
+                                        </div>
                                     <% else %>
                                         <div class="col">
                                             <p>No notes.</p>
@@ -108,6 +115,9 @@
                     </div>
                 <% end_loop %>
             </div>
+        <% end_if %>
+        <% if $CoverLetter %>
+            <% include CoverLetterModal %>
         <% end_if %>
     <% end_with %>
 </div>
