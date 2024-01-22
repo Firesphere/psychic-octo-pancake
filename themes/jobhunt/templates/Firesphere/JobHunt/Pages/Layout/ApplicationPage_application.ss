@@ -87,7 +87,7 @@
                                     <% if $Notes %>
                                         <h4><a data-bs-toggle="collapse" href="#details-$ID"
                                                aria-expanded="false"
-                                               aria-controls="details-$ID">Notes on this interview</a></h4>
+                                               aria-controls="details-$ID">Notes on this interview</a>&nbsp;($Notes.Count)</h4>
                                         <div class="collapse row" id="details-$ID">
                                             <% loop $Notes %>
                                                 <div class="col-6 mb-2">

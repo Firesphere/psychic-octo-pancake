@@ -12821,6 +12821,7 @@
     "stability-flags": {
         "firesphere/cspheaders": 20,
         "firesphere/haveibeenpwnd": 20,
+        "lekoala/silverstripe-form-elements": 20,
         "silverstripe/login-forms": 0,
         "silverstripe/recipe-cms": 0,
         "silverstripe/recipe-plugin": 0,
