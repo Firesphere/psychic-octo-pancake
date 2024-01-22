@@ -16,7 +16,7 @@ const initNotes = () => {
             });
         });
     }
-    if (form.length) {
+    if (form) {
         form.addEventListener('show.bs.collapse', event => {
             tinyMCE.remove();
             tinyMCE.init({
