@@ -28,6 +28,7 @@ use SilverStripe\Security\Security;
  * @property string $URLSegment
  * @property bool $HideClosed
  * @property string $ViewStyle
+ * @property string $APIKey
  * @method DataList|JobApplication[] JobApplications()
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
@@ -40,7 +41,8 @@ class MemberExtension extends DataExtension
         'PublicCV'   => DBBoolean::class . '(false)',
         'URLSegment' => DBVarchar::class,
         'HideClosed' => DBBoolean::class . '(false)',
-        'ViewStyle'  => DBEnum::class . '("Table,Card", "Table")'
+        'ViewStyle'  => DBEnum::class . '("Table,Card", "Table")',
+        'APIKey'     => DBVarchar::class,
     ];
 
     private static $has_many = [
@@ -52,6 +54,7 @@ class MemberExtension extends DataExtension
 
     private static $indexes = [
         'URLSegment' => true,
+        'APIKey' => true
     ];
 
     protected static $_job_applications;
@@ -61,6 +64,9 @@ class MemberExtension extends DataExtension
     {
         if (!$this->owner->URLSegment) {
             $this->owner->URLSegment = SiteTree::singleton()->generateURLSegment(sprintf('%s %s', $this->owner->FirstName, $this->owner->Surname));
+        }
+        if (!$this->owner->APIKey) {
+            $this->owner->APIKey = hash('sha256', uniqid('APIKey', true));
         }
         parent::onBeforeWrite();
     }
@@ -88,7 +94,7 @@ class MemberExtension extends DataExtension
         self::set_job_applications();
 
         return Interview::get()->filter([
-            'ApplicationID'        => self::$_job_application_ids,
+            'ApplicationID' => self::$_job_application_ids,
         ]);
     }
 
@@ -97,8 +103,8 @@ class MemberExtension extends DataExtension
         self::set_job_applications();
 
         return StatusUpdate::get()->filter([
-            'JobApplicationID'        => self::$_job_application_ids,
-            'Hidden'                  => false
+            'JobApplicationID' => self::$_job_application_ids,
+            'Hidden'           => false
         ]);
     }
 
@@ -127,6 +133,6 @@ class MemberExtension extends DataExtension
 
     public function getCanEditCompany()
     {
-        return $this->owner->inGroups(["administrators","legacy","subscriber"]);
+        return $this->owner->inGroups(["administrators", "legacy", "subscriber"]);
     }
 }
