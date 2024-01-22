@@ -7,7 +7,7 @@
                     <h4><a href="#"
                            class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                            data-id="$ID" title="Favourite this application">
-                            <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;
+                        <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;
                         <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
                         href="$Up.Link('application')/$ID" title="View application">$Role</a> at
                         <% with $Company %>
@@ -43,16 +43,18 @@
                         <ul class="list-group list-group-flush">
                             <% loop $StatusUpdates.Filter('Hidden', 0) %>
                                 <li class="list-group-item border-secondary border-1">
-                                    <a data-bs-toggle="collapse" href="#Update-$ID"
-                                       class="badge text-bg-$Status.Colourstyle"
-                                       role="button"
-                                       aria-expanded="false"
-                                       aria-controls="Update-$ID">
-                                        $Title ($Created.Date())
-                                    </a>
-                                    <a href="$deleteLink"
-                                       class="pull-right text-warning"
-                                       title="Delete this status"><i class="bi bi-x-octagon-fill"></i></a>
+                                    <div class=" d-flex justify-content-between">
+                                        <a data-bs-toggle="collapse" href="#Update-$ID"
+                                           class="badge text-bg-$Status.Colourstyle"
+                                           role="button"
+                                           aria-expanded="false"
+                                           aria-controls="Update-$ID">
+                                            $Title ($Created.Date())
+                                        </a>
+                                        <a href="$deleteLink"
+                                           class="pull-right text-warning"
+                                           title="Delete this status"><i class="bi bi-x-octagon-fill"></i></a>
+                                    </div>
                                     <div class="collapse card-text" id="Update-$ID">
                                         <p class="card-text">
                                             $Note
@@ -80,14 +82,17 @@
                         <ul class="list-group list-group-flush">
                             <% loop $Interviews %>
                                 <li class="list-group-item border-secondary border-1">
-                                    <a data-bs-toggle="collapse" href="#Interview-$ID" role="button"
-                                       aria-expanded="false"
-                                       aria-controls="Interview-$ID">
-                                        $DateTime.Nice
-                                    </a>
-                                    <a href="$deleteLink"
-                                       class="pull-right text-warning"
-                                       title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
+                                    <div class=" d-flex justify-content-between">
+
+                                        <a data-bs-toggle="collapse" href="#Interview-$ID" role="button"
+                                           aria-expanded="false"
+                                           aria-controls="Interview-$ID">
+                                            $DateTime.Nice
+                                        </a>
+                                        <a href="$deleteLink"
+                                           class="pull-right text-warning"
+                                           title="Delete this interview"><i class="bi bi-x-octagon-fill"></i></a>
+                                    </div>
                                     <div class="collapse card-text" id="Interview-$ID">
                                         <% if $Notes.Count %>
                                             <hr/>
@@ -125,13 +130,16 @@
                         <ul class="list-group list-group-flush">
                             <% loop $Notes %>
                                 <li class="list-group-item border-secondary border-1">
-                                    <a data-bs-toggle="collapse" href="#Note-$ID" role="button" aria-expanded="false"
-                                       aria-controls="Note-$ID">
-                                        $Title ($Created.Date())
-                                    </a>
-                                    <a href="$deleteLink"
-                                       class="pull-right text-warning"
-                                       title="Delete this note"><i class="bi bi-x-octagon-fill"></i></a>
+                                    <div class=" d-flex justify-content-between">
+                                        <a data-bs-toggle="collapse" href="#Note-$ID" role="button"
+                                           aria-expanded="false"
+                                           aria-controls="Note-$ID">
+                                            $Title ($Created.Date())
+                                        </a>
+                                        <a href="$deleteLink"
+                                           class="pull-right text-warning"
+                                           title="Delete this note"><i class="bi bi-x-octagon-fill"></i></a>
+                                    </div>
                                     <div class="collapse card-text" id="Note-$ID">
                                         $Note
                                         <hr/>
