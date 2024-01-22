@@ -56,7 +56,7 @@
                     <% end_with %>
                 </div>
             </td>
-            <td class="col-lg" colspan="2"><a href="$Link" target="_blank">$Role</a></td>
+            <td class="col-lg" colspan="2"><a href="$Up.Link('application')/$ID" title="View application">$Role</a></td>
             <td class="col-lg">$ApplicationDate.Nice()</td>
             <td class="col-lg">
                 <div class="badge text-bg-$Status.ColourStyle">$Status.Name</div>
@@ -74,7 +74,11 @@
                 class="bi bi-eye-fill"></i></a></td>
         </tr>
         <tr class="$OddEven">
-            <td rowspan="3"></td>
+            <td rowspan="3">
+                <% if $Link %>
+                <a href="$Link" target="_blank">Job description</a>
+                <% end_if %>
+            </td>
             <th>Notes</th>
             <td colspan="4">
                 <% loop $Notes %>
