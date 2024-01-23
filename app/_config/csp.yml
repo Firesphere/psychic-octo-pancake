@@ -34,7 +34,7 @@ Firesphere\CSPHeaders\View\CSPBackend:
       allow: [ none ]
     microphone:
       allow: [ none ]
-  referrer: same-origin
+  referrer: strict-origin-when-cross-origin
   frame-options: SAMEORIGIN
   content-type-options: nosniff
   CORS:
