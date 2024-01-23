@@ -87,42 +87,56 @@ class MemberExtension extends DataExtension
     {
         self::set_job_applications();
 
-        return Interview::get()->filter([
-            'ApplicationID'        => self::$_job_application_ids,
-        ]);
+        if (self::$_job_applications->count()) {
+            return Interview::get()->filter([
+                'ApplicationID'        => self::$_job_application_ids,
+            ]);
+        }
+        return DataList::create();
     }
 
     public function getStatusUpdates()
     {
         self::set_job_applications();
 
-        return StatusUpdate::get()->filter([
-            'JobApplicationID'        => self::$_job_application_ids,
-            'Hidden'                  => false
-        ]);
+        if (self::$_job_applications->count()) {
+            return StatusUpdate::get()->filter([
+                'JobApplicationID' => self::$_job_application_ids,
+                'Hidden'           => false
+            ]);
+        }
+        return DataList::create();
     }
 
     public function getStatusNumbers()
     {
         self::set_job_applications();
 
-        $applications = self::$_job_applications->shuffle();
+        if (self::$_job_applications->count()) {
 
-        $return = [];
-        $statusMap = Status::getIdMap();
-        foreach ($applications as $application) {
-            $status = $statusMap[$application->StatusID];
-            $return[$status] = isset($return[$status]) ? $return[$status] + 1 : 1;
+            $applications = self::$_job_applications->shuffle();
+
+            $return = [];
+            $statusMap = Status::getIdMap();
+            foreach ($applications as $application) {
+                $status = $statusMap[$application->StatusID];
+                $return[$status] = isset($return[$status]) ? $return[$status] + 1 : 1;
+            }
+
+            return $return;
         }
-
-        return $return;
+        return DataList::create();
     }
 
     public function getOpenOutstanding()
     {
         self::set_job_applications();
 
-        return self::$_job_applications->filter('Status.AutoHide', false);
+        if (self::$_job_applications->count()) {
+            return self::$_job_applications->filter('Status.AutoHide', false);
+        }
+
+        return DataList::create();
     }
 
     public function getCanEditCompany()
