@@ -17,7 +17,7 @@
     </div>
     <div class="col-5 align-self-end">
         <h2><%t MemberProfiles.REGISTER "Register" %></h2>
-
+        $Content
         $Form
     </div>
 </div>
