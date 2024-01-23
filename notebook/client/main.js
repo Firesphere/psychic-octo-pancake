@@ -26,12 +26,6 @@ const initNotes = () => {
                 statusbar: false
             });
         });
-        form.addEventListener('hidden.bs.collapse', () => {
-            tinyMCE.remove();
-            document.getElementById('NotebookForm_NotebookForm_ID').value = '';
-            document.getElementById('NotebookForm_NotebookForm_Title').value = '';
-            document.getElementById('NotebookForm_NotebookForm_Content').value = '';
-        });
     }
 }
 
