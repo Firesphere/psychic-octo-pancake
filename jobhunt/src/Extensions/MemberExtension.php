@@ -5,6 +5,7 @@ namespace Firesphere\JobHunt\Extensions;
 use Firesphere\JobHunt\Models\BaseNote;
 use Firesphere\JobHunt\Models\ExcludedStatus;
 use Firesphere\JobHunt\Models\Interview;
+use Firesphere\JobHunt\Models\InterviewPreparation;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StateOfMind;
 use Firesphere\JobHunt\Models\Status;
@@ -33,6 +34,7 @@ use SilverStripe\Security\Security;
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
  * @method DataList|ExcludedStatus[] ExcludedStatus()
+ * @method DataList|InterviewPreparation[] Preparations()
  */
 class MemberExtension extends DataExtension
 {
@@ -48,7 +50,8 @@ class MemberExtension extends DataExtension
         'JobApplications' => JobApplication::class . '.User',
         'Notes'           => BaseNote::class . '.Owner',
         'Moods'           => StateOfMind::class . '.User',
-        'ExcludedStatus'  => ExcludedStatus::class . '.User'
+        'ExcludedStatus'  => ExcludedStatus::class . '.User',
+        'Preparations'    => InterviewPreparation::class . '.User'
     ];
 
     private static $indexes = [

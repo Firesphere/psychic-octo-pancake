@@ -16,8 +16,10 @@ use SilverStripe\ORM\ManyManyList;
  * @property int $Duration
  * @property int $ApplicationID
  * @property int $StatusUpdateID
+ * @property int $PreparationID
  * @method JobApplication Application()
  * @method StatusUpdate StatusUpdate()
+ * @method InterviewPreparation Preparation()
  * @method DataList|InterviewNote[] Notes()
  * @method ManyManyList|Interviewer[] Interviewers()
  */
@@ -33,6 +35,7 @@ class Interview extends DataObject
     private static $has_one = [
         'Application'  => JobApplication::class,
         'StatusUpdate' => StatusUpdate::class,
+        'Preparation' => InterviewPreparation::class,
     ];
 
     private static $many_many = [
