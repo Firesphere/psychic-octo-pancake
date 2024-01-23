@@ -26,7 +26,7 @@ class NotebookForm extends Form
         $fields = FieldList::create([
             TextField::create('Title', 'Title'),
             HTMLEditorField::create('Content', 'Note'),
-            HiddenField::create('ID', 'ID')
+            HiddenField::create('ID', 'ID'),
         ]);
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
@@ -38,6 +38,7 @@ class NotebookForm extends Form
             $this->loadDataFrom($controller->getNote());
         }
         $this->addExtraClass('collapse');
+        $this->setAttribute('novalidate', 'novalidate');
     }
 
     /**
