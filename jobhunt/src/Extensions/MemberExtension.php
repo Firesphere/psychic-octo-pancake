@@ -10,6 +10,7 @@ use Firesphere\JobHunt\Models\StateOfMind;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\FieldType\DBBoolean;
@@ -92,7 +93,7 @@ class MemberExtension extends DataExtension
                 'ApplicationID'        => self::$_job_application_ids,
             ]);
         }
-        return DataList::create();
+        return ArrayList::create();
     }
 
     public function getStatusUpdates()
@@ -105,7 +106,7 @@ class MemberExtension extends DataExtension
                 'Hidden'           => false
             ]);
         }
-        return DataList::create();
+        return ArrayList::create();
     }
 
     public function getStatusNumbers()
@@ -125,7 +126,7 @@ class MemberExtension extends DataExtension
 
             return $return;
         }
-        return DataList::create();
+        return ArrayList::create();
     }
 
     public function getOpenOutstanding()
@@ -136,7 +137,7 @@ class MemberExtension extends DataExtension
             return self::$_job_applications->filter('Status.AutoHide', false);
         }
 
-        return DataList::create();
+        return ArrayList::create();
     }
 
     public function getCanEditCompany()
