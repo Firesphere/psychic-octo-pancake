@@ -90,9 +90,10 @@ class MemberExtension extends DataExtension
 
         if (self::$_job_applications->count()) {
             return Interview::get()->filter([
-                'ApplicationID'        => self::$_job_application_ids,
+                'ApplicationID' => self::$_job_application_ids,
             ]);
         }
+
         return ArrayList::create();
     }
 
@@ -106,6 +107,7 @@ class MemberExtension extends DataExtension
                 'Hidden'           => false
             ]);
         }
+
         return ArrayList::create();
     }
 
@@ -113,20 +115,19 @@ class MemberExtension extends DataExtension
     {
         self::set_job_applications();
 
+        $return = [];
         if (self::$_job_applications->count()) {
 
             $applications = self::$_job_applications->shuffle();
 
-            $return = [];
             $statusMap = Status::getIdMap();
             foreach ($applications as $application) {
                 $status = $statusMap[$application->StatusID];
                 $return[$status] = isset($return[$status]) ? $return[$status] + 1 : 1;
             }
-
-            return $return;
         }
-        return ArrayList::create();
+
+        return $return;
     }
 
     public function getOpenOutstanding()
@@ -142,6 +143,6 @@ class MemberExtension extends DataExtension
 
     public function getCanEditCompany()
     {
-        return $this->owner->inGroups(["administrators","legacy","subscriber"]);
+        return $this->owner->inGroups(["administrators", "legacy", "subscriber"]);
     }
 }
