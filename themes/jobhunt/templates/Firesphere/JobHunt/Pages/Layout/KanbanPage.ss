@@ -1,6 +1,7 @@
 <div class="container bg-info-subtle p-2 mb-2">
     <div class="row">
-    <div class="col-12">This board is currently read-only!</div>
+        <div class="col-12">This board is currently read-only!</div>
+        <div class="col-12 d-block d-lg-none"><em><b>The Kanban board works better on full desktop/laptop/tablet screens</b></em></div>
     </div>
 </div>
 
@@ -37,7 +38,7 @@
                        aria-controls="description-3">Responses</a>
                 </h3>
                 <small class="mb-0 text-muted collapse" id="description-2">
-                    Applications that have had a response or have been viewed.<br />
+                    Applications that have had a response or have been viewed.<br/>
                     This includes applications that had a response <em>after</em> an interview
                 </small>
             </div>
@@ -60,8 +61,8 @@
                        aria-controls="description-3">Interview</a>
                 </h3>
                 <small class="mb-0 text-muted collapse" id="description-3">
-                    Job applications currently in "interview" stage.<br />
-                    Note that if your status is "Response" after an interview<br />
+                    Job applications currently in "interview" stage.<br/>
+                    Note that if your status is "Response" after an interview<br/>
                     that those applications will not be in this column.
                 </small>
             </div>
@@ -84,7 +85,7 @@
                        aria-controls="description-4">Closed</a>
                 </h3>
                 <small class="mb-0 text-muted collapse" id="description-4">
-                    Applications that have been closed<br />
+                    Applications that have been closed<br/>
                     This means any status as described on your profile
                 </small>
             </div>
