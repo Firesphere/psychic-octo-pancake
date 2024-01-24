@@ -4,3 +4,6 @@ SilverStripe\Security\Member:
 Symbiote\MemberProfiles\Pages\MemberProfilePageController:
   extensions:
     - Firesphere\JobHunt\Extensions\MemberProfilePageControllerExtension
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Firesphere\JobHunt\Extensions\SiteConfigExtension

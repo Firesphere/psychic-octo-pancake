@@ -30,10 +30,23 @@
         <div class="col-12">
 
             <div class="py-3">
-                <% if $CurrentUser.ViewStyle != 'Card' %>
-                    <% include ApplicationTable %>
+                <% if $CurrentUser.Applications.Count %>
+                    <% if $CurrentUser.ViewStyle != 'Card' %>
+                        <% include ApplicationTable %>
+                    <% else %>
+                        <% include ApplicationCards %>
+                    <% end_if %>
                 <% else %>
-                    <% include ApplicationCards %>
+                    <h3>Import</h3>
+                    <p>You can import applications from CSV via the button below.</p>
+                    <p>Please be aware that the import will not check for duplicate applications, interviews, notes, etc.</p>
+                    <p><a href="$SiteConfig.DemoCSV.Link" title="download example csv">Example CSV</a></p>
+                    <button type="button" class="btn btn-primary js-formaction"
+                            data-itemtype="import"
+                            data-bs-toggle="modal"
+                            data-bs-target="#addItemModal">
+                        Import from CSV
+                    </button>
                 <% end_if %>
             </div>
         </div>

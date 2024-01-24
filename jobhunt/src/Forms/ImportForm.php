@@ -16,6 +16,7 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
+use SilverStripe\SiteConfig\SiteConfig;
 
 class ImportForm extends Form
 {
@@ -25,6 +26,7 @@ class ImportForm extends Form
 <pre>Company,Role,ApplicationDate,Status,Interview,Note
 "TestCompany","Tester","15-06-2023","Applied","30-06-2023 12:00:00;02-07-2023 10:00:00","This is a note"
 </pre>
+<a href="%s" title="download example csv">Example CSV</a>
 <p>The Interview field can contain multiple date-times, separated by a <code>;</code><br />If no status supplied, "Applied" will be used.
 Interview and Note are optional fields.</p>';
 
@@ -34,9 +36,10 @@ Interview and Note are optional fields.</p>';
         if (!$user) {
             throw new PermissionFailureException('You need to be logged in.');
         }
+        $config = SiteConfig::current_site_config();
 
         $fields = FieldList::create(
-            LiteralField::create('help', self::HELPTEXT),
+            LiteralField::create('help', sprintf(self::HELPTEXT, $config->DemoCSV()->Link())),
             FileField::create('Attachment', 'Attachments')
         );
         $actions = FieldList::create([
