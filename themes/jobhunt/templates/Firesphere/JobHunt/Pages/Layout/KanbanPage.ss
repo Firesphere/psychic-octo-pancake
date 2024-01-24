@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-    <div class="col col-md-3">
+    <div class="col-12 col-md-3">
         <div class="card mb-3">
             <div class="card-header bg-light">
                 <h3 class="card-title h5 mb-1">
