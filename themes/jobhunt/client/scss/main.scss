@@ -11,4 +11,11 @@ body {
     #adblock.bottom-0.end-0 {
         bottom: 75px !important;
     }
+
+    &.KanbanPage {
+        .tasks .card {
+            cursor: -webkit-grab;
+            cursor: grab;
+        }
+    }
 }

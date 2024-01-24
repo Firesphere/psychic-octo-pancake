@@ -1,2 +1,3 @@
-import dragula from 'dragula';
+import kanban from './src/kanban/kanban';
 
+kanban();

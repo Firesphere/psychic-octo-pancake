@@ -1,4 +1,4 @@
-<div class="card col mb-3">
+<div class="card col mb-3" data-id="$ID">
     <div class="card-body">
         <h5 class="card-title">
             <a href="#"
