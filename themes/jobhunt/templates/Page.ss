@@ -27,7 +27,7 @@
 </head>
 <body class="$ClassName.ShortName">
 <% include Header %>
-<main role="main" class="py-4 container">
+<main role="main" class="py-4 container<% if $ClassName.ShortName == 'KanbanPage' %>-fluid<% end_if %>">
     <% if $FlashMessagesPresent %>
         <% loop $FlashMessages.Limit(1) %>
             <div class="alert alert-$Type alert-dismissible fade show" role="alert">

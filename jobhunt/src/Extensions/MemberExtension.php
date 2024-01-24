@@ -145,4 +145,23 @@ class MemberExtension extends DataExtension
     {
         return $this->owner->inGroups(["administrators", "legacy", "subscriber"]);
     }
+
+    public function getInProgressApplications()
+    {
+        self::set_job_applications();
+
+        if (self::$_job_applications->count()) {
+            return self::$_job_applications->exclude([
+                'Status.Status'   => [
+                    'Applied',
+                    'Interview',
+                    'Invited',
+                    'Accepted'
+                ]
+            ])
+                ->filter(['AutoHide' => false]);
+        }
+
+        return ArrayList::create();
+    }
 }

@@ -88,6 +88,8 @@ class JobApplication extends DataObject
         'ApplicationDate'
     ];
 
+    private static $default_sort = 'ApplicationDate DESC';
+
 
     public function TagForm()
     {
@@ -133,5 +135,12 @@ class JobApplication extends DataObject
                 //ignore
             }
         }
+    }
+
+    public function Link()
+    {
+        $page = ApplicationPage::get()->first();
+
+        return $page->Link('application/' . $this->ID);
     }
 }

@@ -9,7 +9,7 @@
                            data-id="$ID" title="Favourite this application">
                         <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;
                         <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
-                        href="$Up.Link('application')/$ID" title="View application">$Role</a> at
+                        href="$Link" title="View application">$Role</a> at
                         <% with $Company %>
                             <% if $Link %>
                                 <a href="$Link" target="_blank">$Name</a>
