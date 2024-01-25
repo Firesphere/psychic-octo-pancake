@@ -1,11 +1,12 @@
-<div class="container bg-info-subtle p-2 mb-2">
+<h1>$Title</h1>
+<div class="container bg-info-subtle p-2 mb-2 d-block d-md-none">
     <div class="row">
-        <div class="col-12 d-block d-lg-none"><em><b>The Kanban board works better on full desktop/laptop/tablet
+        <div class="col-12 d-block d-md-none"><em><b>The Kanban board works better on full desktop/laptop/tablet
             screens</b></em></div>
     </div>
 </div>
 <div class="row">
-    <div class="col-12 col-sm-6 col-lg-3" id="collapse-kanboard-1">
+    <div class="col-12 col-sm-6 col-md-3" id="collapse-kanboard-1">
         <div class="card mb-3">
             <div class="card-header bg-light">
                 <div class="card-title h5 mb-1 col-12 d-flex justify-content-between">
@@ -39,7 +40,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-lg-3">
+    <div class="col-12 col-sm-6 col-md-3">
         <div class="card mb-3">
             <div class="card-header bg-light">
                 <h3 class="card-title h5 mb-1">
@@ -62,7 +63,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-lg-3">
+    <div class="col-12 col-sm-6 col-md-3">
         <div class="card mb-3">
             <div class="card-header bg-light">
                 <h3 class="card-title h5 mb-1">
@@ -86,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-lg-3">
+    <div class="col-12 col-sm-6 col-md-3">
         <div class="card mb-3">
             <div class="card-header bg-light">
                 <h3 class="card-title h5 mb-1">
