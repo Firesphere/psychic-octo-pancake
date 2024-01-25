@@ -14,7 +14,7 @@ const applyMoods = (score) => {
             mood.parentElement.classList.add('p-0');
             mood.children[0].classList.add('h2');
         }
-        mood.outerHTML = mood.outerHTML;
+        mood["outerHTML"] = mood.outerHTML;
     });
 }
 

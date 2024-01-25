@@ -30,19 +30,12 @@ class StatusUpdateForm extends Form
         }
 
         $hiddenType = 'JobApplicationID';
-        $params = $controller->getURLParams();
+        $params = $controller->getRequest()->params();
         if ($params['ID'] === 'edit') {
             $hiddenType = 'ID';
         }
         $name = self::DEFAULT_NAME;
-        $fields = FieldList::create([
-            TextField::create('Title', 'Title'),
-            TextareaField::create('Note', 'Note'),
-            $status = DropdownField::create('StatusID', 'Status', Status::get()->map('ID', 'Status')->toArray()),
-            HiddenField::create($hiddenType, $hiddenType, $params['OtherID']),
-        ]);
-        $status->addExtraClass('form-select');
-        $status->setEmptyString('-- Select status --');
+        $fields = $this->getFieldList($hiddenType, $params);
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);
@@ -50,14 +43,28 @@ class StatusUpdateForm extends Form
         $validator = RequiredFields::create(['Title', 'Note', 'StatusID']);
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
-            $status = StatusUpdate::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
-            $this->loadDataFrom($status);
-            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $status->deleteLink());
+            $statusUpdate = StatusUpdate::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
+            $this->loadDataFrom($statusUpdate);
+            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $statusUpdate->deleteLink());
             $actions->push(
                 $deleteButton = LiteralField::create('delete', $deleteLink)
             );
 
         }
+    }
+
+    protected function getFieldList($hiddenType, $params)
+    {
+        $list = FieldList::create([
+            TextField::create('Title', 'Title'),
+            TextareaField::create('Note', 'Note'),
+            $status = DropdownField::create('StatusID', 'Status', Status::get()->map('ID', 'Status')->toArray()),
+            HiddenField::create($hiddenType, $hiddenType, $params['OtherID']),
+        ]);
+        $status->addExtraClass('form-select');
+        $status->setEmptyString('-- Select status --');
+
+        return $list;
     }
 
     /**

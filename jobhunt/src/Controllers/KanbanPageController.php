@@ -26,12 +26,7 @@ class KanbanPageController extends \PageController
         if (!Security::getCurrentUser()) {
             $this->httpError(403);
         }
-        Requirements::javascript('_resources/themes/jobhunt/dist/js/kanban.js');
         parent::init();
-    }
-
-    public function update(HTTPRequest $request)
-    {
-
+        Requirements::javascript('_resources/themes/jobhunt/dist/js/kanban.js');
     }
 }

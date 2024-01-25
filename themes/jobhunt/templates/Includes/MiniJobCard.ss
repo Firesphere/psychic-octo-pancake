@@ -17,7 +17,7 @@
                    role="button"
                    aria-expanded="false"
                    aria-controls="$ID"
-                >Status updates</a>
+                >Status updates&nbsp;<i class="bi bi-arrow-expand"></i></a>
                 <div class="collapse card-body pt-1 py-0" id="$ID">
                     <% loop $StatusUpdates %>
                         <h5>$Title</h5>

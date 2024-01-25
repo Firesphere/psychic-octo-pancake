@@ -14,7 +14,6 @@ export default () => {
                 icon.classList.add('text-warning');
                 icon.classList.remove('bi-star');
                 icon.classList.add('bi-star-fill');
-                add = true;
             }
             fetch(`fav/addremove/${fav.getAttribute('data-id')}`)
         })

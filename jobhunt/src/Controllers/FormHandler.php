@@ -3,11 +3,12 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Forms\ApplicationForm;
+use Firesphere\JobHunt\Forms\ApplicationNoteForm;
+use Firesphere\JobHunt\Forms\CloseForm;
 use Firesphere\JobHunt\Forms\CompanyForm;
 use Firesphere\JobHunt\Forms\ImportForm;
 use Firesphere\JobHunt\Forms\InterviewForm;
 use Firesphere\JobHunt\Forms\InterviewNoteForm;
-use Firesphere\JobHunt\Forms\ApplicationNoteForm;
 use Firesphere\JobHunt\Forms\StatusUpdateForm;
 use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\BaseNote;
@@ -34,6 +35,7 @@ class FormHandler extends Controller
         'ApplicationNoteForm',
         'ImportForm',
         'CompanyForm',
+        'CloseForm',
     ];
     /**
      * @var JobApplication
@@ -103,6 +105,16 @@ class FormHandler extends Controller
     public function StatusUpdateForm()
     {
         $form = StatusUpdateForm::create($this);
+        if ($this->getRequest()->isGET()) {
+            return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()], JSON_THROW_ON_ERROR);
+        }
+
+        return $form;
+    }
+
+    public function CloseForm()
+    {
+        $form = CloseForm::create($this);
         if ($this->getRequest()->isGET()) {
             return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()], JSON_THROW_ON_ERROR);
         }
