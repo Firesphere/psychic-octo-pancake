@@ -1,6 +1,5 @@
 <div class="container bg-info-subtle p-2 mb-2">
     <div class="row">
-        <div class="col-12">This board is currently read-only! Any drag-and-drop changes will not be saved</div>
         <div class="col-12 d-block d-lg-none"><em><b>The Kanban board works better on full desktop/laptop/tablet
             screens</b></em></div>
     </div>
