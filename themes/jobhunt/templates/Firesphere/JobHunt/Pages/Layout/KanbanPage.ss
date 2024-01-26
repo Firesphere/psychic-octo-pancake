@@ -7,9 +7,20 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-12 col-sm-6 col-md-2">
+        <div class="mb-2 col-12">
+        <button type="button" class="btn-sm btn btn-primary js-formaction"
+                data-itemtype="application"
+                data-bs-toggle="modal"
+                data-bs-target="#addItemModal">
+            Add application
+        </button>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn Add=true, ColumnTitle='Applied', ColumnCount=$CurrentUser.JobApplications.Filter('Status.Status', 'Applied').Count(), ColumnDescription="Jobs you've applied for" %>
+            <% include KanbanColumn ColumnTitle='Applied', ColumnCount=$CurrentUser.JobApplications.Filter('Status.Status', 'Applied').Count(), ColumnDescription="Jobs you've applied for" %>
             <div class="card-body">
                 <div class="tasks" id="Applied">
                     <% loop $CurrentUser.JobApplications.Filter('Status.Status', 'Applied') %>
@@ -19,9 +30,9 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-2">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn Add=false, ColumnTitle="Started", ColumnCount=$CurrentUser.InProgressApplications.Count(), ColumnDescription="Applications that have had a response or have been viewed etc.<br/>
+            <% include KanbanColumn ColumnTitle="Started", ColumnCount=$CurrentUser.InProgressApplications.Count(), ColumnDescription="Applications that have had a response or have been viewed etc.<br/>
                     This includes applications that had a response <em>after</em> an interview" %>
             <div class="card-body">
                 <div class="tasks" id="Progress">
@@ -32,9 +43,9 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-2">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn Add=false, ColumnTitle="Interview", ColumnCount=$CurrentUser.getPrePostInterview(false).Count(), ColumnDescription='Job applications currently in "interview" stage.<br/>
+            <% include KanbanColumn ColumnTitle="Interview", ColumnCount=$CurrentUser.getPrePostInterview(false).Count(), ColumnDescription='Job applications currently in "interview" stage.<br/>
                     Note that if your status is "Response" after an interview<br/>
                     that those applications will not be in this column.' %>
             <div class="card-body">
@@ -46,9 +57,9 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-2">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn Add=false, ColumnTitle="Post-Interview", ColumnCount=$CurrentUser.getPrePostInterview(true).Count(), ColumnDescription='You have had an interview
+            <% include KanbanColumn ColumnTitle="Post-Interview", ColumnCount=$CurrentUser.getPrePostInterview(true).Count(), ColumnDescription='You have had an interview
             and are now waiting on feedback.' %>
             <div class="card-body">
                 <div class="tasks" id="PostInterview">
@@ -59,9 +70,9 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-2">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn Add=false, ColumnTitle="Followed-up", ColumnCount=$CurrentUser.getInProgressApplications(true).Count(), ColumnDescription='Applications that you have had at least 1 interview for,
+            <% include KanbanColumn ColumnTitle="Followed-up", ColumnCount=$CurrentUser.getInProgressApplications(true).Count(), ColumnDescription='Applications that you have had at least 1 interview for,
             and have heard back or requested an update.' %>
             <div class="card-body">
                 <div class="tasks" id="Follow">
@@ -72,9 +83,9 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-2">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn Add=false, ColumnTitle="Closed", ColumnCount=$CurrentUser.JobApplications.Filter('Status.AutoHide', true).Count(), ColumnDescription="Applications that have been closed<br/>
+            <% include KanbanColumn ColumnTitle="Closed", ColumnCount=$CurrentUser.JobApplications.Filter('Status.AutoHide', true).Count(), ColumnDescription="Applications that have been closed<br/>
                     This means any status as described on your profile." %>
             <div class="card-body">
                 <div class="tasks" id="Closed">
@@ -87,7 +98,7 @@
     </div>
 </div>
 <div class="hidden d-none display-none">
-    <%--    Ohay, you caught me. These buttons are here to trigger a specific form --%>
+    <!--    Ohay, you caught me. These buttons are here to trigger a specific form -->
     <a href="#"
        id="secretsauce"
        class="btn btn-primary js-formaction"

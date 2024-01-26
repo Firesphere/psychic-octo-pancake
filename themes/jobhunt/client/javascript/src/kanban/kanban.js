@@ -26,7 +26,7 @@ export default () => {
             return;
         }
         // Not-allowed jumps
-        if (disallowedJumps[sourceId] && disallowedJumps[sourceId].indexOf(targetId) !== false) {
+        if (disallowedJumps[sourceId] && disallowedJumps[sourceId].indexOf(targetId) > -1) {
             source.insertBefore(item, source.firstChild);
         } else {
             myModalEl.addEventListener('hide.bs.modal', () => {

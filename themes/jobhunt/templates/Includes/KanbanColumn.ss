@@ -6,16 +6,6 @@
                role="button"
                aria-expanded="false"
                aria-controls="description-$ColumnTitle">$ColumnTitle ($ColumnCount)</a>
-            <% if $Add %>
-                <span class="p-1">
-                    <button type="button" class="btn-sm btn btn-primary js-formaction"
-                            data-itemtype="application"
-                            data-bs-toggle="modal"
-                            data-bs-target="#addItemModal">
-                        Add new application
-                    </button>
-                </span>
-            <% end_if %>
         </div>
     </div>
     <small class="mb-0 text-muted collapse" id="description-$ColumnTitle">
