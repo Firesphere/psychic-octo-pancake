@@ -35,7 +35,7 @@ class ApplicationPageController extends \PageController
     protected $HasFilter;
     protected $HasShowAll;
     protected $SortDirection;
-    protected $sort;
+    protected $sort = ['ApplicationDate' => 'DESC', 'Created' => 'DESC'];
     protected $filter = [];
     protected $JobApplication;
 
@@ -76,10 +76,7 @@ class ApplicationPageController extends \PageController
                     $this->SortDirection = $sortfield . $direction;
                 }
             }
-        } else {
-            $this->sort = ['ApplicationDate' => 'DESC'];
         }
-
     }
 
     public function getStatusFilters()
