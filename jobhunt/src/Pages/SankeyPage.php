@@ -5,6 +5,7 @@ namespace Firesphere\JobHunt\Pages;
 use Firesphere\JobHunt\Controllers\SankeyPageController;
 use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\Status;
+use Firesphere\JobHunt\Models\StatusUpdate;
 use Page;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Security\Member;
@@ -35,6 +36,7 @@ class SankeyPage extends Page
                 $this->countFlow(1, $application->StatusID);
             } else {
                 $currentFlow = 1; // We've not started yet, so everything is at least "applied"
+                /** @var DataList|StatusUpdate[] $updates */
                 $updates = $application->StatusUpdates()->Sort('Created ASC');
                 foreach ($updates as $update) {
                     if ($update->StatusID === $currentFlow) {
@@ -43,7 +45,7 @@ class SankeyPage extends Page
                     $this->countFlow($currentFlow, $update->StatusID);
                     $currentFlow = $update->StatusID;
                 }
-                if ($update->StatusID !== $application->StatusID) {
+                if ($updates->Last()->StatusID !== $application->StatusID) {
                     $this->countFlow($update->StatusID, $application->StatusID);
                 }
             }
@@ -71,6 +73,7 @@ class SankeyPage extends Page
                 return;
             }
         }
+        unset($flow);
         $this->fromTo[] = [
             'from' => $from,
             'to'   => $to,
