@@ -10,8 +10,6 @@ use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use Firesphere\JobHunt\Models\Tag;
 use Firesphere\JobHunt\Pages\ApplicationPage;
-use LeKoala\FormElements\BsTagsMultiField;
-use LeKoala\FormElements\TagsField;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;

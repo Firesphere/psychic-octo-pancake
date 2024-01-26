@@ -22,7 +22,7 @@
                    aria-controls="su-$ID"
                 ><i class="bi bi-arrows-expand"></i>&nbsp;Status updates&nbsp;($StatusUpdates.Count)</a>
                 <div class="collapse card-body ps-1" id="su-$ID">
-                    <% loop $StatusUpdates %>
+                    <% loop $StatusUpdates.Filter('Hidden', false) %>
                         <h6>$Title</h6>
                         <a href="#"
                            title="Edit status update"
