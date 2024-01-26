@@ -36,6 +36,7 @@ class FormHandler extends Controller
         'ImportForm',
         'CompanyForm',
         'CloseForm',
+        'PostInterview'
     ];
     /**
      * @var JobApplication
@@ -110,6 +111,25 @@ class FormHandler extends Controller
         }
 
         return $form;
+    }
+
+    public function PostInterview()
+    {
+        if ($this->getRequest()->isGET()) {
+
+            $id = $this->getRequest()->param('OtherID');
+            $application = JobApplication::get()
+                ->filter([
+                    'ID'                          => $id,
+                    'StatusUpdates.Status.Status' => 'Interview'
+                ])->count();
+
+            if (!$application) {
+                return json_encode(['success' => false]);
+            }
+        }
+
+        return $this->StatusUpdateForm();
     }
 
     public function CloseForm()

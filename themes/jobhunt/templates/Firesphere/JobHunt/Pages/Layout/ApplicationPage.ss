@@ -28,7 +28,6 @@
         </div>
 
         <div class="col-12">
-
             <div class="py-3">
                 <% if $CurrentUser.JobApplications.Count %>
                     <% if $CurrentUser.ViewStyle != 'Card' %>

@@ -3134,6 +3134,7 @@ var typemap = {
   'note': ['ApplicationNoteForm', 'note'],
   'interview': ['InterviewForm', 'interview'],
   'interviewnote': ['InterviewNoteForm', 'interview note'],
+  'postinterview': ['PostInterview', 'status update'],
   'statusupdate': ['StatusUpdateForm', 'status update'],
   'import': ['ImportForm', 'import'],
   'company': ['CompanyForm', 'company'],

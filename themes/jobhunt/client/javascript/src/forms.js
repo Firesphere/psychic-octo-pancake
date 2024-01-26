@@ -23,6 +23,10 @@ const typemap = {
         'InterviewNoteForm',
         'interview note'
     ],
+    'postinterview': [
+        'PostInterview',
+        'status update'
+    ],
     'statusupdate': [
         'StatusUpdateForm',
         'status update'

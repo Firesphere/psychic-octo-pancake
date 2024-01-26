@@ -146,13 +146,13 @@ class MemberExtension extends DataExtension
         return $this->owner->inGroups(["administrators", "legacy", "subscriber"]);
     }
 
-    public function getInProgressApplications()
+    public function getInProgressApplications($interviewed = false)
     {
         self::set_job_applications();
 
         if (self::$_job_applications->count()) {
-            return self::$_job_applications->exclude([
-                'Status.Status'   => [
+            $list = self::$_job_applications->exclude([
+                'Status.Status' => [
                     'Applied',
                     'Interview',
                     'Invited',
@@ -160,8 +160,54 @@ class MemberExtension extends DataExtension
                 ]
             ])
                 ->filter(['AutoHide' => false]);
+
+            $int = Interview::get()
+                ->filter([
+                    'ApplicationID' => self::$_job_application_ids,
+                ]);
+            if ($int->count()) {
+                if ($interviewed) {
+                    $int = $int->filter([
+                        'DateTime:LessThan' => date('Y-m-d H:i:s')
+                    ]);
+
+                    return $list->filter(['ID' => $int->column('ApplicationID')]);
+                }
+
+                return $list->exclude(['ID' => $int->column('ApplicationID')]);
+            }
+
+            return $list;
         }
 
         return ArrayList::create();
+    }
+
+    public function getPrePostInterview($post = true)
+    {
+        $int = Interview::get()
+            ->filter([
+                'ApplicationID'        => self::$_job_application_ids,
+                'DateTime:GreaterThan' => date('Y-m-d H:i:s')
+            ])
+            ->column('ApplicationID');
+        if (!count($int)) {
+            return self::$_job_applications->filter(['Status.Status' => 'Interview']);
+        }
+
+        if (!$post) {
+            return self::$_job_applications
+                ->filter([
+                    'ID' => $int,
+                ]);
+        } else {
+            return self::$_job_applications
+                ->filter([
+                    'Status.Status' => 'Interview'
+                ])
+                ->exclude([
+                    'ID' => $int
+                ]);
+        }
     }
 }

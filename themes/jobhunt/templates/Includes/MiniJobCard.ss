@@ -1,38 +1,73 @@
 <div class="card col mb-3" data-id="$ID">
-    <div class="card-body">
-        <h5 class="card-title">
+    <div class="card-header">
+        <h6 class="card-title">
             <a href="#"
                class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                data-id="$ID" title="Favourite this application">
                 <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;<% with $Status %>
             <span
-                class="border border-1 m-0 px-1 text-$ColourStyle" title="$Name">&#9679;</span><% end_with %>&nbsp;$Role
-        </h5>
+                class="border border-1 m-0 px-1 text-$ColourStyle" title="$Name">&#9679;</span><% end_with %>&nbsp;
+            <a href="$Link" class="card-link">$Role</a>
+        </h6>
         <h6 class="card-subtitle mb-2 text-body-secondary">$Company.Name</h6>
-        <p class="card-text">$ApplicationDate.Nice</p>
-        <% if $StatusUpdates.Count %>
-            <div class="card-body pt-0">
+        <span class="card-text small">$ApplicationDate.Nice</span>
+    </div>
+    <div class="card-body">
+    <% if $StatusUpdates.Count %>
+            <div class="p-0 row pb-1">
                 <a class="card-text"
-                   data-bs-toggle="collapse" href="#$ID"
+                   data-bs-toggle="collapse" href="#su-$ID"
                    role="button"
                    aria-expanded="false"
-                   aria-controls="$ID"
-                >Status updates&nbsp;<i class="bi bi-arrow-expand"></i></a>
-                <div class="collapse card-body pt-1 py-0" id="$ID">
+                   aria-controls="su-$ID"
+                ><i class="bi bi-arrows-expand"></i>&nbsp;Status updates&nbsp;($StatusUpdates.Count)</a>
+                <div class="collapse card-body ps-1" id="su-$ID">
                     <% loop $StatusUpdates %>
-                        <h5>$Title</h5>
+                        <h6>$Title</h6>
+                        <a href="#"
+                           title="Edit status update"
+                           class="js-formaction small"
+                           data-id="$ID"
+                           data-itemtype="statusupdate-edit"
+                           data-bs-toggle="modal"
+                           data-bs-target="#addItemModal">Edit</a>
                         <p class="small">$Note</p>
+                        <hr/>
                     <% end_loop %>
                 </div>
             </div>
         <% end_if %>
-    <a href="$Link" class="card-link">View application</a>&nbsp;|&nbsp;
-    <a href="#"
-       title="Edit application"
-       class="js-formaction"
-       data-id="$ID"
-       data-itemtype="application-edit"
-       data-bs-toggle="modal"
-       data-bs-target="#addItemModal"><i class="bi bi-pencil"></i> Edit application</a>
-</div>
-</div>
+        <% if $Interviews.Count %>
+            <div class="p-0 pb-1 row">
+                <a class="card-text"
+                   data-bs-toggle="collapse" href="#iv-$ID"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="iv-$ID"
+                ><i class="bi bi-arrows-expand"></i>&nbsp;Interviews&nbsp;($Interviews.Count)</a>
+                <div class="collapse card-body ps-1" id="iv-$ID">
+                    <% loop $Interviews %>
+                        <a href="#"
+                           title="Edit interview"
+                           class="js-formaction small"
+                           data-id="$ID"
+                           data-itemtype="interview-edit"
+                           data-bs-toggle="modal"
+                           data-bs-target="#addItemModal">
+                            $DateTime.Nice() <% if $Notes.Count %><br/>($Notes.Count notes)<% end_if %></a>
+                        <hr/>
+                    <% end_loop %>
+                </div>
+            </div>
+        <% end_if %>
+
+    </div>
+    <div class="card-footer">
+        <a href="#"
+           title="Edit application"
+           class="js-formaction small"
+           data-id="$ID"
+           data-itemtype="application-edit"
+           data-bs-toggle="modal"
+           data-bs-target="#addItemModal"><i class="bi bi-pencil"></i> Edit application</a>
+    </div></div>

@@ -12,71 +12,6 @@ module.exports = function atoa (a, n) { return Array.prototype.slice.call(a, n);
 
 /***/ }),
 
-/***/ "./client/javascript/src/formhooks.js":
-/*!********************************************!*\
-  !*** ./client/javascript/src/formhooks.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   addFormHook: () => (/* binding */ addFormHook),
-/* harmony export */   updateFormContent: () => (/* binding */ updateFormContent)
-/* harmony export */ });
-var formcontainer = document.getElementById('formcontainer');
-var updateFormContent = function updateFormContent() {
-  formcontainer.innerHTML = '';
-  formcontainer.insertAdjacentHTML('beforeend', '<div class="text-center">\n' + '  <div class="spinner-border" role="status">\n' + '    <span class="visually-hidden">Loading...</span>\n' + '  </div>\n' + '</div>');
-  tinyMCE.remove();
-};
-var addFormHook = function addFormHook() {
-  var forms = Array.from(document.getElementsByTagName('form'));
-  forms.forEach(function (form) {
-    form.addEventListener('submit', function (event) {
-      updateFormContent();
-      event.preventDefault();
-      form.children.find;
-      var formData = new FormData(form);
-      updateFormContent();
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          "x-requested-with": "XMLHttpRequest"
-        }
-      }).then(function (response) {
-        return response.json();
-      }).then(function (response) {
-        if (response['success'] !== false && response['form'] !== false) {
-          formcontainer.innerText = '';
-          formcontainer.insertAdjacentHTML('beforeend', response['form']);
-          tinyMCE.init({
-            selector: 'textarea.htmleditor',
-            max_height: 250,
-            menubar: false,
-            statusbar: false
-          });
-          addFormHook();
-        } else {
-          updateFormContent();
-          setTimeout(function () {
-            window.location.reload();
-          }, 500);
-        }
-      })["catch"](function (error) {
-        formcontainer.innerText = "It seems something went wrong. Please try again?";
-        setTimeout(function () {
-          window.location.reload();
-          throw new Error(error);
-        }, 5000);
-      });
-    });
-  });
-};
-
-/***/ }),
-
 /***/ "./client/javascript/src/kanban/kanban.js":
 /*!************************************************!*\
   !*** ./client/javascript/src/kanban/kanban.js ***!
@@ -90,24 +25,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var dragula__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dragula */ "./node_modules/dragula/dragula.js");
 /* harmony import */ var dragula__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(dragula__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _formhooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../formhooks */ "./client/javascript/src/formhooks.js");
-
 
 var myModalEl = document.getElementById('addItemModal');
-var formcontainer = document.getElementById('formcontainer');
-var methods = {
-  'Applied': 'ApplicationForm',
-  'Interview': 'InterviewForm',
-  'Progress': 'StatusUpdateForm',
-  'Closed': 'CloseForm'
-};
 var names = {
   'Applied': 'application',
   'Interview': 'interview',
   'Progress': 'statusupdate',
-  'Closed': 'close'
+  'Closed': 'close',
+  'Follow': 'postinterview',
+  'PostInterview': 'postinterview'
 };
-var endpoint = "formhandling";
+var disallowedJumps = {
+  'Applied': ['AlwaysInvalidForHardening', 'Follow', 'PostInterview'],
+  'Progress': ['AlwaysInvalidForHardening', 'Follow', 'PostInterview']
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var drake = dragula__WEBPACK_IMPORTED_MODULE_0___default()(Array.from(document.getElementsByClassName('tasks')), {
     revertOnSpill: true
@@ -115,41 +46,23 @@ var endpoint = "formhandling";
   drake.on('drop', function (item, target, source) {
     var applicationId = item.getAttribute('data-id');
     var targetId = target.getAttribute('id');
-    if (targetId === source.getAttribute('id')) {
+    var sourceId = source.getAttribute('id');
+    if (targetId === sourceId) {
       return;
     }
-    myModalEl.addEventListener('hide.bs.modal', function () {
+    // Not-allowed jumps
+    if (disallowedJumps[sourceId] && disallowedJumps[sourceId].indexOf(targetId) !== false) {
       source.insertBefore(item, source.firstChild);
-    });
-    var thisendpoint = "".concat(endpoint, "/").concat(methods[targetId], "/add/").concat(applicationId);
-    fetch(thisendpoint, {
-      headers: {
-        "x-requested-with": "XMLHttpRequest"
-      }
-    }).then(function (response) {
-      return response.json();
-    }).then(function (response) {
-      if (response['success'] && response['form'] !== false) {
-        formcontainer.innerText = '';
-        formcontainer.insertAdjacentHTML('beforeend', response['form']);
-        tinyMCE.init({
-          selector: 'textarea.htmleditor',
-          max_height: 250,
-          menubar: false,
-          statusbar: false
-        });
-        (0,_formhooks__WEBPACK_IMPORTED_MODULE_1__.addFormHook)();
-        var button = document.getElementById('secretsauce');
-        /// Make it trigger the correct thing :D
-        button.setAttribute('data-itemtype', "".concat(names[targetId], "-add"));
-        button.setAttribute('data-application', "".concat(applicationId));
-        button.click();
-      } else {
-        setTimeout(function () {
-          window.location.reload();
-        }, 500);
-      }
-    });
+    } else {
+      myModalEl.addEventListener('hide.bs.modal', function () {
+        source.insertBefore(item, source.firstChild);
+      });
+      var button = document.getElementById('secretsauce');
+      /// Make it trigger the correct thing :D
+      button.setAttribute('data-itemtype', "".concat(names[targetId], "-add"));
+      button.setAttribute('data-application', "".concat(applicationId));
+      button.click();
+    }
   });
 });
 

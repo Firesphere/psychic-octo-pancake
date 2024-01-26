@@ -88,7 +88,7 @@ class JobApplication extends DataObject
         'ApplicationDate'
     ];
 
-    private static $default_sort = 'ApplicationDate DESC';
+    private static $default_sort = 'ApplicationDate DESC, Created DESC';
 
 
     public function TagForm()
