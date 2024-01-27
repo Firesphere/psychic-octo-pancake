@@ -2,9 +2,14 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
+use Firesphere\JobHunt\Forms\PreparationForm;
 use Firesphere\JobHunt\Models\Interview;
+use Firesphere\JobHunt\Models\InterviewPreparation;
 use Firesphere\JobHunt\Pages\InterviewPreparationPage;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Security\Security;
+use SilverStripe\View\Requirements;
 
 /**
  * Class \Firesphere\JobHunt\Controllers\InterviewPreparationPageController
@@ -19,31 +24,68 @@ class InterviewPreparationPageController extends \PageController
 
     private static $allowed_actions = [
         'prepare',
+        'createPrep',
         'save'
+    ];
+
+    private static $url_handlers = [
+        'create/$ID' => 'createPrep'
     ];
 
     protected function init()
     {
         parent::init();
-        $user = Security::getCurrentUser();
-        $params = $this->getRequest()->params();
+        $this->user = Security::getCurrentUser();
         // No user or action, return
-        if (empty($params['Action']) || empty($params['ID']) || !$user) {
-            $this->redirectBack();
+        if (!$this->user) {
+            $this->httpError(403);
         }
-        $this->Interview = Interview::get()->filter(['ID' => $params['ID'], 'UserID' => $user->ID])->first();
-        if (!$this->Interview) {
-            $this->redirectBack();
+        if ($this->urlParams['ID'] && $this->urlParams['Action'] === 'prepare') {
+            $this->Interview = InterviewPreparation::get()->filter(['ID' => $this->urlParams['ID'], 'UserID' => $this->user->ID])->first();
+            if (!$this->Interview) {
+                $this->redirectBack();
+            }
         }
+    }
+
+    public function getInterviewList()
+    {
+        return Interview::get()->filter(['Application.UserID' => $this->user->ID]);
     }
 
     public function prepare()
     {
-        // Do things here, like put the form, and allow for more questions
+        return $this;
     }
 
     public function PreparationForm()
     {
+        $this->PreparationID = $this->getRequest()->param('ID');
+        $form = PreparationForm::create($this);
+
+        return $form;
         // Actual form for a single question here
+    }
+
+    public function createPrep(HTTPRequest $request)
+    {
+        $interviewId = $request->param('ID');
+
+        $interview = Interview::get_by_id('ID');
+
+        if (!$interview || $interview->Application()->UserID !== Security::getCurrentUser()->ID) {
+            $this->redirectBack();
+        }
+
+        $prep = InterviewPreparation::create([
+            'InterviewID' => $interviewId,
+            'UserID'      => Security::getCurrentUser()->ID
+        ]);
+
+        $id = $prep->write();
+
+        $this->setResponse(new HTTPResponse());
+
+        $this->redirect($this->Link('prepare/' . $id));
     }
 }

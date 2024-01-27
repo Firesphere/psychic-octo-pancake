@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a97701a6dd022e64f2f4dcfa66ce821",
+    "content-hash": "e0cc98e918bd22621069c54c7fec41ff",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -8553,6 +8553,70 @@
                 "source": "https://github.com/ua-parser/uap-php/tree/v3.9.14"
             },
             "time": "2020-10-02T23:36:20+00:00"
+        },
+        {
+            "name": "unclecheese/display-logic",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unclecheese/silverstripe-display-logic.git",
+                "reference": "4e99cef2c883f24983d19c9bb2e398f4c988f53a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/unclecheese/silverstripe-display-logic/zipball/4e99cef2c883f24983d19c9bb2e398f4c988f53a",
+                "reference": "4e99cef2c883f24983d19c9bb2e398f4c988f53a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "silverstripe/framework": "^5.0"
+            },
+            "replace": {
+                "silverstripe/display-logic": "*"
+            },
+            "require-dev": {
+                "silverstripe/behat-extension": "^5",
+                "silverstripe/recipe-testing": "^3",
+                "silverstripe/serve": "^3"
+            },
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "installer-name": "display-logic",
+                "expose": [
+                    "client"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "UncleCheese\\DisplayLogic\\": "src/",
+                    "UncleCheese\\DisplayLogic\\Tests\\": "tests/php/",
+                    "UncleCheese\\DisplayLogic\\Tests\\Behaviour\\": "tests/behat/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Uncle Cheese",
+                    "email": "unclecheese@leftandmain.com"
+                }
+            ],
+            "description": "Allows assignment of conditions for display and hide of specific form fields based on client side behavior.",
+            "keywords": [
+                "Forms",
+                "cms",
+                "display",
+                "logic",
+                "silverstripe"
+            ],
+            "support": {
+                "issues": "https://github.com/unclecheese/silverstripe-display-logic/issues",
+                "source": "https://github.com/unclecheese/silverstripe-display-logic/tree/3.0.0"
+            },
+            "time": "2023-02-26T18:14:37+00:00"
         },
         {
             "name": "web-auth/cose-lib",

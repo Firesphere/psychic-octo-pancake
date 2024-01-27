@@ -24,7 +24,7 @@ class QuestionAnswer extends DataObject
     private static $db = [
         'Question'    => DBVarchar::class,
         'Answer'      => DBText::class,
-        'QASource,'   => DBEnum::class . '("Myself,Company,Both,Other","Other")',
+        'QASource,'   => DBEnum::class . '("Myself,Interviewer,Both,Other","Other")',
         'OtherSource' => DBVarchar::class
     ];
 
