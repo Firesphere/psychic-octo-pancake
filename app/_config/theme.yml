@@ -2,6 +2,7 @@
 Name: mytheme
 ---
 SilverStripe\View\SSViewer:
+  rewrite_hash_links: false
   themes:
     - '$public'
     - 'jobhunt'
