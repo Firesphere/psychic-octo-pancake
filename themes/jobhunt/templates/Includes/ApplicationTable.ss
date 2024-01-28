@@ -34,7 +34,9 @@
                     <% with $Company %>
                         <div class="d-flex justify-content-between">
                             <b>
-                                <a href="#" class="js-fav pe-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" data-id="$Up.ID" title="Favourite this application">
+                                <a href="#"
+                                   class="js-fav pe-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                                   data-id="$Up.ID" title="Favourite this application">
                                     <i class="bi bi-star<% if $Up.Favourite %>-fill text-warning<% end_if %>"></i>
                                 </a>
                                 <% if $Link %>
@@ -56,7 +58,7 @@
                     <% end_with %>
                 </div>
             </td>
-            <td class="col-lg" colspan="2"><a href="$Up.Link('application')/$ID" title="View application">$Role</a></td>
+            <td class="col-lg" colspan="2"><a href="$InternalLink" title="View application">$Role</a></td>
             <td class="col-lg">$ApplicationDate.Nice()</td>
             <td class="col-lg">
                 <div class="badge text-bg-$Status.ColourStyle">$Status.Name</div>
@@ -70,13 +72,13 @@
                    data-bs-toggle="modal"
                    data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>
             </td>
-            <td class="col-lg"><a href="$Up.Link('application')/$ID" title="View application"><i
+            <td class="col-lg"><a href="$InternalLink" title="View application"><i
                 class="bi bi-eye-fill"></i></a></td>
         </tr>
         <tr class="$OddEven">
             <td rowspan="3">
                 <% if $Link %>
-                <a href="$Link" target="_blank">Job description</a>
+                    <a href="$Link" target="_blank">Job description</a>
                 <% end_if %>
             </td>
             <th>Notes</th>

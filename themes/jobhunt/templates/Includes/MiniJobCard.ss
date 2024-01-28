@@ -7,7 +7,7 @@
                 <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;<% with $Status %>
             <span
                 class="border border-1 m-0 px-1 text-$ColourStyle" title="$Name">&#9679;</span><% end_with %>&nbsp;
-            <a href="$Link" class="card-link">$Role</a>
+            <a href="$InternalLink" class="card-link">$Role</a>
         </h6>
         <h6 class="card-subtitle mb-2 text-body-secondary">$Company.Name</h6>
         <span class="card-text small">$ApplicationDate.Nice</span>

@@ -137,7 +137,7 @@ class JobApplication extends DataObject
         }
     }
 
-    public function Link()
+    public function InternalLink()
     {
         $page = ApplicationPage::get()->first();
 
