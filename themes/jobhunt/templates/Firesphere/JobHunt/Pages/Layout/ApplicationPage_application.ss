@@ -1,7 +1,8 @@
 <div class="">
     <% with $JobApplication %>
         <div class="row">
-            <h1 class="col-12">$Role at $Company.Name</h1>
+            <h1 class="col-12"><span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span> $Role at $Company.Name</h1>
+            <div class="col-12 h4">Statuscode: $Status.Status</div>
             <div class="row">
                 <div class="d-flex justify-content-start pb-2">
                     <span class="col-1"><a href="#"
