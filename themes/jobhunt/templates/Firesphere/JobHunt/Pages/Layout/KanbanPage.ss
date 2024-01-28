@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="row">
-        <div class="mb-2 col-12">
+    <div class="mb-2 col-2">
         <button type="button" class="btn-sm btn btn-primary js-formaction"
                 data-itemtype="application"
                 data-bs-toggle="modal"
@@ -15,7 +15,17 @@
             Add application
         </button>
     </div>
-
+    <div class="mb-2 col-10">
+        <div id="help">
+            <a
+                data-bs-toggle="collapse" href="#kanban-help"
+                role="button"
+                aria-expanded="false"
+                aria-controls="description-$ColumnTitle"
+            ><h4><i class="bi bi-question-octagon">&nbsp;</i>Kanban Help</h4></a>
+            <div id="kanban-help" class="collapse"><h3>Help</h3>$Content</div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">

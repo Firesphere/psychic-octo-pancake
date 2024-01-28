@@ -13,26 +13,28 @@
         <span class="card-text small">$ApplicationDate.Nice</span>
     </div>
     <div class="card-body">
-    <% if $StatusUpdates.Count %>
+    <% if $StatusUpdatesVisibleCount > 0 %>
             <div class="p-0 row pb-1">
                 <a class="card-text"
                    data-bs-toggle="collapse" href="#su-$ID"
                    role="button"
                    aria-expanded="false"
                    aria-controls="su-$ID"
-                ><i class="bi bi-arrows-expand"></i>&nbsp;Status updates&nbsp;($StatusUpdates.Count)</a>
-                <div class="collapse card-body ps-1" id="su-$ID">
+                ><i class="bi bi-arrows-expand"></i>&nbsp;Status updates&nbsp;($StatusUpdatesVisibleCount)</a>
+                <div class="collapse card-body ps-2" id="su-$ID">
                     <% loop $StatusUpdates.Filter('Hidden', false) %>
+                        <% if $isFirst %><hr class="row" /><% end_if %>
                         <h6>$Title</h6>
+                        <small class="text-decoration-underline">$Created.Nice</small>
+                        <p class="small">$Note</p>
                         <a href="#"
                            title="Edit status update"
                            class="js-formaction small"
                            data-id="$ID"
                            data-itemtype="statusupdate-edit"
                            data-bs-toggle="modal"
-                           data-bs-target="#addItemModal">Edit</a>
-                        <p class="small">$Note</p>
-                        <hr/>
+                           data-bs-target="#addItemModal"><i class="bi bi-pencil"></i>&nbsp;Edit</a>
+                        <hr class="row"/>
                     <% end_loop %>
                 </div>
             </div>

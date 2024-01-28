@@ -143,4 +143,9 @@ class JobApplication extends DataObject
 
         return $page->Link('application/' . $this->ID);
     }
+
+    public function StatusUpdatesVisibleCount()
+    {
+        return $this->StatusUpdates()->filter(['Hidden' => false])->count();
+    }
 }
