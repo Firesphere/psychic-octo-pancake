@@ -15,17 +15,19 @@
             Add application
         </button>
     </div>
-    <div class="mb-2 col-10">
-        <div id="help">
-            <a
-                data-bs-toggle="collapse" href="#kanban-help"
-                role="button"
-                aria-expanded="false"
-                aria-controls="description-$ColumnTitle"
-            ><h4><i class="bi bi-question-octagon">&nbsp;</i>Kanban Help</h4></a>
-            <div id="kanban-help" class="collapse"><h3>Help</h3>$Content</div>
+    <% if $Content %>
+        <div class="mb-2 col-10">
+            <div id="help">
+                <a
+                    data-bs-toggle="collapse" href="#kanban-help"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="description-$ColumnTitle"
+                ><h4><i class="bi bi-question-octagon">&nbsp;</i>Kanban Help</h4></a>
+                <div id="kanban-help" class="collapse">$Content</div>
+            </div>
         </div>
-    </div>
+    <% end_if %>
 </div>
 <div class="row">
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
