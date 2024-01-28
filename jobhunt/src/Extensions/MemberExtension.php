@@ -58,6 +58,16 @@ class MemberExtension extends DataExtension
     protected static $_job_applications;
     protected static $_job_application_ids;
 
+    /**
+     * @return mixed
+     */
+    public static function getJobApplicationIds()
+    {
+        self::set_job_applications();
+
+        return self::$_job_application_ids;
+    }
+
     public function onBeforeWrite()
     {
         if (!$this->owner->URLSegment) {
@@ -76,7 +86,7 @@ class MemberExtension extends DataExtension
         return false;
     }
 
-    private static function set_job_applications()
+    public static function set_job_applications()
     {
         if (!self::$_job_applications) {
             self::$_job_applications = Security::getCurrentUser()->owner->JobApplications()->filter(['Archived' => false]);

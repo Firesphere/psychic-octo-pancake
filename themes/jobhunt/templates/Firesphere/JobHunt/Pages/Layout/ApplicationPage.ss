@@ -10,7 +10,7 @@
         <% end_if %>
         <div class="col-12">
             <div class="row d-flex justify-content-between">
-                <div class="my-2 col-sm-6 col-md-4">
+                <div class="my-2 col-sm-6 col-md-2">
                     <button type="button" class="btn btn-primary js-formaction pt-1"
                             data-itemtype="application"
                             data-bs-toggle="modal"
@@ -18,10 +18,10 @@
                         Add new application
                     </button>
                 </div>
-                <div class="my-2 col-sm-6 col-md-4 order-md-last">
+                <div class="my-2 col-sm-6 col-md-6 order-md-last">
                     <% include ListFilters %>
                 </div>
-                <div class="col-sm-12 col-md-4 my-2 text-sm-start">
+                <div class="col-sm-12 col-md-1 offset-md-3 my-2 text-sm-start">
                     <% include Pagination PaginatedMatches=$Applications, Sizing=sm %>
                 </div>
             </div>

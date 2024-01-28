@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Models\ApplicationNote;
+use Firesphere\JobHunt\Models\Company;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\InterviewNote;
 use Firesphere\JobHunt\Models\JobApplication;
@@ -36,6 +37,8 @@ class ApplicationPageController extends \PageController
     protected $sort = ['ApplicationDate' => 'DESC', 'Created' => 'DESC'];
     protected $filter = [];
     protected $JobApplication;
+    protected $ActiveCompany;
+    protected $Companies;
 
     public function init()
     {
@@ -75,6 +78,28 @@ class ApplicationPageController extends \PageController
                 }
             }
         }
+        if ($this->getRequest()->getVar('company')) {
+            $this->filter['CompanyID'] = $this->getRequest()->getVar('company');
+            unset($this->filter['StatusID:Not']);
+            $this->getCompanyList();
+        }
+    }
+
+    public function getCompanyList()
+    {
+        if ($this->Companies) {
+            return $this->Companies;
+        }
+        $user = Security::getCurrentUser();
+        $this->Companies = Company::get()->filter(['ID' => $user->JobApplications()->column('CompanyID')])
+            ->sort('Name ASC');
+
+        if ($this->getRequest()->getVar('company')) {
+            $companyID = $this->getRequest()->getVar('company');
+            $this->ActiveCompany = $this->Companies->filter(['ID' => $companyID])->first();
+        }
+
+        return $this->Companies;
     }
 
     public function getStatusFilters()

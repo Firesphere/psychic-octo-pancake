@@ -1,6 +1,22 @@
 <div class="btn-toolbar pt-1 justify-content-end" role="toolbar" aria-label="Filter toolbar">
     <div class="dropdown text-end">
         <div class="btn-group btn-group-sm">
+            <a class="btn btn-sm btn-secondary <% if $ActiveCompany %>active<% else %>dropdown-toggle dropdown-toggle-split<% end_if %>"
+                type="button" href="$Top.Link"
+                <% if not $ActiveCompany %>
+               data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span>
+                   Company&nbsp;&nbsp;&nbsp;
+                <% else %>
+                title="Reset">$ActiveCompany.Name
+                <% end_if %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <% loop $CompanyList %>
+                    <li><a class="dropdown-item<% if $Up.ActiveCompany.ID == $ID  %> active<% end_if %>"
+                           href="$Top.Link?company=$ID">
+                        $Name</a></li>
+                <% end_loop %>
+            </ul>
             <% if $CurrentUser.HideClosed %>
                 <a class="btn btn-secondary btn-sm<% if $HasShowAll %> active<% end_if %><% if $HasFilter %> disabled<% end_if %>"
                    type="button"

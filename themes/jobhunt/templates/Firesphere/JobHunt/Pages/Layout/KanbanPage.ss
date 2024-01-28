@@ -18,8 +18,8 @@
     <% if $Content %>
         <div class="mb-2 col-10">
             <div id="help">
-                <a
-                    data-bs-toggle="collapse" href="#kanban-help"
+                <a href="#kanban-help"
+                    data-bs-toggle="collapse"
                     role="button"
                     aria-expanded="false"
                     aria-controls="description-$ColumnTitle"
