@@ -1,8 +1,14 @@
 <div class="">
     <% with $JobApplication %>
         <div class="row">
-            <h1 class="col-12"><span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span> $Role at $Company.Name</h1>
-            <div class="col-12 h4">Statuscode: $Status.Status</div>
+            <h1 class="col-12"><span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span> $Role
+                at $Company.Name</h1>
+            <div class="col-6 h4"><% if $PayUpper || $PayLower %>Pay:<% end_if %>
+                <% if $PayUpper %>
+                    $PayUpper<% if $PayLower %> - $PayLower<% end_if %>
+                <% end_if %>
+                <% if not $PayUpper && $PayLower %>$PayLower<% end_if %></div>
+            <div class="col-6 h4">Statuscode: $Status.Status</div>
             <div class="row">
                 <div class="d-flex justify-content-start pb-2">
                     <span class="col-1"><a href="#"
@@ -88,7 +94,8 @@
                                     <% if $Notes %>
                                         <h4><a data-bs-toggle="collapse" href="#details-$ID"
                                                aria-expanded="false"
-                                               aria-controls="details-$ID">Notes on this interview</a>&nbsp;($Notes.Count)</h4>
+                                               aria-controls="details-$ID">Notes on this
+                                            interview</a>&nbsp;($Notes.Count)</h4>
                                         <div class="collapse row" id="details-$ID">
                                             <% loop $Notes %>
                                                 <div class="col-6 mb-2">
