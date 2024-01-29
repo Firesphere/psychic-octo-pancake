@@ -80,6 +80,11 @@
                 <% if $Link %>
                     <a href="$Link" target="_blank">Job description</a>
                 <% end_if %>
+                <% if $PayUpper || $PayLower %><br />Pay:<% end_if %>
+                <% if $PayUpper %>
+                    $PayUpper<% if $PayLower %> - $PayLower<% end_if %>
+                <% end_if %>
+                <% if not $PayUpper && $PayLower %>$PayLower<% end_if %>
             </td>
             <th>Notes</th>
             <td colspan="4">

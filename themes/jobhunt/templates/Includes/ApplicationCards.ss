@@ -33,9 +33,16 @@
                         <a href="$Up.Link('application')/$ID" class="h4 mb-0" title="View application"><i
                             class="bi bi-eye-fill"></i></a>
                     </div>
-                    <% if $Link %>
-                        <a href="$Link" class="small" target="_blank">Job description</a>
-                    <% end_if %>
+                    <div class="d-flex justify-content-between">
+                        <% if $Link %>
+                            <a href="$Link" class="small" target="_blank">Job description</a>
+                        <% end_if %>
+                        <% if $PayUpper || $PayLower %>Pay:<% end_if %>
+                        <% if $PayUpper %>
+                            $PayUpper<% if $PayLower %> - $PayLower<% end_if %>
+                        <% end_if %>
+                        <% if not $PayUpper && $PayLower %>$PayLower<% end_if %>
+                    </div>
                 </div>
                 <% if $StatusUpdates.Filter('Hidden', false).Count %>
                     <div class="card-body">
