@@ -8,6 +8,7 @@ use LeKoala\FormElements\BsTagsMultiField;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
@@ -16,6 +17,7 @@ use SilverStripe\ORM\FieldType\DBDate;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
+use SilverStripe\ORM\ManyManyList;
 use SilverStripe\Security\Member;
 
 /**
@@ -25,7 +27,8 @@ use SilverStripe\Security\Member;
  * @property string $ApplicationDate
  * @property string $ClosingDate
  * @property string $Link
- * @property int $Pay
+ * @property int $PayUpper
+ * @property int $PayLower
  * @property string $CoverLetter
  * @property bool $Archived
  * @property string $ArchiveDate
@@ -57,7 +60,8 @@ class JobApplication extends DataObject
         'ApplicationDate' => DBDate::class,
         'ClosingDate'     => DBDate::class,
         'Link'            => DBVarchar::class,
-        'Pay'             => DBInt::class,
+        'PayUpper'        => DBInt::class,
+        'PayLower'        => DBInt::class,
         'CoverLetter'     => DBHTMLText::class,
         'Archived'        => DBBoolean::class,
         'ArchiveDate'     => DBDate::class,
@@ -94,7 +98,7 @@ class JobApplication extends DataObject
     public function TagForm()
     {
         $fields = FieldList::create([
-            $fieldTag = BsTagsMultiField::create('Tags', ''),
+            $fieldTag = BsTagsMultiField::create('Tags', 'Tags'),
             HiddenField::create('ID', 'ID', $this->ID)
         ]);
 
@@ -103,13 +107,22 @@ class JobApplication extends DataObject
         $fieldTag->setAttribute('data-server', $page->Link('/tags'));
         $fieldTag->setAttribute('data-separator', " |,|  ");
         $fieldTag->setAttribute('data-config', [
-            'noCache' => "false",
-            'addOnBlur' => "true"
+            'noCache'   => "false",
+            'addOnBlur' => "true",
         ]);
 
-        $action = FieldList::create();
+        $fieldTag->addCallbackMethod('onNewTag', function ($data) {
+            print_r('The data:' . $data);
+        });
 
-        return Form::create(Controller::curr(), 'tags', $fields, $action);
+        $action = FieldList::create([
+            FormAction::create('submit', ':tick:')
+        ]);
+
+        $form = Form::create(Controller::curr(), 'TagForm', $fields, $action);
+        $form->setAttribute('id', uniqid('', false));
+
+        return $form;
     }
 
 

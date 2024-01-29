@@ -4,7 +4,7 @@
 
 	<p id="{$FormName}_error" class="message $MessageType <% if not $Message %>d-none<% end_if %>">$Message</p>
 
-	<fieldset>
+	<fieldset class="row">
 		<% if $Legend %><legend>$Legend</legend><% end_if %>
 		<% loop $Fields %>
 			$FieldHolder

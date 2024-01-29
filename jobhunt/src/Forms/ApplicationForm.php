@@ -15,6 +15,7 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -38,6 +39,8 @@ class ApplicationForm extends Form
             DateField::create('ApplicationDate', 'Date of applying'),
             DateField::create('ClosingDate', 'Date application window closes'),
             TextField::create('Link', 'Link to application'),
+            $paylow = NumericField::create('PayLower', 'Lower pay band'),
+            $payUp = NumericField::create('PayUpper', 'Upper pay band'),
             $status = DropdownField::create('StatusID', 'Status', Status::get()->map('ID', 'Status')->toArray()),
             HTMLEditorField::create('CoverLetter', 'Cover letter'),
             TextareaField::create('Notes', 'Note')
@@ -46,6 +49,8 @@ class ApplicationForm extends Form
         $status->addExtraClass('form-select');
         $status->setEmptyString('-- Select application status --');
 
+        $paylow->addExtraClass('col');
+        $payUp->addExtraClass('col');
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);

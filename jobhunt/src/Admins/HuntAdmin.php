@@ -7,6 +7,7 @@ use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\InterviewQuestion;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
+use Firesphere\JobHunt\Models\Tag;
 use SilverStripe\Admin\ModelAdmin;
 
 /**
@@ -22,5 +23,6 @@ class HuntAdmin extends ModelAdmin
     private static $managed_models = [
         Status::class,
         Company::class,
+        Tag::class
     ];
 }

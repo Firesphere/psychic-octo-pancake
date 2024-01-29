@@ -1,4 +1,4 @@
-<div id="$HolderID" class="field form-group py-1">
+<div id="$HolderID" class="field form-group py-1 <% if $ExtraClass == 'numeric text col' %>col<% end_if %>">
 	<% if $Title %><label class="left col-form-label" for="$ID">$Title</label><% end_if %>
 		$Field
 	<% if $RightTitle %><label class="right" for="$ID">$RightTitle</label><% end_if %>

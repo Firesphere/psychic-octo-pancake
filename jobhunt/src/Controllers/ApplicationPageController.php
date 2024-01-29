@@ -45,6 +45,7 @@ class ApplicationPageController extends \PageController
         if (!Security::getCurrentUser()) {
             $this->httpError(403);
         }
+
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
         parent::init();
         $this->FavLink = Status::create(['Status' => 'Favourites', 'Colour' => 'success']);
@@ -227,5 +228,9 @@ class ApplicationPageController extends \PageController
         $tags = Tag::get()->filter($filter)->map('ID', 'Title')->toArray();
 
         return json_encode($tags);
+    }
+
+    public function TagForm()
+    {
     }
 }
