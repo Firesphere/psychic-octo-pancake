@@ -5,47 +5,62 @@
                 at $Company.Name</h1>
             <div class="col-6 h4"><% if $PayUpper || $PayLower %>Pay:<% end_if %>
                 <% if $PayUpper %>
-                    $PayUpper<% if $PayLower %> - $PayLower<% end_if %>
+                    <% if $PayLower %>$PayLower - <% end_if %>$PayUpper
                 <% end_if %>
                 <% if not $PayUpper && $PayLower %>$PayLower<% end_if %></div>
             <div class="col-6 h4">Statuscode: $Status.Status</div>
             <div class="row">
                 <div class="d-flex justify-content-start pb-2">
-                    <span class="col-1"><a href="#"
-                                           title="Edit application"
-                                           class="js-formaction h3 "
-                                           data-id="$ID"
-                                           data-itemtype="application-edit"
-                                           data-bs-toggle="modal"
-                                           data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>
+                    <span class="col-1">
+                        <a href="#"
+                           title="Edit application"
+                           class="js-formaction h3 "
+                           data-id="$ID"
+                           data-itemtype="application-edit"
+                           data-bs-toggle="modal"
+                           data-bs-target="#addItemModal">
+                            <i class="bi bi-pencil"></i>
+                        </a>
                     </span>
-                    <span class="col-1"><a href="#"
-                                           title="Add note"
-                                           class="js-formaction h3 "
-                                           data-application="$ID"
-                                           data-itemtype="note-add"
-                                           data-bs-toggle="modal"
-                                           data-bs-target="#addItemModal"><i
-                        class="bi bi-file-earmark-plus"></i></a></span>
-                    <span class="col-1"><a href="#"
-                                           title="Add status update"
-                                           class="js-formaction h3 "
-                                           data-application="$ID"
-                                           data-itemtype="statusupdate-add"
-                                           data-bs-toggle="modal"
-                                           data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a></span>
-                    <span class="col-1"><a href="#"
-                                           title="Add interview"
-                                           class="js-formaction h3 "
-                                           data-application="$ID"
-                                           data-itemtype="interview-add"
-                                           data-bs-toggle="modal"
-                                           data-bs-target="#addItemModal"><i
-                        class="bi bi-person-add"></i></a></span>
-                    <span class="col text-end"><a href="$Top.Link/delete/application/$ID"
-                                                  class="text-warning h3 "
-                                                  title="Delete this application"><i
-                        class="bi bi-x-octagon-fill"></i></a>
+                    <span class="col-1">
+                        <a href="#"
+                           title="Add note"
+                           class="js-formaction h3 "
+                           data-application="$ID"
+                           data-itemtype="note-add"
+                           data-bs-toggle="modal"
+                           data-bs-target="#addItemModal">
+                            <i class="bi bi-file-earmark-plus"></i>
+                        </a>
+                    </span>
+                    <span class="col-1">
+                        <a href="#"
+                           title="Add status update"
+                           class="js-formaction h3 "
+                           data-application="$ID"
+                           data-itemtype="statusupdate-add"
+                           data-bs-toggle="modal"
+                           data-bs-target="#addItemModal">
+                            <i class="bi bi-plus-circle"></i>
+                        </a>
+                    </span>
+                    <span class="col-1">
+                        <a href="#"
+                           title="Add interview"
+                           class="js-formaction h3 "
+                           data-application="$ID"
+                           data-itemtype="interview-add"
+                           data-bs-toggle="modal"
+                           data-bs-target="#addItemModal">
+                            <i class="bi bi-person-add"></i>
+                        </a>
+                    </span>
+                    <span class="col text-end">
+                        <a href="$Top.Link/delete/application/$ID"
+                           class="text-warning h3 "
+                           title="Delete this application">
+                            <i class="bi bi-x-octagon-fill"></i>
+                        </a>
                     </span>
                 </div>
             </div>

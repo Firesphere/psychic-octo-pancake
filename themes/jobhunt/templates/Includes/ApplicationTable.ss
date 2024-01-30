@@ -82,7 +82,7 @@
                 <% end_if %>
                 <% if $PayUpper || $PayLower %><br />Pay:<% end_if %>
                 <% if $PayUpper %>
-                    $PayUpper<% if $PayLower %> - $PayLower<% end_if %>
+                    <% if $PayLower %>$PayLower - <% end_if %>$PayUpper
                 <% end_if %>
                 <% if not $PayUpper && $PayLower %>$PayLower<% end_if %>
             </td>
