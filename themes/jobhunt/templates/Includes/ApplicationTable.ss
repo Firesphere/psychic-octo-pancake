@@ -12,8 +12,8 @@
         <th scope="col" class="col-lg-1">Role</th>
         <th scope="col"></th>
         <th scope="col">
-            <span
-                class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>border-bottom border-primary h5 active<% end_if %>">
+            <span class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>
+                border-bottom border-primary h5 active<% end_if %>">
                 <a href="$Top.Link?sort[ApplicationDate]=<% if $SortDirection == 'ApplicationDateASC' %>DESC<% else %>ASC<% end_if %>"><i
                     class="bi bi-sort-numeric-<% if $SortDirection == 'ApplicationDateASC' %>up<% else %>down<% end_if %>"></i></a>
             </span>
@@ -80,7 +80,7 @@
                 <% if $Link %>
                     <a href="$Link" target="_blank">Job description</a>
                 <% end_if %>
-                <% if $PayUpper || $PayLower %><br />Pay:<% end_if %>
+                <% if $PayUpper || $PayLower %><br/>Pay:<% end_if %>
                 <% if $PayUpper %>
                     <% if $PayLower %>$PayLower - <% end_if %>$PayUpper
                 <% end_if %>
@@ -151,7 +151,9 @@
                    data-application="$ID"
                    data-itemtype="interview-add"
                    data-bs-toggle="modal"
-                   data-bs-target="#addItemModal"><i class="bi bi-person-add"></i></a>
+                   data-bs-target="#addItemModal">
+                    <i class="bi bi-person-add"></i>
+                </a>
             </td>
         </tr>
     <% end_loop %>

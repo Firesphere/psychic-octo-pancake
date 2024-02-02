@@ -74,7 +74,7 @@ class ApplicationPageController extends \PageController
             foreach (JobApplication::$sort as $sortfield) {
                 if (array_key_exists($sortfield, $requestsort)) {
                     $direction = strtoupper($requestsort[$sortfield]);
-                    $this->sort[$sortfield] = $direction === 'ASC' ? 'ASC' : 'DESC';
+                    $this->sort = [$sortfield => $direction === 'ASC' ? 'ASC' : 'DESC'];
                     $this->SortDirection = $sortfield . $direction;
                 }
             }

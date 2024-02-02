@@ -17,6 +17,7 @@
         "lekoala/silverstripe-form-elements": "dev-master",
         "nzta/silverstripe-sitebanner": "^4.0",
         "phptek/sentry": "^5.0",
+        "sheadawson/silverstripe-dependentdropdownfield": "^3.0",
         "silverstripe/googlesitemaps": "^3.0",
         "silverstripe/login-forms": "~5.1.0@stable",
         "silverstripe/mfa": "^5",

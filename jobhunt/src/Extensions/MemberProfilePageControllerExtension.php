@@ -9,6 +9,7 @@ use SilverStripe\Forms\ConfirmedPasswordField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Security\Security;
+use SilverStripe\View\Requirements;
 use Symbiote\MemberProfiles\Pages\MemberProfilePageController;
 
 /**
@@ -21,6 +22,15 @@ class MemberProfilePageControllerExtension extends Extension
     private static $allowed_actions = [
         'archive'
     ];
+
+    public function onAfterInit()
+    {
+        Requirements::javascript('silverstripe/admin:thirdparty/jquery-entwine/jquery.entwine.js');
+        Requirements::javascript(
+            'sheadawson/silverstripe-dependentdropdownfield:client/js/dependentdropdownfield.js'
+        );
+
+    }
 
     public function updateProfileForm(Form $form)
     {

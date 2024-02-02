@@ -7,3 +7,6 @@ Symbiote\MemberProfiles\Pages\MemberProfilePageController:
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Firesphere\JobHunt\Extensions\SiteConfigExtension
+SilverStripe\Assets\Image:
+  extensions:
+    - Firesphere\JobHunt\Extensions\ImageExtension

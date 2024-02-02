@@ -28,6 +28,6 @@ class Tag extends DataObject
     ];
 
     private static $belongs_many_many = [
-        'Applications' => JobApplication::class,
+        'Applications' => JobApplication::class . '.Tags',
     ];
 }

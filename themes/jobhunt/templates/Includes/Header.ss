@@ -14,7 +14,7 @@
                     <% loop $Menu(1) %>
                         <li class="nav-item $FirstLast <% if $Children.Count %>dropdown<% end_if %>">
                             <% if $Title != 'Profile' && $Children.Count %>
-                                <a class="nav-link dropdown-toggle" rel="nofollow" role="button"
+                                <a href="$Link" class="nav-link dropdown-toggle" rel="nofollow" role="button"
                                    data-bs-toggle="dropdown">$MenuTitle.XML</a>
                                 <ul class="dropdown-menu border-0 px-2">
                                     <li>

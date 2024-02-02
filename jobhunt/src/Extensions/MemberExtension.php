@@ -9,6 +9,7 @@ use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StateOfMind;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
+use Firesphere\JobHunt\Models\Tag;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataExtension;
@@ -33,6 +34,7 @@ use SilverStripe\Security\Security;
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
  * @method DataList|ExcludedStatus[] ExcludedStatus()
+ * @method DataList|Tag[] Tags()
  */
 class MemberExtension extends DataExtension
 {
@@ -48,7 +50,8 @@ class MemberExtension extends DataExtension
         'JobApplications' => JobApplication::class . '.User',
         'Notes'           => BaseNote::class . '.Owner',
         'Moods'           => StateOfMind::class . '.User',
-        'ExcludedStatus'  => ExcludedStatus::class . '.User'
+        'ExcludedStatus'  => ExcludedStatus::class . '.User',
+        'Tags'            => Tag::class . '.User'
     ];
 
     private static $indexes = [
@@ -202,7 +205,7 @@ class MemberExtension extends DataExtension
             ])
             ->column('ApplicationID');
         if (!count($int)) {
-            return self::$_job_applications->filter(['Status.Status' => 'Interview']);
+            $int = [-1];
         }
 
         if (!$post) {
@@ -210,14 +213,15 @@ class MemberExtension extends DataExtension
                 ->filter([
                     'ID' => $int,
                 ]);
-        } else {
-            return self::$_job_applications
-                ->filter([
-                    'Status.Status' => 'Interview'
-                ])
-                ->exclude([
-                    'ID' => $int
-                ]);
         }
+
+        return self::$_job_applications
+            ->filter([
+                'Status.Status' => 'Interview'
+            ])
+            ->exclude([
+                'ID' => $int
+            ]);
+
     }
 }

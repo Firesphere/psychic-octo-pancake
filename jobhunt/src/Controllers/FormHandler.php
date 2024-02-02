@@ -9,6 +9,7 @@ use Firesphere\JobHunt\Forms\CompanyForm;
 use Firesphere\JobHunt\Forms\ImportForm;
 use Firesphere\JobHunt\Forms\InterviewForm;
 use Firesphere\JobHunt\Forms\InterviewNoteForm;
+use Firesphere\JobHunt\Forms\MappingForm;
 use Firesphere\JobHunt\Forms\StatusUpdateForm;
 use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\BaseNote;
@@ -18,6 +19,7 @@ use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use SilverStripe\Control\Controller;
 use SilverStripe\Security\Security;
+use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
 
 /**
@@ -36,7 +38,8 @@ class FormHandler extends Controller
         'ImportForm',
         'CompanyForm',
         'CloseForm',
-        'PostInterview'
+        'PostInterview',
+        'MappingForm'
     ];
     /**
      * @var JobApplication
@@ -59,6 +62,7 @@ class FormHandler extends Controller
     public function init()
     {
         parent::init();
+        Requirements::block('silverstripe/admin:thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
         if (!Security::getCurrentUser()) {
             $this->httpError(403);
 
@@ -167,9 +171,21 @@ class FormHandler extends Controller
 
     }
 
+    public function MappingForm()
+    {
+        return MappingForm::create($this);
+    }
+
     public function ImportForm()
     {
-        $form = ImportForm::create($this);
+        if ($this->getRequest()->getSession()->get('TMP_PATH') &&
+            $this->getRequest()->getSession()->get('CSV_HEADER')
+        ) {
+            $form = MappingForm::create($this);
+        } else {
+
+            $form = ImportForm::create($this);
+        }
         if ($this->getRequest()->isGET()) {
             return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()]);
         }
@@ -235,3 +251,23 @@ class FormHandler extends Controller
         $this->interview = $interview;
     }
 }
+
+/**
+ * $tmpPath = sprintf('%s/public/%s/.protected/%d/',
+ * BASE_PATH,
+ * ASSETS_DIR,
+ * $user->ID
+ * );
+ * if (!is_dir($tmpPath)) {
+ * if (!mkdir($tmpPath) && !is_dir($tmpPath)) {
+ * throw new \RuntimeException(sprintf('Directory "%s" was not created', $tmpPath));
+ * }
+ * }
+ * $tmpPath .= uniqid('', false) . '.csv';
+ * file_put_contents($tmpPath, file_get_contents($attachment['tmp_name']));
+ * $this->controller->getRequest()->getSession()->set('TMP_PATH', $tmpPath);
+ * $this->controller->getRequest()->getSession()->set('CSV_HEADER', $csvAsArray[0]);
+ * $form = MappingForm::create($this->controller);
+ *
+ * return json_encode(['success' => true, 'form' => $form->forAjaxTemplate()->getValue()]);
+ */
