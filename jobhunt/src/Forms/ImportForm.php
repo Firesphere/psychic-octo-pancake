@@ -2,13 +2,8 @@
 
 namespace Firesphere\JobHunt\Forms;
 
-use Firesphere\JobHunt\Models\ApplicationNote;
-use Firesphere\JobHunt\Models\Company;
-use Firesphere\JobHunt\Models\Interview;
-use Firesphere\JobHunt\Models\JobApplication;
-use Firesphere\JobHunt\Models\Status;
+use SilverStripe\Assets\Folder;
 use SilverStripe\Control\RequestHandler;
-use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
@@ -59,6 +54,12 @@ Interview and Note are optional fields.</p>';
 
             return;
         }
+        $session = $this->controller->getRequest()->getSession();
+        if ($session->get('CSV_HEADER') && $session->get('broken_too')) {
+            $mapForm = MappingForm::create($this->controller);
+
+            return json_encode(['success' => true, 'form' => $mapForm->forAjaxTemplate()->getValue()]);
+        }
         $attachment = $data['Attachment'];
         if (!is_array($attachment)) {
             $this->controller->httpError(405);
@@ -68,63 +69,74 @@ Interview and Note are optional fields.</p>';
 
         /** Load CSV $csvAsArray */
         $csvAsArray = array_map('str_getcsv', file($attachment['tmp_name']));
-        array_walk($csvAsArray, function (&$a) use ($csvAsArray) {
-            $a = array_combine($csvAsArray[0], $a);
-        });
-        array_shift($csvAsArray); # remove column header
-        $defaultStatus = Status::get()->filter(['Status' => 'Applied'])->first();
-        $count = 0;
-        foreach ($csvAsArray as $application) {
-            if (!is_array($application) ||
-                empty($application['Company']) ||
-                empty($application['Role']) ||
-                empty($application['ApplicationDate'])
-            ) {
-                continue;
-            }
-            $count++;
-            foreach ($application as $key => &$value) {
-                $value = trim($value);
-            }
-            unset($value);
-            $status = Status::get()->filter(['Status' => trim($application['Status'])])->first();
-            $company = Company::findOrCreate($application['Company']);
-            $jobApplication = JobApplication::create([
-                'Role'            => Convert::raw2sql($application['Role']),
-                'ApplicationDate' => date('Y-m-d', strtotime($application['ApplicationDate'])),
-                'Link'            => Convert::raw2sql($application['Link'] ?? ''),
-                'StatusID'        => $status ? $status->ID : $defaultStatus->ID,
-                'UserID'          => $user->ID,
-                'CompanyID'       => $company
-            ]);
-            $jobApplication->write();
-            if (!empty($application['Interview'])) {
-                $dates = explode(';', $application['Interview']);
-                foreach ($dates as $date) {
-                    if (!(bool)strtotime($date)) {
-                        continue;
-                    }
-                    $interview = Interview::create([
-                        'DateTime'      => date('Y-m-d H:i:s', strtotime($date)),
-                        'ApplicationID' => $jobApplication->ID
-                    ]);
-                    $interview->write();
-                }
-            }
-            if (!empty($application['Note'])) {
-                $note = ApplicationNote::create([
-                    'Title'            => 'From import: ' . date('Y-m-d'),
-                    'Note'             => Convert::raw2sql(strip_tags($application['Note'])),
-                    'JobApplicationID' => $jobApplication->ID,
-                ]);
-                $note->write();
-            }
+        $columnNames = $csvAsArray[0];
+        $session->set('CSV_HEADER', $columnNames);
+        $mapForm = MappingForm::create($this->controller);
+        $path = PUBLIC_PATH . DIRECTORY_SEPARATOR . ASSETS_DIR . '/.protected/' . $user->ID;
+        if (!$path) {
+            Folder::find_or_make($path);
         }
+        $uniqueID = uniqid('csvupload', true);
+        $tmpFile = file_put_contents($path . '/'.$uniqueID.'.csv', file_get_contents($attachment['tmp_name']));
+        $session->set('TMP_FILE', $path . '/'.$uniqueID.'.csv');
+
+//        array_walk($csvAsArray, function (&$a) use ($csvAsArray) {
+//            $a = array_combine($csvAsArray[0], $a);
+//        });
+//        array_shift($csvAsArray); # remove column header
+//        $defaultStatus = Status::get()->filter(['Status' => 'Applied'])->first();
+//        $count = 0;
+//        foreach ($csvAsArray as $application) {
+//            if (!is_array($application) ||
+//                empty($application['Company']) ||
+//                empty($application['Role']) ||
+//                empty($application['ApplicationDate'])
+//            ) {
+//                continue;
+//            }
+//            $count++;
+//            foreach ($application as $key => &$value) {
+//                $value = trim($value);
+//            }
+//            unset($value);
+//            $status = Status::get()->filter(['Status' => trim($application['Status'])])->first();
+//            $company = Company::findOrCreate($application['Company']);
+//            $jobApplication = JobApplication::create([
+//                'Role'            => Convert::raw2sql($application['Role']),
+//                'ApplicationDate' => date('Y-m-d', strtotime($application['ApplicationDate'])),
+//                'Link'            => Convert::raw2sql($application['Link'] ?? ''),
+//                'StatusID'        => $status ? $status->ID : $defaultStatus->ID,
+//                'UserID'          => $user->ID,
+//                'CompanyID'       => $company
+//            ]);
+//            $jobApplication->write();
+//            if (!empty($application['Interview'])) {
+//                $dates = explode(';', $application['Interview']);
+//                foreach ($dates as $date) {
+//                    if (!(bool)strtotime($date)) {
+//                        continue;
+//                    }
+//                    $interview = Interview::create([
+//                        'DateTime'      => date('Y-m-d H:i:s', strtotime($date)),
+//                        'ApplicationID' => $jobApplication->ID
+//                    ]);
+//                    $interview->write();
+//                }
+//            }
+//            if (!empty($application['Note'])) {
+//                $note = ApplicationNote::create([
+//                    'Title'            => 'From import: ' . date('Y-m-d'),
+//                    'Note'             => Convert::raw2sql(strip_tags($application['Note'])),
+//                    'JobApplicationID' => $jobApplication->ID,
+//                ]);
+//                $note->write();
+//            }
+//        }
 
         unlink($attachment['tmp_name']);
 
-        $this->controller->flashMessage('Imported ' . $count . ' applications', 'success');
+//        $this->controller->flashMessage('Imported ' . $count . ' applications', 'success');
 
-        return json_encode(['success' => true, 'form' => false]);
+        return json_encode(['success' => true, 'form' => $mapForm->forAjaxTemplate()->getValue()]);
     }
 }

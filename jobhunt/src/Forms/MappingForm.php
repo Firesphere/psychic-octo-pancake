@@ -34,6 +34,8 @@ class MappingForm extends Form
 
     protected $fieldMap = [];
 
+    protected $dataMapFromCSV;
+
     public function __construct(RequestHandler $controller = null, $name = self::DEFAULT_NAME)
     {
         $session = $controller->getRequest()->getSession()->get('CSV_HEADER');
@@ -66,6 +68,8 @@ class MappingForm extends Form
             $fieldField->setDepends($sourceField);
             $fields[] = $group;
         }
+
+        $this->dataMapFromCSV = $csvHeaderForForm;
 
 
         $fieldList = FieldList::create($fields);
@@ -118,9 +122,17 @@ class MappingForm extends Form
 
     public function submit($data, $form)
     {
-        $file = $this->controller->getRequest()->getSession()->get('TMP_PATH');
-        $session = $this->controller->getRequest()->getSession()->get('CSV_HEADER');
-
-        // Handle the mapping and save the shizzle
+        $file = $this->controller->getRequest()->getSession()->get('TMP_FILE');
+        $openFile = fopen($file, 'rb');
+        while (!feof($openFile)) {
+            $csv_data[] = fgetcsv($openFile, 1024);
+        }
+        fclose($openFile);
+        $base = $csv_data[0];
+        unset($csv_data[0]); // Remove the first one. Pop didn't popperly
+        array_walk($csv_data, function (&$arraySet) use ($csv_data, $base) {
+            $arraySet = array_combine($base, $arraySet);
+        });
+        // Do mapping, you got this!
     }
 }

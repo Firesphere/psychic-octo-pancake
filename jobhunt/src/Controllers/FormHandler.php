@@ -178,7 +178,7 @@ class FormHandler extends Controller
 
     public function ImportForm()
     {
-        if ($this->getRequest()->getSession()->get('TMP_PATH') &&
+        if ($this->getRequest()->getSession()->get('TMP_FILE') &&
             $this->getRequest()->getSession()->get('CSV_HEADER')
         ) {
             $form = MappingForm::create($this);

@@ -33,6 +33,7 @@ class Company extends DataObject
         'Country' => DBVarchar::class,
         'Email'   => DBVarchar::class,
         'Link'    => DBVarchar::class,
+        'Ethics'  => DBVarchar::class,
         'Slug'    => DBVarchar::class,
     ];
 
