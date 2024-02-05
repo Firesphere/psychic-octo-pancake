@@ -17,6 +17,7 @@ use SilverStripe\ORM\FieldType\DBVarchar;
  * @property string $Country
  * @property string $Email
  * @property string $Link
+ * @property string $Ethics
  * @property string $Slug
  * @property int $LogoID
  * @method Image Logo()
