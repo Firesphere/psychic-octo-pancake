@@ -159,6 +159,32 @@ class MemberExtension extends DataExtension
         return $this->owner->inGroups(["administrators", "legacy", "subscriber"]);
     }
 
+    public function getAppliedJobApplications()
+    {
+        self::set_job_applications();
+
+        $list = self::$_job_applications->filter(['Status.Status' => 'Applied']);
+
+        if (!$list->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
+
+        return $list;
+    }
+
+    public function getClosedJobApplications()
+    {
+        self::set_job_applications();
+
+        $list = self::$_job_applications->filter(['Status.AutoHide' => true]);
+
+        if (!$list->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
+
+        return $list;
+    }
+
     public function getInProgressApplications($interviewed = false)
     {
         self::set_job_applications();
@@ -184,16 +210,18 @@ class MemberExtension extends DataExtension
                         'DateTime:LessThan' => date('Y-m-d H:i:s')
                     ]);
 
-                    return $list->filter(['ID' => $int->column('ApplicationID')]);
+                    $list = $list->filter(['ID' => $int->column('ApplicationID')]);
                 }
 
-                return $list->exclude(['ID' => $int->column('ApplicationID')]);
+                $list = $list->exclude(['ID' => $int->column('ApplicationID')]);
             }
 
-            return $list;
+            if ($list->count()) {
+                return $list;
+            }
         }
 
-        return ArrayList::create();
+        return ArrayList::create([JobApplication::create()]);
     }
 
     public function getPrePostInterview($post = true)
@@ -209,19 +237,29 @@ class MemberExtension extends DataExtension
         }
 
         if (!$post) {
-            return self::$_job_applications
+            $return = self::$_job_applications
                 ->filter([
                     'ID' => $int,
                 ]);
+
+            if (!$return->count()) {
+                $return = ArrayList::create([JobApplication::create()]);
+            }
+
+            return $return;
         }
 
-        return self::$_job_applications
+        $return = self::$_job_applications
             ->filter([
                 'Status.Status' => 'Interview'
             ])
             ->exclude([
                 'ID' => $int
             ]);
+        if (!$return->count()) {
+            $return = ArrayList::create([JobApplication::create()]);
+        }
 
+        return $return;
     }
 }

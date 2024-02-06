@@ -5,7 +5,7 @@
                class="py-1"
                role="button"
                aria-expanded="false"
-               aria-controls="description-$ColumnTitle">$ColumnTitle ($ColumnCount)</a>
+               aria-controls="description-$ColumnTitle">$ColumnTitle (<% if $ColumnCount.First.ID %>$ColumnCount.Count()<% else %>0<% end_if %>)</a>
         </div>
     </div>
     <small class="mb-0 text-muted collapse" id="description-$ColumnTitle">

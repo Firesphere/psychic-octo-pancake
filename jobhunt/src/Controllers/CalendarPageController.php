@@ -31,7 +31,7 @@ class CalendarPageController extends \PageController
     {
         $list = ArrayList::create();
         $i = -2;
-        while ($i <= 5) {
+        while ($i <= 3) {
             $m = date('m', strtotime($i . ' months'));
             $y = date('Y', strtotime($i . ' months'));
             $data = ArrayData::create([

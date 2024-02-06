@@ -24,7 +24,7 @@ class MoodPage extends \Page
 
         $moods = $user->Moods()
             ->filter([
-                'Created:GreaterThan' => date('Y-m-d 00:00:00', strtotime('-1 month'))
+                'Created:GreaterThan' => date('Y-m-d 00:00:00', strtotime('-2 months'))
             ]);
 
         $return = [];
