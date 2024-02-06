@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc18f48b14c102a898e81bfcb01a66e8",
+    "content-hash": "f8dae7d6d70f8713ce383a83429612c4",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -1077,6 +1077,47 @@
                 "source": "https://github.com/Firesphere/potential-doodle/tree/0.4.0"
             },
             "time": "2023-11-19T02:05:57+00:00"
+        },
+        {
+            "name": "firesphere/openstreetmaps",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://codeberg.org/Firesphere/silverstripe-openstreetmaps",
+                "reference": "2d88c530f22d4e30c30dde508db9e4e71a458b79"
+            },
+            "require": {
+                "silverstripe/framework": ">=4"
+            },
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "expose": [
+                    "dist"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Firesphere\\OpenStreetmaps\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Simon `Firesphere` Erkelens",
+                    "email": "simon@firesphere.dev"
+                }
+            ],
+            "description": "A frontend maps module.",
+            "keywords": [
+                "geodata",
+                "maps",
+                "openstreetmaps",
+                "silverstripe"
+            ],
+            "time": "2023-11-22T08:09:47+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

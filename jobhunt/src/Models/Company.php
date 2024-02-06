@@ -62,6 +62,11 @@ class Company extends DataObject
         'Slug'
     ];
 
+    private static $indexes = [
+        'Name' => true,
+        'Slug' => true
+    ];
+
     public static function findOrCreate($name)
     {
         $slug = SiteTree::singleton()->generateURLSegment($name);

@@ -15,14 +15,25 @@
             Add application
         </button>
     </div>
+    <div class="mb-2 col-4">
+        <label for="filter" class="sr-only">Filter</label>
+        <div class="input-group">
+            <input id="filter" type="text" class="form-control col"
+                   placeholder="Quickfilter"
+                   aria-placeholder="Quickfilter"/>
+            <a href="#" class="btn btn-outline-secondary" type="button"
+               id="clear_filter"><i
+                class="bi bi-x"></i></a>
+        </div>
+    </div>
     <% if $Content %>
-        <div class="mb-2 col-10">
+        <div class="mb-2 col-6">
             <div id="help">
                 <a href="#kanban-help"
-                    data-bs-toggle="collapse"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="description-$ColumnTitle"
+                   data-bs-toggle="collapse"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="description-$ColumnTitle"
                 ><h4><i class="bi bi-question-octagon">&nbsp;</i>Kanban Help</h4></a>
                 <div id="kanban-help" class="collapse">$Content</div>
             </div>
