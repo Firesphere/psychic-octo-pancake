@@ -10,6 +10,7 @@ use SilverStripe\Security\Security;
 
 class FilterController extends Controller
 {
+    private static $url_segment = 'applicationfilter';
 
     public function index(HTTPRequest $request)
     {
@@ -30,7 +31,11 @@ class FilterController extends Controller
         $this->Applications = $user->JobApplications()
             ->filter($filter);
 
-        $html = $this->renderWith('Includes\ApplicationRow');
+        if ($user->ViewStyle === 'Table') {
+            $html = $this->renderWith('Includes\ApplicationRow');
+        } else {
+            $html = $this->renderWith('Includes\ApplicationCards');
+        }
         $body = json_encode(['result' => $html->getValue()]);
         $this->getResponse()->addHeader('content-type', 'application/json');
         $this->getResponse()->setBody($body);

@@ -30,15 +30,42 @@
         <div class="col-12">
             <div class="py-3">
                 <% if $CurrentUser.JobApplications.Count %>
-                    <% if $CurrentUser.ViewStyle != 'Card' %>
+                    <% if $CurrentUser.ViewStyle == 'Table' %>
                         <% include ApplicationTable %>
                     <% else %>
-                        <% include ApplicationCards %>
+                        <div class="row pb-3">
+                            <div class="col-sm-3 col-12">
+                                <label for="companyfilter">Company</label>
+                                <div class="input-group">
+                                    <input id="companyfilter" type="text" class="form-control col"
+                                           placeholder="Quickfilter"
+                                           aria-placeholder="Quickfilter"/>
+                                    <a href="#" class="btn btn-outline-secondary" type="button"
+                                       id="clear_companyfilter"><i
+                                        class="bi bi-x"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-12">
+                                <label for="rolefilter">Role</label>
+                                <div class="input-group">
+                                    <input id="rolefilter" type="text" class="form-control col"
+                                           placeholder="Quickfilter"
+                                           aria-placeholder="Quickfilter"/>
+                                    <a href="#" class="btn btn-outline-secondary" type="button"
+                                       id="clear_rolefilter"><i
+                                        class="bi bi-x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="applicationtable_body">
+                            <% include ApplicationCards %>
+                        </div>
                     <% end_if %>
                 <% else %>
                     <h3>Import</h3>
                     <p>You can import applications from CSV via the button below.</p>
-                    <p>Please be aware that the import will not check for duplicate applications, interviews, notes, etc.</p>
+                    <p>Please be aware that the import will not check for duplicate applications, interviews, notes,
+                        etc.</p>
                     <p><a href="$SiteConfig.DemoCSV.Link" title="download example csv">Example CSV</a></p>
                     <button type="button" class="btn btn-primary js-formaction"
                             data-itemtype="import"

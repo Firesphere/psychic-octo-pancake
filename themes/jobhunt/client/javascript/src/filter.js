@@ -36,45 +36,51 @@ const searchResult = (field) => {
         });
 }
 export default () => {
-    filterclears.forEach(clearer => {
-        clearer.addEventListener('click', e =>{
-            e.preventDefault();
-            let elmId = clearer.getAttribute('id').split('_');
-            document.getElementById(elmId[1]).value = '';
-            clearer.setAttribute('disabled', 'disabled');
-            document.location.reload();
-        })
-    });
-    filters.forEach(element => {
-        element.addEventListener('click', (event) => {
-            event.preventDefault();
-            let elmId = element.getAttribute('id').split('_');
-            document.getElementById(`${elmId[1]}_group`).classList.toggle('d-none');
-            element.classList.toggle('bi-funnel-fill');
-            element.classList.toggle('bi-funnel');
+    if (filterclears.length > 0 && filterclears[0]) {
+        filterclears.forEach(clearer => {
+            clearer.addEventListener('click', e => {
+                e.preventDefault();
+                let elmId = clearer.getAttribute('id').split('_');
+                document.getElementById(elmId[1]).value = '';
+                clearer.setAttribute('disabled', 'disabled');
+                document.location.reload();
+            })
         });
-    });
-    filterInputs.forEach(field => {
-        field.addEventListener('keyup', () => {
-            if (typeof timer !== 'undefined') {
-                window.clearTimeout(timer);
-            }
-            tablebody.innerHTML = '';
-            tablebody.insertAdjacentHTML('beforeend',
-                '<tr><td colspan="100" class="text-center p-3">\n' +
-                '  <div class="spinner-border" role="status">\n' +
-                '    <span class="visually-hidden">Loading...</span>\n' +
-                '  </div>\n' +
-                '</td></tr>');
-            if (field.value !== '') {
-                timer = setTimeout(() => {
-                    searchResult(field)
-                }, 500);
-            } else {
-                timer = setTimeout(() => {
-                    window.location.reload();
-                }, 1500)
-            }
+    }
+    if (filters.length > 0 && filters[0]) {
+        filters.forEach(element => {
+            element.addEventListener('click', (event) => {
+                event.preventDefault();
+                let elmId = element.getAttribute('id').split('_');
+                document.getElementById(`${elmId[1]}_group`).classList.toggle('d-none');
+                element.classList.toggle('bi-funnel-fill');
+                element.classList.toggle('bi-funnel');
+            });
         });
-    });
+    }
+    if (filterInputs.length > 0 && filterInputs[0]) {
+        filterInputs.forEach(field => {
+            field.addEventListener('keyup', () => {
+                if (typeof timer !== 'undefined') {
+                    window.clearTimeout(timer);
+                }
+                tablebody.innerHTML = '';
+                tablebody.insertAdjacentHTML('beforeend',
+                    '<tr><td colspan="100" class="text-center p-3">\n' +
+                    '  <div class="spinner-border" role="status">\n' +
+                    '    <span class="visually-hidden">Loading...</span>\n' +
+                    '  </div>\n' +
+                    '</td></tr>');
+                if (field.value !== '') {
+                    timer = setTimeout(() => {
+                        searchResult(field)
+                    }, 500);
+                } else {
+                    timer = setTimeout(() => {
+                        window.location.reload();
+                    }, 1500)
+                }
+            });
+        });
+    }
 }
