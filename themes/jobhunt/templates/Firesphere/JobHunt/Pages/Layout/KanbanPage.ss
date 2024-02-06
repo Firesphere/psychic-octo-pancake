@@ -16,7 +16,7 @@
         </button>
     </div>
     <div class="mb-2 col-4">
-        <label for="filter" class="sr-only">Filter</label>
+        <label for="filter" class="visually-hidden">Filter</label>
         <div class="input-group">
             <input id="filter" type="text" class="form-control col"
                    placeholder="Quickfilter"
