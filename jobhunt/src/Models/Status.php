@@ -8,6 +8,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
+use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\SiteConfig\SiteConfig;
 
@@ -17,6 +18,7 @@ use SilverStripe\SiteConfig\SiteConfig;
  * @property string $Status
  * @property string $Colour
  * @property bool $AutoHide
+ * @property int $SortOrder
  * @method DataList|JobApplication[] Applications()
  * @method DataList|StatusUpdate[] StatusUpdates()
  * @method DataList|ExcludedStatus[] FilterExclusions()
@@ -26,9 +28,10 @@ class Status extends DataObject
     private static $table_name = 'ApplicationStatus';
 
     private static $db = [
-        'Status'   => DBVarchar::class,
-        'Colour'   => DBVarchar::class,
-        'AutoHide' => DBBoolean::class . '(false)'
+        'Status'    => DBVarchar::class,
+        'Colour'    => DBVarchar::class,
+        'AutoHide'  => DBBoolean::class . '(false)',
+        'SortOrder' => DBInt::class,
     ];
 
     private static $has_many = [
@@ -99,6 +102,7 @@ class Status extends DataObject
             self::$id_map = self::get()->map('ID', 'Status')->toArray();
             self::$id_map[0] = 'Favourite';
         }
+
         return self::$id_map;
     }
 

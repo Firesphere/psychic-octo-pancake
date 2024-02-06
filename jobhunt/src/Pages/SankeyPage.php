@@ -61,7 +61,7 @@ class SankeyPage extends Page
             $colour[$stat->ID] = $colours[$stat->getColourStyle()];
         }
 
-        return ['values' => $this->fromTo, 'labels' => $status, 'colours' => $colour];
+        return ['values' => $this->getFromTo(), 'labels' => $status, 'colours' => $colour];
     }
 
     private function countFlow($from, $to)
@@ -79,5 +79,22 @@ class SankeyPage extends Page
             'to'   => $to,
             'flow' => 1
         ];
+    }
+
+    public function getFromTo()
+    {
+        $orderMap = Status::get()->map('ID', 'SortOrder')->toArray();
+        $fromTo = $this->fromTo;
+        usort($fromTo, function ($a, $b) use ($orderMap) {
+            $retval = $orderMap[$a['from']] <=> $orderMap[$b['from']];
+            if ($retval == 0) {
+                $retval = $orderMap[$a['to']] <=> $orderMap[$b['to']];
+            }
+
+            return $retval;
+        });
+
+        return $fromTo;
+
     }
 }

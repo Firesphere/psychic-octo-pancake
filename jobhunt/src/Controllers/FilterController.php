@@ -8,6 +8,10 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 
+/**
+ * Class \Firesphere\JobHunt\Controllers\FilterController
+ *
+ */
 class FilterController extends Controller
 {
     private static $url_segment = 'applicationfilter';
