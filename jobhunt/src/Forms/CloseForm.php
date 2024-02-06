@@ -6,7 +6,7 @@ use Firesphere\JobHunt\Models\Status;
 
 class CloseForm extends StatusUpdateForm
 {
-    const DEFAULT_NAME = 'CloseForm';
+    public const DEFAULT_NAME = 'CloseForm';
 
     public function getFieldList($hiddenType, $params)
     {

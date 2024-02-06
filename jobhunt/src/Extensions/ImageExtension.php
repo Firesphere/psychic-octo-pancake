@@ -14,7 +14,6 @@ use SilverStripe\ORM\DataExtension;
  */
 class ImageExtension extends DataExtension
 {
-
     private static $belongs_to = [
         'Company' => Company::class . '.Logo'
     ];

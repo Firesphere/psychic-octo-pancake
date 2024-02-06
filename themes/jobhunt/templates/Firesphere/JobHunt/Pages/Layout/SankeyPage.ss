@@ -1,4 +1,4 @@
-<div class="">
+
     <div class="row">
         <h1 class="col-12">$Title</h1>
         <div class="col-12">
@@ -7,4 +7,3 @@
             <canvas id="sankeychart"></canvas>
         </div>
     </div>
-</div>

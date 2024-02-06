@@ -40,9 +40,9 @@ class CompanyForm extends Form
         ]);
         $address->setRows(3);
         $country->addExtraClass('form-select');
-//        $logo->addExtraClass('form-control');
-//        $logo->setAllowedFileCategories('image');
-//        $logo->setFolderName('company-logos');
+        //        $logo->addExtraClass('form-control');
+        //        $logo->setAllowedFileCategories('image');
+        //        $logo->setFolderName('company-logos');
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);

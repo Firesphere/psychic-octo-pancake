@@ -35,7 +35,7 @@ class MemberProfilePageControllerExtension extends Extension
     public function updateProfileForm(Form $form)
     {
         $form->addExtraClass('col-md-4 col-sm-12');
-//        $form->disableSpamProtection();
+        //        $form->disableSpamProtection();
         $this->bootstrapForms($form);
     }
 

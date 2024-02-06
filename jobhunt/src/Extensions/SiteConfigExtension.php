@@ -17,7 +17,6 @@ use SilverStripe\ORM\DataExtension;
  */
 class SiteConfigExtension extends DataExtension
 {
-
     private static $has_one = [
         'DemoCSV' => File::class
     ];

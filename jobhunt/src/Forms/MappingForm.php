@@ -19,9 +19,9 @@ use SilverStripe\ORM\DataObjectSchema;
 
 class MappingForm extends Form
 {
-    const DEFAULT_NAME = 'MappingForm';
+    public const DEFAULT_NAME = 'MappingForm';
 
-    const SKIP_FIELDS = [
+    public const SKIP_FIELDS = [
         'ID',
         'Created',
         'LastEdited',

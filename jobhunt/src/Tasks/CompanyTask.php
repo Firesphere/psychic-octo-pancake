@@ -7,7 +7,6 @@ use SilverStripe\Dev\BuildTask;
 
 class CompanyTask extends BuildTask
 {
-
     public function run($request)
     {
         $companies = Company::get()->filter(['Slug' => null]);

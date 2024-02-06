@@ -25,7 +25,11 @@ let moodOptions = {
     type: 'line',
     data: {
         labels: [],
-        datasets: [{label: 'Mood', data: [], borderWidth: 1}]
+        datasets: [{
+            label: 'Mood',
+            data: [],
+            borderWidth: 1
+        }]
     },
     options: {
         scales: {
@@ -51,15 +55,16 @@ let sankeyOptions = {
             colorTo: (c) => getColor(c.dataset.data[c.dataIndex].to),
             colorMode: 'flow', // or 'from' or 'to'
             /* optional labels */
-            labels: {}
-            // size: 'min', // or 'min' if flow overlap is preferred
+            labels: {},
+            size: 'max', // or 'min' if flow overlap is preferred
         }]
     },
 };
 
 
 const getColor = (key) => {
-    return colors[key];
+    key = `${key}.`.split('.');
+    return colors[key[0]];
 }
 
 export default () => {

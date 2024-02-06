@@ -16,7 +16,6 @@ use SilverStripe\View\Requirements;
  */
 class KanbanPageController extends \PageController
 {
-
     private static $allowed_actions = [
         'update'
     ];
