@@ -3,8 +3,8 @@
     <tr>
         <th scope="col" class="border-start col col-lg-3">
             <div class="d-flex justify-content-between">
-                <span
-                    class="<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>border-bottom border-primary h5 active<% end_if %>">
+                <span class="
+<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>border-bottom border-primary h5 bold active<% end_if %>">
                     <a href="$Top.Link?sort[Company.Name]=<% if $SortDirection == 'Company.NameASC' %>DESC<% else %>ASC<% end_if %>"><i
                         class="bi bi-sort-alpha-down<% if $SortDirection == 'Company.NameDESC' %>-alt<% end_if %>"></i></a>
                 </span>
@@ -35,14 +35,16 @@
                 </div>
             </div>
         </th>
-        <th scope="col" class="d-flex justify-content-between border-bottom-0 border-start">
+        <th scope="col" class="border-bottom-0 border-start">
+            <div class="d-flex justify-content-between ">
             <span class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>
-                border-bottom border-primary h5 active<% end_if %>">
+                border-bottom border-primary h5 active bold<% end_if %>">
                 <a href="$Top.Link?sort[ApplicationDate]=<% if $SortDirection == 'ApplicationDateASC' %>DESC<% else %>ASC<% end_if %>"><i
-                    class="bi bi-sort-numeric-<% if $SortDirection == 'ApplicationDateASC' %>up<% else %>down<% end_if %>"></i></a>
+                    class="bi bi-sort-numeric-down<% if $SortDirection == 'ApplicationDateASC' %><% else %>-alt<% end_if %>"></i></a>
             </span>
-            <span>Application date</span>
-            <span></span>
+                <span>Application date</span>
+                <span></span>
+            </div>
         </th>
         <th scope="col" class="text-center col-1 border-bottom-0 border-start">
             <span>Status</span>
