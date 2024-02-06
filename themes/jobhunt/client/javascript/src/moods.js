@@ -39,7 +39,10 @@ export default () => {
         applyMoods(dayscore);
     }
     moods.forEach(mood => {
-        mood.addEventListener('click', mood.moodHandler = () => { postMood(mood); });
+        mood.addEventListener('click', (e) => {
+            e.preventDefault();
+            postMood(mood);
+        });
     });
 
 }

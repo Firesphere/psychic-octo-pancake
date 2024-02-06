@@ -6,16 +6,9 @@ export default () => {
             event.preventDefault();
             let icon = fav.children[0];
             let add = false;
-            if (icon.classList.contains('text-warning')) {
-                icon.classList.remove('text-warning');
-                icon.classList.remove('bi-star-fill');
-                icon.classList.add('bi-star');
-
-            } else {
-                icon.classList.add('text-warning');
-                icon.classList.remove('bi-star');
-                icon.classList.add('bi-star-fill');
-            }
+            icon.classList.toggle('text-warning');
+            icon.classList.toggle('bi-star-fill');
+            icon.classList.toggle('bi-star');
             fetch(`fav/addremove/${fav.getAttribute('data-id')}`)
         });
     });
