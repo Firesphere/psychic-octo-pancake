@@ -85,26 +85,16 @@
                     <% end_loop %>
                 </div>
             <% end_if %>
-            <% if $Notes.Count %>
+            <% if $Interviews.Count || $Notes.Count %>
                 <div class="col-12 col-md-6">
-                    <h3>Notes:</h3>
-                    <% loop $Notes %>
-                        <% include Note Type=note %>
-                    <% end_loop %>
-                </div>
-            <% end_if %>
-        </div>
-        <% if $Interviews.Count %>
-            <div class="row d-flex justify-content-between">
-                <h3 class="col-12">Interviews:</h3>
-                <% loop $Interviews %>
-                    <div class=" b-5 col-12">
-                        <div class="card">
+                    <h3>Interviews:</h3>
+                    <% loop $Interviews %>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="card-title">Interview on $DateTime.Nice()</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary"><% if $Duration %>$Duration minutes<% else %>&nbsp;<% end_if %></h6>
+                            </div>
                             <div class="card-body p-3">
-                                <h5 class="card-title">
-                                    Interview</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Interview
-                                    date/time: $DateTime.Nice()</h6>
                                 <div class="card-text">
                                     <% if $Notes %>
                                         <h4><a data-bs-toggle="collapse" href="#details-$ID"
@@ -113,7 +103,7 @@
                                             interview</a>&nbsp;($Notes.Count)</h4>
                                         <div class="collapse row" id="details-$ID">
                                             <% loop $Notes %>
-                                                <div class="col-6 mb-2">
+                                                <div class="col-12 mb-2">
                                                     <% include Note Type=0 %>
                                                 </div>
                                             <% end_loop %>
@@ -135,10 +125,17 @@
                                    data-bs-target="#addItemModal">Edit this interview</a>
                             </div>
                         </div>
-                    </div>
-                <% end_loop %>
-            </div>
-        <% end_if %>
+                    <% end_loop %>
+                    <% if $Notes.Count %>
+                        <h3>Notes:</h3>
+                        <% loop $Notes %>
+                            <% include Note Type=note %>
+                        <% end_loop %>
+                    <% end_if %>
+                </div>
+            <% end_if %>
+
+        </div>
         <% if $CoverLetter %>
             <% include CoverLetterModal %>
         <% end_if %>
