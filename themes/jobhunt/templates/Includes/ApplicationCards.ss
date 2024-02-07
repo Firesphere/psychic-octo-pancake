@@ -2,7 +2,7 @@
     <% loop $Applications %>
         <div class="col-sm-12 col-md-4 pb-3 d-flex flex-grow-0">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-$IsOld-subtle">
                     <div class="d-flex justify-content-between">
                     <h4><a href="#"
                            class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"

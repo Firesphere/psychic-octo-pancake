@@ -14,6 +14,7 @@ use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
 use SilverStripe\ORM\FieldType\DBDate;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
@@ -160,5 +161,45 @@ class JobApplication extends DataObject
     public function StatusUpdatesVisibleCount()
     {
         return $this->StatusUpdates()->filter(['Hidden' => false])->count();
+    }
+
+    public function getIsOld()
+    {
+        if ($this->Status()->AutoHide) {
+            return $this->Status()->getColourStyle();
+        }
+        $lastStatus = $this->StatusUpdates()->orderBy('Created ASC')->Last();
+        $lastInterview = $this->Interviews()->orderBy('DateTime ASC')->last();
+        if ($lastStatus) {
+            /** @var int $lastStatus */
+            $lastStatus = $lastStatus->dbObject('Created')->getTimestamp();
+        }
+        if ($lastInterview) {
+            /** @var int $lastInterview */
+            $lastInterview = $lastInterview->dbObject('DateTime')->getTimestamp();
+        }
+
+        $dates = [
+            $lastStatus ?? 0,
+            $lastInterview ?? 0,
+            $this->dbObject('ApplicationDate')->getTimestamp(),
+        ];
+
+        $datetime = max(array_values($dates));
+        $diffTime = DBDatetime::create();
+        $diffTime->setValue(date('Y-m-d H:i:s', $datetime));
+
+        $role = $this->Role;
+        [$diff] = explode(' ', $diffTime->TimeDiffIn('days'));
+
+        $diff = (int)$diff;
+
+        return match (true) {
+            $diff < 8 => 'secondary',
+            $diff <= 14 => 'info',
+            $diff > 14 => 'warning',
+            $diff >= 21 => 'danger',
+            default => $this->Status()->Colour,
+        };
     }
 }

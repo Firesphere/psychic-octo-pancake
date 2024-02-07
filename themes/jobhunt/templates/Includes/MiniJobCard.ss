@@ -6,7 +6,7 @@
     </div>
 <% else %>
     <div class="card col mb-3" data-id="$ID" id="application-$ID">
-        <div class="card-header">
+        <div class="card-header bg-$IsOld-subtle">
             <h6 class="card-title">
                 <a href="#"
                    class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
