@@ -58,7 +58,7 @@
             <% end_if %>
             <% if not $PayUpper && $PayLower %>$PayLower<% end_if %>
         </td>
-        <th>Notes</th>
+        <th class="col-1">Notes</th>
         <td colspan="4">
             <% loop $Notes %>
                 <a href="#"
@@ -81,7 +81,7 @@
         </td>
     </tr>
     <tr class="$OddEven">
-        <th scope="row">Updates</th>
+        <th scope="row" class="col-1">Updates</th>
         <td colspan="4">
             <% loop $StatusUpdates.Filter('Hidden', 0) %>
                 <a href="#"
@@ -104,7 +104,7 @@
         </td>
     </tr>
     <tr>
-        <th scope="row">Interviews</th>
+        <th scope="row" class="col-1">Interviews</th>
         <td colspan="4">
             <% loop $Interviews %>
                 <a href="#"
