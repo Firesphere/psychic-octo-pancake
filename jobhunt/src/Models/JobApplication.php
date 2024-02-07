@@ -189,7 +189,6 @@ class JobApplication extends DataObject
         $diffTime = DBDatetime::create();
         $diffTime->setValue(date('Y-m-d H:i:s', $datetime));
 
-        $role = $this->Role;
         [$diff] = explode(' ', $diffTime->TimeDiffIn('days'));
 
         $diff = (int)$diff;

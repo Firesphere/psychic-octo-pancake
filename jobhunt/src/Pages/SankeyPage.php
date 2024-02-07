@@ -24,6 +24,7 @@ class SankeyPage extends Page
     ];
 
     protected $fromTo = [];
+    public $StatusList;
 
     public function sankeyFlow()
     {
@@ -84,6 +85,7 @@ class SankeyPage extends Page
         if ($from !== $to) {
             foreach ($this->fromTo as $flow) {
                 if ($flow['to'] === $from && $flow['from'] === $to) {
+                    $has[$to]++;
                     $to .= '.' . $has[$to];
                 }
             }

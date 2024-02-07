@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
+use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Pages\SankeyPage;
 
 /**
@@ -22,5 +23,10 @@ class SankeyPageController extends MoodPageController
         $data = $this->dataRecord->sankeyFlow();
 
         return json_encode($data, JSON_THROW_ON_ERROR);
+    }
+
+    public function getStatusList()
+    {
+        return Status::get();
     }
 }
