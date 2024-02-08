@@ -123,7 +123,7 @@ class MappingForm extends Form
     public function submit($data, $form)
     {
         $file = $this->controller->getRequest()->getSession()->get('TMP_FILE');
-        $columnNames = $this->controller->getRequest()->getSession()->get('CSVHeader');
+        $columnNames = $this->controller->getRequest()->getSession()->get('CSV_HEADER');
         $openFile = fopen($file, 'rb');
         while (!feof($openFile)) {
             $csv_data[] = fgetcsv($openFile, 1024);
@@ -137,9 +137,9 @@ class MappingForm extends Form
         foreach ($csv_data as $item) {
             $application = JobApplication::create();
             $application->write(); // Ensure it exists so the ID can be used;
-            foreach ($item as $value) {
+            foreach ($item as $rowName => $value) {
                 foreach ($data['Type'] as $name => $targetType) {
-                    if ($name === 'Ignored') {
+                    if ($targetType === 'Ignored') {
                         continue;
                     }
                     $targetField = $data['Field'][$name];
