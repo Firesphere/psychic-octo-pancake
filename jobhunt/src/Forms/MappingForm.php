@@ -123,6 +123,7 @@ class MappingForm extends Form
     public function submit($data, $form)
     {
         $file = $this->controller->getRequest()->getSession()->get('TMP_FILE');
+        $columnNames = $this->controller->getRequest()->getSession()->get('CSVHeader');
         $openFile = fopen($file, 'rb');
         while (!feof($openFile)) {
             $csv_data[] = fgetcsv($openFile, 1024);
@@ -130,9 +131,51 @@ class MappingForm extends Form
         fclose($openFile);
         $base = $csv_data[0];
         unset($csv_data[0]); // Remove the first one. Pop didn't popperly
-        array_walk($csv_data, function (&$arraySet) use ($csv_data, $base) {
-            $arraySet = array_combine($base, $arraySet);
+        array_walk($csv_data, function (&$arraySet) use ($columnNames) {
+            $arraySet = array_combine($columnNames, $arraySet);
         });
+        foreach ($csv_data as $item) {
+            $application = JobApplication::create();
+            $application->write(); // Ensure it exists so the ID can be used;
+            foreach ($item as $value) {
+                foreach ($data['Type'] as $name => $targetType) {
+                    if ($name === 'Ignored') {
+                        continue;
+                    }
+                    $targetField = $data['Field'][$name];
+                    if ($targetType === 'Application') {
+                        $application->$targetField = $item[$name];
+                    }
+                    if ($targetType === 'ApplicationNote') {
+                        $note = ApplicationNote::create();
+                        $note->JobApplicationID = $application->ID;
+                        $note->$targetField = $item[$name];
+                        $note->write();
+                    }
+                    if ($targetType === 'Company') {
+                        $company = Company::create();
+                        $company->$targetField = $item[$name];
+                    }
+                    if ($targetType === 'StatusUpdate') {
+                        $statusUpdate = StatusUpdate::create();
+                        if ($targetField !== 'StatusID') {
+                            $statusUpdate->$targetField = $item[$name];
+                        } else {
+                            $temp = TempStatus::create(['Name' => $item[$name]]);
+                            $temp->write();
+                            $statusUpdate->TempStatusID = $temp->ID;
+                            // Create a temporary status, which I need to manage
+                        }
+                        $statusUpdate->write();
+                    }
+                }
+                $companyId = $company->write();
+                $application->CompanyID = $companyId;
+                $application->write();
+            }
+        }
+        // Successful import
+        unlink($openFile);
         // Do mapping, you got this!
     }
 }

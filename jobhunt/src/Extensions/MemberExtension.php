@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Extensions;
 
+use Firesphere\JobHunt\Forms\TempStatus;
 use Firesphere\JobHunt\Models\BaseNote;
 use Firesphere\JobHunt\Models\ExcludedStatus;
 use Firesphere\JobHunt\Models\Interview;
@@ -51,7 +52,8 @@ class MemberExtension extends DataExtension
         'Notes'           => BaseNote::class . '.Owner',
         'Moods'           => StateOfMind::class . '.User',
         'ExcludedStatus'  => ExcludedStatus::class . '.User',
-        'Tags'            => Tag::class . '.User'
+        'Tags'            => Tag::class . '.User',
+        'TempStatuses'     => TempStatus::class . '.User'
     ];
 
     private static $indexes = [

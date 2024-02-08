@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Models;
 
+use Firesphere\JobHunt\Forms\TempStatus;
 use SilverStripe\ORM\FieldType\DBBoolean;
 
 /**
@@ -28,6 +29,7 @@ class StatusUpdate extends BaseNote
     private static $has_one = [
         'Status'         => Status::class,
         'JobApplication' => JobApplication::class,
+        'TempStatus'     => TempStatus::class,
     ];
 
     private static $summary_fields = [
@@ -36,5 +38,9 @@ class StatusUpdate extends BaseNote
         'Hidden.Nice',
         'Owner.FirstName',
         'JobApplication.ID'
+    ];
+
+    private static $defaults = [
+        'StatusID' => 1
     ];
 }
