@@ -3,6 +3,7 @@ import {Flow, SankeyController} from 'chartjs-chart-sankey';
 
 const moodchart = document.getElementById('moodchart');
 const sankeychart = document.getElementById('sankeychart');
+const applicationchart = document.getElementById('applicationchart');
 const moods = ['😖', '️☹️', '😐', '🙂', '😃']
 // Some sort of sane defaults for the colours
 let colors = {
@@ -61,7 +62,36 @@ let sankeyOptions = {
     },
 };
 
-
+let barOptions = {
+    type: 'bar',
+    data: {
+        labels: [],
+        datasets: [
+            {
+                label: 'Applications',
+                data: {},
+                backgroundColor: ''
+            },
+            {
+                label: 'Interviews',
+                data: {},
+                backgroundColor: '',
+            },
+            {
+                label: 'Time to first response',
+                data: {},
+                backgroundColor: ''
+            }
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    },
+};
 const getColor = (key) => {
     key = `${key}.`.split('.');
     return colors[key[0]];
@@ -104,6 +134,29 @@ export default () => {
             })
             .then(() => {
                 new Chart(sankeychart, sankeyOptions);
+            });
+    }
+    if (applicationchart) {
+        const attr = applicationchart.getAttribute('data-name') ?? 'getOtherCharts';
+        const endpoint = `${URL}/${attr}`
+
+        fetch (endpoint, {
+            method: 'GET',
+            headers: {
+                'x-requested-with': 'XMLHttpRequest'
+            }
+        }).then(response => response.json())
+            .then(response => {
+                barOptions['data']['datasets'][0]['data'] = response['data']['applications']['data']
+                barOptions['data']['datasets'][0]['backgroundColor'] = response['data']['applications']['backgroundColor']
+                barOptions['data']['datasets'][1]['data'] = response['data']['interviews']['data']
+                barOptions['data']['datasets'][1]['backgroundColor'] = response['data']['interviews']['backgroundColor']
+                // barOptions['data']['datasets'][2]['data'] = response['data']['response']['data']
+                // barOptions['data']['datasets'][2]['backgroundColor'] = response['data']['response']['backgroundColor']
+                barOptions['data']['labels'] = response['labels'];
+            })
+            .then(() => {
+                new Chart(applicationchart, barOptions);
             });
     }
 }

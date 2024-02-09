@@ -42,7 +42,6 @@ class HomePageController extends \PageController
         $colour = [];
         $statusCount = Security::getCurrentUser()->getStatusNumbers();
         foreach ($statusCount as $stat => $count) {
-
             $status = $stats->filter(['Status' => $stat])->first();
             $colour[] = $colours[$status->getColourStyle()];
         }

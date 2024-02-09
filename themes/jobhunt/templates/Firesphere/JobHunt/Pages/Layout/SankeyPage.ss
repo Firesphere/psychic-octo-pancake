@@ -21,5 +21,5 @@
         </div>
     </div>
     <canvas id="sankeychart"></canvas>
-</div>
+    <canvas id="applicationchart"></canvas>
 </div>

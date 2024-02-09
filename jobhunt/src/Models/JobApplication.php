@@ -201,4 +201,9 @@ class JobApplication extends DataObject
             default => $this->Status()->Colour,
         };
     }
+
+    public function getWeek()
+    {
+        return 'Week ' . $this->dbObject('ApplicationDate')->format('w; Y');
+    }
 }

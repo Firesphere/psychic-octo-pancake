@@ -71,4 +71,10 @@ class Interview extends DataObject
 
         return $page->Link($delete);
     }
+
+
+    public function getWeek()
+    {
+        return $this->dbObject('DateTime')->format('w');
+    }
 }
