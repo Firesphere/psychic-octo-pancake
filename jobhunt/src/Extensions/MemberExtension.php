@@ -146,6 +146,9 @@ class MemberExtension extends DataExtension
     public function getOpenOutstanding()
     {
         self::set_job_applications();
+        if (!self::$_job_applications->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
 
         if (self::$_job_applications->count()) {
             return self::$_job_applications->filter('Status.AutoHide', false);
@@ -162,6 +165,9 @@ class MemberExtension extends DataExtension
     public function getAppliedJobApplications()
     {
         self::set_job_applications();
+        if (!self::$_job_applications->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
 
         $list = self::$_job_applications->filter(['Status.Status' => 'Applied']);
 
@@ -172,9 +178,36 @@ class MemberExtension extends DataExtension
         return $list;
     }
 
+    public function getFollowUp()
+    {
+        self::set_job_applications();
+        if (!self::$_job_applications->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
+
+        $list = self::$_job_applications
+            ->filter([
+                'Status.AutoHide'              => false,
+                'Interviews.DateTime:LessThan' => date('Y-m-d H:i:s')
+            ])
+            ->exclude([
+                'Status.Status' => [
+                    'Applied',
+                    'Interview',
+                    'Invited',
+                    'Accepted'
+                ]
+            ]);
+
+        return $list;
+    }
+
     public function getClosedJobApplications()
     {
         self::set_job_applications();
+        if (!self::$_job_applications->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
 
         $list = self::$_job_applications->filter(['Status.AutoHide' => true]);
 
@@ -185,47 +218,45 @@ class MemberExtension extends DataExtension
         return $list;
     }
 
-    public function getInProgressApplications($interviewed = false)
+    public function getInProgress()
     {
         self::set_job_applications();
 
-        if (self::$_job_applications->count()) {
-            $list = self::$_job_applications->exclude([
-                'Status.Status' => [
-                    'Applied',
-                    'Interview',
-                    'Invited',
-                    'Accepted'
-                ]
-            ])
-                ->filter(['AutoHide' => false]);
+        if (!self::$_job_applications->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
+        $list = self::$_job_applications->exclude([
+            'Status.Status' => [
+                'Applied',
+                'Interview',
+                'Invited',
+                'Accepted'
+            ]
+        ])
+            ->filter(['AutoHide' => false]);
 
-            $int = Interview::get()
-                ->filter([
-                    'ApplicationID' => self::$_job_application_ids,
-                ]);
-            if ($int->count()) {
-                if ($interviewed) {
-                    $int = $int->filter([
-                        'DateTime:LessThan' => date('Y-m-d H:i:s')
-                    ]);
+        $int = Interview::get()
+            ->filter([
+                'ApplicationID' => self::$_job_application_ids,
+            ])->column('ApplicationID');
 
-                    $list = $list->filter(['ID' => $int->column('ApplicationID')]);
-                }
+        $int = count($int) ? $int : [-1];
+        $list = $list->exclude(['ID' => $int]);
 
-                $list = $list->exclude(['ID' => $int->column('ApplicationID')]);
-            }
-
-            if ($list->count()) {
-                return $list;
-            }
+        if ($list->count()) {
+            return $list;
         }
 
         return ArrayList::create([JobApplication::create()]);
+
     }
 
-    public function getPrePostInterview($post = true)
+    public function getPostInterview()
     {
+        self::set_job_applications();
+        if (!self::$_job_applications->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
         $int = Interview::get()
             ->filter([
                 'ApplicationID'        => self::$_job_application_ids,
@@ -236,25 +267,41 @@ class MemberExtension extends DataExtension
             $int = [-1];
         }
 
-        if (!$post) {
-            $return = self::$_job_applications
-                ->filter([
-                    'ID' => $int,
-                ]);
-
-            if (!$return->count()) {
-                $return = ArrayList::create([JobApplication::create()]);
-            }
-
-            return $return;
-        }
-
         $return = self::$_job_applications
             ->filter([
                 'Status.Status' => 'Interview'
             ])
             ->exclude([
                 'ID' => $int
+            ]);
+
+        if (!$return->count()) {
+            $return = ArrayList::create([JobApplication::create()]);
+        }
+
+        return $return;
+    }
+
+    public function getPreInterview()
+    {
+        self::set_job_applications();
+        if (!self::$_job_applications->count()) {
+            return ArrayList::create([JobApplication::create()]);
+        }
+
+        $int = Interview::get()
+            ->filter([
+                'DateTime:GreaterThan' => date('Y-m-d H:i:s'),
+                'ApplicationID'        => self::$_job_application_ids
+            ])
+            ->column('ApplicationID');
+
+        $int = count($int) ? $int : [-1];
+
+        $return = self::$_job_applications
+            ->filter([
+                'Status.Status' => 'Interview',
+                'ID'            => $int
             ]);
         if (!$return->count()) {
             $return = ArrayList::create([JobApplication::create()]);

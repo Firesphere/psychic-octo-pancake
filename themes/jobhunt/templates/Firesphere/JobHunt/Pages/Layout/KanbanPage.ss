@@ -55,11 +55,11 @@
     </div>
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn ColumnTitle="Started", ColumnCount=$CurrentUser.InProgressApplications, ColumnDescription="Applications that have had a response or have been viewed etc.<br/>
+            <% include KanbanColumn ColumnTitle="Started", ColumnCount=$CurrentUser.InProgress, ColumnDescription="Applications that have had a response or have been viewed etc.<br/>
                     This includes applications that had a response <em>after</em> an interview" %>
             <div class="card-body">
                 <div class="tasks" id="Progress">
-                    <% loop $CurrentUser.InProgressApplications %>
+                    <% loop $CurrentUser.InProgress %>
                         <% include MiniJobCard %>
                     <% end_loop %>
                 </div>
@@ -68,12 +68,12 @@
     </div>
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn ColumnTitle="Interview", ColumnCount=$CurrentUser.getPrePostInterview(false), ColumnDescription='Job applications currently in "interview" stage.<br/>
+            <% include KanbanColumn ColumnTitle="Interview", ColumnCount=$CurrentUser.getPreInterview(), ColumnDescription='Job applications currently in "interview" stage.<br/>
                     Note that if your status is "Response" after an interview<br/>
                     that those applications will not be in this column.' %>
             <div class="card-body">
                 <div class="tasks" id="Interview">
-                    <% loop $CurrentUser.getPrePostInterview(false) %>
+                    <% loop $CurrentUser.getPreInterview() %>
                         <% include MiniJobCard %>
                     <% end_loop %>
                 </div>
@@ -82,11 +82,11 @@
     </div>
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn ColumnTitle="Post-Interview", ColumnCount=$CurrentUser.getPrePostInterview(true), ColumnDescription='You have had an interview
+            <% include KanbanColumn ColumnTitle="Post-Interview", ColumnCount=$CurrentUser.getPostInterview(), ColumnDescription='You have had an interview
             and are now waiting on feedback.' %>
             <div class="card-body">
                 <div class="tasks" id="PostInterview">
-                    <% loop $CurrentUser.getPrePostInterview(true) %>
+                    <% loop $CurrentUser.getPostInterview() %>
                         <% include MiniJobCard %>
                     <% end_loop %>
                 </div>
@@ -95,11 +95,11 @@
     </div>
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn ColumnTitle="Followed-up", ColumnCount=$CurrentUser.getInProgressApplications(true), ColumnDescription='Applications that you have had at least 1 interview for,
+            <% include KanbanColumn ColumnTitle="Followed-up", ColumnCount=$CurrentUser.getFollowUp, ColumnDescription='Applications that you have had at least 1 interview for,
             and have heard back or requested an update.' %>
             <div class="card-body">
                 <div class="tasks" id="Follow">
-                    <% loop $CurrentUser.getInProgressApplications(true) %>
+                    <% loop $CurrentUser.getFollowUp %>
                         <% include MiniJobCard %>
                     <% end_loop %>
                 </div>
@@ -108,7 +108,7 @@
     </div>
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn ColumnTitle="Closed", ColumnCount=$CurrentUser.JobApplications.Filter('Status.AutoHide', true), ColumnDescription="Applications that have been closed<br/>
+            <% include KanbanColumn ColumnTitle="Closed", ColumnCount=$CurrentUser.ClosedJobApplications, ColumnDescription="Applications that have been closed<br/>
                     This means any status as described on your profile." %>
             <div class="card-body">
                 <div class="tasks" id="Closed">
