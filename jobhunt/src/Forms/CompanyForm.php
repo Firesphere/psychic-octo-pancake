@@ -34,9 +34,9 @@ class CompanyForm extends Form
             TextField::create('Name', 'Company name'),
             $address = TextareaField::create('Address', 'Address'),
             $country = CountryDropdownField::create('Country', 'Country'),
-            $email = EmailField::create('Email', 'Generic contact email address'),
-            $link = TextField::create('Link', 'Website URL'),
-            $ethics = DropdownField::create('Ethic', 'Ethics', Company::$colour_map),
+            EmailField::create('Email', 'Generic contact email address'),
+            TextField::create('Link', 'Website URL'),
+            $ethics = DropdownField::create('Ethics', 'Ethics', Company::$colour_map, ),
             //            $logo = FileAttachmentField::create('Logo'),
             HiddenField::create('ID', 'ID', $params['OtherID'])
         ]);
@@ -51,10 +51,11 @@ class CompanyForm extends Form
         ]);
         $formAction->addExtraClass('btn btn-primary');
 
-        $validator = RequiredFields::create('Name', 'Address', 'Country');
+        $validator = RequiredFields::create('Name', 'Address', 'Country', 'Ethics');
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
         $data = Company::get_by_id($params['OtherID']);
+        $data = $data ?? [];
         $this->loadDataFrom($data);
     }
 

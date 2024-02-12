@@ -1,6 +1,15 @@
 <div class="row">
     <% with $Company %>
-        <h1 class="col-12">$Name</h1>
+        <h1 class="d-flex justify-content-between">
+            <span>$Name</span>
+            <a href="#"
+               title="Edit company"
+               class="js-formaction"
+               data-id="$ID"
+               data-itemtype="company-edit"
+               data-bs-toggle="modal"
+               data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
+        </h1>
         <div class="col">
             <div class="card">
                 <% if $Logo %>
@@ -30,7 +39,13 @@
                     <% end_if %>
                 </div>
                 <div class="card-footer text-body-tertiary">
-                    <a href="#">Edit company details</a>
+                    <a href="#"
+                       title="Edit company"
+                       class="js-formaction"
+                       data-id="$ID"
+                       data-itemtype="company-edit"
+                       data-bs-toggle="modal"
+                       data-bs-target="#addItemModal">Edit company details</a>
                 </div>
             </div>
         </div>

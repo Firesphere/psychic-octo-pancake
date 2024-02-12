@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use SilverStripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Environment;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBEnum;
@@ -152,6 +153,11 @@ class Company extends DataObject
 
     public function getEthicsToString()
     {
-        return self::$colour_map[$this->Ethics];
+        return self::$colour_map[$this->Ethics] ?? 'info';
+    }
+
+    public function getEthicalLegend()
+    {
+        return ArrayList::create(self::$colour_map);
     }
 }
