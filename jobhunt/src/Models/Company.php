@@ -2,10 +2,15 @@
 
 namespace Firesphere\JobHunt\Models;
 
+use Firesphere\JobHunt\Extensions\OSMExtension;
+use Firesphere\OpenStreetmaps\Models\Location;
+use GuzzleHttp\Client;
 use SilverStripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Environment;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBEnum;
 use SilverStripe\ORM\FieldType\DBText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 
@@ -23,6 +28,7 @@ use SilverStripe\ORM\FieldType\DBVarchar;
  * @method Image Logo()
  * @method DataList|JobApplication[] Applications()
  * @method DataList|Interviewer[] Employees()
+ * @method DataList|Location[] Locations()
  */
 class Company extends DataObject
 {
@@ -34,8 +40,16 @@ class Company extends DataObject
         'Country' => DBVarchar::class,
         'Email'   => DBVarchar::class,
         'Link'    => DBVarchar::class,
-        'Ethics'  => DBVarchar::class,
+        'Ethics'  => DBEnum::class . '("success,info,primary,danger,warning", "info")',
         'Slug'    => DBVarchar::class,
+    ];
+
+    public static $colour_map = [
+        'success' => 'Great',
+        'info'    => 'Good',
+        'primary' => 'Neutral',
+        'danger'  => 'Not good',
+        'warning' => 'Bad'
     ];
 
     private static $has_one = [
@@ -44,7 +58,8 @@ class Company extends DataObject
 
     private static $has_many = [
         'Applications' => JobApplication::class . '.Company',
-        'Employees'    => Interviewer::class . '.Company'
+        'Employees'    => Interviewer::class . '.Company',
+        'Locations'    => Location::class,
     ];
 
     private static $owns = [
@@ -86,5 +101,57 @@ class Company extends DataObject
         }
 
         parent::onBeforeWrite();
+    }
+
+    public function onAfterWrite()
+    {
+        parent::onAfterWrite();
+        $access_token = Environment::getEnv('MAPBOX_TOKEN');
+        if ($access_token && $this->Country && $this->Address) {
+            $client = new Client([
+                'base_uri' => 'https://api.mapbox.com/geocoding/v5/mapbox.places/',
+                'query'    => [
+                    'access_token' => $access_token
+                ]
+            ]);
+            $result = $client->get(urlencode($this->Address . ' ' . $this->Country) . '.json');
+
+            if ((int)$result->getStatusCode() === 200) {
+                $result = json_decode($result->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
+                $data = [
+                    'Name'      => $this->Name,
+                    'Address'   => $this->Address,
+                    'Country'   => $this->Country,
+                    'URL'       => $this->Link,
+                    'Latitude'  => $result['features'][0]['center'][1],
+                    'Longitude' => $result['features'][0]['center'][0],
+                ];
+                /** @var Location|OSMExtension $location */
+                if (!$this->Locations()->count()) {
+                    $location = Location::create($data);
+                } else {
+                    $location = $this->Locations()->first();
+                    $location->update($data);
+                }
+                $location->CompanyID = $this->ID;
+                $location->write();
+                try {
+                    foreach ($result['features'][0]['context'] as $feature) {
+                        if (str_starts_with($feature['id'], 'place') || str_starts_with($feature['id'], 'locality')) {
+                            $location->City = $feature['text'];
+                            break;
+                        }
+                    }
+                    $location->write();
+                } catch (\Exception $e) {
+                    // No-op
+                }
+            }
+        }
+    }
+
+    public function getEthicsToString()
+    {
+        return self::$colour_map[$this->Ethics];
     }
 }

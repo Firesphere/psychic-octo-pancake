@@ -71,6 +71,7 @@ Firesphere\CSPHeaders\View\CSPBackend:
     default-src:
       allow:
         - piwik.firesphere.dev
+        - api.mapbox.com
       self: true
     frame-src:
       allow:
@@ -83,6 +84,8 @@ Firesphere\CSPHeaders\View\CSPBackend:
         - '*.ingest.sentry.io'
         - hcaptcha.com
         - '*.hcaptcha.com'
+        - api.mapbox.com
+        - events.mapbox.com
       self: true
     font-src:
       allow:
@@ -123,6 +126,7 @@ Firesphere\CSPHeaders\View\CSPBackend:
         - unpkg.com
         - hcaptcha.com
         - '*.hcaptcha.com'
+        - api.mapbox.com
       unsafe-inline: true # Needed for tinyMCE
     worker-src:
       blob: true

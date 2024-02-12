@@ -32,3 +32,6 @@ body #adblock.bottom-0.end-0 {
 body.KanbanPage .tasks .card {
   cursor: grab;
 }
+body #map {
+  min-height: 400px;
+}

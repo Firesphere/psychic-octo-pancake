@@ -10,3 +10,6 @@ SilverStripe\SiteConfig\SiteConfig:
 SilverStripe\Assets\Image:
   extensions:
     - Firesphere\JobHunt\Extensions\ImageExtension
+Firesphere\OpenStreetmaps\Models\Location:
+  extensions:
+    - Firesphere\JobHunt\Extensions\OSMExtension

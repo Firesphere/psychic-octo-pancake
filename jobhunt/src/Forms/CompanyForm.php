@@ -6,6 +6,7 @@ use Dynamic\CountryDropdownField\Fields\CountryDropdownField;
 use Firesphere\JobHunt\Models\Company;
 use SilverStripe\Assets\Folder;
 use SilverStripe\Control\RequestHandler;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -35,10 +36,12 @@ class CompanyForm extends Form
             $country = CountryDropdownField::create('Country', 'Country'),
             $email = EmailField::create('Email', 'Generic contact email address'),
             $link = TextField::create('Link', 'Website URL'),
+            $ethics = DropdownField::create('Ethic', 'Ethics', Company::$colour_map),
             //            $logo = FileAttachmentField::create('Logo'),
             HiddenField::create('ID', 'ID', $params['OtherID'])
         ]);
         $address->setRows(3);
+        $ethics->addExtraClass('form-select');
         $country->addExtraClass('form-select');
         //        $logo->addExtraClass('form-control');
         //        $logo->setAllowedFileCategories('image');
