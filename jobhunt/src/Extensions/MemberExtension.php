@@ -199,7 +199,11 @@ class MemberExtension extends DataExtension
                 ]
             ]);
 
-        return $list;
+        if ($list->count()) {
+            return $list;
+        }
+
+        return ArrayList::create([JobApplication::create()]);
     }
 
     public function getClosedJobApplications()
