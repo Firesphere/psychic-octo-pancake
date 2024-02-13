@@ -25,32 +25,27 @@ use SilverStripe\SiteConfig\SiteConfig;
  */
 class Status extends DataObject
 {
+    public static $id_map;
     private static $table_name = 'ApplicationStatus';
-
     private static $db = [
         'Status'    => DBVarchar::class,
         'Colour'    => DBVarchar::class,
         'AutoHide'  => DBBoolean::class . '(false)',
         'SortOrder' => DBInt::class,
     ];
-
     private static $has_many = [
         'Applications'     => JobApplication::class . '.Status',
         'StatusUpdates'    => StatusUpdate::class . '.Status',
         'FilterExclusions' => ExcludedStatus::class . '.Status'
     ];
-
     private static $summary_fields = [
         'Status',
         'Colour'
     ];
-
     private static $default_sort = 'Status ASC';
-
     private static $indexes = [
         'Status' => true
     ];
-
     private static $default_records = [
         ['Status' => 'Applied'],
         ['Status' => 'Interview'],
@@ -63,8 +58,6 @@ class Status extends DataObject
         ['Status' => 'Ghosted'],
         ['Status' => 'Withdrawn']
     ];
-
-
     private static $colours = [
         'primary'   => '--bs-primary',
         'secondary' => '--bs-secondary',
@@ -76,7 +69,6 @@ class Status extends DataObject
         'dark'      => '--bs-dark',
         'link'      => '--bs-link',
     ];
-
     private static $colourmap = [
         ''                   => 'primary',
         'Applied'            => 'primary',
@@ -91,7 +83,12 @@ class Status extends DataObject
         'Withdrawn'          => 'warning'
     ];
 
-    public static $id_map;
+    public function getName()
+    {
+        self::getIdMap();
+
+        return (self::$id_map[$this->ID]);
+    }
 
     /**
      * @return mixed
@@ -105,14 +102,6 @@ class Status extends DataObject
 
         return self::$id_map;
     }
-
-    public function getName()
-    {
-        self::getIdMap();
-
-        return (self::$id_map[$this->ID]);
-    }
-
 
     public function getCMSFields()
     {

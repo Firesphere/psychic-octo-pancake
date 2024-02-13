@@ -52,5 +52,23 @@
         <div class="col">
             <section id="map"></section>
         </div>
+        <h3>Notes on this company</h3>
+        <div class="col-12">
+            <% loop $Notes %>
+                <div class="card mb-2">
+                    <div class="card-header">
+                        <h5 class="card-title">$Title</h5>
+                        <h6>$NoteType.Type</h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Created: $Created.Nice()</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">$Note</p>
+                    </div>
+                    <div class="card-footer">
+                        <h6>Note by: <% if $User %>Created by: $User.FirstName<% else %>Anonymous<% end_if %></h6>
+                    </div>
+                </div>
+            <% end_loop %>
+        </div>
     <% end_with %>
 </div>

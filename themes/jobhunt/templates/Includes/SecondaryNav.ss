@@ -7,7 +7,8 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
             <% loop $SecondaryNav %>
                 <li class="nav-item $FirstLast $EvenOdd">
-                    <a class="nav-link $LinkingMode <% if $IsCurrent %>active<% end_if %>" rel="nofollow" href="$Link">$MenuTitle</a>
+                    <a class="nav-link $LinkingMode <% if $IsCurrent %>active<% end_if %>" rel="nofollow"
+                       href="$Link">$MenuTitle</a>
                 </li>
             <% end_loop %>
             <li class="nav-item">
@@ -48,7 +49,8 @@
             </li>
             <li class="nav-item $FirstLast $EvenOdd">
                 <a class="h4 ps-2 m-0" rel="nofollow" href="$LogoutURL" title="Logout" aria-description="Logout button">
-                    <i class="bi bi-box-arrow-right" title="Logout"></i><span class="d-block d-md-none">&nbsp;Log out</span></a>
+                    <i class="bi bi-box-arrow-right" title="Logout"></i><span
+                    class="d-block d-md-none">&nbsp;Log out</span></a>
             </li>
         </ul>
     </div>

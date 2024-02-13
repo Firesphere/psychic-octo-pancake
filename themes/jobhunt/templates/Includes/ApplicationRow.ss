@@ -11,11 +11,8 @@
                                data-id="$Up.ID" title="Favourite this application">
                                 <i class="bi bi-star<% if $Up.Favourite %>-fill text-warning<% end_if %>"></i>
                             </a>
-                            <% if $Link %>
-                                <a href="$Link" class="text-" target="_blank">$Name</a>
-                            <% else %>
-                                $Name
-                            <% end_if %>
+                            <a href="$InternalLink">$Name</a>
+
                         </b>
                         <% if $CurrentUser.CanEditCompany %>
                             <a href="#"

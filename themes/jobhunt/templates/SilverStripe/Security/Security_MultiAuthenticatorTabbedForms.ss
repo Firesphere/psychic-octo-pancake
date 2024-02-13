@@ -14,7 +14,8 @@
 
 <div class="tab-content py-5">
     <% loop $Forms %>
-    <div class="bg-opacity-25 tab-pane fade <% if $IsFirst %>active<% end_if %> show" id="$FormName" role="tabpanel">
+        <div class="bg-opacity-25 tab-pane fade <% if $IsFirst %>active<% end_if %> show" id="$FormName"
+             role="tabpanel">
             <h3>$AuthenticatorName</h3>
             $forTemplate
         </div>

@@ -3,9 +3,6 @@
 namespace Firesphere\JobHunt\Pages;
 
 use Firesphere\JobHunt\Controllers\KanbanPageController;
-use Firesphere\JobHunt\Controllers\MoodPageController;
-use IntlDateFormatter;
-use SilverStripe\Security\Security;
 
 /**
  * Class \Firesphere\JobHunt\Pages\KanbanPage

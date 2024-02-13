@@ -4473,16 +4473,16 @@
         },
         {
             "name": "silverstripe/asset-admin",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-asset-admin.git",
-                "reference": "86072468aea67236b22a6df837b85b28152a4585"
+                "reference": "7cbaa6ac007d5818ab7c85c29a7588dfddcf0bdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-asset-admin/zipball/86072468aea67236b22a6df837b85b28152a4585",
-                "reference": "86072468aea67236b22a6df837b85b28152a4585",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-asset-admin/zipball/7cbaa6ac007d5818ab7c85c29a7588dfddcf0bdb",
+                "reference": "7cbaa6ac007d5818ab7c85c29a7588dfddcf0bdb",
                 "shasum": ""
             },
             "require": {
@@ -4522,9 +4522,9 @@
             "description": "Asset management for the SilverStripe CMS",
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-asset-admin/issues",
-                "source": "https://github.com/silverstripe/silverstripe-asset-admin/tree/2.1.4"
+                "source": "https://github.com/silverstripe/silverstripe-asset-admin/tree/2.1.5"
             },
-            "time": "2024-01-25T22:15:42+00:00"
+            "time": "2024-02-10T12:08:10+00:00"
         },
         {
             "name": "silverstripe/assets",
@@ -4595,16 +4595,16 @@
         },
         {
             "name": "silverstripe/campaign-admin",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-campaign-admin.git",
-                "reference": "9b7bf3b41d1c7ff013dfb13bd55a2e4dcbbd6864"
+                "reference": "37ffe7535e7bc8dee068a31ec94b98b244431bbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-campaign-admin/zipball/9b7bf3b41d1c7ff013dfb13bd55a2e4dcbbd6864",
-                "reference": "9b7bf3b41d1c7ff013dfb13bd55a2e4dcbbd6864",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-campaign-admin/zipball/37ffe7535e7bc8dee068a31ec94b98b244431bbb",
+                "reference": "37ffe7535e7bc8dee068a31ec94b98b244431bbb",
                 "shasum": ""
             },
             "require": {
@@ -4658,9 +4658,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-campaign-admin/issues",
-                "source": "https://github.com/silverstripe/silverstripe-campaign-admin/tree/2.1.0"
+                "source": "https://github.com/silverstripe/silverstripe-campaign-admin/tree/2.1.1"
             },
-            "time": "2023-08-29T23:27:38+00:00"
+            "time": "2024-02-13T00:56:21+00:00"
         },
         {
             "name": "silverstripe/cms",
@@ -4885,16 +4885,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "5.1.14",
+            "version": "5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "9c4266c8f36be148cdd48421746c55643938aac2"
+                "reference": "81cd33b6c8a30cf26d9a5dd32afd300c7da765a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/9c4266c8f36be148cdd48421746c55643938aac2",
-                "reference": "9c4266c8f36be148cdd48421746c55643938aac2",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/81cd33b6c8a30cf26d9a5dd32afd300c7da765a5",
+                "reference": "81cd33b6c8a30cf26d9a5dd32afd300c7da765a5",
                 "shasum": ""
             },
             "require": {
@@ -5008,9 +5008,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-framework/issues",
-                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.1.14"
+                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.1.16"
             },
-            "time": "2024-02-12T20:51:52+00:00"
+            "time": "2024-02-13T00:49:26+00:00"
         },
         {
             "name": "silverstripe/googlesitemaps",
@@ -10457,12 +10457,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0657710ddf6226e00182d8f26c3d4d7e73699008"
+                "reference": "d43a7a39cd198dc91cc1504532911eba15e6ac28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0657710ddf6226e00182d8f26c3d4d7e73699008",
-                "reference": "0657710ddf6226e00182d8f26c3d4d7e73699008",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d43a7a39cd198dc91cc1504532911eba15e6ac28",
+                "reference": "d43a7a39cd198dc91cc1504532911eba15e6ac28",
                 "shasum": ""
             },
             "conflict": {
@@ -10747,7 +10747,7 @@
                 "liftkit/database": "<2.13.2",
                 "limesurvey/limesurvey": "<3.27.19",
                 "livehelperchat/livehelperchat": "<=3.91",
-                "livewire/livewire": ">2.2.4,<2.2.6|>=3,<3.0.4",
+                "livewire/livewire": ">2.2.4,<2.2.6",
                 "lms/routes": "<2.1.1",
                 "localizationteam/l10nmgr": "<7.4|>=8,<8.7|>=9,<9.2",
                 "luyadev/yii-helpers": "<1.2.1",
@@ -11186,7 +11186,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-12T19:04:36+00:00"
+            "time": "2024-02-13T00:14:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",

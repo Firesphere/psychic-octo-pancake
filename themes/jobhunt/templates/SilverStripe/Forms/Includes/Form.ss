@@ -1,24 +1,25 @@
 <% if $IncludeFormTag %>
-<form $AttributesHTML>
+    <form $AttributesHTML>
 <% end_if %>
 
-	<p id="{$FormName}_error" class="message $MessageType <% if not $Message %>d-none<% end_if %>">$Message</p>
+    <p id="{$FormName}_error" class="message $MessageType <% if not $Message %>d-none<% end_if %>">$Message</p>
 
-	<fieldset class="row">
-		<% if $Legend %><legend>$Legend</legend><% end_if %>
-		<% loop $Fields %>
-			$FieldHolder
-		<% end_loop %>
-		<div class="clear"><!-- --></div>
-	</fieldset>
+    <fieldset class="row">
+        <% if $Legend %>
+            <legend>$Legend</legend><% end_if %>
+        <% loop $Fields %>
+            $FieldHolder
+        <% end_loop %>
+        <div class="clear"><!-- --></div>
+    </fieldset>
 
-	<% if $Actions %>
-	<div class="btn-toolbar justify-content-between">
-		<% loop $Actions %>
-			$Field
-		<% end_loop %>
-	</div>
-	<% end_if %>
+<% if $Actions %>
+        <div class="btn-toolbar justify-content-between">
+            <% loop $Actions %>
+                $Field
+            <% end_loop %>
+        </div>
+<% end_if %>
 <% if $IncludeFormTag %>
-</form>
+    </form>
 <% end_if %>

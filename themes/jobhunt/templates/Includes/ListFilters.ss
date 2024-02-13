@@ -2,12 +2,12 @@
     <div class="dropdown text-end">
         <div class="btn-group btn-group-sm">
             <a class="btn btn-sm btn-secondary <% if $ActiveCompany %>active<% else %>dropdown-toggle dropdown-toggle-split<% end_if %>"
-                type="button" href="$Top.Link"
+               type="button" href="$Top.Link"
                 <% if not $ActiveCompany %>
                data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span>
                    Company&nbsp;&nbsp;&nbsp;
                 <% else %>
-                title="Reset">$ActiveCompany.Name
+                    title="Reset">$ActiveCompany.Name
                 <% end_if %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -45,8 +45,11 @@
                 </button>
             <% end_if %>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item <% if $FavSet %>text-bg-warning-outline<% end_if %>" href="$Top.Link?<% if not $FavSet %>fav=true<% else %>$filterLink<% end_if %>">
-                    <span class="text-success">&nbsp;<i class=" text-warning bi bi-star<% if $FavSet %>-fill<% end_if %>"></i>&nbsp;</span>&nbsp;Favourites</a></li>
+                <li><a class="dropdown-item <% if $FavSet %>text-bg-warning-outline<% end_if %>"
+                       href="$Top.Link?<% if not $FavSet %>fav=true<% else %>$filterLink<% end_if %>">
+                    <span class="text-success">&nbsp;<i
+                        class=" text-warning bi bi-star<% if $FavSet %>-fill<% end_if %>"></i>&nbsp;</span>&nbsp;Favourites</a>
+                </li>
                 <% loop $StatusFilters.Sort('Status ASC') %>
                     <li><a class="dropdown-item<% if $ActiveFilter %> active<% end_if %>"
                            href="$Top.Link?$filterLink">

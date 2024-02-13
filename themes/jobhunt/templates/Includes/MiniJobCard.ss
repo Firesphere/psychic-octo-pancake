@@ -16,7 +16,8 @@
                     class="border border-1 m-0 px-1 text-$ColourStyle" title="$Name">&#9679;</span><% end_with %>&nbsp;
                 <a href="$InternalLink" class="card-link quickfilter-role" data-appid="$ID">$Role</a>
             </h6>
-            <h6 class="card-subtitle mb-2 text-body-secondary quickfilter" data-appid="$ID">$Company.Name</h6>
+            <a href="$Company.InternalLink" class="h6 card-subtitle mb-2 text-body-secondary quickfilter"
+               data-appid="$ID">$Company.Name</a>
             <span class="card-text small">$ApplicationDate.Nice</span>
         </div>
         <% if $StatusUpdatesVisibleCount || $Interviews.Count()%>

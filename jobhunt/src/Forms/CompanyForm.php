@@ -36,7 +36,7 @@ class CompanyForm extends Form
             $country = CountryDropdownField::create('Country', 'Country'),
             EmailField::create('Email', 'Generic contact email address'),
             TextField::create('Link', 'Website URL'),
-            $ethics = DropdownField::create('Ethics', 'Ethics', Company::$colour_map, ),
+            $ethics = DropdownField::create('Ethics', 'Ethics', Company::$colour_map,),
             //            $logo = FileAttachmentField::create('Logo'),
             HiddenField::create('ID', 'ID', $params['OtherID'])
         ]);

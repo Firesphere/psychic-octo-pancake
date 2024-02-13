@@ -32,7 +32,8 @@
                                     <h5 class="ps-2 mb-0">Notes:</h5>
                                     <div class="card-body">
                                         <% loop $Notes %>
-                                            <div class="note p-4 <% if $Odd %>text-bg-light<% else %>text-bg-secondary<% end_if %>">
+                                            <div
+                                                class="note p-4 <% if $Odd %>text-bg-light<% else %>text-bg-secondary<% end_if %>">
                                                 <p class="card-text">$Note</p>
                                                 <small>$Created.Nice()</small>
                                             </div>

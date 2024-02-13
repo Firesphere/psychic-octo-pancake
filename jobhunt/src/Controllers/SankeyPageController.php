@@ -5,7 +5,6 @@ namespace Firesphere\JobHunt\Controllers;
 use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\Status;
-use Firesphere\JobHunt\Models\StatusUpdate;
 use Firesphere\JobHunt\Pages\SankeyPage;
 use SilverStripe\ORM\GroupedList;
 use SilverStripe\Security\Member;
@@ -70,7 +69,7 @@ class SankeyPageController extends MoodPageController
 
         $this->getResponse()->addHeader('content-type', 'application/json');
 
-        $data =[
+        $data = [
             'labels' => array_reverse($weeks),
             'data'   => [
                 'applications' => [
@@ -84,6 +83,7 @@ class SankeyPageController extends MoodPageController
 
             ]
         ];
+
         return json_encode($data, JSON_THROW_ON_ERROR);
     }
 

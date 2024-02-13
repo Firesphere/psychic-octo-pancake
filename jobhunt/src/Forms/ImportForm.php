@@ -77,8 +77,8 @@ Interview and Note are optional fields.</p>';
             Folder::find_or_make($path);
         }
         $uniqueID = uniqid('csvupload', true);
-        $tmpFile = file_put_contents($path . '/'.$uniqueID.'.csv', file_get_contents($attachment['tmp_name']));
-        $session->set('TMP_FILE', $path . '/'.$uniqueID.'.csv');
+        $tmpFile = file_put_contents($path . '/' . $uniqueID . '.csv', file_get_contents($attachment['tmp_name']));
+        $session->set('TMP_FILE', $path . '/' . $uniqueID . '.csv');
 
         //        array_walk($csvAsArray, function (&$a) use ($csvAsArray) {
         //            $a = array_combine($csvAsArray[0], $a);

@@ -3,7 +3,6 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Models\Company;
-use Firesphere\OpenStreetmaps\Models\Location;
 use Firesphere\OpenStreetmaps\Services\OpenStreetmapService;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Environment;
@@ -19,11 +18,10 @@ use SilverStripe\View\Requirements;
  */
 class CompanyPageController extends \PageController
 {
-    protected $company;
-
     private static $allowed_actions = [
         'details'
     ];
+    protected $company;
 
     /**
      * @return mixed
@@ -31,23 +29,6 @@ class CompanyPageController extends \PageController
     public function getCompany()
     {
         return $this->company;
-    }
-
-    protected function init()
-    {
-        parent::init();
-        if (!$this->getRequest()->param('Action')) {
-            $this->httpError(404);
-        }
-        Requirements::javascript('firesphere/openstreetmaps:dist/js/main.js');
-        Requirements::css('firesphere/openstreetmaps:dist/css/main.css');
-        Requirements::css('//api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css');
-        $token = Environment::getEnv('MAPBOX_TOKEN');
-        Requirements::insertHeadTags(
-            <<<JS
-<script type="text/javascript">var mapboxtoken = "$token";</script>
-JS
-        );
     }
 
     public function details(HTTPRequest $request)
@@ -67,6 +48,24 @@ JS
             }
             $service->addLocations($list);
         }
+
         return $this;
+    }
+
+    protected function init()
+    {
+        parent::init();
+        if (!$this->getRequest()->param('Action')) {
+            $this->httpError(404);
+        }
+        Requirements::javascript('firesphere/openstreetmaps:dist/js/main.js');
+        Requirements::css('firesphere/openstreetmaps:dist/css/main.css');
+        Requirements::css('//api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css');
+        $token = Environment::getEnv('MAPBOX_TOKEN');
+        Requirements::insertHeadTags(
+            <<<JS
+<script type="text/javascript">var mapboxtoken = "$token";</script>
+JS
+        );
     }
 }

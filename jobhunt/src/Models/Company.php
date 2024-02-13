@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Models;
 
 use Firesphere\JobHunt\Extensions\OSMExtension;
+use Firesphere\JobHunt\Pages\CompanyPage;
 use Firesphere\OpenStreetmaps\Models\Location;
 use GuzzleHttp\Client;
 use SilverStripe\Assets\Image;
@@ -30,11 +31,18 @@ use SilverStripe\ORM\FieldType\DBVarchar;
  * @method DataList|JobApplication[] Applications()
  * @method DataList|Interviewer[] Employees()
  * @method DataList|Location[] Locations()
+ * @method DataList|CompanyNote[] Notes()
  */
 class Company extends DataObject
 {
+    public static $colour_map = [
+        'success' => 'Great',
+        'info'    => 'Good',
+        'primary' => 'Neutral',
+        'danger'  => 'Not good',
+        'warning' => 'Bad'
+    ];
     private static $table_name = 'Company';
-
     private static $db = [
         'Name'    => DBVarchar::class,
         'Address' => DBText::class,
@@ -44,15 +52,6 @@ class Company extends DataObject
         'Ethics'  => DBEnum::class . '("success,info,primary,danger,warning", "info")',
         'Slug'    => DBVarchar::class,
     ];
-
-    public static $colour_map = [
-        'success' => 'Great',
-        'info'    => 'Good',
-        'primary' => 'Neutral',
-        'danger'  => 'Not good',
-        'warning' => 'Bad'
-    ];
-
     private static $has_one = [
         'Logo' => Image::class,
     ];
@@ -60,7 +59,8 @@ class Company extends DataObject
     private static $has_many = [
         'Applications' => JobApplication::class . '.Company',
         'Employees'    => Interviewer::class . '.Company',
-        'Locations'    => Location::class,
+        'Locations'    => Location::class . '.Company',
+        'Notes'        => CompanyNote::class . '.Company',
     ];
 
     private static $owns = [
@@ -159,5 +159,16 @@ class Company extends DataObject
     public function getEthicalLegend()
     {
         return ArrayList::create(self::$colour_map);
+    }
+
+    public function getInternalLink()
+    {
+        $page = CompanyPage::get()->first();
+
+        if (!$page) {
+            return '/';
+        }
+
+        return $page->Link('details/' . $this->Slug);
     }
 }

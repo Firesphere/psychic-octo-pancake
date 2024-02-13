@@ -3,7 +3,6 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Pages\KanbanPage;
-use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
 

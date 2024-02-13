@@ -22,9 +22,8 @@ class SankeyPage extends Page
     private static $defaults = [
         'CanViewType' => 'LoggedInUsers'
     ];
-
-    protected $fromTo = [];
     public $StatusList;
+    protected $fromTo = [];
 
     public function sankeyFlow()
     {

@@ -107,16 +107,6 @@ class FormHandler extends Controller
         return $form;
     }
 
-    public function StatusUpdateForm()
-    {
-        $form = StatusUpdateForm::create($this);
-        if ($this->getRequest()->isGET()) {
-            return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()], JSON_THROW_ON_ERROR);
-        }
-
-        return $form;
-    }
-
     public function PostInterview()
     {
         if ($this->getRequest()->isGET()) {
@@ -134,6 +124,16 @@ class FormHandler extends Controller
         }
 
         return $this->StatusUpdateForm();
+    }
+
+    public function StatusUpdateForm()
+    {
+        $form = StatusUpdateForm::create($this);
+        if ($this->getRequest()->isGET()) {
+            return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()], JSON_THROW_ON_ERROR);
+        }
+
+        return $form;
     }
 
     public function CloseForm()

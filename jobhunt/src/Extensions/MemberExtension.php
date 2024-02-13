@@ -38,6 +38,8 @@ use SilverStripe\Security\Security;
  */
 class MemberExtension extends DataExtension
 {
+    protected static $_job_applications;
+    protected static $_job_application_ids;
     private static $db = [
         'CV'         => DBText::class,
         'PublicCV'   => DBBoolean::class . '(false)',
@@ -45,7 +47,6 @@ class MemberExtension extends DataExtension
         'HideClosed' => DBBoolean::class . '(false)',
         'ViewStyle'  => DBEnum::class . '("Table,Card", "Table")'
     ];
-
     private static $has_many = [
         'JobApplications' => JobApplication::class . '.User',
         'Notes'           => BaseNote::class . '.Owner',
@@ -53,13 +54,9 @@ class MemberExtension extends DataExtension
         'ExcludedStatus'  => ExcludedStatus::class . '.User',
         'Tags'            => Tag::class . '.User'
     ];
-
     private static $indexes = [
         'URLSegment' => true,
     ];
-
-    protected static $_job_applications;
-    protected static $_job_application_ids;
 
     /**
      * @return mixed
@@ -69,6 +66,14 @@ class MemberExtension extends DataExtension
         self::set_job_applications();
 
         return self::$_job_application_ids;
+    }
+
+    public static function set_job_applications()
+    {
+        if (!self::$_job_applications) {
+            self::$_job_applications = Security::getCurrentUser()->owner->JobApplications()->filter(['Archived' => false]);
+            self::$_job_application_ids = self::$_job_applications->column('ID');
+        }
     }
 
     public function onBeforeWrite()
@@ -87,14 +92,6 @@ class MemberExtension extends DataExtension
         }
 
         return false;
-    }
-
-    public static function set_job_applications()
-    {
-        if (!self::$_job_applications) {
-            self::$_job_applications = Security::getCurrentUser()->owner->JobApplications()->filter(['Archived' => false]);
-            self::$_job_application_ids = self::$_job_applications->column('ID');
-        }
     }
 
     public function getInterviews()

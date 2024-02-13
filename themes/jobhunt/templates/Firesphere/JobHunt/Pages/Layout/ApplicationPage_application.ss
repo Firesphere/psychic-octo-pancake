@@ -92,7 +92,8 @@
                         <div class="card mb-3">
                             <div class="card-header">
                                 <h5 class="card-title">Interview on $DateTime.Nice()</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary"><% if $Duration %>$Duration minutes<% else %>&nbsp;<% end_if %></h6>
+                                <h6 class="card-subtitle mb-2 text-body-secondary"><% if $Duration %>$Duration
+                                    minutes<% else %>&nbsp;<% end_if %></h6>
                             </div>
                             <div class="card-body p-3">
                                 <div class="card-text">

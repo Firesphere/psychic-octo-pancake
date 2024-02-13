@@ -5,7 +5,6 @@ namespace Firesphere\JobHunt\Extensions;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\FileField;
 use SilverStripe\ORM\DataExtension;
 
 /**
