@@ -39,6 +39,10 @@ const typemap = {
         'CompanyForm',
         'company'
     ],
+    'companynote': [
+        'CompanyNoteForm',
+        'Company note'
+    ],
     'close': [
         'CloseForm',
         'close application'

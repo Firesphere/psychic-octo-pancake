@@ -60,7 +60,7 @@
             <% loop $Notes %>
                 <a href="#"
                    title="Edit note"
-                   class="js-formaction text-start link-underline link-underline-opacity-0 link-underline-opacity-75-hover badge text-bg-primary"
+                   class="mb-1 js-formaction text-start link-underline link-underline-opacity-0 link-underline-opacity-75-hover badge text-bg-primary"
                    data-id="$ID"
                    data-itemtype="note-edit"
                    data-bs-toggle="modal"
@@ -83,7 +83,7 @@
             <% loop $StatusUpdates.Filter('Hidden', 0) %>
                 <a href="#"
                    title="Edit Status update"
-                   class="js-formaction text-start badge text-bg-$Status.ColourStyle link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                   class="mb-1 js-formaction text-start badge text-bg-$Status.ColourStyle link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                    data-id="$ID"
                    data-itemtype="statusupdate-edit"
                    data-bs-toggle="modal"
@@ -106,7 +106,7 @@
             <% loop $Interviews %>
                 <a href="#"
                    title="Edit interview"
-                   class="js-formaction badge text-bg-secondary link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                   class="mb-1 js-formaction badge text-bg-secondary link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                    data-id="$ID"
                    data-itemtype="interview-edit"
                    data-bs-toggle="modal"

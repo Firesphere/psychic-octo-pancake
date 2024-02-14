@@ -6,6 +6,7 @@ use Firesphere\JobHunt\Forms\ApplicationForm;
 use Firesphere\JobHunt\Forms\ApplicationNoteForm;
 use Firesphere\JobHunt\Forms\CloseForm;
 use Firesphere\JobHunt\Forms\CompanyForm;
+use Firesphere\JobHunt\Forms\CompanyNoteForm;
 use Firesphere\JobHunt\Forms\ImportForm;
 use Firesphere\JobHunt\Forms\InterviewForm;
 use Firesphere\JobHunt\Forms\InterviewNoteForm;
@@ -39,7 +40,8 @@ class FormHandler extends Controller
         'CompanyForm',
         'CloseForm',
         'PostInterview',
-        'MappingForm'
+        'MappingForm',
+        'CompanyNoteForm',
     ];
     /**
      * @var JobApplication
@@ -158,6 +160,16 @@ class FormHandler extends Controller
         }
 
         return json_encode(['success' => false, 'form' => false]);
+    }
+
+    public function CompanyNoteForm()
+    {
+        $form = CompanyNoteForm::create($this);
+        if ($this->getRequest()->isGET()) {
+            return json_encode(['success' => true, 'form' => $form->forTemplate()->getValue()]);
+        }
+
+        return $form;
     }
 
     public function ApplicationNoteForm()

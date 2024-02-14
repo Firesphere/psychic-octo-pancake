@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
                     <p class="card-text">$Address</p>
-                    <p class="card-text">$Conutry</p>
+                    <p class="card-text">$Country</p>
                 </div>
                 <div class="card-footer text-body-secondary">
                     <% if $Link %>
@@ -36,6 +36,9 @@
                     <% end_if %>
                     <% if $Email %>
                         <% if $Link %>&nbsp;|&nbsp;<% end_if %><a href="mailto:$Email">$Email</a>
+                    <% end_if %>
+                    <% if $Phone %>
+                        <a href="tel:$Phone">$Phone</a>
                     <% end_if %>
                 </div>
                 <div class="card-footer text-body-tertiary">
@@ -52,23 +55,53 @@
         <div class="col">
             <section id="map"></section>
         </div>
-        <h3>Notes on this company</h3>
+        <hr class="m-2 col-12"/>
+        <h3 class="d-flex justify-content-between col-12">
+            <span>Notes on this company</span>
+            <a href="#"
+               title="Add company note"
+               class="js-formaction small"
+               data-application="$ID"
+               data-itemtype="companynote-add"
+               data-bs-toggle="modal"
+               data-bs-target="#addItemModal">Add a note</a>
+        </h3>
         <div class="col-12">
-            <% loop $Notes %>
-                <div class="card mb-2">
-                    <div class="card-header">
-                        <h5 class="card-title">$Title</h5>
-                        <h6>$NoteType.Type</h6>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Created: $Created.Nice()</h6>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">$Note</p>
-                    </div>
-                    <div class="card-footer">
-                        <h6>Note by: <% if $User %>Created by: $User.FirstName<% else %>Anonymous<% end_if %></h6>
-                    </div>
+            <% if $Notes.Count %>
+                <div class="row">
+                    <% loop $Notes %>
+                        <div class="col-12 col-md-6">
+                            <div class="card mb-2">
+                                <div class="card-header">
+                                    <h5 class="card-title">$Title</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary d-flex justify-content-between">
+                                        <span>$NoteType.Type</span>
+                                        <span title="Score: $Score" class="bi
+                                            <% if $Score == 5 %>bi-hand-thumbs-up-fill text-success<% end_if %>
+                                            <% if $Score == 4 %>bi-hand-thumbs-up text-info<% end_if %>
+                                            <% if $Score == 4 %>bi-question-circle-fill text-primary<% end_if %>
+                                            <% if $Score == 2 %>bi-hand-thumbs-down text-warning<% end_if %>
+                                            <% if $Score == 1 %>bi-hand-thumbs-down-fill text-danger<% end_if %>
+                                            <% if $Score == "N/A" %>bi-question-circle-fill text-secondary<% end_if %>">
+                                        </span>
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">$Note</p>
+                                </div>
+                                <div class="card-footer">
+                                    <h6>Feedback by: <% if $User && not $Anonymous %>
+                                        $User.FirstName<% else %>Anonymous<% end_if %></h6>
+                                </div>
+                            </div>
+                        </div>
+                    <% end_loop %>
                 </div>
-            <% end_loop %>
+            <% else %>
+                <div class="card">
+                    <div class="card-body"><p class="card-text">No notes for this company.</p></div>
+                </div>
+            <% end_if %>
         </div>
     <% end_with %>
 </div>

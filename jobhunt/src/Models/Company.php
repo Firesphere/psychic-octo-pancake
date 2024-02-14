@@ -22,6 +22,7 @@ use SilverStripe\ORM\FieldType\DBVarchar;
  * @property string $Name
  * @property string $Address
  * @property string $Country
+ * @property string $Phone
  * @property string $Email
  * @property string $Link
  * @property string $Ethics
@@ -47,6 +48,7 @@ class Company extends DataObject
         'Name'    => DBVarchar::class,
         'Address' => DBText::class,
         'Country' => DBVarchar::class,
+        'Phone'   => DBVarchar::class,
         'Email'   => DBVarchar::class,
         'Link'    => DBVarchar::class,
         'Ethics'  => DBEnum::class . '("success,info,primary,danger,warning", "info")',
