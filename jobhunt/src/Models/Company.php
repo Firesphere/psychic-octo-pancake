@@ -155,7 +155,7 @@ class Company extends DataObject
 
     public function getEthicsToString()
     {
-        return self::$colour_map[$this->Ethics] ?? 'info';
+        return self::$colour_map[$this->Ethics] ?? 'primary';
     }
 
     public function getEthicalLegend()
