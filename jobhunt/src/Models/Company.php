@@ -38,8 +38,8 @@ class Company extends DataObject
 {
     public static $colour_map = [
         'success' => 'Great',
-        'primary' => 'Neutral',
         'info'    => 'Good',
+        'primary' => 'Neutral',
         'danger'  => 'Not good',
         'warning' => 'Bad'
     ];
