@@ -26,21 +26,30 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
-                    <p class="card-text">$Address</p>
-                    <p class="card-text">$Country</p>
+                    <% if not $Address %>
+                        <p class="card-text">No know address</p>
+                        <p class="card-text"></p>
+
+                    <% else %>
+                        <p class="card-text">$Address</p>
+                        <p class="card-text">$Country</p>
+                    <% end_if %>
+
                 </div>
-                <div class="card-footer text-body-secondary">
-                    <% if $Link %>
-                        <a href="$Link" target="_blank" class="btn btn-primary" title="Company link (External)">Company
-                            website&nbsp;<sup><i class="bi bi-box-arrow-up-right"></i></sup></a>
-                    <% end_if %>
-                    <% if $Email %>
-                        <% if $Link %>&nbsp;|&nbsp;<% end_if %><a href="mailto:$Email">$Email</a>
-                    <% end_if %>
-                    <% if $Phone %>
-                        <a href="tel:$Phone">$Phone</a>
-                    <% end_if %>
-                </div>
+                <% if $Link || $Email || $Phone %>
+                    <div class="card-footer text-body-secondary">
+                        <% if $Link %>
+                            <a href="$Link" target="_blank" class="btn btn-primary" title="Company link (External)">Company
+                                website&nbsp;<sup><i class="bi bi-box-arrow-up-right"></i></sup></a>
+                        <% end_if %>
+                        <% if $Email %>
+                            <% if $Link %>&nbsp;|&nbsp;<% end_if %><a href="mailto:$Email">$Email</a>
+                        <% end_if %>
+                        <% if $Phone %>
+                            <a href="tel:$Phone">$Phone</a>
+                        <% end_if %>
+                    </div>
+                <% end_if %>
                 <div class="card-footer text-body-tertiary">
                     <a href="#"
                        title="Edit company"

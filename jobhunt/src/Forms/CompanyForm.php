@@ -31,7 +31,7 @@ class CompanyForm extends Form
             return;
         }
         $fields = FieldList::create([
-            TextField::create('Name', 'Company name'),
+            $nameField = TextField::create('Name', 'Company name'),
             $address = TextareaField::create('Address', 'Address'),
             $country = CountryDropdownField::create('Country', 'Country'),
             EmailField::create('Email', 'Generic contact email address'),
@@ -41,8 +41,10 @@ class CompanyForm extends Form
             HiddenField::create('ID', 'ID', $params['OtherID'])
         ]);
         $address->setRows(3);
+        $nameField->setDisabled(true);
         $ethics->addExtraClass('form-select');
         $country->addExtraClass('form-select');
+        $country->setEmptyString('-- Select a country --');
         //        $logo->addExtraClass('form-control');
         //        $logo->setAllowedFileCategories('image');
         //        $logo->setFolderName('company-logos');
@@ -51,7 +53,7 @@ class CompanyForm extends Form
         ]);
         $formAction->addExtraClass('btn btn-primary');
 
-        $validator = RequiredFields::create('Name', 'Address', 'Country', 'Ethics');
+        $validator = RequiredFields::create('Ethics');
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
         $data = Company::get_by_id($params['OtherID']);

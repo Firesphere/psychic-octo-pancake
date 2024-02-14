@@ -37,6 +37,7 @@ class CompanyNoteForm extends Form
         ]);
         $checks->addExtraClass('mt-2 form-check-inline');
         $drop->addExtraClass('form-select');
+        $drop->setEmptyString('-- Select a topic for this review --');
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Submit')
         ]);

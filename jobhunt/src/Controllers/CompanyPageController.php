@@ -3,10 +3,12 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Models\Company;
+use Firesphere\OpenStreetmaps\Extensions\SiteConfigExtension;
 use Firesphere\OpenStreetmaps\Services\OpenStreetmapService;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Environment;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\Requirements;
 
 /**
@@ -46,6 +48,10 @@ class CompanyPageController extends \PageController
                 $loc->Address = nl2br($loc->Address);
                 $list->push($loc);
             }
+            /** @var SiteConfig|SiteConfigExtension $sc */
+            $sc = SiteConfig::current_site_config();
+            $sc->CenterLat = $list->First()->Latitude;
+            $sc->CenterLng = $list->First()->Longitude;
             $service->addLocations($list);
         }
 
