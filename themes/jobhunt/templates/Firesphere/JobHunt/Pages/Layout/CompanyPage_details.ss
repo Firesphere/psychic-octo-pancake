@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
                     <% if not $Address %>
-                        <p class="card-text">No know address</p>
+                        <p class="card-text">No known address</p>
                         <p class="card-text"></p>
 
                     <% else %>
