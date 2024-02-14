@@ -40,8 +40,8 @@ class Company extends DataObject
         'success' => 'Great',
         'info'    => 'Good',
         'primary' => 'Neutral',
-        'danger'  => 'Not good',
-        'warning' => 'Bad'
+        'warning' => 'Not great',
+        'danger'  => 'Bad',
     ];
     private static $table_name = 'Company';
     private static $db = [
@@ -51,7 +51,7 @@ class Company extends DataObject
         'Phone'   => DBVarchar::class,
         'Email'   => DBVarchar::class,
         'Link'    => DBVarchar::class,
-        'Ethics'  => DBEnum::class . '("success,info,primary,danger,warning", "info")',
+        'Ethics'  => DBEnum::class . '("success,info,primary,danger,warning", "primary")',
         'Slug'    => DBVarchar::class,
     ];
     private static $has_one = [
