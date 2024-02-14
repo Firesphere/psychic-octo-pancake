@@ -21,8 +21,8 @@
                     <% if $Ethics == 'success' %>bi-hand-thumbs-up-fill<% end_if %>
                         <% if $Ethics == 'info' %>bi-hand-thumbs-up<% end_if %>
                         <% if $Ethics == 'primary' %>bi-question-circle-fill<% end_if %>
-                        <% if $Ethics == 'danger' %>bi-hand-thumbs-down<% end_if %>
-                        <% if $Ethics == 'warning' %>bi-hand-thumbs-down-fill<% end_if %>"></div>
+                        <% if $Ethics == 'warning' %>bi-hand-thumbs-down<% end_if %>
+                        <% if $Ethics == 'danger' %>bi-hand-thumbs-down-fill<% end_if %>"></div>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
