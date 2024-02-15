@@ -35,7 +35,7 @@
                             <% end_if %>
                         </div>
                         <% if $Logo %>
-                            <img src="$Logo.Pad(250,250).Link" class="col-2 img-fluid" alt="$Logo.Title"/>
+                            <img src="$Logo.Pad(250,250).Link" class="col-xs-12 col-md-4 col-lg-3 img-fluid" alt="$Logo.Title"/>
                         <% end_if %>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                                             <% if $Score == 4 %>bi-question-circle-fill text-primary<% end_if %>
                                             <% if $Score == 2 %>bi-hand-thumbs-down text-warning<% end_if %>
                                             <% if $Score == 1 %>bi-hand-thumbs-down-fill text-danger<% end_if %>
-                                            <% if $Score == "N/A" %>bi-question-circle-fill text-secondary<% end_if %>">
+                                            <% if $Score == "N/A" %>bi-slash-square-fill text-secondary<% end_if %>">
                                         </span>
                                     </h6>
                                 </div>
