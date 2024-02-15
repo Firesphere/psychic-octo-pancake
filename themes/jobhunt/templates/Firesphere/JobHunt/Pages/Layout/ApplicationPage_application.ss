@@ -2,7 +2,7 @@
     <% with $JobApplication %>
         <div class="row">
             <h1 class="col-12"><span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span> $Role
-                at $Company.Name</h1>
+                at <a href="$Company.InternalLink">$Company.Name</a></h1>
             <div class="col-6 h4"><% if $PayUpper || $PayLower %>Pay:<% end_if %>
                 <% if $PayUpper %>
                     <% if $PayLower %>$PayLower - <% end_if %>$PayUpper
