@@ -4,14 +4,18 @@ namespace Firesphere\JobHunt\Forms;
 
 use Dynamic\CountryDropdownField\Fields\CountryDropdownField;
 use Firesphere\JobHunt\Models\Company;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Folder;
+use SilverStripe\Assets\Upload;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -30,6 +34,8 @@ class CompanyForm extends Form
         if (!$user) {
             return;
         }
+        $company = Company::get_by_id($params['OtherID']);
+        $resizedLogo = $company && $company->LogoID ? $company->Logo()->FitMax(200,200)->forTemplate() : '';
         $fields = FieldList::create([
             $nameField = TextField::create('Name', 'Company name'),
             $address = TextareaField::create('Address', 'Address'),
@@ -37,7 +43,8 @@ class CompanyForm extends Form
             EmailField::create('Email', 'Generic contact email address'),
             TextField::create('Link', 'Website URL'),
             $ethics = DropdownField::create('Ethics', 'Ethics', Company::$colour_map,),
-            //            $logo = FileAttachmentField::create('Logo'),
+            LiteralField::create('CurrentLogo', '<div class="col"><br />' . $resizedLogo . '</div>'),
+            $logo = FileField::create('Logo', 'Logo' . ($resizedLogo ? ' replacement (leave empty if none)' : '')),
             HiddenField::create('ID', 'ID', $params['OtherID'])
         ]);
         $address->setRows(3);
@@ -45,9 +52,8 @@ class CompanyForm extends Form
         $ethics->addExtraClass('form-select');
         $country->addExtraClass('form-select');
         $country->setEmptyString('-- Select a country --');
-        //        $logo->addExtraClass('form-control');
-        //        $logo->setAllowedFileCategories('image');
-        //        $logo->setFolderName('company-logos');
+        $logo->addExtraClass('form-control');
+
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')
         ]);

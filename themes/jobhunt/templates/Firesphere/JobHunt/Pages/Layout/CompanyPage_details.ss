@@ -12,9 +12,6 @@
         </h1>
         <div class="col">
             <div class="card">
-                <% if $Logo %>
-                    <img src="$Logo.Link" class="card-img-top" alt="Logo for $Name">
-                <% end_if %>
                 <div class="card-header bg-$Ethics d-flex justify-content-between">
                     <h2>Details</h2>
                     <div title="Ethics: $EthicsToString" class="h2 text-bg-$Ethics bi
@@ -25,16 +22,22 @@
                         <% if $Ethics == 'danger' %>bi-hand-thumbs-down-fill<% end_if %>"></div>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Address</h5>
-                    <% if not $Address %>
-                        <p class="card-text">No known address</p>
-                        <p class="card-text"></p>
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title">Address</h5>
+                            <% if not $Address %>
+                                <p class="card-text">No known address</p>
+                                <p class="card-text"></p>
 
-                    <% else %>
-                        <p class="card-text">$Address</p>
-                        <p class="card-text">$Country</p>
-                    <% end_if %>
-
+                            <% else %>
+                                <p class="card-text">$Address</p>
+                                <p class="card-text">$Country</p>
+                            <% end_if %>
+                        </div>
+                        <% if $Logo %>
+                            <img src="$Logo.Pad(250,250).Link" class="col-2 img-fluid" alt="$Logo.Title"/>
+                        <% end_if %>
+                    </div>
                 </div>
                 <% if $Link || $Email || $Phone %>
                     <div class="card-footer text-body-secondary">
