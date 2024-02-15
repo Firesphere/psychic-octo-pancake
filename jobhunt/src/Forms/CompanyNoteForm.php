@@ -30,7 +30,7 @@ class CompanyNoteForm extends Form
         $fieldList = FieldList::create([
             TextField::create('Title', 'Title'),
             $drop = DropdownField::create('NoteTypeID', 'Topic', CompanyNoteType::get()->map('ID', 'Type')->toArray()),
-            $checks = OptionsetField::create('Score', 'Score', [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5]),
+            $checks = OptionsetField::create('Score', 'Score', [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 'N/A' => 'Not applicable/Do not want to share']),
             TextareaField::create('Note', 'Note'),
             CheckboxField::create('Anonymous', 'Anonymous note?', true),
             HiddenField::create('CompanyID', 'CompanyID', $controller->getRequest()->param('OtherID'))

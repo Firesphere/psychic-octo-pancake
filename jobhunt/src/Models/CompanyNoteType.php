@@ -29,12 +29,15 @@ class CompanyNoteType extends DataObject
         'CompanyNotes.Count'
     ];
 
+    private static $default_sort = 'Type ASC';
+
     private static $default_records = [
         ['Type' => 'Interview'],
         ['Type' => 'General'],
         ['Type' => 'Work'],
         ['Type' => 'Culture'],
-        ['Type' => 'Other']
+        ['Type' => 'Ethics'],
+        ['Type' => 'Other'],
     ];
 
 }

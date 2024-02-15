@@ -24,7 +24,7 @@ class CompanyNote extends BaseNote
 
     private static $db = [
         'Anonymous' => DBBoolean::class . '(true)',
-        'Score'     => DBEnum::class . '("1,2,3,4,5,N/A","N/A")'
+        'Score'     => DBEnum::class . '("1,2,3,4,5,N/A","N/A")',
     ];
     private static $has_one = [
         'Company'  => Company::class,

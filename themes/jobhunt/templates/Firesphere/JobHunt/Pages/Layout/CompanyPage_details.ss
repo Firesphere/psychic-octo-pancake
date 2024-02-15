@@ -101,9 +101,8 @@
                                 <div class="card-body">
                                     <p class="card-text">$Note</p>
                                 </div>
-                                <div class="card-footer">
-                                    <h6>Feedback by: <% if $User && not $Anonymous %>
-                                        $User.FirstName<% else %>Anonymous<% end_if %></h6>
+                                <div class="card-footer text-end">
+                                    <h6><% if $User && not $Anonymous %>Feedback by: $User.FirstName<% else %>Anonymous<% end_if %></h6>
                                 </div>
                             </div>
                         </div>
