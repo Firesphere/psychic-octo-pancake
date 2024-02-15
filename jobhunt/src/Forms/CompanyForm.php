@@ -35,7 +35,7 @@ class CompanyForm extends Form
             return;
         }
         $company = Company::get_by_id($params['OtherID']);
-        $resizedLogo = $company && $company->LogoID ? $company->Logo()->FitMax(200,200)->forTemplate() : '';
+        $resizedLogo = $company && $company->LogoID ? $company->Logo()->FitMax(200,200)->forTemplate() : 'None';
         $fields = FieldList::create([
             $nameField = TextField::create('Name', 'Company name'),
             $address = TextareaField::create('Address', 'Address'),
