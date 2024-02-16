@@ -75,6 +75,6 @@ class Interview extends DataObject
 
     public function getWeek()
     {
-        return $this->dbObject('DateTime')->format('w');
+        return 'Week ' . $this->dbObject('DateTime')->format('w; Y');
     }
 }

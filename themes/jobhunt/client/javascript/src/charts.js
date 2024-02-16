@@ -63,22 +63,30 @@ let sankeyOptions = {
 };
 
 let barOptions = {
-    type: 'bar',
     data: {
         labels: [],
         datasets: [
             {
-                label: 'Applications',
+                type: 'bar',
+                label: 'Applications made this week',
                 data: {},
                 backgroundColor: ''
             },
             {
-                label: 'Interviews',
+                type: 'bar',
+                label: 'Interviews this week',
                 data: {},
                 backgroundColor: '',
             },
             {
-                label: 'Time to first response',
+                type: 'bar',
+                label: 'Closed from this week',
+                data: {},
+                backgroundColor: ''
+            },
+            {
+                type: 'line',
+                label: 'Total open this week',
                 data: {},
                 backgroundColor: ''
             }
@@ -151,8 +159,10 @@ export default () => {
                 barOptions['data']['datasets'][0]['backgroundColor'] = response['data']['applications']['backgroundColor']
                 barOptions['data']['datasets'][1]['data'] = response['data']['interviews']['data']
                 barOptions['data']['datasets'][1]['backgroundColor'] = response['data']['interviews']['backgroundColor']
-                // barOptions['data']['datasets'][2]['data'] = response['data']['response']['data']
-                // barOptions['data']['datasets'][2]['backgroundColor'] = response['data']['response']['backgroundColor']
+                barOptions['data']['datasets'][2]['data'] = response['data']['closed']['data']
+                barOptions['data']['datasets'][2]['backgroundColor'] = response['data']['closed']['backgroundColor']
+                barOptions['data']['datasets'][3]['data'] = response['data']['outstanding']['data']
+                barOptions['data']['datasets'][3]['backgroundColor'] = response['data']['outstanding']['backgroundColor']
                 barOptions['data']['labels'] = response['labels'];
             })
             .then(() => {

@@ -6,6 +6,7 @@ use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Pages\SankeyPage;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\GroupedList;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
@@ -39,48 +40,64 @@ class SankeyPageController extends MoodPageController
             $this->httpError(403);
         }
 
+        $itemList = [];
+        $dataSet = ['Totals' => []];
+        $labels = [];
+
         $applications = $user->JobApplications()->orderBy('ApplicationDate DESC');
         $appIds = $applications->column('ID');
-        $list = GroupedList::create($applications);
-        $list = $list->groupBy('getWeek');
-        $numbers = [];
-        $weeks = [];
-        $interviews = [];
-        foreach ($list as $key => $value) {
-            $weeks[] = $key;
-            $numbers[] = $value->count();
-        }
+        $appList = GroupedList::create($applications);
+        $itemList['Applications'] = $appList->groupBy('getWeek');
+
         $interviewList = Interview::get()->filter(['ApplicationID' => $appIds]);
-        $intList = GroupedList::create($interviewList)->groupBy('getWeek');
-        foreach ($weeks as $week => $weekNum) {
-            [, $weekNumber,] = explode(' ', $weekNum);
-            $weekNumber = (int)trim($weekNumber, ';');
-            if (array_key_exists($weekNumber, $intList)) {
-                $item = $intList[$weekNumber];
-                $interviews[] = count($item->items) ?? 0;
-            } else {
-                $interviews[] = 0;
-            }
-//            $updates = StatusUpdate::get()->filter(['AutoHide' => false, 'Status.ID:Not' => [1]]);
+        $itemList['Interviews'] = GroupedList::create($interviewList)->groupBy('getWeek');
+        $closeList = $user->JobApplications()->filter(['Status.AutoHide' => true]);
+        $itemList['Closed'] = GroupedList::create($closeList)->groupBy('getWeek');
+
+        $today = DBDatetime::now()->Format('y-MM-dd');
+        $firstApplication = $applications->last()->dbObject('ApplicationDate')->format('y-MM-dd');
+        $todayTimestring = strtotime("previous monday", strtotime($today));
+        $startTimestring = strtotime('previous monday', strtotime($firstApplication));
+
+        // Build a list of all the weeks, a tiny hack because the 'getWeek' doesn't return padded weeknums
+        while ($startTimestring <= $todayTimestring) {
+            $date = 'Week ' . date('W; Y', $startTimestring);
+            $weeks[] = str_replace(' 0', ' ', $date); // It's adding a 0;
+            $startTimestring = strtotime('+1 week', $startTimestring);
         }
-        $appColour = Status::get()->filter(['Status' => 'Applied'])->first()->getColourStyle();
-        $interviewColour = Status::get()->filter(['Status' => 'Interview'])->first()->getColourStyle();
+        $lastTotal = 0;
+
+        foreach ($weeks as $key) {
+            foreach ($itemList as $type => $value) {
+                $dataSet[$type][$key] = !empty($value[$key]) ? count($value[$key]->items) : 0;
+            }
+            $labels[] = $key;
+            $dataSet['Totals'][$key] = $lastTotal + $dataSet['Applications'][$key] - $dataSet['Closed'][$key];
+            $lastTotal = $dataSet['Totals'][$key];
+        }
         $colours = Status::set_colour_map();
 
         $this->getResponse()->addHeader('content-type', 'application/json');
 
         $data = [
-            'labels' => array_reverse($weeks),
+            'labels' => $labels,
             'data'   => [
                 'applications' => [
-                    'data'            => array_reverse($numbers),
-                    'backgroundColor' => $colours[$appColour]
+                    'data'            => $dataSet['Applications'],
+                    'backgroundColor' => $colours['info']
                 ],
                 'interviews'   => [
-                    'data'            => array_reverse($interviews),
-                    'backgroundColor' => $colours[$interviewColour],
+                    'data'            => $dataSet['Interviews'],
+                    'backgroundColor' => $colours['success'],
+                ],
+                'closed'       => [
+                    'data'            => $dataSet['Closed'],
+                    'backgroundColor' => $colours['warning']
+                ],
+                'outstanding'       => [
+                    'data'            => $dataSet['Totals'],
+                    'backgroundColor' => $colours['dark']
                 ]
-
             ]
         ];
 
