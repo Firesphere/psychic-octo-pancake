@@ -44,7 +44,7 @@
                                    data-itemtype="statusupdate-edit"
                                    data-bs-toggle="modal"
                                    data-bs-target="#addItemModal"><i class="bi bi-pencil"></i>&nbsp;Edit</a>
-                                <hr class="row"/>
+                                <hr class="row mt-1"/>
                             <% end_loop %>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                    data-bs-toggle="modal"
                                    data-bs-target="#addItemModal">
                                     $DateTime.Nice() <% if $Notes.Count %><br/>($Notes.Count notes)<% end_if %></a>
-                                <hr/>
+                                <hr class="row mt-1"/>
                             <% end_loop %>
                         </div>
                     </div>
