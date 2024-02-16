@@ -74,14 +74,35 @@
                 <% end_if %>
             </div>
         <% end_if %>
-        <div class="card-footer">
+        <div class="card-footer d-flex justify-content-between">
             <a href="#"
                title="Edit application"
                class="js-formaction small"
                data-id="$ID"
                data-itemtype="application-edit"
                data-bs-toggle="modal"
-               data-bs-target="#addItemModal"><i class="bi bi-pencil"></i> Edit application</a>
+               data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>&nbsp;|&nbsp;
+            <a href="#"
+               title="Add note"
+               class="js-formaction"
+               data-application="$ID"
+               data-itemtype="note-add"
+               data-bs-toggle="modal"
+               data-bs-target="#addItemModal"><i class="bi bi-file-earmark-plus"></i></a>&nbsp;|&nbsp;
+            <a href="#"
+               title="Add status update"
+               class="js-formaction"
+               data-application="$ID"
+               data-itemtype="statusupdate-add"
+               data-bs-toggle="modal"
+               data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a>&nbsp;|&nbsp;
+            <a href="#"
+               title="Add interview"
+               class="js-formaction"
+               data-application="$ID"
+               data-itemtype="interview-add"
+               data-bs-toggle="modal"
+               data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
         </div>
     </div>
 <% end_if %>

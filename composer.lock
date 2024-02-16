@@ -2180,12 +2180,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lekoala/silverstripe-form-elements.git",
-                "reference": "e0b3d5e79a5c84aaf175f7fce581bc2fe3a374bf"
+                "reference": "102c33f5af89f7613f72f1c67da68978b99427d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lekoala/silverstripe-form-elements/zipball/e0b3d5e79a5c84aaf175f7fce581bc2fe3a374bf",
-                "reference": "e0b3d5e79a5c84aaf175f7fce581bc2fe3a374bf",
+                "url": "https://api.github.com/repos/lekoala/silverstripe-form-elements/zipball/102c33f5af89f7613f72f1c67da68978b99427d8",
+                "reference": "102c33f5af89f7613f72f1c67da68978b99427d8",
                 "shasum": ""
             },
             "require": {
@@ -2242,7 +2242,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-12T08:12:37+00:00"
+            "time": "2024-02-16T09:47:05+00:00"
         },
         {
             "name": "m1/env",
@@ -5893,16 +5893,16 @@
         },
         {
             "name": "silverstripe/versioned-admin",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-versioned-admin.git",
-                "reference": "1994a22bac03159a416ff90b5bc5079ce7dfcb4e"
+                "reference": "84a25f83c14ea665c138144d9d8cfece0c180d66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-versioned-admin/zipball/1994a22bac03159a416ff90b5bc5079ce7dfcb4e",
-                "reference": "1994a22bac03159a416ff90b5bc5079ce7dfcb4e",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-versioned-admin/zipball/84a25f83c14ea665c138144d9d8cfece0c180d66",
+                "reference": "84a25f83c14ea665c138144d9d8cfece0c180d66",
                 "shasum": ""
             },
             "require": {
@@ -5954,9 +5954,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-versioned-admin/issues",
-                "source": "https://github.com/silverstripe/silverstripe-versioned-admin/tree/2.1.1"
+                "source": "https://github.com/silverstripe/silverstripe-versioned-admin/tree/2.1.2"
             },
-            "time": "2024-02-09T11:31:31+00:00"
+            "time": "2024-02-16T11:31:41+00:00"
         },
         {
             "name": "silverstripe/webauthn-authenticator",
@@ -10457,12 +10457,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "683c8e7acb9c333990683edd7faed421c87d3954"
+                "reference": "3e513f303c13a625befa037a23b5d1ac9bde2a52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/683c8e7acb9c333990683edd7faed421c87d3954",
-                "reference": "683c8e7acb9c333990683edd7faed421c87d3954",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3e513f303c13a625befa037a23b5d1ac9bde2a52",
+                "reference": "3e513f303c13a625befa037a23b5d1ac9bde2a52",
                 "shasum": ""
             },
             "conflict": {
@@ -10652,7 +10652,7 @@
                 "funadmin/funadmin": "<=3.2|>=3.3.2,<=3.3.3",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
-                "getgrav/grav": "<=1.7.42.1",
+                "getgrav/grav": "<1.7.44",
                 "getkirby/cms": "<3.5.8.3-dev|>=3.6,<3.6.6.3-dev|>=3.7,<3.7.5.2-dev|>=3.8,<3.8.4.1-dev|>=3.9,<3.9.6",
                 "getkirby/kirby": "<=2.5.12",
                 "getkirby/panel": "<2.5.14",
@@ -11186,7 +11186,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-14T16:04:39+00:00"
+            "time": "2024-02-16T21:04:04+00:00"
         },
         {
             "name": "sebastian/cli-parser",
