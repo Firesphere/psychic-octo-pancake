@@ -11,17 +11,15 @@
                         <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
                         href="$InternalLink" title="View application">$Role</a> at
                         <% with $Company %>
-                            <a href="$Link" target="_blank">$Name</a>
+                            <a href="$InternalLink" target="_blank">$Name</a>
                         </h4>
-                            <% if $CurrentUser.CanEditCompany %>
-                                <a href="#"
-                                   title="Edit company"
-                                   class="js-formaction"
-                                   data-id="$ID"
-                                   data-itemtype="company-edit"
-                                   data-bs-toggle="modal"
-                                   data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
-                            <% end_if %>
+                            <a href="#"
+                               title="Edit company"
+                               class="js-formaction"
+                               data-id="$ID"
+                               data-itemtype="company-edit"
+                               data-bs-toggle="modal"
+                               data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
                         <% end_with %>
                     </div>
                     <div class="d-flex justify-content-between">
