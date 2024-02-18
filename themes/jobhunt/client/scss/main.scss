@@ -1,6 +1,10 @@
 @import 'dragula/dist/dragula.css';
 
 body {
+    .badge {
+        white-space: normal !important;
+        text-align: left;
+    }
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         z-index: 9999;
     }
