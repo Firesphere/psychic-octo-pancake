@@ -35,11 +35,12 @@ class SiteConfigTheme extends DataExtension
     public function BootswatchTheme()
     {
         if (!static::$theme) {
-            static::$theme = $this->owner->Theme ?? 'default';
             /** @var Member|MemberExtension $user */
             $user = Security::getCurrentUser();
             if ($user && ($user->Theme && $user->Theme !== 'auto')) {
                 static::$theme = $user->Theme;
+            } else {
+                static::$theme = $this->owner->Theme ?? 'default';
             }
         }
 
