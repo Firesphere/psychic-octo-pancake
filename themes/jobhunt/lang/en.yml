@@ -1,0 +1,19 @@
+en:
+  MemberProfile:
+    Registered: Registered
+  MemberProfiles:
+    ADDMEMBER: 'Add Member'
+    APPROVALLINK: 'Please visit the link below to confirm this member. Once approved they will be sent a confirmation email if configured. If you do not approve this member then they will not be able to log in.'
+    APPROVALREQUIRED: 'A new member has registered for {siteTitle}, and requires approval before they can log in:'
+    EDITPROFILE: 'Edit Profile'
+    Email: Email
+    LOGINHEADER: 'Log in'
+    NEXT: Next
+    Name: Name
+    PREV: Prev
+    REGISTER: Register
+    THISISYOURPROFILE: 'This is your profile!'
+  SilverStripe\Forms\CheckboxSetField_ss:
+    NOOPTIONSAVAILABLE: 'No options available'
+  SilverStripe\ORM\Hierarchy:
+    LIMITED_TITLE: 'Too many children ({count})'

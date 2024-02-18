@@ -1,0 +1,5 @@
+en:
+  Cashware\Bootswatcher\MemberExtension:
+    db_Theme: Theme
+  Cashware\Bootswatcher\SiteConfigTheme:
+    db_Theme: Theme

@@ -1,0 +1,30 @@
+en:
+  Firesphere\App\Models\Contact:
+    PLURALNAME: Contacts
+    PLURALS:
+      one: 'A Contact'
+      other: '{count} Contacts'
+    SINGULARNAME: Contact
+    db_Email: Email
+    db_Message: Message
+    db_Name: Name
+    db_Spam: Spam
+    has_one_ContactPage: 'Contact page'
+  Firesphere\App\Pages\ContactPage:
+    PLURALNAME: 'Contact Pages'
+    PLURALS:
+      one: 'A Contact Page'
+      other: '{count} Contact Pages'
+    SINGULARNAME: 'Contact Page'
+    has_many_Contacts: Contacts
+  Page:
+    DESCRIPTION: 'Generic content page'
+    PLURALNAME: Pages
+    PLURALS:
+      one: 'A Page'
+      other: '{count} Pages'
+    SINGULARNAME: Page
+    db_AllowCSSInline: 'AllowCSS inline'
+    db_AllowJSInline: 'AllowJS inline'
+    db_HasMap: 'Has map'
+    many_many_CSPDomains: 'CSP domains'

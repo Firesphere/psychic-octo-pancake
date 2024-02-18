@@ -1,0 +1,18 @@
+en:
+  Firesphere\Notebook\Extensions\MemberExtension:
+    has_many_NotebookNotes: 'Notebook notes'
+  Firesphere\Notebook\Models\Note:
+    PLURALNAME: Notes
+    PLURALS:
+      one: 'A Note'
+      other: '{count} Notes'
+    SINGULARNAME: Note
+    db_Content: Content
+    db_Title: Title
+    has_one_Member: Member
+  Firesphere\Notebook\Pages\NotebookPage:
+    PLURALNAME: 'Notebook Pages'
+    PLURALS:
+      one: 'A Notebook Page'
+      other: '{count} Notebook Pages'
+    SINGULARNAME: 'Notebook Page'

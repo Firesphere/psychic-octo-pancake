@@ -1,0 +1,225 @@
+en:
+  Firesphere\JobHunt\Admins\HuntAdmin:
+    MENUTITLE: 'Job hunt'
+  Firesphere\JobHunt\Extensions\ImageExtension:
+    belongs_to_Company: Company
+  Firesphere\JobHunt\Extensions\MemberExtension:
+    db_CV: CV
+    db_HideClosed: 'Hide closed'
+    db_PublicCV: 'Public CV'
+    db_URLSegment: 'URL segment'
+    db_ViewStyle: 'View style'
+    has_many_ExcludedStatus: 'Excluded status'
+    has_many_JobApplications: 'Job applications'
+    has_many_Moods: Moods
+    has_many_Notes: Notes
+    has_many_Tags: Tags
+  Firesphere\JobHunt\Extensions\OSMExtension:
+    db_Primary: Primary
+    has_one_Company: Company
+  Firesphere\JobHunt\Extensions\SiteConfigExtension:
+    has_one_DemoCSV: 'Demo CSV'
+  Firesphere\JobHunt\Models\ApplicationNote:
+    PLURALNAME: 'Application Notes'
+    PLURALS:
+      one: 'An Application Note'
+      other: '{count} Application Notes'
+    SINGULARNAME: 'Application Note'
+    has_one_JobApplication: 'Job application'
+  Firesphere\JobHunt\Models\BaseNote:
+    PLURALNAME: 'Base Notes'
+    PLURALS:
+      one: 'A Base Note'
+      other: '{count} Base Notes'
+    SINGULARNAME: 'Base Note'
+    db_Note: Note
+    db_Title: Title
+    has_one_Owner: Owner
+  Firesphere\JobHunt\Models\Company:
+    PLURALNAME: Companies
+    PLURALS:
+      one: 'A Company'
+      other: '{count} Companies'
+    SINGULARNAME: Company
+    db_Address: Address
+    db_Country: Country
+    db_Email: Email
+    db_Ethics: Ethics
+    db_Link: Link
+    db_Name: Name
+    db_Phone: Phone
+    db_Slug: Slug
+    has_many_Applications: Applications
+    has_many_Employees: Employees
+    has_many_Locations: Locations
+    has_many_Notes: Notes
+    has_one_Logo: Logo
+  Firesphere\JobHunt\Models\CompanyNote:
+    PLURALNAME: 'Company Notes'
+    PLURALS:
+      one: 'A Company Note'
+      other: '{count} Company Notes'
+    SINGULARNAME: 'Company Note'
+    db_Anonymous: Anonymous
+    db_Score: Score
+    has_one_Company: Company
+    has_one_NoteType: 'Note type'
+    has_one_User: User
+  Firesphere\JobHunt\Models\CompanyNoteType:
+    PLURALNAME: 'Company Note Types'
+    PLURALS:
+      one: 'A Company Note Type'
+      other: '{count} Company Note Types'
+    SINGULARNAME: 'Company Note Type'
+    db_Type: Type
+    has_many_CompanyNotes: 'Company notes'
+  Firesphere\JobHunt\Models\ExcludedStatus:
+    PLURALNAME: 'Excluded Statuss'
+    PLURALS:
+      one: 'An Excluded Status'
+      other: '{count} Excluded Statuss'
+    SINGULARNAME: 'Excluded Status'
+    has_one_Status: Status
+    has_one_User: User
+  Firesphere\JobHunt\Models\Interview:
+    PLURALNAME: Interviews
+    PLURALS:
+      one: 'An Interview'
+      other: '{count} Interviews'
+    SINGULARNAME: Interview
+    db_DateTime: 'Date time'
+    db_Duration: Duration
+    has_many_Notes: Notes
+    has_one_Application: Application
+    has_one_StatusUpdate: 'Status update'
+    many_many_Interviewers: Interviewers
+  Firesphere\JobHunt\Models\InterviewNote:
+    PLURALNAME: 'Interview Notes'
+    PLURALS:
+      one: 'An Interview Note'
+      other: '{count} Interview Notes'
+    SINGULARNAME: 'Interview Note'
+    has_one_ApplicationInterview: 'Application interview'
+  Firesphere\JobHunt\Models\InterviewQuestion:
+    PLURALNAME: 'Interview Questions'
+    PLURALS:
+      one: 'An Interview Question'
+      other: '{count} Interview Questions'
+    SINGULARNAME: 'Interview Question'
+    db_Question: Question
+  Firesphere\JobHunt\Models\Interviewer:
+    PLURALNAME: Interviewers
+    PLURALS:
+      one: 'An Interviewer'
+      other: '{count} Interviewers'
+    SINGULARNAME: Interviewer
+    belongs_many_many_Interviews: Interviews
+    db_Email: Email
+    db_Name: Name
+    db_Role: Role
+    has_one_Company: Company
+  Firesphere\JobHunt\Models\JobApplication:
+    PLURALNAME: 'Job Applications'
+    PLURALS:
+      one: 'A Job Application'
+      other: '{count} Job Applications'
+    SINGULARNAME: 'Job Application'
+    db_ApplicationDate: 'Application date'
+    db_ArchiveDate: 'Archive date'
+    db_Archived: Archived
+    db_ClosingDate: 'Closing date'
+    db_CoverLetter: 'Cover letter'
+    db_Favourite: Favourite
+    db_Link: Link
+    db_PayLower: 'Pay lower'
+    db_PayUpper: 'Pay upper'
+    db_Role: Role
+    has_many_Interviews: Interviews
+    has_many_Notes: Notes
+    has_many_StatusUpdates: 'Status updates'
+    has_one_Company: Company
+    has_one_Status: Status
+    has_one_User: User
+    many_many_Tags: Tags
+  Firesphere\JobHunt\Models\StateOfMind:
+    PLURALNAME: 'State Of Minds'
+    PLURALS:
+      one: 'A State Of Mind'
+      other: '{count} State Of Minds'
+    SINGULARNAME: 'State Of Mind'
+    db_Mood: Mood
+    has_one_User: User
+  Firesphere\JobHunt\Models\Status:
+    PLURALNAME: Statuss
+    PLURALS:
+      one: 'A Status'
+      other: '{count} Statuss'
+    SINGULARNAME: Status
+    db_AutoHide: 'Auto hide'
+    db_Colour: Colour
+    db_SortOrder: 'Sort order'
+    db_Status: Status
+    has_many_Applications: Applications
+    has_many_FilterExclusions: 'Filter exclusions'
+    has_many_StatusUpdates: 'Status updates'
+  Firesphere\JobHunt\Models\StatusUpdate:
+    PLURALNAME: 'Status Updates'
+    PLURALS:
+      one: 'A Status Update'
+      other: '{count} Status Updates'
+    SINGULARNAME: 'Status Update'
+    belongs_to_Interview: Interview
+    db_Hidden: Hidden
+    has_one_JobApplication: 'Job application'
+    has_one_Status: Status
+  Firesphere\JobHunt\Models\Tag:
+    PLURALNAME: Tags
+    PLURALS:
+      one: 'A Tag'
+      other: '{count} Tags'
+    SINGULARNAME: Tag
+    belongs_many_many_Applications: Applications
+    db_Title: Title
+    has_one_User: User
+  Firesphere\JobHunt\Pages\ApplicationPage:
+    PLURALNAME: 'Application Pages'
+    PLURALS:
+      one: 'An Application Page'
+      other: '{count} Application Pages'
+    SINGULARNAME: 'Application Page'
+  Firesphere\JobHunt\Pages\CalendarPage:
+    PLURALNAME: 'Calendar Pages'
+    PLURALS:
+      one: 'A Calendar Page'
+      other: '{count} Calendar Pages'
+    SINGULARNAME: 'Calendar Page'
+  Firesphere\JobHunt\Pages\CompanyPage:
+    PLURALNAME: 'Company Pages'
+    PLURALS:
+      one: 'A Company Page'
+      other: '{count} Company Pages'
+    SINGULARNAME: 'Company Page'
+  Firesphere\JobHunt\Pages\HomePage:
+    PLURALNAME: 'Home Pages'
+    PLURALS:
+      one: 'A Home Page'
+      other: '{count} Home Pages'
+    SINGULARNAME: 'Home Page'
+  Firesphere\JobHunt\Pages\KanbanPage:
+    PLURALNAME: 'Kanban Pages'
+    PLURALS:
+      one: 'A Kanban Page'
+      other: '{count} Kanban Pages'
+    SINGULARNAME: 'Kanban Page'
+  Firesphere\JobHunt\Pages\MoodPage:
+    PLURALNAME: 'Mood Pages'
+    PLURALS:
+      one: 'A Mood Page'
+      other: '{count} Mood Pages'
+    SINGULARNAME: 'Mood Page'
+  Firesphere\JobHunt\Pages\SankeyPage:
+    PLURALNAME: 'Sankey Pages'
+    PLURALS:
+      one: 'A Sankey Page'
+      other: '{count} Sankey Pages'
+    SINGULARNAME: 'Sankey Page'
