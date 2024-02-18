@@ -11,11 +11,7 @@
                         <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
                         href="$InternalLink" title="View application">$Role</a> at
                         <% with $Company %>
-                            <% if $Link %>
-                                <a href="$Link" target="_blank">$Name</a>
-                            <% else %>
-                                $Name
-                            <% end_if %>
+                            <a href="$Link" target="_blank">$Name</a>
                         </h4>
                             <% if $CurrentUser.CanEditCompany %>
                                 <a href="#"
@@ -166,7 +162,7 @@
                     </div>
                 <% end_if %>
                 <div class="card-body"></div>
-                <div class="card-footer text-body-secondary">
+                <div class="card-footer text-body-secondary d-flex justify-content-around">
                     <a href="#"
                        title="Edit application"
                        class="js-formaction"

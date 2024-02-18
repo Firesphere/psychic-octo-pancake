@@ -8,6 +8,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
+use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\Requirements;
 
 /**
