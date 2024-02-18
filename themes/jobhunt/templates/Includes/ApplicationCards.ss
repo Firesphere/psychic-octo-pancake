@@ -4,23 +4,17 @@
             <div class="card">
                 <div class="card-header bg-$IsOld-subtle">
                     <div class="d-flex justify-content-between">
-                    <h4><a href="#"
-                           class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                           data-id="$ID" title="Favourite this application">
-                        <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;
-                        <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
-                        href="$InternalLink" title="View application">$Role</a> at
-                        <% with $Company %>
-                            <a href="$InternalLink">$Name</a>
+                        <h4><a href="#"
+                               class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                               data-id="$ID" title="Favourite this application">
+                            <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;
+                            <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
+                                href="$InternalLink" title="View application">$Role</a> at
+                            <% with $Company %>
+                                <a href="$InternalLink">$Name</a>
+                            <% end_with %>
                         </h4>
-                            <a href="#"
-                               title="Edit company"
-                               class="js-formaction"
-                               data-id="$ID"
-                               data-itemtype="company-edit"
-                               data-bs-toggle="modal"
-                               data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
-                        <% end_with %>
+
                     </div>
                     <div class="d-flex justify-content-between">
                         <small class="pull-left">Application date: $ApplicationDate.Nice()</small>
