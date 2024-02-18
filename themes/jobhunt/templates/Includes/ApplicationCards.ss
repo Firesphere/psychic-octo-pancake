@@ -11,7 +11,7 @@
                         <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
                         href="$InternalLink" title="View application">$Role</a> at
                         <% with $Company %>
-                            <a href="$InternalLink" target="_blank">$Name</a>
+                            <a href="$InternalLink">$Name</a>
                         </h4>
                             <a href="#"
                                title="Edit company"

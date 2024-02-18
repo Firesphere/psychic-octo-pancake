@@ -14,7 +14,6 @@
                             <a href="$InternalLink">$Name</a>
 
                         </b>
-                        <% if $CurrentUser.CanEditCompany %>
                             <a href="#"
                                title="Edit company"
                                class="js-formaction"
@@ -22,7 +21,6 @@
                                data-itemtype="company-edit"
                                data-bs-toggle="modal"
                                data-bs-target="#addItemModal"><i class="bi bi-building-gear"></i></a>
-                        <% end_if %>
                     </div>
                 <% end_with %>
             </div>
