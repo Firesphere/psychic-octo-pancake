@@ -8,7 +8,7 @@
                                class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                                data-id="$ID" title="Favourite this application">
                             <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;
-                            <span class="m-0 p-0 text-$Status.ColourStyle" title="$Status.Name">&#9679;</span>&nbsp;<a
+                            <% with $Status %><span class="m-0 p-0 text-$ColourStyle" title="$Name"><% end_with %>&#9679;</span>&nbsp;<a
                                 href="$InternalLink" title="View application">$Role</a> at
                             <% with $Company %>
                                 <a href="$InternalLink">$Name</a>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <small class="pull-left">Application date: $ApplicationDate.Nice()</small>
-                        <a href="$Up.Link('application')/$ID" class="h4 mb-0" title="View application"><i
+                        <a href="$InternalLink" class="h4 mb-0" title="View application"><i
                             class="bi bi-eye-fill"></i></a>
                     </div>
                     <div class="d-flex justify-content-between">

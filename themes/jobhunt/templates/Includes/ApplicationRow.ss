@@ -28,7 +28,9 @@
         <td colspan="2"><a href="$InternalLink" title="View application">$Role</a></td>
         <td>$ApplicationDate.Nice()</td>
         <td class="text-center">
-            <div class="badge text-bg-$Status.ColourStyle">$Status.Name</div>
+            <% with $Status %>
+            <div class="badge text-bg-$ColourStyle">$Name</div>
+            <% end_with %>
         </td>
         <td class="text-center">
             <a href="#"
