@@ -127,15 +127,28 @@ class Status extends DataObject
         // Funky hack to get the colours :D
         $style = SiteConfig::current_site_config()->Theme;
         $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/" . $style . '.min.css');
-        $parser = new \CSSParser();
-        $parser->read_from_string($style);
-        $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
+        try {
+            $parser = new \CSSParser();
+            $parser->read_from_string($style);
+            $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]) ?? false;
+            if (!$colours) {
+                $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
+                $parser = new \CSSParser();
+                $parser->read_from_string($style);
+                $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
+            }
+        } catch (\Exception $e) {
+            // Default to Cosmo
+            $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
+            $parser->read_from_file($style);
+            $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
+
+        }
         foreach (static::$colours as $key => &$value) {
             if (isset($colours[$value])) {
                 $value = $colours[$value];
             }
         }
-
         return static::$colours;
     }
 
