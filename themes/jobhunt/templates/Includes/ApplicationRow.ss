@@ -25,7 +25,7 @@
                 <% end_with %>
             </div>
         </td>
-        <td colspan="2"><a href="$InternalLink" title="View application">$Role</a></td>
+        <td colspan="3"><a href="$InternalLink" title="View application">$Role</a></td>
         <td>$ApplicationDate.Nice()</td>
         <td class="text-center">
             <% with $Status %>
@@ -56,7 +56,7 @@
             <% if not $PayUpper && $PayLower %>$PayLower<% end_if %>
         </td>
         <th class="col-1">Notes</th>
-        <td colspan="4">
+        <td colspan="5">
             <% loop $Notes %>
                 <a href="#"
                    title="Edit note"
@@ -79,7 +79,7 @@
     </tr>
     <tr class="$OddEven">
         <th scope="row" class="col-1">Updates</th>
-        <td colspan="4">
+        <td colspan="5">
             <% loop $StatusUpdates.Filter('Hidden', 0) %>
                 <a href="#"
                    title="Edit Status update"
@@ -102,7 +102,7 @@
     </tr>
     <tr>
         <th scope="row" class="col-1">Interviews</th>
-        <td colspan="4">
+        <td colspan="5">
             <% loop $Interviews %>
                 <a href="#"
                    title="Edit interview"

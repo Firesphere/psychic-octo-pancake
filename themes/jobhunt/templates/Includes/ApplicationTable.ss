@@ -20,7 +20,7 @@
                 </div>
             </div>
         </th>
-        <th scope="col" colspan="2" class="col col-lg-2 border-start">
+        <th scope="col" colspan="3" class="col col-lg-2 border-start">
             <div class="d-flex justify-content-between">
                 <span></span>
                 <label for="rolefilter">Role</label>
