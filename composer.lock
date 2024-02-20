@@ -2180,12 +2180,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lekoala/silverstripe-form-elements.git",
-                "reference": "102c33f5af89f7613f72f1c67da68978b99427d8"
+                "reference": "c08f34f57199d4662c66f44e061f29b73c8a7a93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lekoala/silverstripe-form-elements/zipball/102c33f5af89f7613f72f1c67da68978b99427d8",
-                "reference": "102c33f5af89f7613f72f1c67da68978b99427d8",
+                "url": "https://api.github.com/repos/lekoala/silverstripe-form-elements/zipball/c08f34f57199d4662c66f44e061f29b73c8a7a93",
+                "reference": "c08f34f57199d4662c66f44e061f29b73c8a7a93",
                 "shasum": ""
             },
             "require": {
@@ -2242,7 +2242,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-16T09:47:05+00:00"
+            "time": "2024-02-19T14:02:19+00:00"
         },
         {
             "name": "m1/env",
@@ -4404,16 +4404,16 @@
         },
         {
             "name": "silverstripe/admin",
-            "version": "2.1.16",
+            "version": "2.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-admin.git",
-                "reference": "eee9a8fef9ff9bad8d25dc5f62a45c0a22b32543"
+                "reference": "50751546b57f32b66f8a173d64daa03d017d80ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-admin/zipball/eee9a8fef9ff9bad8d25dc5f62a45c0a22b32543",
-                "reference": "eee9a8fef9ff9bad8d25dc5f62a45c0a22b32543",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-admin/zipball/50751546b57f32b66f8a173d64daa03d017d80ae",
+                "reference": "50751546b57f32b66f8a173d64daa03d017d80ae",
                 "shasum": ""
             },
             "require": {
@@ -4467,9 +4467,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-admin/issues",
-                "source": "https://github.com/silverstripe/silverstripe-admin/tree/2.1.16"
+                "source": "https://github.com/silverstripe/silverstripe-admin/tree/2.1.17"
             },
-            "time": "2024-02-08T06:13:35+00:00"
+            "time": "2024-02-19T04:20:16+00:00"
         },
         {
             "name": "silverstripe/asset-admin",
@@ -5832,16 +5832,16 @@
         },
         {
             "name": "silverstripe/versioned",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-versioned.git",
-                "reference": "cbcbe1b7e92391e62947da893e58d633dd85bcee"
+                "reference": "11d24ae9d7693e66f9a8cc5153152cebf20c8dc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-versioned/zipball/cbcbe1b7e92391e62947da893e58d633dd85bcee",
-                "reference": "cbcbe1b7e92391e62947da893e58d633dd85bcee",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-versioned/zipball/11d24ae9d7693e66f9a8cc5153152cebf20c8dc4",
+                "reference": "11d24ae9d7693e66f9a8cc5153152cebf20c8dc4",
                 "shasum": ""
             },
             "require": {
@@ -5887,9 +5887,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-versioned/issues",
-                "source": "https://github.com/silverstripe/silverstripe-versioned/tree/2.1.2"
+                "source": "https://github.com/silverstripe/silverstripe-versioned/tree/2.1.3"
             },
-            "time": "2024-02-09T11:23:32+00:00"
+            "time": "2024-02-19T20:06:01+00:00"
         },
         {
             "name": "silverstripe/versioned-admin",
@@ -9857,16 +9857,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc"
+                "reference": "bc3dc91a5e9b14aa06d1d9e90647c5c5a2cc5353"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/fad452781b3d774e3337b0c0b245dd8e5a4455fc",
-                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/bc3dc91a5e9b14aa06d1d9e90647c5c5a2cc5353",
+                "reference": "bc3dc91a5e9b14aa06d1d9e90647c5c5a2cc5353",
                 "shasum": ""
             },
             "require": {
@@ -9909,9 +9909,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.0"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.1"
             },
-            "time": "2024-01-11T11:49:22+00:00"
+            "time": "2024-01-18T19:15:27+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -10457,12 +10457,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "3e513f303c13a625befa037a23b5d1ac9bde2a52"
+                "reference": "624324975ceed0b788160bdec5b7f22125d8de14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3e513f303c13a625befa037a23b5d1ac9bde2a52",
-                "reference": "3e513f303c13a625befa037a23b5d1ac9bde2a52",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/624324975ceed0b788160bdec5b7f22125d8de14",
+                "reference": "624324975ceed0b788160bdec5b7f22125d8de14",
                 "shasum": ""
             },
             "conflict": {
@@ -10710,7 +10710,7 @@
                 "joomla/archive": "<1.1.12|>=2,<2.0.1",
                 "joomla/filesystem": "<1.6.2|>=2,<2.0.1",
                 "joomla/filter": "<1.4.4|>=2,<2.0.1",
-                "joomla/framework": "<1.5.4|>=2.5.4,<=3.8.12",
+                "joomla/framework": "<1.5.7|>=2.5.4,<=3.8.12",
                 "joomla/input": ">=2,<2.0.2",
                 "joomla/joomla-cms": ">=2.5,<3.9.12",
                 "joomla/session": "<1.3.1",
@@ -11186,7 +11186,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-16T21:04:04+00:00"
+            "time": "2024-02-19T06:05:04+00:00"
         },
         {
             "name": "sebastian/cli-parser",

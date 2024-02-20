@@ -130,14 +130,21 @@ class Status extends DataObject
         try {
             $parser = new \CSSParser();
             $parser->read_from_string($style);
-            $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]) ?? false;
+            foreach ($parser->css as $key => $css) {
+                if (array_key_exists('--bs-primary', $css)) {
+                    $colours = $css;
+                    break;
+                }
+            }
+
             if (!$colours) {
+                $parser->__destruct();
                 $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
-                $parser = new \CSSParser();
                 $parser->read_from_string($style);
                 $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
             }
         } catch (\Exception $e) {
+            $parser->__destruct(); // The only way to reset the parser
             // Default to Cosmo
             $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
             $parser->read_from_file($style);
