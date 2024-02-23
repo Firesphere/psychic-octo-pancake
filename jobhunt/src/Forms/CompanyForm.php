@@ -4,9 +4,7 @@ namespace Firesphere\JobHunt\Forms;
 
 use Dynamic\CountryDropdownField\Fields\CountryDropdownField;
 use Firesphere\JobHunt\Models\Company;
-use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Folder;
-use SilverStripe\Assets\Upload;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\EmailField;
@@ -35,7 +33,7 @@ class CompanyForm extends Form
             return;
         }
         $company = Company::get_by_id($params['OtherID']);
-        $resizedLogo = $company && $company->LogoID ? $company->Logo()->FitMax(200,200)->forTemplate() : 'None';
+        $resizedLogo = $company && $company->LogoID ? $company->Logo()->FitMax(200, 200)->forTemplate() : 'None';
         $fields = FieldList::create([
             $nameField = TextField::create('Name', 'Company name'),
             $address = TextareaField::create('Address', 'Address'),

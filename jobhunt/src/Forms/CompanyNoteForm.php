@@ -6,7 +6,6 @@ use Firesphere\JobHunt\Models\CompanyNote;
 use Firesphere\JobHunt\Models\CompanyNoteType;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\CheckboxField;
-use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -14,8 +13,6 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\RequiredFields;
-use SilverStripe\Forms\SelectionGroup;
-use SilverStripe\Forms\SingleSelectField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 
@@ -53,6 +50,7 @@ class CompanyNoteForm extends Form
         $note = CompanyNote::create();
         $form->saveInto($note);
         $note->write();
+
         return json_encode(['success' => true, 'form' => false]);
     }
 }

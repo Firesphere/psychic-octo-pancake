@@ -156,6 +156,7 @@ class Status extends DataObject
                 $value = $colours[$value];
             }
         }
+
         return static::$colours;
     }
 

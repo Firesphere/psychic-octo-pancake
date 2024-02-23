@@ -94,7 +94,7 @@ class SankeyPageController extends MoodPageController
                     'data'            => $dataSet['Closed'],
                     'backgroundColor' => $colours['warning']
                 ],
-                'outstanding'       => [
+                'outstanding'  => [
                     'data'            => $dataSet['Totals'],
                     'backgroundColor' => $colours['dark']
                 ]
