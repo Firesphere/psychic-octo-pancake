@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8dae7d6d70f8713ce383a83429612c4",
+    "content-hash": "51f2d744446224cbc618e24644c1bc46",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -1029,6 +1029,33 @@
                 "silverstripe"
             ],
             "time": "2024-01-21T21:49:24+00:00"
+        },
+        {
+            "name": "firesphere/magiclogin",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://codeberg.org/Firesphere/silverstripe-magic-login.git",
+                "reference": "a8b6acfa1d4c97efb4d7e34dbf60e014843fb797"
+            },
+            "require": {
+                "php": ">=8",
+                "silverstripe/framework": "^4.3 || ^5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Simon `Firesphere` Erkelens",
+                    "email": "simon@firesphere.dev"
+                }
+            ],
+            "description": "Silverstripe login via magic email link",
+            "time": "2024-02-26T01:31:08+00:00"
         },
         {
             "name": "firesphere/module-helpers",
@@ -8719,16 +8746,16 @@
         },
         {
             "name": "web-auth/metadata-service",
-            "version": "4.8.0",
+            "version": "4.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
-                "reference": "039e3ce40a06ab12f0090ac410da8e7a07fc2c2b"
+                "reference": "024df5fb26166adf388dea697d2826ae5a6001cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/039e3ce40a06ab12f0090ac410da8e7a07fc2c2b",
-                "reference": "039e3ce40a06ab12f0090ac410da8e7a07fc2c2b",
+                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/024df5fb26166adf388dea697d2826ae5a6001cf",
+                "reference": "024df5fb26166adf388dea697d2826ae5a6001cf",
                 "shasum": ""
             },
             "require": {
@@ -8748,6 +8775,8 @@
                 "phpdocumentor/reflection-docblock": "As of 4.5.x, the phpdocumentor/reflection-docblock component will become mandatory for converting objects such as the Metadata Statement",
                 "psr/clock-implementation": "As of 4.5.x, the PSR Clock implementation will replace lcobucci/clock",
                 "psr/log-implementation": "Recommended to receive logs from the library",
+                "symfony/property-access": "As of 4.5.x, the symfony/serializer component will become mandatory for converting objects such as the Metadata Statement",
+                "symfony/property-info": "As of 4.5.x, the symfony/serializer component will become mandatory for converting objects such as the Metadata Statement",
                 "symfony/serializer": "As of 4.5.x, the symfony/serializer component will become mandatory for converting objects such as the Metadata Statement",
                 "web-token/jwt-library": "Mandatory for fetching Metadata Statement from distant sources"
             },
@@ -8785,7 +8814,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/webauthn-metadata-service/tree/4.8.0"
+                "source": "https://github.com/web-auth/webauthn-metadata-service/tree/4.8.1"
             },
             "funding": [
                 {
@@ -8797,20 +8826,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-02-24T09:40:29+00:00"
+            "time": "2024-02-26T07:58:15+00:00"
         },
         {
             "name": "web-auth/webauthn-lib",
-            "version": "4.8.0",
+            "version": "4.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "dee648c4a0971633c9434391c710bd3f244d6aed"
+                "reference": "ac1be6bba06f78f1d58ac75eefcedd32ef8093c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/dee648c4a0971633c9434391c710bd3f244d6aed",
-                "reference": "dee648c4a0971633c9434391c710bd3f244d6aed",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/ac1be6bba06f78f1d58ac75eefcedd32ef8093c7",
+                "reference": "ac1be6bba06f78f1d58ac75eefcedd32ef8093c7",
                 "shasum": ""
             },
             "require": {
@@ -8867,7 +8896,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/webauthn-lib/tree/4.8.0"
+                "source": "https://github.com/web-auth/webauthn-lib/tree/4.8.1"
             },
             "funding": [
                 {
@@ -8879,7 +8908,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-02-23T11:09:26+00:00"
+            "time": "2024-02-25T20:08:25+00:00"
         },
         {
             "name": "webonyx/graphql-php",
@@ -10456,12 +10485,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "aafb7236bf0c11b93b24e951544bd83470b85bec"
+                "reference": "af831491cd2810d41a1283e5bf050b887ff4d96a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/aafb7236bf0c11b93b24e951544bd83470b85bec",
-                "reference": "aafb7236bf0c11b93b24e951544bd83470b85bec",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/af831491cd2810d41a1283e5bf050b887ff4d96a",
+                "reference": "af831491cd2810d41a1283e5bf050b887ff4d96a",
                 "shasum": ""
             },
             "conflict": {
@@ -10653,7 +10682,7 @@
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
                 "getgrav/grav": "<1.7.44",
-                "getkirby/cms": "<3.5.8.3-dev|>=3.6,<3.6.6.3-dev|>=3.7,<3.7.5.2-dev|>=3.8,<3.8.4.1-dev|>=3.9,<3.9.6",
+                "getkirby/cms": "<=3.6.6.4|>=3.7,<=3.7.5.3|>=3.8,<=3.8.4.2|>=3.9,<=3.9.8|==3.10|>=4,<4.1.1",
                 "getkirby/kirby": "<=2.5.12",
                 "getkirby/panel": "<2.5.14",
                 "getkirby/starterkit": "<=3.7.0.2",
@@ -11188,7 +11217,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-23T16:04:25+00:00"
+            "time": "2024-02-26T20:04:43+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -12900,6 +12929,7 @@
     "stability-flags": {
         "firesphere/cspheaders": 20,
         "firesphere/haveibeenpwnd": 20,
+        "firesphere/magiclogin": 20,
         "lekoala/silverstripe-form-elements": 20,
         "silverstripe/login-forms": 0,
         "silverstripe/recipe-cms": 0,

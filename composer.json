@@ -12,6 +12,7 @@
         "firesphere/adblockwarning": "^1.0",
         "firesphere/cspheaders": "dev-main",
         "firesphere/haveibeenpwnd": "dev-main",
+        "firesphere/magiclogin": "dev-main",
         "firesphere/module-helpers": "^0.4.0",
         "firesphere/openstreetmaps": "^1.0",
         "heyday/silverstripe-colorpalette": "^2.1|^3",
