@@ -79,7 +79,7 @@ class SankeyPage extends Page
             $has[$to]++;
             $to .= '.' . $has[$to];
         } else {
-            $has[$to] = 1;
+            $has[$to] = $has[$to] ?? 1;
         }
         if ($from !== $to) {
             foreach ($this->fromTo as $flow) {

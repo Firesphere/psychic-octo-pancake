@@ -1,5 +1,6 @@
 <div class="row">
-    $Form
+    $TokenForm
+    $LoginForm
     <div class="col-sm-6 col-md-4">
         $Content
     </div>
