@@ -1036,7 +1036,7 @@
             "source": {
                 "type": "git",
                 "url": "https://codeberg.org/Firesphere/silverstripe-magic-login.git",
-                "reference": "a8b6acfa1d4c97efb4d7e34dbf60e014843fb797"
+                "reference": "28f963243dc95eda8918bacd241882e8b9f1b88d"
             },
             "require": {
                 "php": ">=8",
@@ -1055,7 +1055,7 @@
                 }
             ],
             "description": "Silverstripe login via magic email link",
-            "time": "2024-02-26T01:31:08+00:00"
+            "time": "2024-02-26T22:49:10+00:00"
         },
         {
             "name": "firesphere/module-helpers",
