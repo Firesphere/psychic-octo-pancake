@@ -1,0 +1,16 @@
+---
+name: JobHuntTokenLogin
+after:
+  - TokenLogin
+---
+SilverStripe\Core\Injector\Injector:
+  Firesphere\MagicLogin\Config\TokenConfig:
+    properties:
+      TokenLifetime: 30
+      PersistentLogin: true
+      SameBrowser: true
+      AdminAccess: false
+  SilverStripe\Security\Security:
+    properties:
+      Authenticators:
+        token: '%$Firesphere\MagicLogin\Authenticators\TokenAuthenticator'
