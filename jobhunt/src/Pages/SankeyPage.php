@@ -79,49 +79,53 @@ class SankeyPage extends Page
             $has[$to]++;
             $to .= '.' . $has[$to];
         } else {
-            $has[$to] = $has[$to] ?? 1;
+            $has[$to] = 1;
         }
         if ($from !== $to) {
             foreach ($this->fromTo as $flow) {
                 if ($flow['to'] === $from && $flow['from'] === $to) {
                     $has[$to] = $has[$to] ? $has[$to]++ : 1;
-                    if ($flow['from'] === $from && $flow['to'] === $to) {
-                        $flow['flow']++;
-
-                        return $to;
-                    }
+                    $to .= '.' . $has[$to];
                 }
-                unset($flow);
-                $this->fromTo[] = [
-                    'from' => $from,
-                    'to'   => $to,
-                    'flow' => 1
-                ];
+            }
+        }
+        foreach ($this->fromTo as $key => &$flow) {
+            if ($flow['from'] === $from && $flow['to'] === $to) {
+                $flow['flow']++;
 
                 return $to;
             }
-
-            public
-            function getFromTo()
-            {
-                $orderMap = Status::get()->map('ID', 'SortOrder')->toArray();
-                $fromTo = $this->fromTo;
-                usort($fromTo, function ($a, $b) use ($orderMap) {
-                    $afrom = explode('.', $a['from']);
-                    $ato = explode('.', $a['to']);
-                    $bfrom = explode('.', $b['from']);
-                    $bto = explode('.', $b['to']);
-                    $retval = $orderMap[$afrom[0]] <=> $orderMap[$bfrom[0]];
-                    if ($retval === 0) {
-                        $retval = $orderMap[$ato[0]] <=> $orderMap[$bto[0]];
-                    }
-                    if ($retval === 0) {
-                        $retval = $a['flow'] <=> $b['flow'];
-                    }
-
-                    return $retval;
-                });
-
-                return $fromTo;
-            }
         }
+        unset($flow);
+        $this->fromTo[] = [
+            'from' => $from,
+            'to'   => $to,
+            'flow' => 1
+        ];
+
+        return $to;
+    }
+
+    public function getFromTo()
+    {
+        $orderMap = Status::get()->map('ID', 'SortOrder')->toArray();
+        $fromTo = $this->fromTo;
+        usort($fromTo, function ($a, $b) use ($orderMap) {
+            $afrom = explode('.', $a['from']);
+            $ato = explode('.', $a['to']);
+            $bfrom = explode('.', $b['from']);
+            $bto = explode('.', $b['to']);
+            $retval = $orderMap[$afrom[0]] <=> $orderMap[$bfrom[0]];
+            if ($retval === 0) {
+                $retval = $orderMap[$ato[0]] <=> $orderMap[$bto[0]];
+            }
+            if ($retval === 0) {
+                $retval = $a['flow'] <=> $b['flow'];
+            }
+
+            return $retval;
+        });
+
+        return $fromTo;
+    }
+}
