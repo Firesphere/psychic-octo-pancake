@@ -40,7 +40,7 @@ class CompanyForm extends Form
             $country = CountryDropdownField::create('Country', 'Country'),
             EmailField::create('Email', 'Generic contact email address'),
             TextField::create('Link', 'Website URL'),
-            $ethics = DropdownField::create('Ethics', 'Ethics', Company::$colour_map,),
+            $ethics = DropdownField::create('Ethics', 'Ethics', Company::$colour_map),
             LiteralField::create('CurrentLogo', '<div class="col"><br />' . $resizedLogo . '</div>'),
             $logo = FileField::create('Logo', 'Logo' . ($resizedLogo ? ' replacement (leave empty if none)' : '')),
             HiddenField::create('ID', 'ID', $params['OtherID'])

@@ -17,7 +17,6 @@ use SilverStripe\ORM\FieldType\DBBoolean;
  */
 class OSMExtension extends DataExtension
 {
-
     private static $db = [
         'Primary' => DBBoolean::class,
     ];

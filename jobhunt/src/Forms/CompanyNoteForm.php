@@ -18,7 +18,6 @@ use SilverStripe\Forms\TextField;
 
 class CompanyNoteForm extends Form
 {
-
     public const DEFAULT_NAME = 'CompanyNoteForm';
 
     public function __construct(RequestHandler $controller = null, $name = self::DEFAULT_NAME)

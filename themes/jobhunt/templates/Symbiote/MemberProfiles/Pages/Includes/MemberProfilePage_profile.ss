@@ -1,6 +1,10 @@
 <div class="row">
+    <% if not $CurrentUser %>
     $TokenForm
     $LoginForm
+    <% else %>
+        $Form
+    <% end_if %>
     <div class="col-sm-6 col-md-4">
         $Content
     </div>
