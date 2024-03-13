@@ -5,6 +5,7 @@ namespace Firesphere\JobHunt\Models;
 use SilverStripe\ORM\FieldType\DBBoolean;
 use SilverStripe\ORM\FieldType\DBEnum;
 use SilverStripe\Security\Member;
+use SilverStripe\Security\Security;
 
 /**
  * Class \Firesphere\JobHunt\Models\CompanyNote
@@ -13,10 +14,8 @@ use SilverStripe\Security\Member;
  * @property string $Score
  * @property int $CompanyID
  * @property int $NoteTypeID
- * @property int $UserID
  * @method Company Company()
  * @method CompanyNoteType NoteType()
- * @method Member User()
  */
 class CompanyNote extends BaseNote
 {
@@ -29,6 +28,5 @@ class CompanyNote extends BaseNote
     private static $has_one = [
         'Company'  => Company::class,
         'NoteType' => CompanyNoteType::class,
-        'User'     => Member::class,
     ];
 }
