@@ -68,7 +68,7 @@ RUN chown -R 33:33 $DOCUMENT_ROOT
 
 RUN apt purge -y git unzip
 
-USER www-data
 
 # Hacky approach to ensuring apache has access to it's root folder
 RUN sed -i 's|set -e|set -e\n\n/var/www/html/vendor/bin/sake dev/build flush=all\n\ncomposer vendor-expose copy\n\n\nchown -R www-data:www-data /var/www/html\n |' /usr/local/bin/docker-php-entrypoint
+USER www-data
