@@ -9,7 +9,6 @@ ARG SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
-RUN curl -sL https://sentry.io/get-cli/ | bash
 
 RUN apt-get update
 RUN apt-get install unzip git -y
