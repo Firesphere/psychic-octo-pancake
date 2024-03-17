@@ -9,6 +9,7 @@ ARG SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
+RUN curl -sL https://sentry.io/get-cli/ | bash
 
 RUN apt-get update
 RUN apt-get install unzip git -y
@@ -67,7 +68,6 @@ RUN chown 33:33 $DOCUMENT_ROOT
 RUN chown -R 33:33 $DOCUMENT_ROOT
 
 RUN apt purge -y git unzip
-
 
 # Hacky approach to ensuring apache has access to it's root folder
 RUN sed -i 's|set -e|set -e\n\n/var/www/html/vendor/bin/sake dev/build flush=all\n\ncomposer vendor-expose copy\n\n\nchown -R www-data:www-data /var/www/html\n |' /usr/local/bin/docker-php-entrypoint
