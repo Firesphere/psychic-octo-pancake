@@ -7,7 +7,7 @@ ARG SS_DATABASE_USERNAME=${SS_DATABASE_USERNAME}
 ENV SS_DATABASE_USERNAME=${SS_DATABASE_USERNAME}
 ARG SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
-ENV RELEASE=`cat .release`+${CAPROVER_GIT_COMMIT_SHA}
+CMD export RELEASE=`cat .release`+${CAPROVER_GIT_COMMIT_SHA}
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
 RUN echo ${RELEASE}
 RUN apt-get update
