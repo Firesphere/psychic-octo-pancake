@@ -11,7 +11,9 @@ ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
 
 RUN apt-get update
-RUN apt-get install unzip git -y
+RUN DEBIAN_NONINTERACTIVE=1 apt-get install -y unzip git curl apt-transport-https lsb-release ca-certificates
+RUN curl -sL https://sentry.io/get-cli/ | sh
+
 # Install default PHP Extensions
 RUN install-php-extensions \
         bcmath \
