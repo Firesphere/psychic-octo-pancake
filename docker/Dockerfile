@@ -7,22 +7,12 @@ ARG SS_DATABASE_USERNAME=${SS_DATABASE_USERNAME}
 ENV SS_DATABASE_USERNAME=${SS_DATABASE_USERNAME}
 ARG SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
-ENV PLUSSIGN="+"
-ARG RELEASE=${cat .release}${PLUSSIGN}${CAPROVER_GIT_COMMIT_SHA}
-ENV RELEASE=${RELEASE}
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
 RUN echo ${RELEASE}
 RUN apt-get update
 RUN DEBIAN_NONINTERACTIVE=1 apt-get install -y unzip git curl apt-transport-https lsb-release ca-certificates
-RUN curl -sL https://sentry.io/get-cli/ | sh
-# Create a release
-RUN sentry-cli --auth-token 181b1172473d43dcb90c23c7d5a37c75e84e48b1494f484b9ba6cabc73cdada1 releases new -p jobhunt ${RELEASE} --org casa-laguna
-RUN sentry-cli --auth-token 181b1172473d43dcb90c23c7d5a37c75e84e48b1494f484b9ba6cabc73cdada1 releases files -p jobhunt ${RELEASE} upload-sourcemaps themes/jobhunt/dist/js --org casa-laguna
-RUN sentry-cli --auth-token 181b1172473d43dcb90c23c7d5a37c75e84e48b1494f484b9ba6cabc73cdada1 releases set-commits --auto ${RELEASE} --org casa-laguna -p jobhunt
-RUN sentry-cli --auth-token 181b1172473d43dcb90c23c7d5a37c75e84e48b1494f484b9ba6cabc73cdada1 releases finalize ${RELEASE} --org casa-laguna -p jobhunt
-RUN echo ${RELEASE} > /var/www/html/.releases/${SS_DATABASE_NAME}.release
-RUN echo ${RELEASE} > /var/www/html/.release
+
 # Install default PHP Extensions
 RUN install-php-extensions \
         bcmath \
