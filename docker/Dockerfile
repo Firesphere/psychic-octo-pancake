@@ -61,7 +61,6 @@ RUN mkdir -p /var/www/html/public/assets
 RUN mkdir -p /var/www/html/public/_graphql
 RUN chown 33:33 $DOCUMENT_ROOT
 RUN /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction
-RUN /usr/local/bin/composer vendor-expose copy
 
 # Build a GQL schema cache
 RUN chown -R 33:33 $DOCUMENT_ROOT
@@ -70,4 +69,3 @@ RUN apt purge -y git unzip
 
 # Hacky approach to ensuring apache has access to it's root folder
 RUN sed -i 's|set -e|set -e\n\n/var/www/html/vendor/bin/sake dev/build flush=all\n\ncomposer vendor-expose copy\n\n\nchown -R www-data:www-data /var/www/html\n |' /usr/local/bin/docker-php-entrypoint
-USER www-data
