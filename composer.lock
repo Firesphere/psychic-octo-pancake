@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51f2d744446224cbc618e24644c1bc46",
+    "content-hash": "6a68eb911e84b60ec9d19949e028bd51",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -2205,16 +2205,16 @@
         },
         {
             "name": "lekoala/silverstripe-form-elements",
-            "version": "dev-master",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lekoala/silverstripe-form-elements.git",
-                "reference": "ff13893e99bfb2be6450f1ff03fdaf1a22127b90"
+                "reference": "0ead64cd8fd226d63575965f5a933c9348e6b3a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lekoala/silverstripe-form-elements/zipball/ff13893e99bfb2be6450f1ff03fdaf1a22127b90",
-                "reference": "ff13893e99bfb2be6450f1ff03fdaf1a22127b90",
+                "url": "https://api.github.com/repos/lekoala/silverstripe-form-elements/zipball/0ead64cd8fd226d63575965f5a933c9348e6b3a7",
+                "reference": "0ead64cd8fd226d63575965f5a933c9348e6b3a7",
                 "shasum": ""
             },
             "require": {
@@ -2226,7 +2226,6 @@
                 "phpunit/phpunit": "^9.5",
                 "squizlabs/php_codesniffer": "^3.5"
             },
-            "default-branch": true,
             "type": "silverstripe-vendormodule",
             "extra": {
                 "installer-name": "form-elements",
@@ -2263,7 +2262,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lekoala/silverstripe-form-elements/issues",
-                "source": "https://github.com/lekoala/silverstripe-form-elements/tree/master"
+                "source": "https://github.com/lekoala/silverstripe-form-elements/tree/0.2"
             },
             "funding": [
                 {
@@ -2271,7 +2270,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-21T10:25:16+00:00"
+            "time": "2024-01-19T10:49:58+00:00"
         },
         {
             "name": "m1/env",
@@ -4915,16 +4914,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "5.1.22",
+            "version": "5.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "8aab888d5011d44c69e1f4ad6f6c28f6fe76bb2a"
+                "reference": "cca2f7059bc572497a8ed80f2d35e12a94984683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/8aab888d5011d44c69e1f4ad6f6c28f6fe76bb2a",
-                "reference": "8aab888d5011d44c69e1f4ad6f6c28f6fe76bb2a",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/cca2f7059bc572497a8ed80f2d35e12a94984683",
+                "reference": "cca2f7059bc572497a8ed80f2d35e12a94984683",
                 "shasum": ""
             },
             "require": {
@@ -5038,9 +5037,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-framework/issues",
-                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.1.22"
+                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.1.23"
             },
-            "time": "2024-03-20T23:49:10+00:00"
+            "time": "2024-04-02T00:33:09+00:00"
         },
         {
             "name": "silverstripe/googlesitemaps",
@@ -9546,25 +9545,27 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.21.3",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "0b407703b08ea0cf6ebc61e267cc96ff7000911b"
+                "reference": "d7b6e1dc2dc85c01ed63ab158b00a7f46abdebcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/0b407703b08ea0cf6ebc61e267cc96ff7000911b",
-                "reference": "0b407703b08ea0cf6ebc61e267cc96ff7000911b",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/d7b6e1dc2dc85c01ed63ab158b00a7f46abdebcc",
+                "reference": "d7b6e1dc2dc85c01ed63ab158b00a7f46abdebcc",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1|^8",
+                "php": "^7.2|^8",
                 "psr/log": "^1|^2|^3",
                 "symfony/var-dumper": "^4|^5|^6|^7"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=7.5.20 <10.0",
+                "dbrekelmans/bdi": "^1",
+                "phpunit/phpunit": "^8|^9",
+                "symfony/panther": "^1|^2.1",
                 "twig/twig": "^1.38|^2.7|^3.0"
             },
             "suggest": {
@@ -9575,7 +9576,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.21-dev"
+                    "dev-master": "1.22-dev"
                 }
             },
             "autoload": {
@@ -9606,9 +9607,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maximebf/php-debugbar/issues",
-                "source": "https://github.com/maximebf/php-debugbar/tree/v1.21.3"
+                "source": "https://github.com/maximebf/php-debugbar/tree/v1.22.1"
             },
-            "time": "2024-03-12T14:23:07+00:00"
+            "time": "2024-04-01T10:44:20+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -12946,7 +12947,6 @@
         "firesphere/cspheaders": 20,
         "firesphere/haveibeenpwnd": 20,
         "firesphere/magiclogin": 20,
-        "lekoala/silverstripe-form-elements": 20,
         "silverstripe/login-forms": 0,
         "silverstripe/recipe-cms": 0,
         "silverstripe/recipe-plugin": 0,
