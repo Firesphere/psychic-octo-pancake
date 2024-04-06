@@ -60,7 +60,7 @@ RUN mkdir -p /var/www/html/public/assets
 RUN mkdir -p /var/www/html/public/_graphql
 RUN /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction
 
-RUN apt purge -y git unzip
+RUN apt purge -y unzip git curl apt-transport-https lsb-release ca-certificates
 
 HEALTHCHECK --interval=60s --retries=5 CMD curl --fail http://localhost/ || exit 1
 
