@@ -12,6 +12,8 @@ use Firesphere\JobHunt\Models\StatusUpdate;
 use Firesphere\JobHunt\Models\Tag;
 use Firesphere\JobHunt\Pages\ApplicationPage;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -92,15 +94,20 @@ class ApplicationPageController extends \PageController
             return $this->Companies;
         }
         $user = Security::getCurrentUser();
-        $this->Companies = Company::get()->filter(['ID' => $user->JobApplications()->column('CompanyID')])
-            ->sort('Name ASC');
+        if ($user->JobApplications()->Count()) {
+            $this->Companies = Company::get()->filter(['ID' => $user->JobApplications()->column('CompanyID') ?? [-1]])
+                ->sort('Name ASC');
 
-        if ($this->getRequest()->getVar('company')) {
-            $companyID = $this->getRequest()->getVar('company');
-            $this->ActiveCompany = $this->Companies->filter(['ID' => $companyID])->first();
+            if ($this->getRequest()->getVar('company')) {
+                $companyID = $this->getRequest()->getVar('company');
+                $this->ActiveCompany = $this->Companies->filter(['ID' => $companyID])->first();
+            }
+
+            return $this->Companies;
+
         }
 
-        return $this->Companies;
+        return ArrayList::create();
     }
 
     public function getStatusFilters()

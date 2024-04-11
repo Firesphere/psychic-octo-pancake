@@ -9,8 +9,8 @@ ARG SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
-RUN apt-get update
-RUN DEBIAN_NONINTERACTIVE=1 apt-get install -y unzip git curl apt-transport-https lsb-release ca-certificates
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y unzip git curl apt-transport-https lsb-release ca-certificates
 
 # Install default PHP Extensions
 RUN install-php-extensions \
@@ -56,12 +56,10 @@ COPY . $DOCUMENT_ROOT
 WORKDIR $DOCUMENT_ROOT
 RUN mkdir -p /var/www/html/public/assets
 RUN mkdir -p /var/www/html/public/_graphql
-RUN /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction
-RUN /usr/local/bin/composer vendor-expose copy
+RUN /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader
 
-RUN apt purge -y git unzip
+RUN DEBIAN_FRONTEND=noninteractive apt-get purge -y git unzip
 
-HEALTHCHECK --interval=60s --retries=5 CMD curl --fail http://localhost/ || exit 1
 
 # Hacky approach to ensuring apache has access to it's root folder
 RUN sed -i 's|set -e|set -e\n\n/var/www/html/vendor/bin/sake dev/build flush=all\n\ncomposer vendor-expose copy\n\n\nchown -R www-data:www-data /var/www/html\n |' /usr/local/bin/docker-php-entrypoint
