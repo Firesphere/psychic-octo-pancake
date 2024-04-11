@@ -24,22 +24,9 @@ RUN install-php-extensions \
         xsl \
         zip \
         exif \
-        gmp \
-        opcache
+        gmp
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin
-
-# set recommended PHP.ini settings
-# see https://secure.php.net/manual/en/opcache.installation.php
-RUN set -eux; \
-	docker-php-ext-enable opcache; \
-	{ \
-		echo 'opcache.memory_consumption=128'; \
-		echo 'opcache.interned_strings_buffer=8'; \
-		echo 'opcache.max_accelerated_files=4000'; \
-		echo 'opcache.revalidate_freq=2'; \
-	} > "$PHP_INI_DIR/conf.d/opcache-recommended.ini"
 
 # Set error handling
 RUN echo 'date.timezone = Pacific/Auckland' > "$PHP_INI_DIR/conf.d/timezone.ini" && \
