@@ -25,8 +25,7 @@ RUN install-php-extensions \
         zip \
         exif \
         gmp \
-        opcache \
-        memcached
+        opcache
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin
@@ -40,7 +39,6 @@ RUN set -eux; \
 		echo 'opcache.interned_strings_buffer=8'; \
 		echo 'opcache.max_accelerated_files=4000'; \
 		echo 'opcache.revalidate_freq=2'; \
-		echo 'opcache.fast_shutdown=1'; \
 	} > "$PHP_INI_DIR/conf.d/opcache-recommended.ini"
 
 # Set error handling
@@ -59,6 +57,7 @@ WORKDIR $DOCUMENT_ROOT
 RUN mkdir -p /var/www/html/public/assets
 RUN mkdir -p /var/www/html/public/_graphql
 RUN /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction
+RUN /usr/local/bin/composer vendor-expose copy
 
 RUN apt purge -y git unzip
 
