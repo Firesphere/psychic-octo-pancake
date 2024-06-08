@@ -1,0 +1,34 @@
+---
+After:
+  - '#corecache'
+---
+SilverStripe\Core\Injector\Injector:
+  MemcachedCacheFactory:
+    class: 'SilverStripe\Core\Cache\MemcachedCacheFactory'
+    constructor:
+      client: '%$MemcachedClient'
+  SilverStripe\Core\Cache\CacheFactory: '%$MemcachedCacheFactory'
+  Psr\SimpleCache\CacheInterface.cacheblock:
+    factory: 'SilverStripe\Core\Cache\CacheFactory'
+    constructor:
+      namespace: "cacheblock"
+      defaultLifetime: 604800
+---
+Except:
+  environment: dev
+---
+SilverStripe\Core\Injector\Injector:
+  MemcachedClient:
+    class: 'Memcached'
+    calls:
+      - [ addServer, [ 'srv-captain--memcached', "11211" ] ]
+
+---
+Only:
+  environment: dev
+---
+SilverStripe\Core\Injector\Injector:
+  MemcachedClient:
+    class: 'Memcached'
+    calls:
+      - [ addServer, [ 'memcached', "11211" ] ]

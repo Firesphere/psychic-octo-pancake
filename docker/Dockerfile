@@ -25,7 +25,8 @@ RUN install-php-extensions \
         zip \
         exif \
         gmp \
-        opcache
+        opcache \
+        memcached
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin
