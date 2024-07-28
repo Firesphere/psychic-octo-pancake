@@ -21,12 +21,12 @@
         "phptek/sentry": "^5.0",
         "sheadawson/silverstripe-dependentdropdownfield": "^3.0",
         "silverstripe/googlesitemaps": "^3.0",
-        "silverstripe/login-forms": "~5.1.0@stable",
+        "silverstripe/login-forms": "~5@stable",
         "silverstripe/mfa": "^5",
-        "silverstripe/recipe-cms": "~5.1.0@stable",
-        "silverstripe/recipe-plugin": "~2.0.0@stable",
+        "silverstripe/recipe-cms": "~5@stable",
+        "silverstripe/recipe-plugin": "~2@stable",
         "silverstripe/totp-authenticator": "^5",
-        "silverstripe/vendor-plugin": "~2.0.1@stable",
+        "silverstripe/vendor-plugin": "~2@stable",
         "silverstripe/webauthn-authenticator": "^5",
         "symbiote/silverstripe-gridfieldextensions": "^4.0",
         "symfony/mailjet-mailer": "^7.0"
@@ -35,7 +35,6 @@
         "friendsofphp/php-cs-fixer": "^3.47",
         "lekoala/silverstripe-debugbar": "*",
         "phpunit/phpunit": "^9.6",
-        "roave/security-advisories": "dev-latest",
         "silverleague/ideannotator": "*"
     },
     "extra": {

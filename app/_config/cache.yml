@@ -9,7 +9,7 @@ SilverStripe\Core\Injector\Injector:
       client: '%$MemcachedClient'
   SilverStripe\Core\Cache\CacheFactory: '%$MemcachedCacheFactory'
   Psr\SimpleCache\CacheInterface.cacheblock:
-    factory: 'SilverStripe\Core\Cache\CacheFactory'
+    factory: 'MemcachedCacheFactory'
     constructor:
       namespace: "cacheblock"
       defaultLifetime: 604800
