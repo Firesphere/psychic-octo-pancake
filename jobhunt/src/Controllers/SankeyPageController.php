@@ -44,7 +44,9 @@ class SankeyPageController extends MoodPageController
         $dataSet = ['Totals' => []];
         $labels = [];
 
-        $applications = $user->JobApplications()->orderBy('ApplicationDate DESC');
+        $applications = $user->JobApplications()
+            ->filter(['Archived' => false])
+            ->orderBy('ApplicationDate DESC');
         $appIds = $applications->column('ID');
         $appList = GroupedList::create($applications);
         $itemList['Applications'] = $appList->groupBy('getWeek');
