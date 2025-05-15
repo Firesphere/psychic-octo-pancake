@@ -5,7 +5,7 @@ namespace Firesphere\JobHunt\Controllers;
 use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\Status;
-use Firesphere\JobHunt\Pages\SankeyPage;
+use Firesphere\JobHunt\Pages\ChartPage;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\GroupedList;
 use SilverStripe\Security\Member;
@@ -14,11 +14,11 @@ use SilverStripe\Security\Security;
 /**
  * Class \Firesphere\JobHunt\Controllers\SankeyPageController
  *
- * @property SankeyPage $dataRecord
- * @method SankeyPage data()
- * @mixin SankeyPage
+ * @property ChartPage $dataRecord
+ * @method ChartPage data()
+ * @mixin ChartPage
  */
-class SankeyPageController extends MoodPageController
+class ChartPageController extends MoodPageController
 {
     private static $allowed_actions = [
         'getChartData',

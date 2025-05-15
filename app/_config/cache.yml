@@ -13,6 +13,12 @@ SilverStripe\Core\Injector\Injector:
     constructor:
       namespace: "cacheblock"
       defaultLifetime: 604800
+  Psr\SimpleCache\CacheInterface.BSColourMap:
+    factory: MemcachedCacheFactory
+    constructor:
+      namespace: "BSColourMap"
+      defaultLifetime: 31449600
+
 ---
 Except:
   environment: dev

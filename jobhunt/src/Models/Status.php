@@ -3,8 +3,10 @@
 namespace Firesphere\JobHunt\Models;
 
 use Heyday\ColorPalette\Fields\ColorPaletteField;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
@@ -28,14 +30,14 @@ class Status extends DataObject
     public static $id_map;
     private static $table_name = 'ApplicationStatus';
     private static $db = [
-        'Status'    => DBVarchar::class,
-        'Colour'    => DBVarchar::class,
-        'AutoHide'  => DBBoolean::class . '(false)',
+        'Status' => DBVarchar::class,
+        'Colour' => DBVarchar::class,
+        'AutoHide' => DBBoolean::class . '(false)',
         'SortOrder' => DBInt::class,
     ];
     private static $has_many = [
-        'Applications'     => JobApplication::class . '.Status',
-        'StatusUpdates'    => StatusUpdate::class . '.Status',
+        'Applications' => JobApplication::class . '.Status',
+        'StatusUpdates' => StatusUpdate::class . '.Status',
         'FilterExclusions' => ExcludedStatus::class . '.Status'
     ];
     private static $summary_fields = [
@@ -59,28 +61,28 @@ class Status extends DataObject
         ['Status' => 'Withdrawn']
     ];
     private static $colours = [
-        'primary'   => '--bs-primary',
+        'primary' => '--bs-primary',
         'secondary' => '--bs-secondary',
-        'success'   => '--bs-success',
-        'danger'    => '--bs-danger',
-        'warning'   => '--bs-warning',
-        'info'      => '--bs-info',
-        'light'     => '--bs-light',
-        'dark'      => '--bs-dark',
-        'link'      => '--bs-link',
+        'success' => '--bs-success',
+        'danger' => '--bs-danger',
+        'warning' => '--bs-warning',
+        'info' => '--bs-info',
+        'light' => '--bs-light',
+        'dark' => '--bs-dark',
+        'link' => '--bs-link',
     ];
     private static $colourmap = [
-        ''                   => 'primary',
-        'Applied'            => 'primary',
-        'Interview'          => 'secondary',
-        'Accepted'           => 'success',
+        '' => 'primary',
+        'Applied' => 'primary',
+        'Interview' => 'secondary',
+        'Accepted' => 'success',
         'Rejected - company' => 'danger',
-        'Rejected - me'      => 'warning',
-        'Invited'            => 'info',
-        'Response'           => 'info',
-        'Closed'             => 'dark',
-        'Ghosted'            => 'dark',
-        'Withdrawn'          => 'warning'
+        'Rejected - me' => 'warning',
+        'Invited' => 'info',
+        'Response' => 'info',
+        'Closed' => 'dark',
+        'Ghosted' => 'dark',
+        'Withdrawn' => 'warning'
     ];
 
     public function getName()
@@ -124,37 +126,45 @@ class Status extends DataObject
         if (static::$colours['primary'] !== '--bs-primary') {
             return static::$colours;
         }
-        // Funky hack to get the colours :D
-        $style = SiteConfig::current_site_config()->Theme;
-        $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/" . $style . '.min.css');
-        try {
+        $cache = Injector::inst()->get(CacheInterface::class . '.BSColourMap');
+        $styleName = SiteConfig::current_site_config()->Theme;
+        if (!$cache->has($styleName)) {
+            $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/" . $styleName . '.min.css');
+            // Funky hack to get the colours :D
             $parser = new \CSSParser();
-            $parser->read_from_string($style);
-            foreach ($parser->css as $key => $css) {
-                if (array_key_exists('--bs-primary', $css)) {
-                    $colours = $css;
-                    break;
+            $colours = false;
+            try {
+                $parser->read_from_string($style);
+                foreach ($parser->css as $key => $css) {
+                    if (array_key_exists('--bs-primary', $css)) {
+                        $colours = $css;
+                        break;
+                    }
+                }
+
+                if (!$colours) {
+                    $parser->__destruct();
+                    $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
+                    $parser->read_from_string($style);
+                    $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
+                }
+            } catch (\Exception $e) {
+                $parser->__destruct(); // The only way to reset the parser
+                // Default to Cosmo
+                $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
+                $parser->read_from_file($style);
+                $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
+
+            }
+            foreach (static::$colours as $key => &$value) {
+                if (isset($colours[$value])) {
+                    $value = $colours[$value];
                 }
             }
 
-            if (!$colours) {
-                $parser->__destruct();
-                $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
-                $parser->read_from_string($style);
-                $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
-            }
-        } catch (\Exception $e) {
-            $parser->__destruct(); // The only way to reset the parser
-            // Default to Cosmo
-            $style = file_get_contents(Director::baseFolder() . "/themes/jobhunt/dist/css/cerulean.min.css");
-            $parser->read_from_file($style);
-            $colours = ($parser->find_parent_by_property('--bs-primary')[0]["*/:root,[data-bs-theme=light]"]);
-
-        }
-        foreach (static::$colours as $key => &$value) {
-            if (isset($colours[$value])) {
-                $value = $colours[$value];
-            }
+            $cache->set($styleName, static::$colours);
+        } else {
+            static::$colours = $cache->get($styleName);
         }
 
         return static::$colours;

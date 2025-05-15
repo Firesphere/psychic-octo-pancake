@@ -7,13 +7,10 @@
 #    port 11211.
 # 4. Optional: adjust the 'command' line below to change CLI flags sent to
 #    memcached.
-
-version: '3.6'
-
 services:
   memcached:
     container_name: ddev-${DDEV_SITENAME}-memcached
-    image: memcached:1.6
+    image: memcached:latest
     restart: "no"
     # memcached is available at this port inside the container.
     expose:

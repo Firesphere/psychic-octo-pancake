@@ -2,7 +2,7 @@
 
 namespace Firesphere\JobHunt\Pages;
 
-use Firesphere\JobHunt\Controllers\SankeyPageController;
+use Firesphere\JobHunt\Controllers\ChartPageController;
 use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
@@ -15,10 +15,10 @@ use SilverStripe\Security\Security;
  * Class \Firesphere\JobHunt\Pages\SankeyPage
  *
  */
-class SankeyPage extends Page
+class ChartPage extends Page
 {
     private static $table_name = 'SankeyPage';
-    private static $controller_name = SankeyPageController::class;
+    private static $controller_name = ChartPageController::class;
     private static $defaults = [
         'CanViewType' => 'LoggedInUsers'
     ];
@@ -31,25 +31,7 @@ class SankeyPage extends Page
         $user = Security::getCurrentUser();
 
         $applications = $user->JobApplications()->filter(['Archived' => false]);
-        foreach ($applications as $application) {
-            $has = [];
-            if (!$application->StatusUpdates()->count() && !$application->Interviews()->count()) {
-                $this->countFlow(1, $application->StatusID, $has);
-            } else {
-                $currentFlow = 1; // We've not started yet, so everything is at least "applied"
-                /** @var DataList|StatusUpdate[] $updates */
-                $updates = $application->StatusUpdates()->Sort('Created ASC');
-                foreach ($updates as $update) {
-                    if ($update->StatusID === $currentFlow) {
-                        continue;
-                    }
-                    $currentFlow = $this->countFlow($currentFlow, $update->StatusID, $has);
-                }
-                if ($update->StatusID !== $application->StatusID) {
-                    $this->countFlow($update->StatusID, $application->StatusID, $has);
-                }
-            }
-        }
+        $this->getFlowCount($applications);
 
         /** @var DataList|Status[] $colours */
         $stats = Status::get();
@@ -127,5 +109,31 @@ class SankeyPage extends Page
         });
 
         return $fromTo;
+    }
+
+    /**
+     * @param array|DataList $applications
+     */
+    public function getFlowCount(array|DataList $applications)
+    {
+        foreach ($applications as $application) {
+            $has = [];
+            if (!$application->StatusUpdates()->count() && !$application->Interviews()->count()) {
+                $this->countFlow(1, $application->StatusID, $has);
+            } else {
+                $currentFlow = 1; // We've not started yet, so everything is at least "applied"
+                /** @var DataList|StatusUpdate[] $updates */
+                $updates = $application->StatusUpdates()->Sort('Created ASC');
+                foreach ($updates as $update) {
+                    if ($update->StatusID === $currentFlow) {
+                        continue;
+                    }
+                    $currentFlow = $this->countFlow($currentFlow, $update->StatusID, $has);
+                }
+                if ($update->StatusID !== $application->StatusID) {
+                    $this->countFlow($update->StatusID, $application->StatusID, $has);
+                }
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Firesphere\JobHunt\Controllers;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Pages\HomePage;
 use Firesphere\JobHunt\Pages\MoodPage;
-use Firesphere\JobHunt\Pages\SankeyPage;
+use Firesphere\JobHunt\Pages\ChartPage;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Security\Security;
@@ -62,7 +62,7 @@ class HomePageController extends \PageController
 
     public function getSankey()
     {
-        $sankey = SankeyPage::singleton();
+        $sankey = ChartPage::singleton();
         $data = $sankey->sankeyFlow();
         $response = $this->getResponse();
         $response->addHeader('content-type', 'application/json');
