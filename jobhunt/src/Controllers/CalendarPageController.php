@@ -4,8 +4,10 @@ namespace Firesphere\JobHunt\Controllers;
 
 use DateTime;
 use Firesphere\JobHunt\Models\Interview;
+use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Pages\CalendarPage;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
@@ -50,7 +52,6 @@ class CalendarPageController extends \PageController
     {
         $user = Security::getCurrentUser();
         $list = ArrayList::create();
-        $filterDate = date($year . '-' . $month . '-');
 
         $date = new DateTime(sprintf('%s-%s-01', $year, $month));
         $firstDayOfMonth = $date->format('N');
@@ -65,17 +66,33 @@ class CalendarPageController extends \PageController
             $i++;
         }
         $i = 1;
+        $monthInterviews = Interview::get()
+            ->filter([
+                'Application.UserID'   => $user->ID,
+                'Application.Archived' => false,
+                'DateTime:Date:month'  => (int)$month,
+                'DateTime:Date:year'   => (int)$year
+            ]);
+
+        $monthInterviewCount = $monthInterviews->count();
+        $interviewDays = [];
+        if ($monthInterviewCount > 0) {
+            foreach ($monthInterviews as $interview) {
+                $interviewDays[] = date('d', strtotime($interview->DateTime));
+            }
+        }
         while ($i <= $lastDayOfMonth) {
             $data = ['Day' => $i];
             if ((int)date('j') === $i && (int)date('n') === (int)$month) {
                 $data['Today'] = true;
             }
-            $todayFilter = $filterDate . str_pad($i, 2, '0', STR_PAD_LEFT);
-            $data['Interviews'] = Interview::get()->filter([
-                'Application.UserID'   => $user->ID,
-                'Application.Archived' => false,
-                'DateTime:StartsWith'  => $todayFilter
-            ]);
+            $data['Interviews'] = null;
+            if ($monthInterviewCount && in_array($i, $interviewDays)) {
+                $data['Interviews'] = $monthInterviews
+                    ->filter([
+                        'DateTime:Date:day' => $i
+                    ]);
+            }
             $list->push(ArrayData::create($data));
             $i++;
         }

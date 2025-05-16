@@ -11,6 +11,7 @@
         "elliotsawyer/silverstripe-matomo": "^0.0.2",
         "firesphere/adblockwarning": "^1.0",
         "firesphere/cspheaders": "dev-main",
+        "firesphere/datefilter": "^0.2.0",
         "firesphere/haveibeenpwnd": "dev-main",
         "firesphere/magiclogin": "dev-main",
         "firesphere/module-helpers": "^0.4.0",
