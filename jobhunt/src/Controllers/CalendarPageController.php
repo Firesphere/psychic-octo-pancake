@@ -78,8 +78,7 @@ class CalendarPageController extends \PageController
         $interviewDays = [];
         if ($monthInterviewCount > 0) {
             foreach ($monthInterviews as $interview) {
-                $key = (int)date('d', strtotime($interview->DateTime));
-                $interviewDays[$key] = $interview;
+                $interviewDays[] = date('d', strtotime($interview->DateTime));
             }
         }
         while ($i <= $lastDayOfMonth) {
@@ -88,8 +87,11 @@ class CalendarPageController extends \PageController
                 $data['Today'] = true;
             }
             $data['Interviews'] = null;
-            if ($monthInterviewCount && array_key_exists($i, $interviewDays)) {
-                $data['Interviews'] = $interviewDays[$i];
+            if ($monthInterviewCount && in_array($i, $interviewDays)) {
+                $data['Interviews'] = $monthInterviews
+                    ->filter([
+                        'DateTime:Date:day' => $i
+                    ]);
             }
             $list->push(ArrayData::create($data));
             $i++;
