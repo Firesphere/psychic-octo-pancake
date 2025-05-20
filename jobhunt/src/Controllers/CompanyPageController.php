@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Models\Company;
+use Firesphere\JobHunt\Pages\CompanyPage;
 use Firesphere\OpenStreetmaps\Extensions\SiteConfigExtension;
 use Firesphere\OpenStreetmaps\Services\OpenStreetmapService;
 use SilverStripe\Control\HTTPRequest;
