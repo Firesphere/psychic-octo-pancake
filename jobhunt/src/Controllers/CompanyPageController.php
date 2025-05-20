@@ -36,11 +36,25 @@ class CompanyPageController extends \PageController
 
     public function details(HTTPRequest $request)
     {
-        $this->company = Company::get()->filter(['Slug' => $request->param('ID')])->first();
+
+
+        return $this;
+    }
+
+    protected function init()
+    {
+        parent::init();
+        if (!$this->getRequest()->param('Action')) {
+            $this->httpError(404);
+        }
+        $this->company = Company::get()->filter(['Slug' => $this->getRequest()->param('ID')])->first();
 
         if (!$this->company) {
-            return $this->httpError(404);
+            $this->httpError(404);
         }
+        Requirements::javascript('firesphere/openstreetmaps:dist/js/main.js');
+        Requirements::css('firesphere/openstreetmaps:dist/css/main.css');
+        Requirements::css('//api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css');
         $service = new OpenStreetmapService();
         if ($this->company->Locations()->exists()) {
             $list = ArrayList::create();
@@ -55,24 +69,5 @@ class CompanyPageController extends \PageController
             $sc->CenterLng = $list->First()->Longitude;
             $service->addLocations($list);
         }
-
-        return $this;
-    }
-
-    protected function init()
-    {
-        parent::init();
-        if (!$this->getRequest()->param('Action')) {
-            $this->httpError(404);
-        }
-        Requirements::javascript('firesphere/openstreetmaps:dist/js/main.js');
-        Requirements::css('firesphere/openstreetmaps:dist/css/main.css');
-        Requirements::css('//api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css');
-        $token = Environment::getEnv('MAPBOX_TOKEN');
-        Requirements::insertHeadTags(
-            <<<JS
-<script type="text/javascript">var mapboxtoken = "$token";</script>
-JS
-        );
     }
 }
