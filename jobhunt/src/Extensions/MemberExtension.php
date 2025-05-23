@@ -71,7 +71,7 @@ class MemberExtension extends DataExtension
     public static function set_job_applications()
     {
         if (!self::$_job_applications) {
-            self::$_job_applications = Security::getCurrentUser()->owner->JobApplications()->filter(['Archived' => false]);
+            self::$_job_applications = Security::getCurrentUser()->JobApplications()->filter(['Archived' => false]);
             self::$_job_application_ids = self::$_job_applications->column('ID');
         }
     }
@@ -148,7 +148,7 @@ class MemberExtension extends DataExtension
         }
 
         if (self::$_job_applications->count()) {
-            return self::$_job_applications->filter('Status.AutoHide', false);
+            return self::$_job_applications->filter(['Status.AutoHide' => false, 'Archived' => false]);
         }
 
         return ArrayList::create();
@@ -166,13 +166,17 @@ class MemberExtension extends DataExtension
             return ArrayList::create([JobApplication::create()]);
         }
 
-        $list = self::$_job_applications->filter(['Status.Status' => 'Applied']);
+        return self::$_job_applications->filter(['Status.Status' => 'Applied', 'Archived' => false]);
+    }
 
-        if (!$list->count()) {
+    public function getActiveApplications()
+    {
+        self::set_job_applications();
+        if (!self::$_job_applications->count()) {
             return ArrayList::create([JobApplication::create()]);
         }
 
-        return $list;
+        return self::$_job_applications->filter(['Archived' => false]);
     }
 
     public function getFollowUp()
@@ -182,9 +186,10 @@ class MemberExtension extends DataExtension
             return ArrayList::create([JobApplication::create()]);
         }
 
-        $list = self::$_job_applications
+        return self::$_job_applications
             ->filter([
                 'Status.AutoHide'              => false,
+                'Archived'                     => false,
                 'Interviews.DateTime:LessThan' => date('Y-m-d H:i:s')
             ])
             ->exclude([
@@ -195,12 +200,6 @@ class MemberExtension extends DataExtension
                     'Accepted'
                 ]
             ]);
-
-        if ($list->count()) {
-            return $list;
-        }
-
-        return ArrayList::create([JobApplication::create()]);
     }
 
     public function getClosedJobApplications()
@@ -210,13 +209,7 @@ class MemberExtension extends DataExtension
             return ArrayList::create([JobApplication::create()]);
         }
 
-        $list = self::$_job_applications->filter(['Status.AutoHide' => true]);
-
-        if (!$list->count()) {
-            return ArrayList::create([JobApplication::create()]);
-        }
-
-        return $list;
+        return self::$_job_applications->filter(['Status.AutoHide' => true, 'Archived' => false]);
     }
 
     public function getInProgress()
@@ -242,14 +235,7 @@ class MemberExtension extends DataExtension
             ])->column('ApplicationID');
 
         $int = count($int) ? $int : [-1];
-        $list = $list->exclude(['ID' => $int]);
-
-        if ($list->count()) {
-            return $list;
-        }
-
-        return ArrayList::create([JobApplication::create()]);
-
+        return $list->exclude(['ID' => $int]);
     }
 
     public function getPostInterview()

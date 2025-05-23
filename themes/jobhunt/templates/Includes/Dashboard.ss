@@ -1,6 +1,6 @@
 <% with $CurrentUser %>
     <div class="row">
-        <% include DashboardCard Title='applications', Type=info, Count=$JobApplications.Count(), Icon='send-check' %>
+        <% include DashboardCard Title='applications', Type=info, Count=$ActiveApplications.Count(), Icon='send-check' %>
         <% include DashboardCard Title='ongoing/outstanding', Type=primary, Count=$OpenOutstanding.Count(), Icon='folder2-open' %>
         <% include DashboardCard Title='interviews', Type=success, Count=$Interviews.Count(), Icon='people' %>
         <% include DashboardCard Title='responses', Type=warning, Count=$StatusUpdates.Filter('Status.Status', 'Response').Count(), Icon='envelope-paper' %>
