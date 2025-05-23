@@ -82,15 +82,15 @@ class CalendarPageController extends \PageController
             'ApplicationDate:Date:month' => (int)$month,
             'ApplicationDate:Date:year'  => (int)$year,
         ];
-        [$monthInterviews, $monthInterviewCount, $interviewDays] = $this->getMonthData(Interview::class, $interviewFilter);
-        [$monthApplications, $monthApplicationCount, $applicationDays] = $this->getMonthData(JobApplication::class, $applicationsFilter);
+        [$monthInterviews, $monthInterviewCount, $interviewDays] = $this->getMonthData(Interview::class, $interviewFilter, 'DateTime');
+        [$monthApplications, $monthApplicationCount, $applicationDays] = $this->getMonthData(JobApplication::class, $applicationsFilter, 'ApplicationDate');
         while ($i <= $lastDayOfMonth) {
-            $data = ['Day' => $i];
-            if ((int)date('j') === $i && (int)date('n') === (int)$month) {
-                $data['Today'] = true;
-            }
-            $data['Interviews'] = null;
-            $data['Applications'] = null;
+            $data = [
+                'Day'          => $i,
+                'Today'        => ((int)date('j') === $i && (int)date('n') === (int)$month),
+                'Interviews'   => null,
+                'Applications' => null,
+            ];
             if ($monthInterviewCount && in_array($i, $interviewDays)) {
                 $data['Interviews'] = $monthInterviews
                     ->filter([
@@ -111,11 +111,12 @@ class CalendarPageController extends \PageController
     }
 
     /**
-     * @param $className
-     * @param $filter
+     * @param string $className
+     * @param array $filter
+     * @param string $col
      * @return array
      */
-    public function getMonthData($className, $filter): array
+    public function getMonthData($className, $filter, $col): array
     {
         $monthItems = $className::get()
             ->filter($filter);
@@ -123,9 +124,9 @@ class CalendarPageController extends \PageController
         $monthItemsCount = $monthItems->count();
         $itemDays = [];
         if ($monthItemsCount > 0) {
-            foreach ($monthItems as $item) {
-                $dt = $item->DateTime ?: $item->ApplicationDate;
-                $itemDays[] = date('d', strtotime($dt));
+            $dates = $monthItems->column($col);
+            foreach ($dates as $item) {
+                $itemDays[] = date('d', strtotime($item));
             }
         }
         return [$monthItems, $monthItemsCount, $itemDays];
