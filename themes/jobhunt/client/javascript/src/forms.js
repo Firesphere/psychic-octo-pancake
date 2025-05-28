@@ -90,10 +90,6 @@ const bindActions = (list) => {
                     "x-requested-with": "XMLHttpRequest",
                 }
             })
-                .then(response => {
-                    console.log(response)
-
-                })
                 .then(response => response.json())
                 .then(response => {
                     formcontainer.innerHTML = '';
@@ -114,8 +110,10 @@ const bindActions = (list) => {
                         }, 1000)
                     }
                 })
-                .catch(() => {
-                    formcontainer.innerText = "It seems something went wrong. Are you logged in?";
+                .catch(response => {
+                    if (response.status !== 200) {
+                        formcontainer.innerText = "It seems something went wrong. Are you logged in?";
+                    }
                 });
         });
     });

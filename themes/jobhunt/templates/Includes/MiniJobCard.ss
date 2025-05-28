@@ -35,16 +35,18 @@
                             <% loop $StatusUpdates.Filter('Hidden', false) %>
                                 <% if $isFirst %>
                                     <hr class="row"/><% end_if %>
-                                <h6>$Title</h6>
+                                <% if not $Top.IsShare %><h6>$Title</h6><% end_if %>
                                 <small class="text-decoration-underline">$Created.Nice</small>
-                                <p class="small">$Note</p>
-                                <a href="#"
-                                   title="Edit status update"
-                                   class="js-formaction small"
-                                   data-id="$ID"
-                                   data-itemtype="statusupdate-edit"
-                                   data-bs-toggle="modal"
-                                   data-bs-target="#addItemModal"><i class="bi bi-pencil"></i>&nbsp;Edit</a>
+                                <% if not $Top.IsShare %>
+                                    <p class="small">$Note</p>
+                                    <a href="#"
+                                       title="Edit status update"
+                                       class="js-formaction small"
+                                       data-id="$ID"
+                                       data-itemtype="statusupdate-edit"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#addItemModal"><i class="bi bi-pencil"></i>&nbsp;Edit</a>
+                                <% end_if %>
                                 <hr class="row mt-1"/>
                             <% end_loop %>
                         </div>
@@ -67,7 +69,8 @@
                                    data-itemtype="interview-edit"
                                    data-bs-toggle="modal"
                                    data-bs-target="#addItemModal">
-                                    $DateTime.Nice() <% if $Notes.Count %><br/>($Notes.Count notes)<% end_if %></a>
+                                    $DateTime.Nice() <% if not $Top.IsShare %>
+                                    <br/>($Notes.Count notes)<% end_if %></a>
                                 <hr class="row mt-1"/>
                             <% end_loop %>
                         </div>
@@ -76,34 +79,36 @@
             </div>
         <% end_if %>
         <div class="card-footer d-flex justify-content-between">
-            <a href="#"
-               title="Edit application"
-               class="js-formaction small"
-               data-id="$ID"
-               data-itemtype="application-edit"
-               data-bs-toggle="modal"
-               data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>&nbsp;|&nbsp;
-            <a href="#"
-               title="Add note"
-               class="js-formaction"
-               data-application="$ID"
-               data-itemtype="note-add"
-               data-bs-toggle="modal"
-               data-bs-target="#addItemModal"><i class="bi bi-file-earmark-plus"></i></a>&nbsp;|&nbsp;
-            <a href="#"
-               title="Add status update"
-               class="js-formaction"
-               data-application="$ID"
-               data-itemtype="statusupdate-add"
-               data-bs-toggle="modal"
-               data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a>&nbsp;|&nbsp;
-            <a href="#"
-               title="Add interview"
-               class="js-formaction"
-               data-application="$ID"
-               data-itemtype="interview-add"
-               data-bs-toggle="modal"
-               data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
+            <% if not $IsShare %>
+                <a href="#"
+                   title="Edit application"
+                   class="js-formaction small"
+                   data-id="$ID"
+                   data-itemtype="application-edit"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>&nbsp;|&nbsp;
+                <a href="#"
+                   title="Add note"
+                   class="js-formaction"
+                   data-application="$ID"
+                   data-itemtype="note-add"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-file-earmark-plus"></i></a>&nbsp;|&nbsp;
+                <a href="#"
+                   title="Add status update"
+                   class="js-formaction"
+                   data-application="$ID"
+                   data-itemtype="statusupdate-add"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-plus-circle"></i></a>&nbsp;|&nbsp;
+                <a href="#"
+                   title="Add interview"
+                   class="js-formaction"
+                   data-application="$ID"
+                   data-itemtype="interview-add"
+                   data-bs-toggle="modal"
+                   data-bs-target="#addItemModal"><i class="bi bi-person-fill-add"></i></a>
+            <% end_if %>
         </div>
     </div>
 <% end_if %>

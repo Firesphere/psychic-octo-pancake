@@ -6,6 +6,7 @@ import forms from './src/forms';
 import moods from './src/moods';
 import filter from './src/filter';
 import profile from './src/profile';
+import copytext from './src/copytext.js';
 
 fav();
 tags();
@@ -14,3 +15,4 @@ forms();
 moods();
 filter();
 profile();
+copytext();

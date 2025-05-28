@@ -27,12 +27,13 @@
                 class="bi bi-x"></i></a>
         </div>
     </div>
-    <div class="mb-2 col-4">
-        Share your board:<br /><a href="$ShareLink">$ShareLink</a>
-    </div>
+        <div class="mb-2 col-3">
+            Share your board:<br /><a href="$ShareLink" class="js-copytext"><i class="bi bi-clipboard-pulse js-copytext-icon"></i>
+            $ShareLink</a>
+        </div>
     <% end_if %>
     <% if $Content %>
-        <div class="mb-2 col-6">
+        <div class="mb-2 col-3">
             <div id="help">
                 <a href="#kanban-help"
                    data-bs-toggle="collapse"
@@ -52,7 +53,7 @@
             <div class="card-body">
                 <div class="tasks" id="Applied">
                     <% loop $CurrentUser.AppliedJobApplications %>
-                        <% include MiniJobCard %>
+                        <% include MiniJobCard IsShare=$Top.IsSharePage %>
                     <% end_loop %>
                 </div>
             </div>
@@ -65,7 +66,7 @@
             <div class="card-body">
                 <div class="tasks" id="Progress">
                     <% loop $CurrentUser.InProgress %>
-                        <% include MiniJobCard %>
+                        <% include MiniJobCard IsShare=$Top.IsSharePage %>
                     <% end_loop %>
                 </div>
             </div>
@@ -79,7 +80,7 @@
             <div class="card-body">
                 <div class="tasks" id="Interview">
                     <% loop $CurrentUser.getPreInterview() %>
-                        <% include MiniJobCard %>
+                        <% include MiniJobCard IsShare=$Top.IsSharePage %>
                     <% end_loop %>
                 </div>
             </div>
@@ -92,7 +93,7 @@
             <div class="card-body">
                 <div class="tasks" id="PostInterview">
                     <% loop $CurrentUser.getPostInterview() %>
-                        <% include MiniJobCard %>
+                        <% include MiniJobCard IsShare=$Top.IsSharePage %>
                     <% end_loop %>
                 </div>
             </div>
@@ -105,7 +106,7 @@
             <div class="card-body">
                 <div class="tasks" id="Follow">
                     <% loop $CurrentUser.getFollowUp %>
-                        <% include MiniJobCard %>
+                        <% include MiniJobCard IsShare=$Top.IsSharePage %>
                     <% end_loop %>
                 </div>
             </div>
@@ -118,7 +119,7 @@
             <div class="card-body">
                 <div class="tasks" id="Closed">
                     <% loop $CurrentUser.ClosedJobApplications %>
-                        <% include MiniJobCard %>
+                        <% include MiniJobCard IsShare=$Top.IsSharePage %>
                     <% end_loop %>
                 </div>
             </div>
