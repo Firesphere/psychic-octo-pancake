@@ -10,6 +10,7 @@ use Firesphere\JobHunt\Models\StateOfMind;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
 use Firesphere\JobHunt\Models\Tag;
+use Ramsey\Uuid\Uuid;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataExtension;
@@ -30,6 +31,7 @@ use SilverStripe\Security\Security;
  * @property string $URLSegment
  * @property bool $HideClosed
  * @property string $ViewStyle
+ * @property string $ShareKey
  * @method DataList|JobApplication[] JobApplications()
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
@@ -45,7 +47,8 @@ class MemberExtension extends DataExtension
         'PublicCV'   => DBBoolean::class . '(false)',
         'URLSegment' => DBVarchar::class,
         'HideClosed' => DBBoolean::class . '(false)',
-        'ViewStyle'  => DBEnum::class . '("Table,Card", "Table")'
+        'ViewStyle'  => DBEnum::class . '("Table,Card", "Table")',
+        'ShareKey'   => DBVarchar::class,
     ];
     private static $has_many = [
         'JobApplications' => JobApplication::class . '.User',
@@ -80,6 +83,10 @@ class MemberExtension extends DataExtension
     {
         if (!$this->owner->URLSegment) {
             $this->owner->URLSegment = SiteTree::singleton()->generateURLSegment(sprintf('%s %s', $this->owner->FirstName, $this->owner->Surname));
+        }
+        if (!$this->owner->ShareKey) {
+            $uuid = Uuid::uuid4();
+            $this->owner->ShareKey = $uuid->toString();
         }
         parent::onBeforeWrite();
     }

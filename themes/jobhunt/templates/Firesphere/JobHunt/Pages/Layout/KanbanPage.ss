@@ -7,6 +7,7 @@
     </div>
 </div>
 <div class="row">
+    <% if not $IsSharePage %>
     <div class="mb-2 col-2">
         <button type="button" class="btn-sm btn btn-primary js-formaction"
                 data-itemtype="application"
@@ -26,6 +27,10 @@
                 class="bi bi-x"></i></a>
         </div>
     </div>
+    <div class="mb-2 col-4">
+        Share your board:<br /><a href="$ShareLink">$ShareLink</a>
+    </div>
+    <% end_if %>
     <% if $Content %>
         <div class="mb-2 col-6">
             <div id="help">

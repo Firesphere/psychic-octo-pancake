@@ -11,3 +11,4 @@ node_modules
 /magic-login
 /DateFilter
 .php-cs-fixer.cache
+/calendar

@@ -16,4 +16,11 @@ class KanbanPage extends \Page
         'CanViewType' => 'LoggedInUsers'
     ];
 
+    protected $IsFluid = true;
+
+    public function getShareLink()
+    {
+        return ShareMyPage::my_share_link();
+    }
+
 }

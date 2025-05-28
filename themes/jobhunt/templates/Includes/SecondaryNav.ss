@@ -1,3 +1,4 @@
+<% if not $IsSharePage %>
 <nav class="navbar navbar-expand-md container justify-content-end">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#secondaryNav"
             aria-controls="secondaryNav" aria-expanded="false" aria-label="Toggle secondary navigation">
@@ -55,3 +56,4 @@
         </ul>
     </div>
 </nav>
+<% end_if %>

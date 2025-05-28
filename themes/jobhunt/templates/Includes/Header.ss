@@ -9,6 +9,7 @@
                     data-bs-auto-close="outside" aria-label="Toggle navigation">
                 Menu <i class="fas fa-bars"></i>
             </button>
+            <% if not $IsSharePage %>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <% loop $Menu(1) %>
@@ -38,6 +39,7 @@
                     <% end_loop %>
                 </ul>
             </div>
+            <% end_if %>
         </div>
     </nav>
     <% if $CurrentUser %>

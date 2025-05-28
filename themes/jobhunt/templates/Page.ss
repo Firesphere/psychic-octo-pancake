@@ -27,7 +27,7 @@
 </head>
 <body class="$ClassName.ShortName">
 <% include Header %>
-<main role="main" class="py-4 container<% if $ClassName.ShortName == 'KanbanPage' %>-fluid<% end_if %>">
+<main role="main" class="py-4 container<% if $IsFluid %>-fluid<% end_if %>">
     <% if $FlashMessagesPresent %>
         <% loop $FlashMessages.Limit(1) %>
             <div class="alert alert-$Type alert-dismissible fade show" role="alert">
@@ -39,7 +39,7 @@
     $Layout
     <div class="spacer pb-5 row">&nbsp;</div>
 </main>
-<% if $CurrentUser %>
+<% if $CurrentUser && not $IsSharePage  %>
     <button class="btn btn-light position-sticky bottom-50 start-0" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNotes" aria-controls="offcanvasNotes">
         <i class="bi bi-journal-text"></i>
@@ -51,6 +51,8 @@
 <footer class="bg-light-subtle py-2 footer text-center fixed-bottom d-none d-sm-block">
     <% include Footer %>
 </footer>
-$AdblockWarning
+<% if not $CurrentUser && not $IsSharePage %>
+    $AdblockWarning
+<% end_if %>
 </body>
 </html>
