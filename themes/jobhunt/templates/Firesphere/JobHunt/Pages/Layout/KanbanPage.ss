@@ -27,8 +27,9 @@
                 class="bi bi-x"></i></a>
         </div>
     </div>
-        <div class="mb-2 col-3">
-            Share your board:<br /><a href="$ShareLink" class="js-copytext"><i class="bi bi-clipboard-pulse js-copytext-icon"></i>
+        <div class="mb-2 col-3" title="Click to copy">
+            Share your board, read-only:<br />
+            <a href="$ShareLink" class="js-copytext" title="Click to copy"><i class="bi bi-clipboard-pulse js-copytext-icon"></i>
             $ShareLink</a>
         </div>
     <% end_if %>
