@@ -20,6 +20,7 @@ SilverLeague\IDEAnnotator\DataObjectAnnotator:
     - firesphere/notebook
     - firesphere/magiclogin
     - calendar
+    - firesphere/ical-service
 LeKoala\DebugBar\DebugBar:
   enable_storage: true
   auto_debug: false
