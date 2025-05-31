@@ -34,7 +34,7 @@ class ApplicationForm extends Form
             throw new PermissionFailureException('You need to be logged in.');
         }
         $fields = FieldList::create([
-            TextField::create('Company.Name', 'Company name'),
+            $companyField = TextField::create('Company.Name', 'Company name'),
             TextField::create('Role', 'Role'),
             DateField::create('ApplicationDate', 'Date of applying'),
             DateField::create('ClosingDate', 'Date application window closes'),
@@ -45,7 +45,8 @@ class ApplicationForm extends Form
             HTMLEditorField::create('CoverLetter', 'Cover letter'),
             TextareaField::create('Notes', 'Note')
         ]);
-
+        $companyField->addExtraClass('js-companyfield');
+        $companyField->setAttribute("list", "companylist");
         $status->addExtraClass('form-select');
         $status->setEmptyString('-- Select application status --');
 

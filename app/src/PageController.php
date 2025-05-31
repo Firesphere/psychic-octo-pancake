@@ -4,22 +4,29 @@ namespace {
 
     use Cashware\Bootswatcher\SiteConfigTheme;
     use Firesphere\AdblockWarning\Extensions\SiteConfigExtension;
+    use Firesphere\JobHunt\Extensions\MemberExtension;
+    use Firesphere\JobHunt\Models\Company;
     use Firesphere\ModuleHelpers\Extensions\PageControllerExtension;
     use SilverStripe\CMS\Controllers\ContentController;
+    use SilverStripe\Core\Environment;
+    use SilverStripe\Dev\Debug;
+    use SilverStripe\Security\Member;
     use SilverStripe\Security\Security;
     use SilverStripe\SiteConfig\SiteConfig;
     use SilverStripe\View\Requirements;
     use Symbiote\MemberProfiles\Pages\MemberProfilePage;
 
     /**
- * Class \PageController
- *
- * @property Page $dataRecord
- * @method Page data()
- * @mixin PageControllerExtension
- */
+     * Class \PageController
+     *
+     * @property Page $dataRecord
+     * @method Page data()
+     * @mixin PageControllerExtension
+     */
     class PageController extends ContentController
     {
+        protected $CompanyList;
+        protected $CompanyCacheKey;
         protected $SecondaryNav;
         /**
          * An array of actions that can be accessed via a request. Each array element should be an action name, and the
@@ -54,6 +61,19 @@ namespace {
 
             if (Security::getCurrentUser()) {
                 $this->SecondaryNav = MemberProfilePage::get()->first()->Children();
+                /** @var Member|MemberExtension $user */
+                $user = Security::getCurrentUser();
+                $cFilter = [
+                    'Applications.ID' => $user->JobApplications()->columnUnique('ID'),
+                ];
+//                $countryname = Environment::getEnv("GEOIP_COUNTRY_CODE");
+//                if (!empty($countryname) && $countryname !== 'N/A') {
+//                    $cFilter['Country'] = [null, $countryname];
+//                }
+                $companies = Company::get()
+                    ->filterAny($cFilter);
+                $this->CompanyCacheKey = sprintf("%d-%d", $user->ID, $companies->count());
+                $this->CompanyList = $companies;
             }
         }
 

@@ -9,6 +9,7 @@
         "3dgoo/silverstripe-hcaptcha": "^2",
         "dynamic/silverstripe-country-dropdown-field": "^2.0",
         "elliotsawyer/silverstripe-matomo": "^0.0.2",
+        "eluceo/ical": "^2",
         "firesphere/adblockwarning": "^1.0",
         "firesphere/cspheaders": "dev-main",
         "firesphere/datefilter": "dev-main",
@@ -17,13 +18,11 @@
         "firesphere/module-helpers": "^0.4.0",
         "firesphere/openstreetmaps": "^1.0",
         "heyday/silverstripe-colorpalette": "^2.1|^3",
-        "eluceo/ical": "^2",
-        "lekoala/silverstripe-form-elements": "^0.2.0",
+        "lekoala/silverstripe-form-elements": "^0.3.0",
         "nzta/silverstripe-sitebanner": "^4.0",
         "phptek/sentry": "^5.0",
         "ramsey/uuid": "^4.7",
         "sheadawson/silverstripe-dependentdropdownfield": "^3.0",
-        "wilr/silverstripe-googlesitemaps": "^3.0",
         "silverstripe/login-forms": "~5@stable",
         "silverstripe/mfa": "^5",
         "silverstripe/recipe-cms": "~5@stable",
@@ -32,7 +31,8 @@
         "silverstripe/vendor-plugin": "~2@stable",
         "silverstripe/webauthn-authenticator": "^5",
         "symbiote/silverstripe-gridfieldextensions": "^4.0",
-        "symfony/mailjet-mailer": "^7.0"
+        "symfony/mailjet-mailer": "^7.0",
+        "wilr/silverstripe-googlesitemaps": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.47",
