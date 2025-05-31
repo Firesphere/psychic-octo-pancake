@@ -10,7 +10,7 @@ ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y unzip git curl apt-transport-https lsb-release ca-certificates libapache2-mod-geoip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y unzip git curl apt-transport-https lsb-release ca-certificates
 
 # Install default PHP Extensions
 RUN install-php-extensions \
