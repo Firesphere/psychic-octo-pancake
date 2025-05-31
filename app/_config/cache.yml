@@ -37,4 +37,4 @@ SilverStripe\Core\Injector\Injector:
   MemcachedClient:
     class: 'Memcached'
     calls:
-      - [ addServer, [ 'memcached', "11211" ] ]
+      - [ addServer, [ 'srv-captain--memcached', "11211" ] ]
