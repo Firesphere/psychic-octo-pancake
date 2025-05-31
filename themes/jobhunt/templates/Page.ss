@@ -54,9 +54,9 @@
 <% if not $CurrentUser && not $IsSharePage %>
     $AdblockWarning
 <% end_if %>
-<% if $CompanyList %>
+<% if $CompaniesList %>
     <% cached $CompanyCacheKey %>
-    <datalist id="companylist" class="d-none"><% loop $CompanyList %><option value="$Name"></option><% end_loop %></datalist>
+    <datalist id="companylist" class="d-none"><% loop $CompaniesList %><option value="$Name"></option><% end_loop %></datalist>
     <% end_cached %>
 <% end_if %>
 </body>

@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
+use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\Company;
 use Firesphere\JobHunt\Models\Interview;
@@ -15,6 +16,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\PaginatedList;
+use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
 
@@ -84,18 +86,20 @@ class ApplicationPageController extends \PageController
         if ($this->getRequest()->getVar('company')) {
             $this->filter['CompanyID'] = $this->getRequest()->getVar('company');
             unset($this->filter['StatusID:Not']);
-            $this->getCompanyList();
+            $this->getCompanyList(false);
         }
     }
 
-    public function getCompanyList()
+    public function getCompanyList($cached = true)
     {
-        if ($this->Companies) {
+        if ($cached && $this->Companies) {
             return $this->Companies;
         }
+        /** @var MemberExtension|Member $user */
         $user = Security::getCurrentUser();
         if ($user->JobApplications()->Count()) {
-            $this->Companies = Company::get()->filter(['ID' => $user->JobApplications()->column('CompanyID') ?? [-1]])
+            $this->Companies = $this->CompaniesList
+                ->filter(['Applications.Archived' => false])
                 ->sort('Name ASC');
 
             if ($this->getRequest()->getVar('company')) {

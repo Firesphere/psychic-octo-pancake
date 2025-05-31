@@ -25,7 +25,7 @@ namespace {
      */
     class PageController extends ContentController
     {
-        protected $CompanyList;
+        protected $CompaniesList;
         protected $CompanyCacheKey;
         protected $SecondaryNav;
         /**
@@ -64,7 +64,7 @@ namespace {
                 /** @var Member|MemberExtension $user */
                 $user = Security::getCurrentUser();
                 $cFilter = [
-                    'Applications.ID' => $user->JobApplications()->columnUnique('ID'),
+                    'Applications.ID' => $user->JobApplications()->columnUnique('ID') ?? [-1],
                 ];
 //                $countryname = Environment::getEnv("GEOIP_COUNTRY_CODE");
 //                if (!empty($countryname) && $countryname !== 'N/A') {
@@ -73,7 +73,7 @@ namespace {
                 $companies = Company::get()
                     ->filterAny($cFilter);
                 $this->CompanyCacheKey = sprintf("%d-%d", $user->ID, $companies->count());
-                $this->CompanyList = $companies;
+                $this->CompaniesList = $companies;
             }
         }
 
