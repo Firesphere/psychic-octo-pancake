@@ -35,6 +35,7 @@ RUN echo 'date.timezone = Pacific/Auckland' > "$PHP_INI_DIR/conf.d/timezone.ini"
     { \
         echo 'log_errors = On'; \
         echo 'error_log = /dev/stderr'; \
+        echo 'memory_limit = 2G'; \
     } > "$PHP_INI_DIR/conf.d/errors.ini"
 
 COPY ./docker/default.conf /etc/apache2/sites-available/000-default.conf

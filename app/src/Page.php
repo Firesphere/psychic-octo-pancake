@@ -2,6 +2,8 @@
 
 namespace {
 
+    use DNADesign\Elemental\Extensions\ElementalPageExtension;
+    use DNADesign\Elemental\Models\ElementalArea;
     use Firesphere\CSPHeaders\Extensions\PageExtension;
     use Firesphere\CSPHeaders\Models\CSPDomain;
     use SilverStripe\CMS\Model\SiteTree;

@@ -2,3 +2,6 @@
 Page:
   extensions:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
+  elemental_keep_content_field: true
+ElementalAreasExtension:
+  keep_content_fields: true
