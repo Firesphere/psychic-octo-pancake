@@ -1,6 +1,6 @@
 <header id="e$ID"
         class="masthead <% if $StyleVariant %> $StyleVariant<% end_if %><% if $ExtraClass %> $ExtraClass<% end_if %>"
-        style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url('$File.FocusFill(1920,500).Link')">
+        style="background-image: linear-gradient(to bottom, rgba(248, 249, 250, 0) 75%, rgba(248, 249, 250, 0.2) 85%, #f8f9fa 100%), url('$File.FocusFill(1920,500).Link')">
     <div class="my-5 py-5 px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
