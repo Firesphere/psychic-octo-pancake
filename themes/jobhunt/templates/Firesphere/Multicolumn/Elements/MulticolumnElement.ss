@@ -1,9 +1,9 @@
-<section class="projects-section bg-light" id="e$ID">
+<section class="projects-section" id="e$ID">
     <div class="px-4 px-lg-5">
         <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
             <div class="col-12">
                 <% if $ShowTitle %>
-                    <h3>$Title</h3>
+                    <h3 class="text-center">$Title</h3>
                 <% end_if %>
             </div>
             <div class="col-md-{$Width1}">
