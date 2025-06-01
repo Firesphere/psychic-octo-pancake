@@ -21,7 +21,7 @@ use SilverStripe\ORM\ManyManyList;
  * @method DataList|InterviewNote[] Notes()
  * @method ManyManyList|Interviewer[] Interviewers()
  */
-class Interview extends DataObject
+class Interview extends DataObject // implements CalenderableInterface
 {
     private static $table_name = 'Interview';
 
@@ -76,5 +76,33 @@ class Interview extends DataObject
     public function getWeek()
     {
         return 'Week ' . $this->dbObject('DateTime')->format('w; Y');
+    }
+
+    public function getEventList($user = null): \SilverStripe\ORM\ArrayList|DataList
+    {
+        return Interview::get()
+            ->filter([
+                'Application.Archived' => false,
+                'Application.UserID' => $user->ID,
+            ]);
+    }
+
+    public function getFieldMap($field): string
+    {
+        switch ($field) {
+            case 'Summary':
+                return sprintf("%s at %s", $this->Application()->Role, $this->Application()->Company()->Name);
+                break;
+            case 'Description':
+                return $this->StatusUpdate()->Title . ": " . $this->StatusUpdate()->Note;
+                break;
+            case 'OccuranceDT':
+                return $this->DateTime;
+                break;
+            case 'Duration':
+                return $this->Duration ?? 60;
+                break;
+
+        }
     }
 }

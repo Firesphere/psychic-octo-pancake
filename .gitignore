@@ -13,3 +13,4 @@ node_modules
 .php-cs-fixer.cache
 /calendar
 docker/DBIP-City.mmdb
+*.sql
