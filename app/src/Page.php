@@ -13,7 +13,10 @@ namespace {
  * @property bool $HasMap
  * @property bool $AllowCSSInline
  * @property bool $AllowJSInline
+ * @property int $ElementalAreaID
+ * @method ElementalArea ElementalArea()
  * @method ManyManyList|CSPDomain[] CSPDomains()
+ * @mixin ElementalPageExtension
  * @mixin PageExtension
  */
     class Page extends SiteTree

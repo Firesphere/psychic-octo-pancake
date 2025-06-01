@@ -1,4 +1,4 @@
-<header class="pb-4">
+<header class="<% if $CurrentUser %>pb-4<% end_if %>">
     <nav class="navbar navbar-expand-lg navbar-fixed-top bg-primary" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" rel="nofollow"

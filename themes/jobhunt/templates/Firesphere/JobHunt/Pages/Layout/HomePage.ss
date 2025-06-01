@@ -17,10 +17,7 @@
             </div>
         <% end_loop %>
         <% if not $CurrentUser %>
-            <h1 class="col-12">$Title</h1>
-            <div class="col-12">
-                $Content
-            </div>
+                $ElementalArea
         <% else %>
             <h1 class="col-12">Welcome back $CurrentUser.FirstName</h1>
 

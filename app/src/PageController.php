@@ -17,12 +17,12 @@ namespace {
     use Symbiote\MemberProfiles\Pages\MemberProfilePage;
 
     /**
-     * Class \PageController
-     *
-     * @property Page $dataRecord
-     * @method Page data()
-     * @mixin PageControllerExtension
-     */
+ * Class \PageController
+ *
+ * @property Page $dataRecord
+ * @method Page data()
+ * @mixin PageControllerExtension
+ */
     class PageController extends ContentController
     {
         protected $CompaniesList;

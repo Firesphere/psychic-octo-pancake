@@ -1,0 +1,4 @@
+# app/_config/elements.yml
+Page:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension

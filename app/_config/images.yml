@@ -1,0 +1,16 @@
+---
+After: 'silverstripe-responsive-images/*'
+---
+Heyday\ResponsiveImages\ResponsiveImageExtension:
+  sets:
+    ResponsiveSet1:
+      method: FocusFillMax
+      arguments:
+        '(min-width: 1000px) and (min-device-pixel-ratio: 2.0)': [ 1920, 1080 ]
+        '(min-width: 1000px)': [ 1024, 576 ]
+        '(min-width: 800px) and (min-device-pixel-ratio: 2.0)': [ 1366, 768 ]
+        '(min-width: 800px)': [ 960, 540 ]
+        '(min-width: 600px) and (min-device-pixel-ratio: 2.0)': [ 1280, 720 ]
+        '(min-width: 600px)': [ 640, 360 ]
+      default_arguments: [ 1280, 720 ]
+      css_classes: img-fluid
