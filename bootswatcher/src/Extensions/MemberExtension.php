@@ -5,6 +5,7 @@ namespace Cashware\Bootswatcher;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\Security\Member;
 
 /**
  * Class \Cashware\Bootswatcher\MemberExtension

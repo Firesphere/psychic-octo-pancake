@@ -1,5 +1,5 @@
 <header class="<% if $CurrentUser %>pb-4<% end_if %>">
-    <nav class="navbar navbar-expand-lg navbar-fixed-top bg-primary" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-fixed-top <% if $CurrentUser %>bg-secondary<% end_if %>" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" rel="nofollow"
                href="/">$SiteConfig.Title</a><br/>

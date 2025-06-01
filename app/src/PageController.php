@@ -51,9 +51,7 @@ namespace {
             Requirements::block("silverstripe/admin: thirdparty/jquery/jquery.js");
             Requirements::block("symbiote/silverstripe-memberprofiles: client/javascript/ConfirmedPasswordField.js");
             /** @var SiteConfigExtension|SiteConfigTheme $SiteConfig */
-            $SiteConfig = SiteConfig::current_site_config();
             Requirements::css('//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
-            Requirements::css('_resources/themes/jobhunt/dist/css/' . $SiteConfig->Theme . '.min.css');
             Requirements::css('_resources/themes/jobhunt/dist/css/main.css');
             Requirements::javascript('_resources/themes/jobhunt/dist/js/main.js');
             Requirements::block('https://hcaptcha.com/1/api.js?hl=en');
