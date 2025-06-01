@@ -27,9 +27,8 @@
 </head>
 <body class="$ClassName.ShortName">
 <% include Header %>
-<main role="main" class="
-container<% if $IsFluid %>-fluid<% end_if %><% if not $CurrentUser &&  $ClassName.ShortName == "HomePage" %>-fluid pb-4<% else %> py-4<% end_if %>
-">
+<main role="main"
+      class="container<% if $IsFluid %>-fluid<% end_if %><% if not $CurrentUser &&  $ClassName.ShortName == "HomePage" %>-fluid<% end_if %> pb-4">
     <% if $FlashMessagesPresent %>
         <% loop $FlashMessages.Limit(1) %>
             <div class="alert alert-$Type alert-dismissible fade show" role="alert">
