@@ -1,6 +1,5 @@
 <section class="$Type projects-section bg-light py-3" id="e$ID">
-    <div class="px-md-5 px-4 px-lg-5">
-        <div class="container">
+    <main class="px-md-5 px-4 px-lg-5 container">
             <div class="row gx-0 mb-4 mb-lg-5 align-items-start">
                 <div class="featured-text<% if $Alternate %>-inverse<% end_if %> text-lg-left">
                     <% if $ShowTitle %>
@@ -11,6 +10,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </main>
 </section>

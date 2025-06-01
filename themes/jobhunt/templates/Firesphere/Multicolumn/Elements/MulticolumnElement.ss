@@ -1,5 +1,5 @@
 <section class="projects-section" id="e$ID">
-    <div class="py-3 px-4 px-lg-5">
+    <main class="py-3 px-4 px-lg-5 container">
         <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
             <div class="col-12">
                 <% if $ShowTitle %>
@@ -21,5 +21,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </section>

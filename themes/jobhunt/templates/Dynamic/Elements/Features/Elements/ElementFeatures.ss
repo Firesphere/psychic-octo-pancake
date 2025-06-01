@@ -1,5 +1,5 @@
 <section class="$Type projects-section py-3" id="e$ID">
-    <div class="px-md-5 px-4 px-lg-5">
+    <main class="px-md-5 px-4 px-lg-5 container">
     <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
             <div class="col-xl-$ImageWidth col-lg-$ImageLGWidth">
                 $Image.ResponsiveSet1
@@ -49,5 +49,5 @@
                 </div>
             <% end_loop %>
         <% end_if %>
-    </div>
+    </main>
 </section>
