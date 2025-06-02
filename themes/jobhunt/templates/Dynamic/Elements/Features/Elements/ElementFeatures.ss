@@ -1,5 +1,6 @@
 <section class="$Type projects-section py-3" id="e$ID">
-    <main class="px-md-5 px-4 px-lg-5 container">
+    <main
+        class="py-3 <% if $Parent.OwnerPage.ClassName.ShortName == "HomePage" %>px-md-5 px-4 px-lg-5<% end_if %> container">
     <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
             <div class="col-xl-$ImageWidth col-lg-$ImageLGWidth">
                 $Image.ResponsiveSet1
