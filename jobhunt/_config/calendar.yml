@@ -1,0 +1,2 @@
+Firesphere\ICal\Services\ICalService:
+  event_class: Firesphere\JobHunt\Models\Interview

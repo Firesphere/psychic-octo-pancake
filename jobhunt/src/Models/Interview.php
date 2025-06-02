@@ -2,7 +2,9 @@
 
 namespace Firesphere\JobHunt\Models;
 
+use Firesphere\ICal\Interfaces\CalendarableInterface;
 use Firesphere\JobHunt\Pages\ApplicationPage;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBDatetime;
@@ -21,7 +23,7 @@ use SilverStripe\ORM\ManyManyList;
  * @method DataList|InterviewNote[] Notes()
  * @method ManyManyList|Interviewer[] Interviewers()
  */
-class Interview extends DataObject // implements CalenderableInterface
+class Interview extends DataObject implements CalendarableInterface
 {
     private static $table_name = 'Interview';
 
@@ -78,7 +80,7 @@ class Interview extends DataObject // implements CalenderableInterface
         return 'Week ' . $this->dbObject('DateTime')->format('w; Y');
     }
 
-    public function getEventList($user = null): \SilverStripe\ORM\ArrayList|DataList
+    public function getEventList($user = null): ArrayList|DataList
     {
         return Interview::get()
             ->filter([
@@ -89,20 +91,12 @@ class Interview extends DataObject // implements CalenderableInterface
 
     public function getFieldMap($field): string
     {
-        switch ($field) {
-            case 'Summary':
-                return sprintf("%s at %s", $this->Application()->Role, $this->Application()->Company()->Name);
-                break;
-            case 'Description':
-                return $this->StatusUpdate()->Title . ": " . $this->StatusUpdate()->Note;
-                break;
-            case 'OccuranceDT':
-                return $this->DateTime;
-                break;
-            case 'Duration':
-                return $this->Duration ?? 60;
-                break;
-
-        }
+        return match ($field) {
+            'Summary' => sprintf("%s at %s", $this->Application()->Role, $this->Application()->Company()->Name),
+            'Description' => $this->StatusUpdate()->Title . ": " . $this->StatusUpdate()->Note,
+            'OccuranceDT' => $this->DateTime,
+            'Duration' => $this->Duration ?? 60,
+            default => '',
+        };
     }
 }

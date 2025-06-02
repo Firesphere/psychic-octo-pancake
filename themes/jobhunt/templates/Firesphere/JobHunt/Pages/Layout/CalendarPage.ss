@@ -1,6 +1,7 @@
 <div class="">
     <div class="row">
         <h1 class="col-12">$Title</h1>
+        <h3></h3>
         <div class="col-12">
             $Content
         </div>

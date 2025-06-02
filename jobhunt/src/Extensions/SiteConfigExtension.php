@@ -6,6 +6,7 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\SiteConfig\SiteConfig;
 
 /**
  * Class \Firesphere\JobHunt\Extensions\SiteConfigExtension
