@@ -44,17 +44,21 @@ class ShareMyPageController extends KanbanPageController
         if (!$member) {
             return $this->redirect('/');
         }
-        $firstName = Security::getCurrentUser()->FirstName;
+        $firstName = $member->FirstName;
         $this->dataRecord->Title = "Shared kanboard view for $firstName";
         return $this;
     }
 
     public function CurrentUser()
     {
-        $shareKey = $this->getURLParams()['ID'];
+        $shareKey = $this->getRequest()->param('ID');
         if (!Security::getCurrentUser()) {
             $viewMember = Member::get()->filter(['ShareKey' => $shareKey])->first();
+            if (!$viewMember->ShareBoard) {
+                return false;
+            }
             Security::setCurrentUser($viewMember);
+            return $viewMember;
         }
 
         return Security::getCurrentUser();

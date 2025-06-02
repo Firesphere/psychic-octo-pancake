@@ -32,6 +32,7 @@ use SilverStripe\Security\Security;
  * @property bool $HideClosed
  * @property string $ViewStyle
  * @property string $ShareKey
+ * @property bool $ShareBoard
  * @method DataList|JobApplication[] JobApplications()
  * @method DataList|BaseNote[] Notes()
  * @method DataList|StateOfMind[] Moods()
@@ -49,6 +50,7 @@ class MemberExtension extends DataExtension
         'HideClosed' => DBBoolean::class . '(false)',
         'ViewStyle'  => DBEnum::class . '("Table,Card", "Table")',
         'ShareKey'   => DBVarchar::class,
+        'ShareBoard' => DBBoolean::class . '(false)'
     ];
     private static $has_many = [
         'JobApplications' => JobApplication::class . '.User',

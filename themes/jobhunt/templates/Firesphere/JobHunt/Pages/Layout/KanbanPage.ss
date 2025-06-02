@@ -8,30 +8,33 @@
 </div>
 <div class="row">
     <% if not $IsSharePage %>
-    <div class="mb-2 col-2">
-        <button type="button" class="btn-sm btn btn-primary js-formaction"
-                data-itemtype="application"
-                data-bs-toggle="modal"
-                data-bs-target="#addItemModal">
-            Add application
-        </button>
-    </div>
-    <div class="mb-2 col-4">
-        <label for="filter" class="visually-hidden">Filter</label>
-        <div class="input-group">
-            <input id="filter" type="text" class="form-control col"
-                   placeholder="Quickfilter"
-                   aria-placeholder="Quickfilter"/>
-            <a href="#" class="btn btn-outline-secondary" type="button"
-               id="clear_filter"><i
-                class="bi bi-x"></i></a>
+        <div class="mb-2 col-2">
+            <button type="button" class="btn-sm btn btn-primary js-formaction"
+                    data-itemtype="application"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addItemModal">
+                Add application
+            </button>
         </div>
-    </div>
-        <div class="mb-2 col-3" title="Click to copy">
-            Share your board, read-only:<br />
-            <a href="$ShareLink" class="js-copytext" title="Click to copy"><i class="bi bi-clipboard-pulse js-copytext-icon"></i>
-            $ShareLink</a>
+        <div class="mb-2 col-4">
+            <label for="filter" class="visually-hidden">Filter</label>
+            <div class="input-group">
+                <input id="filter" type="text" class="form-control col"
+                       placeholder="Quickfilter"
+                       aria-placeholder="Quickfilter"/>
+                <a href="#" class="btn btn-outline-secondary" type="button"
+                   id="clear_filter"><i
+                    class="bi bi-x"></i></a>
+            </div>
         </div>
+        <% if $CurrentUser.ShareBoard %>
+            <div class="mb-2 col-3" title="Click to copy">
+                Share your board, read-only:<br/>
+                <a href="$ShareLink" class="js-copytext" title="Click to copy"><i
+                    class="bi bi-clipboard-pulse js-copytext-icon"></i>
+                    $ShareLink</a>
+            </div>
+        <% end_if %>
     <% end_if %>
     <% if $Content %>
         <div class="mb-2 col-3">
