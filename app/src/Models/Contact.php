@@ -31,8 +31,9 @@ class Contact extends DataObject
 
     private static $summary_fields = [
         'Name',
+        'Created',
         'Email',
-        'Message'
+        'Message',
     ];
 
     private static $has_one = [
