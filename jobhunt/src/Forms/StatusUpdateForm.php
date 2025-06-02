@@ -40,7 +40,7 @@ class StatusUpdateForm extends Form
             $formAction = FormAction::create('submit', 'Save')
         ]);
         $formAction->addExtraClass('btn btn-primary');
-        $validator = RequiredFields::create(['Title', 'Note', 'StatusID']);
+        $validator = RequiredFields::create(['Title', 'StatusID']);
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
             $statusUpdate = StatusUpdate::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();

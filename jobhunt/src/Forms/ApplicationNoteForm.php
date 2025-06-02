@@ -43,7 +43,7 @@ class ApplicationNoteForm extends Form
             $formAction = FormAction::create('submit', 'Save'),
         ]);
         $formAction->addExtraClass('btn btn-primary');
-        $validator = RequiredFields::create(['Title', 'Note']);
+        $validator = RequiredFields::create(['Title']);
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
         if ($params['ID'] === 'edit') {
