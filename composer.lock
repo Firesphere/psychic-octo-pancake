@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e81a343cb01208d8f0b735417e5fcfb",
+    "content-hash": "cf6f80566142be07d900722257f71935",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -119,6 +119,52 @@
                 "source": "https://github.com/axllent/silverstripe-weblog/tree/1.4.4"
             },
             "time": "2024-11-15T04:23:08+00:00"
+        },
+        {
+            "name": "axllent/silverstripe-weblog-categories",
+            "version": "1.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axllent/silverstripe-weblog-categories.git",
+                "reference": "5528f0d2e76ad762285362d09158802442d48933"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axllent/silverstripe-weblog-categories/zipball/5528f0d2e76ad762285362d09158802442d48933",
+                "reference": "5528f0d2e76ad762285362d09158802442d48933",
+                "shasum": ""
+            },
+            "require": {
+                "axllent/silverstripe-weblog": "^1.2"
+            },
+            "type": "silverstripe-vendormodule",
+            "autoload": {
+                "psr-4": {
+                    "Axllent\\Weblog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Slooten",
+                    "homepage": "http://www.axllent.org/"
+                }
+            ],
+            "description": "Categories for the Silverstripe Weblog module",
+            "homepage": "https://github.com/axllent/silverstripe-weblog-categories",
+            "keywords": [
+                "blog",
+                "news",
+                "silverstripe"
+            ],
+            "support": {
+                "issues": "https://github.com/axllent/silverstripe-weblog-categories/issues",
+                "source": "https://github.com/axllent/silverstripe-weblog-categories/tree/1.1.8"
+            },
+            "time": "2024-11-15T04:25:26+00:00"
         },
         {
             "name": "brick/math",
@@ -621,6 +667,54 @@
                 }
             ],
             "time": "2024-09-19T14:15:21+00:00"
+        },
+        {
+            "name": "cweagans/composer-patches",
+            "version": "1.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0 || ~2.0",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "cweagans\\Composer\\Patches"
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-patches/issues",
+                "source": "https://github.com/cweagans/composer-patches/tree/1.7.3"
+            },
+            "time": "2022-12-20T22:53:13+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -14117,6 +14211,49 @@
                 }
             ],
             "time": "2025-04-27T18:39:23+00:00"
+        },
+        {
+            "name": "symplify/vendor-patches",
+            "version": "11.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symplify/vendor-patches.git",
+                "reference": "085a3a3e456e4d2d9a6b4fe02e86f92ce5b1fe35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/085a3a3e456e4d2d9a6b4fe02e86f92ce5b1fe35",
+                "reference": "085a3a3e456e4d2d9a6b4fe02e86f92ce5b1fe35",
+                "shasum": ""
+            },
+            "require": {
+                "cweagans/composer-patches": "^1.7",
+                "php": ">=7.2"
+            },
+            "bin": [
+                "bin/vendor-patches"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Generate vendor patches for packages with single command",
+            "support": {
+                "issues": "https://github.com/symplify/vendor-patches/issues",
+                "source": "https://github.com/symplify/vendor-patches/tree/11.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-18T08:19:39+00:00"
         },
         {
             "name": "theseer/tokenizer",

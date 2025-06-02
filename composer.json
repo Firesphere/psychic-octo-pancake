@@ -8,6 +8,7 @@
         "ext-libxml": "*",
         "3dgoo/silverstripe-hcaptcha": "^2",
         "axllent/silverstripe-weblog": "^1.4.0",
+        "axllent/silverstripe-weblog-categories": "^1.1",
         "dnadesign/silverstripe-elemental": "^5.4",
         "dnadesign/silverstripe-elemental-virtual": "^2.2",
         "dynamic/silverstripe-country-dropdown-field": "^2.0",
@@ -41,15 +42,23 @@
         "silverstripe/webauthn-authenticator": "^5",
         "symbiote/silverstripe-gridfieldextensions": "^4.0",
         "symfony/mailjet-mailer": "^7.0",
-        "wilr/silverstripe-googlesitemaps": "^3.0"
+        "wilr/silverstripe-googlesitemaps": "^3.0",
+        "cweagans/composer-patches": "^1.7"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.47",
         "lekoala/silverstripe-debugbar": "*",
         "phpunit/phpunit": "^9.6",
-        "silverleague/ideannotator": "*"
+        "silverleague/ideannotator": "*",
+        "symplify/vendor-patches": "^11.3"
     },
     "extra": {
+        "patches": {
+            "dnadesign/silverstripe-elemental": [
+                "patches/dnadesign-silverstripe-elemental-src-models-elementalarea-php.patch",
+                "patches/dnadesign-silverstripe-elemental-src-models-baseelement-php.patch"
+            ]
+        },
         "project-files": [
             "app/_config/*",
             ".env.example",
@@ -78,9 +87,10 @@
         "process-timeout": 600,
         "allow-plugins": {
             "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "php-http/discovery": true,
             "silverstripe/recipe-plugin": true,
-            "silverstripe/vendor-plugin": true,
-            "php-http/discovery": true
+            "silverstripe/vendor-plugin": true
         }
     },
     "prefer-stable": true,

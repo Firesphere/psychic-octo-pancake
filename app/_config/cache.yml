@@ -18,6 +18,16 @@ SilverStripe\Core\Injector\Injector:
     constructor:
       namespace: "BSColourMap"
       defaultLifetime: 31449600
+  Psr\SimpleCache\CacheInterface.ElementalArea:
+    factory: MemcachedCacheFactory
+    constructor:
+      namespace: "ElementalArea"
+      defaultLifetime: 31449600
+  Psr\SimpleCache\CacheInterface.BaseElement:
+    factory: MemcachedCacheFactory
+    constructor:
+      namespace: "BaseElement"
+      defaultLifetime: 31449600
 
 ---
 Except:
