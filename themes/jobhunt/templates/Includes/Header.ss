@@ -1,6 +1,6 @@
 <header class="<% if $CurrentUser %>pb-4<% end_if %>">
     <nav class="navbar navbar-expand-lg navbar-fixed-top <% if $CurrentUser %>bg-secondary<% end_if %>" id="mainNav">
-        <div class="container px-4 px-lg-5">
+        <div class="container">
             <a class="navbar-brand" rel="nofollow"
                href="/">$SiteConfig.Title</a><br/>
             <span class="small d-none d-sm-block">$SiteConfig.Tagline</span>

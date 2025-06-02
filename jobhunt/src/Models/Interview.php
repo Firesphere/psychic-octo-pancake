@@ -4,6 +4,7 @@ namespace Firesphere\JobHunt\Models;
 
 use Firesphere\ICal\Interfaces\CalendarableInterface;
 use Firesphere\JobHunt\Pages\ApplicationPage;
+use SilverStripe\Control\Director;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
@@ -96,6 +97,8 @@ class Interview extends DataObject implements CalendarableInterface
             'Description' => $this->StatusUpdate()->Title . ": " . $this->StatusUpdate()->Note,
             'OccuranceDT' => $this->DateTime,
             'Duration' => $this->Duration ?? 60,
+            'URL' => Director::absoluteURL($this->Application()->InternalLink()),
+            'Attendee' => $this->Application()->User()->Email,
             default => '',
         };
     }

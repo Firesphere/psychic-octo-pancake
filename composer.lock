@@ -1616,7 +1616,7 @@
             "source": {
                 "type": "git",
                 "url": "https://codeberg.org/Firesphere/silverstripe-ical.git",
-                "reference": "35d631c322ff3e8b7a10eec9e80032f2299a57c5"
+                "reference": "9ca16f2d73ee5ac918223af178a27b4443f8049c"
             },
             "require": {
                 "eluceo/ical": "^2",
@@ -1641,7 +1641,7 @@
                 "ical",
                 "silverstripe"
             ],
-            "time": "2025-06-02T01:36:13+00:00"
+            "time": "2025-06-02T05:38:54+00:00"
         },
         {
             "name": "firesphere/magiclogin",
