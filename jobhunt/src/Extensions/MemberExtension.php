@@ -139,17 +139,20 @@ class MemberExtension extends DataExtension
         self::set_job_applications();
 
         $return = [];
+        $unshuffled = [];
         if (self::$_job_applications->count()) {
-
-            $applications = self::$_job_applications->shuffle();
-
             $statusMap = Status::getIdMap();
-            foreach ($applications as $application) {
+            foreach (self::$_job_applications as $application) {
                 $status = $statusMap[$application->StatusID];
-                $return[$status] = isset($return[$status]) ? $return[$status] + 1 : 1;
+                $unshuffled[$status] = isset($unshuffled[$status]) ? $unshuffled[$status] + 1 : 1;
             }
         }
+        $keys = array_keys($unshuffled);
+        shuffle($keys);
 
+        foreach ($keys as $key) {
+            $return[$key] = $unshuffled[$key];
+        }
         return $return;
     }
 
