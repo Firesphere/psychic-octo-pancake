@@ -17,12 +17,12 @@ namespace {
     use Symbiote\MemberProfiles\Pages\MemberProfilePage;
 
     /**
- * Class \PageController
- *
- * @property Page $dataRecord
- * @method Page data()
- * @mixin PageControllerExtension
- */
+     * Class \PageController
+     *
+     * @property Page $dataRecord
+     * @method Page data()
+     * @mixin PageControllerExtension
+     */
     class PageController extends ContentController
     {
         protected $CompaniesList;
@@ -61,8 +61,12 @@ namespace {
                 $this->SecondaryNav = MemberProfilePage::get()->first()->Children();
                 /** @var Member|MemberExtension $user */
                 $user = Security::getCurrentUser();
+                $userApplicationIds = $user->JobApplications()->columnUnique('ID');
+                if (!count($userApplicationIds)) {
+                    $userApplicationIds[] = -1;
+                }
                 $cFilter = [
-                    'Applications.ID' => $user->JobApplications()->columnUnique('ID') ?? [-1],
+                    'Applications.ID' => $userApplicationIds,
                 ];
 //                $countryname = Environment::getEnv("GEOIP_COUNTRY_CODE");
 //                if (!empty($countryname) && $countryname !== 'N/A') {
