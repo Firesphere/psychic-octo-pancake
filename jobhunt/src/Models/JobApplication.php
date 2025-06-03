@@ -209,4 +209,45 @@ class JobApplication extends DataObject
     {
         return 'Week ' . $this->dbObject('ApplicationDate')->format('w; Y');
     }
+
+    public function getTimeLine()
+    {
+        $return = ArrayList::create();
+        $updates = $this->StatusUpdates();
+        /** @var DBDate $startDate */
+        $startDate = $this->dbObject('ApplicationDate');
+        $today = DBDatetime::now();
+
+        $diff = $today->getTimestamp() - $startDate->getTimestamp();
+        $totalDays = round($diff / 86400);
+        $status = Status::create(['Status' => 'Applied']);
+        $startBar = 0;
+        $cent = 100;
+        foreach ($updates as $update) {
+            $updateCreated = $update->dbObject('Created')->getTimestamp();
+            $days = round(($updateCreated - $startDate->getTimestamp()) / 86400);
+            $percentage = round(($days / $totalDays) * 100);
+            $cent -= $percentage;
+            $item = [
+                'Status' => $status->Status,
+                'Colour' => $status->getColourStyle(),
+                'Size'   => $percentage,
+                'Start'  => $startBar,
+                'End'    => $startBar + $percentage,
+            ];
+            $startBar += $percentage;
+            $return->push($item);
+            $startDate = $update->dbObject('Created');
+            $status = $update->Status();
+        }
+        $item = [
+            'Status' => $status->Status,
+            'Colour' => $status->getColourStyle(),
+            'Size'   => $cent,
+            'Start'  => $startBar,
+            'End'    => 100,
+        ];
+        $return->push($item);
+        return $return;
+    }
 }
