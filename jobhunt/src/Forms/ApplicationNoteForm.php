@@ -49,7 +49,7 @@ class ApplicationNoteForm extends Form
         if ($params['ID'] === 'edit') {
             $note = ApplicationNote::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
             $this->loadDataFrom($note);
-            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $note->deleteLink());
+            $deleteLink = sprintf("<div class='ms-3'><a href='%s' class='btn btn-warning my-3'>delete</a></div>", $note->deleteLink());
             $actions->push(
                 $deleteButton = LiteralField::create('delete', $deleteLink)
             );

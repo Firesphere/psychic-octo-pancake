@@ -45,7 +45,7 @@ class StatusUpdateForm extends Form
         if ($params['ID'] === 'edit') {
             $statusUpdate = StatusUpdate::get()->filter(['ID' => $params['OtherID'], 'JobApplication.UserID' => $user->ID])->first();
             $this->loadDataFrom($statusUpdate);
-            $deleteLink = sprintf("<a href='%s' class='btn btn-warning my-3'>delete</a>", $statusUpdate->deleteLink());
+            $deleteLink = sprintf("<div class='ms-3'><a href='%s' class='btn btn-warning my-3'>delete</a></div>", $statusUpdate->deleteLink());
             $actions->push(
                 $deleteButton = LiteralField::create('delete', $deleteLink)
             );
