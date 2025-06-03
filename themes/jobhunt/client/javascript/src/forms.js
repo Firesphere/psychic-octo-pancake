@@ -1,5 +1,6 @@
 let actions = Array.from(document.getElementsByClassName('js-formaction'));
 const formcontainer = document.getElementById('formcontainer');
+const formfooter = document.getElementById('js-submit-button');
 const myModalEl = document.getElementById('addItemModal');
 const actionTypeSpan = document.getElementById('modal-item-type');
 const actionTitleSpan = document.getElementById('modal-item-title');
@@ -92,16 +93,39 @@ const bindActions = (list) => {
             })
                 .then(response => response.json())
                 .then(response => {
-                    formcontainer.innerHTML = '';
                     if (response['success'] && response['form'] !== false) {
-                        formcontainer.insertAdjacentHTML('beforeend', response['form']);
+                        response['form'].trim().replace(/^\s+|\s+$/g, '')
+                        let tmp = document.createElement('div');
+                        tmp.innerHTML = response['form'];
+                        let formElement = Array.from(tmp.children)[0];
+                        myModalEl.setAttribute('action', formElement.getAttribute('action'));
+                        myModalEl.setAttribute('method', formElement.getAttribute('method'));
+                        myModalEl.setAttribute('enctype', formElement.getAttribute('enctype'));
+                        let fieldGroup = formElement.getElementsByTagName('fieldset')[0];
+                        let message = formElement.getElementsByClassName('message')[0];
+                        let submit = formElement.lastElementChild;
+                        formcontainer.innerHTML = '';
+                        formfooter.innerHTML = '';
+                        if (!message || !fieldGroup || !submit) {
+                            formcontainer.insertAdjacentHTML(response['form']);
+                        }
+                        else {
+                            if (message) {
+                                formcontainer.insertAdjacentElement('afterbegin', message);
+                            }
+                            if (fieldGroup) {
+                                formcontainer.insertAdjacentElement('beforeend', fieldGroup);
+                            }
+                            if (submit) {
+                                formfooter.insertAdjacentElement('beforeend', submit);
+                            }
+                        }
                         tinyMCE.init({
                             selector: '#formcontainer textarea.htmleditor',
                             max_height: 250,
                             menubar: false,
                             statusbar: false
                         });
-
                         addFormHook();
                     } else {
                         updateFormContent();
@@ -112,6 +136,7 @@ const bindActions = (list) => {
                 })
                 .catch(response => {
                     if (response.status !== 200) {
+                        console.warn(response);
                         formcontainer.innerText = "It seems something went wrong. Are you logged in?";
                     }
                 });

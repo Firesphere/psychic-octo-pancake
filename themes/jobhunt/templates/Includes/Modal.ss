@@ -1,4 +1,4 @@
-<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemLabel"
+<form class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl modal-fullscreen-md-down" role="document">
         <div class="modal-content">
@@ -11,9 +11,10 @@
             <div class="modal-body" id="formcontainer">
 
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-between">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div id="js-submit-button"></div>
             </div>
         </div>
     </div>
-</div>
+</form>
