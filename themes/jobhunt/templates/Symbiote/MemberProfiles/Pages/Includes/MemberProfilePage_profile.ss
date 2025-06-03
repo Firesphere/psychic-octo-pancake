@@ -1,15 +1,10 @@
 <div class="row">
     <% if not $CurrentUser %>
-    $TokenForm
-    $LoginForm
+        $TokenForm
+        $LoginForm
     <% else %>
         $Form
-    <% end_if %>
-    <div class="col-sm-6 col-md-4">
-        $Content
-    </div>
-    <div class="col-md-4">
-        <% if $CurrentUser %>
+        <div class="col-md-4">
             <h3>Import</h3>
             <p>Due to technical issues, the CSV import is currently unavailable.</p>
             <% if $CurrentUser.InGroup('administrators') %>
@@ -23,13 +18,13 @@
                     Import from CSV
                 </button>
                 <hr/>
-                <h3>Archive</h3>
-                <p>Archive all job applications you currently have. For if you are starting a new job hunt.</p>
-                <form action="$Link/archive" method="POST">
-                    <input type="hidden" value="$SecurityID" name="SecurityID"/>
-                    <input type="submit" name="action_archive" class="action btn btn-warning" value="Archive"/>
-                </form>
             <% end_if %>
-        <% end_if %>
-    </div>
+            <h3>Archive</h3>
+            <p>Archive all job applications you currently have. For if you are starting a new job hunt.</p>
+            <form action="$Link/archive" method="POST">
+                <input type="hidden" value="$SecurityID" name="SecurityID"/>
+                <input type="submit" name="action_archive" class="action btn btn-warning" value="Archive"/>
+            </form>
+        </div>
+    <% end_if %>
 </div>

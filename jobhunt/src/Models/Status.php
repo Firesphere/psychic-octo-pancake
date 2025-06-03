@@ -30,14 +30,14 @@ class Status extends DataObject
     public static $id_map;
     private static $table_name = 'ApplicationStatus';
     private static $db = [
-        'Status' => DBVarchar::class,
-        'Colour' => DBVarchar::class,
-        'AutoHide' => DBBoolean::class . '(false)',
+        'Status'    => DBVarchar::class,
+        'Colour'    => DBVarchar::class,
+        'AutoHide'  => DBBoolean::class . '(false)',
         'SortOrder' => DBInt::class,
     ];
     private static $has_many = [
-        'Applications' => JobApplication::class . '.Status',
-        'StatusUpdates' => StatusUpdate::class . '.Status',
+        'Applications'     => JobApplication::class . '.Status',
+        'StatusUpdates'    => StatusUpdate::class . '.Status',
         'FilterExclusions' => ExcludedStatus::class . '.Status'
     ];
     private static $summary_fields = [
@@ -61,28 +61,28 @@ class Status extends DataObject
         ['Status' => 'Withdrawn']
     ];
     private static $colours = [
-        'primary' => '--bs-primary',
+        'primary'   => '--bs-primary',
         'secondary' => '--bs-secondary',
-        'success' => '--bs-success',
-        'danger' => '--bs-danger',
-        'warning' => '--bs-warning',
-        'info' => '--bs-info',
-        'light' => '--bs-light',
-        'dark' => '--bs-dark',
-        'link' => '--bs-link',
+        'success'   => '--bs-success',
+        'danger'    => '--bs-danger',
+        'warning'   => '--bs-warning',
+        'info'      => '--bs-info',
+        'light'     => '--bs-light',
+        'dark'      => '--bs-dark',
+        'link'      => '--bs-link',
     ];
     private static $colourmap = [
-        '' => 'primary',
-        'Applied' => 'primary',
-        'Interview' => 'secondary',
-        'Accepted' => 'success',
+        ''                   => 'primary',
+        'Applied'            => 'primary',
+        'Interview'          => 'secondary',
+        'Accepted'           => 'success',
         'Rejected - company' => 'danger',
-        'Rejected - me' => 'warning',
-        'Invited' => 'info',
-        'Response' => 'info',
-        'Closed' => 'dark',
-        'Ghosted' => 'dark',
-        'Withdrawn' => 'warning'
+        'Rejected - me'      => 'warning',
+        'Invited'            => 'info',
+        'Response'           => 'info',
+        'Closed'             => 'dark',
+        'Ghosted'            => 'dark',
+        'Withdrawn'          => 'warning'
     ];
 
     public function getName()

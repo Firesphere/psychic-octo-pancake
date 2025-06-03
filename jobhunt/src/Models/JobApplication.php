@@ -10,6 +10,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
@@ -20,6 +21,7 @@ use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\Security\Member;
+use SilverStripe\View\ArrayData;
 
 /**
  * Class \Firesphere\JobHunt\Models\JobApplication
@@ -67,6 +69,7 @@ class JobApplication extends DataObject
         'Archived'        => DBBoolean::class,
         'ArchiveDate'     => DBDate::class,
         'Favourite'       => DBBoolean::class . '(false)',
+        'Draft'           => DBBoolean::class . '(false)'
     ];
     private static $has_one = [
         'User'    => Member::class,
@@ -188,10 +191,9 @@ class JobApplication extends DataObject
         $datetime = max(array_values($dates));
         $diffTime = DBDatetime::create();
         $diffTime->setValue(date('Y-m-d H:i:s', $datetime));
-
+        $multiplier = $diffTime >= DBDatetime::now() ? -1 : 1;
         [$diff] = explode(' ', $diffTime->TimeDiffIn('days'));
-
-        $diff = (int)$diff;
+        $diff = (int)$diff * $multiplier;
 
         return match (true) {
             $diff < 8 => 'secondary',
