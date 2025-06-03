@@ -4,19 +4,20 @@ const formfooter = document.getElementById('js-submit-button');
 export const updateFormContent = () => {
     formcontainer.innerHTML = '';
     formfooter.innerHTML = '';
-    formcontainer.insertAdjacentHTML('beforeend', '<div class="text-center">\n' +
+    formcontainer.insertAdjacentHTML('beforeend', '<div></div><div class="text-center">\n' +
         '  <div class="spinner-border" role="status">\n' +
         '    <span class="visually-hidden">Loading...</span>\n' +
         '  </div>\n' +
-        '</div>');
+        '</div><div></div>');
     tinyMCE.remove();
 }
 export const addFormHook = () => {
     let forms = Array.from(document.getElementsByTagName('form'));
     forms.forEach((form) => {
+        console.log(form);
         form.addEventListener('submit', (event) => {
+            form = document.getElementById(form.getAttribute('id'));
             event.preventDefault();
-            form.children.find
             let formData = new FormData(form);
             updateFormContent();
             fetch(form.action, {
@@ -29,8 +30,14 @@ export const addFormHook = () => {
                 .then(response => response.json())
                 .then(response => {
                     if (response['success'] !== false && response['form'] !== false) {
-                        formcontainer.innerText = '';
+                        formcontainer.innerHTML = '';
+                        formfooter.innerHTML = '';
                         formcontainer.insertAdjacentHTML('beforeend', response['form']);
+                        let submit = formcontainer.getElementsByClassName("btn-toolbar")[0];
+                        formfooter.insertAdjacentElement('beforeend', submit);
+                        let form = formcontainer.getElementsByTagName('form')[0];
+                        submit.getElementsByClassName('action')[0].setAttribute('form', form.getAttribute('id'));
+
                         tinyMCE.init({
                             selector: 'textarea.htmleditor',
                             max_height: 250,
@@ -41,7 +48,6 @@ export const addFormHook = () => {
                     } else {
                         updateFormContent();
                         setTimeout(() => {
-                            console.log('reloading');
                             window.location.reload();
                         }, 500);
                     }
@@ -49,7 +55,7 @@ export const addFormHook = () => {
                 .catch((error) => {
                     formcontainer.innerText = "It seems something went wrong. Please try again?";
                     setTimeout(() => {
-                        console.log('reloading');
+                        console.log(error);
                         window.location.reload();
                         throw new Error(error);
                     }, 5000);

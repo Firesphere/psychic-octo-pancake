@@ -94,38 +94,20 @@ const bindActions = (list) => {
                 .then(response => response.json())
                 .then(response => {
                     if (response['success'] && response['form'] !== false) {
-                        response['form'].trim().replace(/^\s+|\s+$/g, '')
-                        let tmp = document.createElement('div');
-                        tmp.innerHTML = response['form'];
-                        let formElement = Array.from(tmp.children)[0];
-                        myModalEl.setAttribute('action', formElement.getAttribute('action'));
-                        myModalEl.setAttribute('method', formElement.getAttribute('method'));
-                        myModalEl.setAttribute('enctype', formElement.getAttribute('enctype'));
-                        let fieldGroup = formElement.getElementsByTagName('fieldset')[0];
-                        let message = formElement.getElementsByClassName('message')[0];
-                        let submit = formElement.lastElementChild;
                         formcontainer.innerHTML = '';
                         formfooter.innerHTML = '';
-                        if (!message || !fieldGroup || !submit) {
-                            formcontainer.insertAdjacentHTML(response['form']);
-                        }
-                        else {
-                            if (message) {
-                                formcontainer.insertAdjacentElement('afterbegin', message);
-                            }
-                            if (fieldGroup) {
-                                formcontainer.insertAdjacentElement('beforeend', fieldGroup);
-                            }
-                            if (submit) {
-                                formfooter.insertAdjacentElement('beforeend', submit);
-                            }
-                        }
+                        formcontainer.innerHTML = response['form'];
+                        let submit = formcontainer.getElementsByClassName("btn-toolbar")[0];
+                        formfooter.insertAdjacentElement('beforeend', submit);
+                        let form = formcontainer.getElementsByTagName('form')[0];
+                        submit.getElementsByClassName('action')[0].setAttribute('form', form.getAttribute('id'));
                         tinyMCE.init({
                             selector: '#formcontainer textarea.htmleditor',
                             max_height: 250,
                             menubar: false,
                             statusbar: false
                         });
+
                         addFormHook();
                     } else {
                         updateFormContent();
