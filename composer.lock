@@ -6042,16 +6042,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "5.4.8",
+            "version": "5.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "89fbf45b5593fa94e18faa5c668971901e3536da"
+                "reference": "e92dcaa8cf51e5ad81e1473c4fab6743f43f717a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/89fbf45b5593fa94e18faa5c668971901e3536da",
-                "reference": "89fbf45b5593fa94e18faa5c668971901e3536da",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/e92dcaa8cf51e5ad81e1473c4fab6743f43f717a",
+                "reference": "e92dcaa8cf51e5ad81e1473c4fab6743f43f717a",
                 "shasum": ""
             },
             "require": {
@@ -6174,9 +6174,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-framework/issues",
-                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.8"
+                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.9"
             },
-            "time": "2025-05-26T22:29:18+00:00"
+            "time": "2025-06-03T02:12:41+00:00"
         },
         {
             "name": "silverstripe/graphql",

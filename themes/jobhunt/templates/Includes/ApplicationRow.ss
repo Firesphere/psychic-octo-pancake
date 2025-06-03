@@ -129,7 +129,14 @@
         <td colspan="8" class="bg-light-subtle py-2">
             <div class="progress">
                 <% loop $TimeLine %>
-                    <div class="progress-bar shadow-lg progress-bar-striped bg-$Colour " title="$Status" role="progressbar" style="width: $Size%" aria-valuenow="$End" aria-valuemin="$Start" aria-valuemax="$End"></div>
+                    <div class="progress-bar shadow-lg progress-bar-striped bg-$Colour border"
+                         title="$Status: Started: $StartDay; Ended: $EndDay"
+                         role="progressbar"
+                         style="width: $Size%"
+                         aria-valuenow="$End"
+                         aria-valuemin="$Start"
+                         aria-valuemax="$End"
+                    ></div>
                 <% end_loop %>
             </div>
         </td>

@@ -213,10 +213,19 @@ class JobApplication extends DataObject
     public function getTimeLine()
     {
         $return = ArrayList::create();
+        /** @var DataList|StatusUpdate[] $updates */
         $updates = $this->StatusUpdates();
         /** @var DBDate $startDate */
         $startDate = $this->dbObject('ApplicationDate');
+        // @todo set last day to +7 from last status, if last status has AutoHide
         $today = DBDatetime::now();
+        if ($this->Status()->AutoHide && $updates->exists()) {
+            /** @var DBDatetime $today */
+            $today = $updates->last()->dbObject('Created');
+            $today->modify('+2 days');
+        } elseif ($this->Status()->AutoHide) {
+            $today = $this->dbObject('LastEdited');
+        }
 
         $diff = $today->getTimestamp() - $startDate->getTimestamp();
         $totalDays = round($diff / 86400);
@@ -229,11 +238,13 @@ class JobApplication extends DataObject
             $percentage = round(($days / $totalDays) * 100);
             $cent -= $percentage;
             $item = [
-                'Status' => $status->Status,
-                'Colour' => $status->getColourStyle(),
-                'Size'   => $percentage,
-                'Start'  => $startBar,
-                'End'    => $startBar + $percentage,
+                'Status'   => $status->Status,
+                'Colour'   => $status->getColourStyle(),
+                'Size'     => $percentage,
+                'Start'    => $startBar,
+                'End'      => $startBar + $percentage,
+                'StartDay' => $startDate->format('d MMM yyyy'),
+                'EndDay'   => $update->dbObject('Created')->format('d MMM yyyy')
             ];
             $startBar += $percentage;
             $return->push($item);
@@ -241,11 +252,13 @@ class JobApplication extends DataObject
             $status = $update->Status();
         }
         $item = [
-            'Status' => $status->Status,
-            'Colour' => $status->getColourStyle(),
-            'Size'   => $cent,
-            'Start'  => $startBar,
-            'End'    => 100,
+            'Status'   => $this->Status()->Status,
+            'Colour'   => $this->Status()->getColourStyle(),
+            'Size'     => $cent,
+            'Start'    => $startBar,
+            'End'      => 100,
+            'StartDay' => $startDate->format('d MMM yyyy'),
+            'EndDay'   => $this->Status()->AutoHide ? $today->format('d MMM yyyy') : 'Unknown'
         ];
         $return->push($item);
         return $return;
