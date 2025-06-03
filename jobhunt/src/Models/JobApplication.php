@@ -36,6 +36,7 @@ use SilverStripe\View\ArrayData;
  * @property bool $Archived
  * @property string $ArchiveDate
  * @property bool $Favourite
+ * @property bool $Draft
  * @property int $UserID
  * @property int $CompanyID
  * @property int $StatusID

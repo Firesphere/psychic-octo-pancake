@@ -15,17 +15,11 @@ use SilverStripe\View\Requirements;
  * @method ShareMyPage data()
  * @mixin ShareMyPage
  */
-/**
- * Class \Firesphere\JobHunt\Controllers\ShareMyPageController
- *
- * @property ShareMyPage $dataRecord
- * @method ShareMyPage data()
- * @mixin ShareMyPage
- */
 class ShareMyPageController extends KanbanPageController
 {
     private static $allowed_actions = [
-        'board'
+        'board',
+        'table'
     ];
     protected $IsSharePage = true;
 

@@ -43,6 +43,11 @@ class ApplicationPageController extends \PageController
     protected $JobApplication;
     protected $ActiveCompany;
     protected $Companies;
+    protected $FavLink;
+    /**
+     * @var true
+     */
+    protected $FavSet;
 
     public function init()
     {
