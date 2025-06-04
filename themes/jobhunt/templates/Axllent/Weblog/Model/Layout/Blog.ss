@@ -22,5 +22,5 @@
         <% end_loop %>
     <% end_if %>
 
-        <% include Pagination PaginatedMatches=$PaginatedList %>
+    <% include Pagination PaginatedMatches=$PaginatedList, Sizing=md %>
 </div>
