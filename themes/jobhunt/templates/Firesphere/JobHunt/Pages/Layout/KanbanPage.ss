@@ -17,7 +17,7 @@
                 <%t Firesphere\JobHunt\Pages\ApplicationPage.NewApplication "Add new application" %>
             </button>
         </div>
-        <div class="mb-2 col-4">
+        <div class="mb-2 col-3">
             <label for="filter" class="visually-hidden">Filter</label>
             <div class="input-group">
                 <input id="filter" type="text" class="form-control col"
@@ -29,7 +29,7 @@
             </div>
         </div>
         <% if $CurrentUser.ShareBoard %>
-            <div class="mb-2 col-3" title="Click to copy">
+            <div class="mb-2 col-5" title="Click to copy">
                 <%t Firesphere\JobHunt\Pages\KanbanPage.Share "Share your board, read-only" %>:<br/>
                 <a href="$ShareLink" class="js-copytext" title="Click to copy"><i
                     class="bi bi-clipboard-pulse js-copytext-icon"></i>
@@ -37,19 +37,21 @@
             </div>
         <% end_if %>
     <% end_if %>
-    <% if $Content %>
-        <div class="mb-2 col-3">
-            <div id="help">
-                <a href="#kanban-help"
-                   data-bs-toggle="collapse"
-                   role="button"
-                   aria-expanded="false"
-                   aria-controls="description-$ColumnTitle"
-                ><h4><i class="bi bi-question-octagon">&nbsp;</i><%t Firesphere\JobHunt\Pages\KanbanPage.Help "Kanban Help" %></h4></a>
-                <div id="kanban-help" class="collapse">$Content</div>
-            </div>
+    <div class="mb-2 col-2">
+        <div id="help">
+            <a href="#kanban-help"
+               data-bs-toggle="collapse"
+               role="button"
+               aria-expanded="false"
+               aria-controls="description-$ColumnTitle"
+            ><h4><i
+                class="bi bi-question-octagon">&nbsp;</i><%t Firesphere\JobHunt\Pages\KanbanPage.Help "Kanban Help" %>
+            </h4></a>
         </div>
-    <% end_if %>
+    </div>
+</div>
+<div class="row">
+    <div id="kanban-help" class="collapse col-md-6 col-sm-11 offset-1">$Content</div>
 </div>
 <div class="row">
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
