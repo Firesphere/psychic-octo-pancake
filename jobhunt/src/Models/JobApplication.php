@@ -97,7 +97,7 @@ class JobApplication extends DataObject
         'ApplicationDate'
     ];
 
-    private static $default_sort = 'ApplicationDate DESC, Created DESC';
+    private static $default_sort = 'Status.Status = "Draft", ApplicationDate DESC, Created DESC';
 
 
     public function TagForm()
@@ -169,7 +169,7 @@ class JobApplication extends DataObject
 
     public function getIsOld()
     {
-        if ($this->Status()->AutoHide) {
+        if ($this->Status()->AutoHide || $this->Status()->Status === "Draft") {
             return $this->Status()->getColourStyle();
         }
         $lastStatus = $this->StatusUpdates()->orderBy('Created ASC')->Last();

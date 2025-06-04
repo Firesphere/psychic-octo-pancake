@@ -75,8 +75,20 @@
                        data-bs-target="#coverletter-$ID">Cover letter</a>
                 </div>
             <% end_if %>
-
-            <hr class="pb-1"/>
+            <div class="col-12 m-1">
+            <div class="progress">
+                <% loop $TimeLine %>
+                    <div class="progress-bar shadow-lg progress-bar-striped bg-$Colour border"
+                         title="$Status: Started: $StartDay; Ended: $EndDay"
+                         role="progressbar"
+                         style="width: $Size%"
+                         aria-valuenow="$End"
+                         aria-valuemin="$Start"
+                         aria-valuemax="$End"
+                    ></div>
+                <% end_loop %>
+            </div>
+            </div>
             <% if $StatusUpdates.Filter('Hidden', false).Count() %>
                 <div class="col-12 col-md-6">
                     <h3>Status updates</h3>

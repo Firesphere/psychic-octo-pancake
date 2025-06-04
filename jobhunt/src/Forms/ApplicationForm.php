@@ -6,6 +6,7 @@ use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\Company;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\Status;
+use SilverStripe\Control\Director;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
@@ -33,6 +34,7 @@ class ApplicationForm extends Form
         if (!$user) {
             throw new PermissionFailureException('You need to be logged in.');
         }
+        $statusses = Status::get();
         $fields = FieldList::create([
             $companyField = TextField::create('Company.Name', 'Company name'),
             TextField::create('Role', 'Role'),
@@ -41,7 +43,7 @@ class ApplicationForm extends Form
             TextField::create('Link', 'Link to application'),
             $paylow = NumericField::create('PayLower', 'Lower pay band'),
             $payUp = NumericField::create('PayUpper', 'Upper pay band'),
-            $status = DropdownField::create('StatusID', 'Status', Status::get()->map('ID', 'Status')->toArray()),
+            $status = DropdownField::create('StatusID', 'Status', $statusses->map('ID', 'Status')->toArray()),
             HTMLEditorField::create('CoverLetter', 'Cover letter'),
             TextareaField::create('Notes', 'Note')
         ]);
@@ -49,6 +51,8 @@ class ApplicationForm extends Form
         $companyField->setAttribute("list", "companylist");
         $status->addExtraClass('form-select');
         $status->setEmptyString('-- Select application status --');
+        $draftStatus = $statusses->filter(['Status' => 'Draft'])->first()?->ID;
+        $status->setAttribute('data-draft', $draftStatus);
 
         $paylow->addExtraClass('col');
         $payUp->addExtraClass('col');
@@ -56,8 +60,16 @@ class ApplicationForm extends Form
             $formAction = FormAction::create('submit', 'Save')
         ]);
         $formAction->addExtraClass('btn btn-primary');
-
-        $validator = RequiredFields::create(['Company.Name', 'Role', 'StatusID', 'ApplicationDate']);
+        $reqFields = ['Company.Name', 'Role', 'StatusID'];
+        if ($controller->getRequest()->isPOST()) {
+            $statusVar = $controller->getRequest()->postVar('StatusID');
+            if ((int)$statusVar !== $draftStatus) {
+                $reqFields[] = 'ApplicationDate';
+            }
+        } else {
+            $reqFields[] = 'ApplicationDate';
+        }
+        $validator = RequiredFields::create($reqFields);
         parent::__construct($controller, self::DEFAULT_NAME, $fields, $actions, $validator);
         $params = $controller->getURLParams();
         if ($params['ID'] === 'edit') {

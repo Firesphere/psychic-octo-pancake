@@ -14,7 +14,21 @@ export const updateFormContent = () => {
 export const addFormHook = () => {
     let forms = Array.from(document.getElementsByTagName('form'));
     forms.forEach((form) => {
-        console.log(form);
+        let formId = form.getAttribute('ID');
+        if (formId === "ApplicationForm_ApplicationForm") {
+            let dropdown = document.getElementById('ApplicationForm_ApplicationForm_StatusID');
+            let appDate = document.getElementById('ApplicationForm_ApplicationForm_ApplicationDate');
+            dropdown.addEventListener('change', () => {
+                let draftState = dropdown.getAttribute('data-draft')
+                if (parseInt(dropdown.value) === parseInt(draftState)) {
+                    appDate.removeAttribute('required');
+                    appDate.removeAttribute('aria-required');
+                } else {
+                    appDate.setAttribute('required', 'required');
+                    appDate.setAttribute('aria-required', 'true');
+                }
+            });
+        }
         form.addEventListener('submit', (event) => {
             form = document.getElementById(form.getAttribute('id'));
             event.preventDefault();

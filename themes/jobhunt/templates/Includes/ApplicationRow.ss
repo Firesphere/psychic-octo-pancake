@@ -1,7 +1,7 @@
 <% loop $Applications %>
 
     <tr class="$EvenOdd table-group-divider">
-        <td class="bg-$IsOld-subtle">
+        <td class="bg-$IsOld-subtle <% if $Status.Status == 'Draft' %>progress-bar-striped<% end_if %>">
             <div class="justify-content-start">
                 <% with $Company %>
                     <div class="d-flex justify-content-between">
@@ -25,14 +25,14 @@
                 <% end_with %>
             </div>
         </td>
-        <td colspan="3"><a href="$InternalLink" title="View application">$Role</a></td>
-        <td>$ApplicationDate.Nice()</td>
-        <td class="text-center">
+        <td colspan="3" class="<% if $Status.Status == 'Draft' %>bg-$IsOld-subtle progress-bar-striped<% end_if %>"><a href="$InternalLink" title="View application">$Role</a></td>
+        <td class="<% if $Status.Status == 'Draft' %>bg-$IsOld progress-bar-striped<% end_if %>">$ApplicationDate.Nice()</td>
+        <td class="text-center <% if $Status.Status == 'Draft' %>bg-$IsOld-subtle progress-bar-striped<% end_if %>">
             <% with $Status %>
             <div class="badge text-bg-$ColourStyle">$Name</div>
             <% end_with %>
         </td>
-        <td class="text-center">
+        <td class="text-center <% if $Status.Status == 'Draft' %>bg-$IsOld-subtle progress-bar-striped<% end_if %>">
             <a href="#"
                title="Edit application"
                class="js-formaction"
@@ -41,7 +41,8 @@
                data-bs-toggle="modal"
                data-bs-target="#addItemModal"><i class="bi bi-pencil"></i></a>
         </td>
-        <td class="col-lg text-center"><a href="$InternalLink" title="View application"><i
+        <td class="col-lg text-center <% if $Status.Status == 'Draft' %>bg-$IsOld-subtle progress-bar-striped<% end_if %>">
+            <a href="$InternalLink" title="View application"><i
             class="bi bi-eye-fill"></i></a></td>
     </tr>
     <tr class="$OddEven">

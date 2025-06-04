@@ -1,7 +1,7 @@
 <div class="row">
     <% loop $Applications %>
-        <div class="col-sm-12 col-md-4 pb-3 d-flex flex-grow-0">
-            <div class="card">
+        <div class="col-sm-12 col-md-4 pb-3 d-flex">
+            <div class="card  flex-grow-1">
                 <div class="card-header bg-$IsOld-subtle">
                     <div class="d-flex justify-content-between">
                         <h4><a href="#"
@@ -153,7 +153,21 @@
                         </ul>
                     </div>
                 <% end_if %>
-                <div class="card-body"></div>
+                <div class="card-body d-flex flex-column">
+                    <div class="progress mt-auto">
+                        <% loop $TimeLine %>
+                            <div class="progress-bar shadow-lg progress-bar-striped bg-$Colour border"
+                                 title="$Status: Started: $StartDay; Ended: $EndDay"
+                                 role="progressbar"
+                                 style="width: $Size%"
+                                 aria-valuenow="$End"
+                                 aria-valuemin="$Start"
+                                 aria-valuemax="$End"
+                            ></div>
+                        <% end_loop %>
+                    </div>
+
+                </div>
                 <div class="card-footer text-body-secondary d-flex justify-content-around">
                     <a href="#"
                        title="Edit application"

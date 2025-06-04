@@ -15,6 +15,7 @@ use Firesphere\JobHunt\Pages\ApplicationPage;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
@@ -35,6 +36,7 @@ class ApplicationPageController extends \PageController
         'TagForm',
         'tags'
     ];
+    public static $draftId;
     protected $HasFilter;
     protected $HasShowAll;
     protected $SortDirection;
@@ -54,6 +56,7 @@ class ApplicationPageController extends \PageController
         if (!Security::getCurrentUser()) {
             $this->httpError(403);
         }
+        self::$draftId = Status::get()->filter(['Status' => 'Draft'])->first()?->ID;
 
         Requirements::javascript('silverstripe/admin:client/dist/tinymce/tinymce.min.js');
         parent::init();
