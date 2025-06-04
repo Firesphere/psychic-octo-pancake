@@ -23,9 +23,9 @@
                    href="<% if $HasFilter %>#<% else %>$Top.Link?$ShowAll<% end_if %>"
                    title="You have closed applications hidden. Click here to show all your applications.">
                     <% if not $HasShowAll %>
-                        Also show hidden applications
+                        Show hidden
                     <% else %>
-                        Back to standard view
+                        Standard view
                     <% end_if %>
                 </a>
             <% end_if %>
