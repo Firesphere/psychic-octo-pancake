@@ -97,7 +97,7 @@ class JobApplication extends DataObject
         'ApplicationDate'
     ];
 
-    private static $default_sort = 'Status.Status = "Draft", ApplicationDate DESC, Created DESC';
+    private static $default_sort = 'ApplicationDate DESC, Created DESC';
 
 
     public function TagForm()
