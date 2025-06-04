@@ -43,9 +43,9 @@ class ChartPageController extends MoodPageController
         $itemList = [];
         $dataSet = ['Totals' => []];
         $labels = [];
-
+        $draftState = Status::get()->filter(['Status' => 'Draft'])->first();
         $applications = $user->JobApplications()
-            ->filter(['Archived' => false])
+            ->filter(['Archived' => false, 'StatusID:Not' => $draftState->ID])
             ->orderBy('ApplicationDate DESC');
         $appIds = $applications->column('ID');
         $appList = GroupedList::create($applications);
