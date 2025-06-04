@@ -65,33 +65,35 @@
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12 pb-2">
-                Application date: $ApplicationDate.Nice()<br/>
-                <a href="$Link" target="_blank">Link to job description</a><br/>
+                <%t Firesphere\JobHunt\Pages\ApplicationPage.ApplicationDate "Application date" %>
+                : $ApplicationDate.Nice()<br/>
+                <a href="$Link"
+                   target="_blank"><%t Firesphere\JobHunt\Pages\ApplicationPage.JobDescLink "Link to job description" %></a><br/>
             </div>
             <% if $CoverLetter %>
                 <div class="col-sm-6 col-xs-12 pb-2">
                     <a href="#coverletter-$ID"
                        data-bs-toggle="modal"
-                       data-bs-target="#coverletter-$ID">Cover letter</a>
+                       data-bs-target="#coverletter-$ID"><%t Firesphere\JobHunt\Pages\ApplicationPage.CoverLetter "Cover letter" %></a>
                 </div>
             <% end_if %>
             <div class="col-12 m-1">
-            <div class="progress">
-                <% loop $TimeLine %>
-                    <div class="progress-bar shadow-lg progress-bar-striped bg-$Colour border"
-                         title="$Status: Started: $StartDay; Ended: $EndDay"
-                         role="progressbar"
-                         style="width: $Size%"
-                         aria-valuenow="$End"
-                         aria-valuemin="$Start"
-                         aria-valuemax="$End"
-                    ></div>
-                <% end_loop %>
-            </div>
+                <div class="progress">
+                    <% loop $TimeLine %>
+                        <div class="progress-bar shadow-lg progress-bar-striped bg-$Colour border"
+                             title="$Status: Started: $StartDay; Ended: $EndDay"
+                             role="progressbar"
+                             style="width: $Size%"
+                             aria-valuenow="$End"
+                             aria-valuemin="$Start"
+                             aria-valuemax="$End"
+                        ></div>
+                    <% end_loop %>
+                </div>
             </div>
             <% if $StatusUpdates.Filter('Hidden', false).Count() %>
                 <div class="col-12 col-md-6">
-                    <h3>Status updates</h3>
+                    <h3><%t Firesphere\JobHunt\Pages\ApplicationPage.StatusUpdates "Status updates" %></h3>
                     <% loop $StatusUpdates.Filter('Hidden', false) %>
                         <% include Note Type=statusupdate %>
                     <% end_loop %>
@@ -99,21 +101,22 @@
             <% end_if %>
             <% if $Interviews.Count || $Notes.Count %>
                 <div class="col-12 col-md-6">
-                    <h3>Interviews:</h3>
+                    <h3><%t Firesphere\JobHunt\Pages\ApplicationPage.Interviews "Interviews" %>:</h3>
                     <% loop $Interviews %>
                         <div class="card mb-3">
                             <div class="card-header">
-                                <h5 class="card-title">Interview on $DateTime.Nice()</h5>
+                                <h5 class="card-title"><%t Firesphere\JobHunt\Pages\ApplicationPage.InterviewDT "Interview on" %> $DateTime.Nice()</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary"><% if $Duration %>$Duration
-                                    minutes<% else %>&nbsp;<% end_if %></h6>
+                                    <%t Firesphere\JobHunt\Pages\ApplicationPage.minutes "minutes" %><% else %>
+                                    &nbsp;<% end_if %></h6>
                             </div>
                             <div class="card-body p-3">
                                 <div class="card-text">
                                     <% if $Notes %>
                                         <h4><a data-bs-toggle="collapse" href="#details-$ID"
                                                aria-expanded="false"
-                                               aria-controls="details-$ID">Notes on this
-                                            interview</a>&nbsp;($Notes.Count)</h4>
+                                               aria-controls="details-$ID"><%t Firesphere\JobHunt\Pages\ApplicationPage.InterviewNotes "Notes on this interview" %></a>&nbsp;($Notes.Count
+                                            )</h4>
                                         <div class="collapse row" id="details-$ID">
                                             <% loop $Notes %>
                                                 <div class="col-12 mb-2">
@@ -123,7 +126,7 @@
                                         </div>
                                     <% else %>
                                         <div class="col">
-                                            <p>No notes.</p>
+                                            <p><%t Firesphere\JobHunt\Pages\ApplicationPage.NoNotes "No notes" %>.</p>
                                         </div>
                                     <% end_if %>
                                 </div>
@@ -135,12 +138,12 @@
                                    data-id="$ID"
                                    data-itemtype="interview-edit"
                                    data-bs-toggle="modal"
-                                   data-bs-target="#addItemModal">Edit this interview</a>
+                                   data-bs-target="#addItemModal"><%t Firesphere\JobHunt\Pages\ApplicationPage.EditInterview "Edit this interview" %></a>
                             </div>
                         </div>
                     <% end_loop %>
                     <% if $Notes.Count %>
-                        <h3>Notes:</h3>
+                        <h3><%t Firesphere\JobHunt\Pages\ApplicationPage.Notes "Notes" %>:</h3>
                         <% loop $Notes %>
                             <% include Note Type=note %>
                         <% end_loop %>

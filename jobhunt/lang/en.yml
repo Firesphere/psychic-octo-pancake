@@ -7,6 +7,8 @@ en:
     db_CV: CV
     db_HideClosed: 'Hide closed'
     db_PublicCV: 'Public CV'
+    db_ShareBoard: 'Share board'
+    db_ShareKey: 'Share key'
     db_URLSegment: 'URL segment'
     db_ViewStyle: 'View style'
     has_many_ExcludedStatus: 'Excluded status'
@@ -129,6 +131,7 @@ en:
     db_Archived: Archived
     db_ClosingDate: 'Closing date'
     db_CoverLetter: 'Cover letter'
+    db_Draft: Draft
     db_Favourite: Favourite
     db_Link: Link
     db_PayLower: 'Pay lower'
@@ -193,6 +196,12 @@ en:
       one: 'A Calendar Page'
       other: '{count} Calendar Pages'
     SINGULARNAME: 'Calendar Page'
+  Firesphere\JobHunt\Pages\ChartPage:
+    PLURALNAME: 'Chart Pages'
+    PLURALS:
+      one: 'A Chart Page'
+      other: '{count} Chart Pages'
+    SINGULARNAME: 'Chart Page'
   Firesphere\JobHunt\Pages\CompanyPage:
     PLURALNAME: 'Company Pages'
     PLURALS:
@@ -223,3 +232,9 @@ en:
       one: 'A Sankey Page'
       other: '{count} Sankey Pages'
     SINGULARNAME: 'Sankey Page'
+  Firesphere\JobHunt\Pages\ShareMyPage:
+    PLURALNAME: 'Share My Pages'
+    PLURALS:
+      one: 'A Share My Page'
+      other: '{count} Share My Pages'
+    SINGULARNAME: 'Share My Page'

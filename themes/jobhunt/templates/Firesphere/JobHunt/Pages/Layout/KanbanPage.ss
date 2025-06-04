@@ -2,7 +2,8 @@
 <div class="container bg-info-subtle p-2 mb-2 d-block d-md-none">
     <div class="row">
         <div class="col-12 d-block d-md-none">
-            <em><b>The Kanban board works better on full desktop/laptop/tablet screens</b></em>
+            <em><b>
+                <%t Firesphere\JobHunt\Pages\KanbanPage.Warning "The Kanban board works better on full desktop/laptop/tablet screens" %></b></em>
         </div>
     </div>
 </div>
@@ -13,7 +14,7 @@
                     data-itemtype="application"
                     data-bs-toggle="modal"
                     data-bs-target="#addItemModal">
-                Add application
+                <%t Firesphere\JobHunt\Pages\ApplicationPage.NewApplication "Add new application" %>
             </button>
         </div>
         <div class="mb-2 col-4">
@@ -29,7 +30,7 @@
         </div>
         <% if $CurrentUser.ShareBoard %>
             <div class="mb-2 col-3" title="Click to copy">
-                Share your board, read-only:<br/>
+                <%t Firesphere\JobHunt\Pages\KanbanPage.Share "Share your board, read-only" %>:<br/>
                 <a href="$ShareLink" class="js-copytext" title="Click to copy"><i
                     class="bi bi-clipboard-pulse js-copytext-icon"></i>
                     $ShareLink</a>
@@ -44,7 +45,7 @@
                    role="button"
                    aria-expanded="false"
                    aria-controls="description-$ColumnTitle"
-                ><h4><i class="bi bi-question-octagon">&nbsp;</i>Kanban Help</h4></a>
+                ><h4><i class="bi bi-question-octagon">&nbsp;</i><%t Firesphere\JobHunt\Pages\KanbanPage.Help "Kanban Help" %></h4></a>
                 <div id="kanban-help" class="collapse">$Content</div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <div class='row'>
     <div class='col-6'>$ForTemplate</div>
     <div class='col-6'>
-        <h3>Notes:</h3>
+        <h3><%t Firesphere\JobHunt\Pages\Page.Notes "Notes" %>:</h3>
         <div class="row">
             <% loop $notes %>
                 <div class="col-12 mb-2">

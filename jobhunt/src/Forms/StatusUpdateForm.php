@@ -95,6 +95,13 @@ class StatusUpdateForm extends Form
                 throw new PermissionFailureException('User does not own this application');
             }
             $appId = $update->JobApplicationID;
+            /** apply a potentially changed Status to the $application */
+            $application = $update->JobApplication();
+            if ($application->StatusUpdates()->last()->ID === $update->Status()->ID) {
+                $application->StatusID = $data['StatusID'];
+                $application->write();
+            }
+             /* */
         }
         $form->saveInto($update);
         $update->JobApplicationID = $appId;

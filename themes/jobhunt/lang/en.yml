@@ -1,4 +1,28 @@
 en:
+  Firesphere\JobHunt\Pages\ApplicationPage:
+    ApplicationDate: 'Application date'
+    CoverLetter: 'Cover letter'
+    EditInterview: 'Edit this interview'
+    InterviewDT: 'Interview on'
+    InterviewNotes: 'Notes on this interview'
+    Interviews: Interviews
+    JobDescLink: 'Link to job description'
+    NewApplication: 'Add new application'
+    NoNotes: 'No notes'
+    Notes: Notes
+    StartAdding: 'Start adding applications'
+    StatusUpdates: 'Status updates'
+    minutes: minutes
+  Firesphere\JobHunt\Pages\CalendarPage:
+    AddCalendar: 'Add your calendar, read-only, to Thunderbird/Outlook/CalDAV/Google calendar'
+  Firesphere\JobHunt\Pages\ChartPage:
+    Legend: Legend
+  Firesphere\JobHunt\Pages\KanbanPage:
+    Help: 'Kanban Help'
+    Share: 'Share your board, read-only'
+    Warning: 'The Kanban board works better on full desktop/laptop/tablet screens'
+  Firesphere\JobHunt\Pages\Page:
+    Notes: Notes
   MemberProfile:
     Registered: Registered
   MemberProfiles:
@@ -13,6 +37,8 @@ en:
     PREV: Prev
     REGISTER: Register
     THISISYOURPROFILE: 'This is your profile!'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    PREVIEW: 'Website preview'
   SilverStripe\Forms\CheckboxSetField_ss:
     NOOPTIONSAVAILABLE: 'No options available'
   SilverStripe\ORM\Hierarchy:

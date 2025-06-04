@@ -15,7 +15,7 @@
                             data-itemtype="application"
                             data-bs-toggle="modal"
                             data-bs-target="#addItemModal">
-                        Add new application
+                        <%t Firesphere\JobHunt\Pages\ApplicationPage.NewApplication "Add new application" %>
                     </button>
                 </div>
                 <div class="my-2 col-sm-6 col-md-6 order-md-last">
@@ -62,20 +62,11 @@
                         </div>
                     <% end_if %>
                 <% else %>
-                    <h3>Import</h3>
-                    <p>You can import applications from CSV via the button below.</p>
-                    <p>Please be aware that the import will not check for duplicate applications, interviews, notes,
-                        etc.</p>
-                    <p><a href="$SiteConfig.DemoCSV.Link" title="download example csv">Example CSV</a></p>
-                    <button type="button" class="btn btn-primary js-formaction"
-                            data-itemtype="import"
-                            data-bs-toggle="modal"
-                            data-bs-target="#addItemModal">
-                        Import from CSV
-                    </button>
+                    <h3>No applications!</h3>
+                    <p><%t Firesphere\JobHunt\Pages\ApplicationPage.StartAdding "Start adding applications" %>.</p>
                 <% end_if %>
             </div>
         </div>
     </div>
-    <% include Pagination PaginatedMatches=$Applications, Sizing=lg %>
+    <% include Pagination PaginatedMatches=$Applications, Sizing=md %>
 </div>

@@ -1,6 +1,7 @@
 <div class="row">
     <h1 class="col-6">$Title</h1>
-    <a class="h4 col-6 text-end" href="#" data-bs-target="#sankey-legend" data-bs-toggle="collapse"><br/>Legend</a>
+    <a class="h4 col-6 text-end" href="#" data-bs-target="#sankey-legend" data-bs-toggle="collapse"><br/>
+        <%t Firesphere\JobHunt\Pages\ChartPage.Legend "Legend" %></a>
 
     <div class="col-12">
         $Content

@@ -132,6 +132,8 @@ en:
     db_Version: Version
     has_one_Parent: Parent
   Symbiote\MemberProfiles\Pages\MemberProfilePage:
+    CLASS_DESCRIPTION: 'A profile page'
+    DESCRIPTION: 'A profile page'
     PLURALNAME: 'Member Profile Pages'
     PLURALS:
       one: 'A Member Profile Page'

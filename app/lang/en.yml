@@ -18,6 +18,7 @@ en:
     SINGULARNAME: 'Contact Page'
     has_many_Contacts: Contacts
   Page:
+    CLASS_DESCRIPTION: 'Generic content page'
     DESCRIPTION: 'Generic content page'
     PLURALNAME: Pages
     PLURALS:
@@ -27,4 +28,5 @@ en:
     db_AllowCSSInline: 'AllowCSS inline'
     db_AllowJSInline: 'AllowJS inline'
     db_HasMap: 'Has map'
+    has_one_ElementalArea: 'Elemental area'
     many_many_CSPDomains: 'CSP domains'
