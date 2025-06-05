@@ -168,6 +168,7 @@ class ApplicationPageController extends \PageController
     public function drafts()
     {
         $this->filter["Status.ID"] = self::getDraftId();
+
         return $this;
     }
 

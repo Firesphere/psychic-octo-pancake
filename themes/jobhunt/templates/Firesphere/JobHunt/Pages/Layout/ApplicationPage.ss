@@ -9,7 +9,7 @@
     </div>
 <% end_if %>
 <div class="row d-flex justify-content-between">
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-12 col-md-4">
         <button type="button" class="btn btn-primary js-formaction pt-1"
                 data-itemtype="application"
                 data-bs-toggle="modal"
@@ -17,10 +17,10 @@
             <%t Firesphere\JobHunt\Pages\ApplicationPage.NewApplication "Add new application" %>
         </button>
     </div>
-    <div class="col-sm-6 col-md-4 order-md-last">
+    <div class="d-none d-md-block col-sm-12 col-md-4 order-md-last">
         <% include ListFilters %>
     </div>
-    <div class="col-sm-12 col-md-2 text-sm-start">
+    <div class="col-md-2 d-md-block d-none">
         <% include Pagination PaginatedMatches=$Applications, Sizing=sm %>
     </div>
 </div>
@@ -48,6 +48,16 @@
                    id="clear_rolefilter"><i
                     class="bi bi-x"></i></a>
             </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12 mt-auto">
+            <ul class="nav justify-content-end border-bottom my-1">
+                <li class="nav-item <% if $Action != "drafts" %>border border-2 rounded-top border-bottom-0<% end_if %>">
+                    <a class="nav-link" aria-current="page" href="$Link">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <% if $Action == "drafts" %>border border-2 rounded-top border-bottom-0<% end_if %>" href="$Link('drafts')">Draft</a>
+                </li>
+            </ul>
         </div>
         <div class="py-1 col-12">
             <% if $CurrentUser.ViewStyle == 'Table' %>
