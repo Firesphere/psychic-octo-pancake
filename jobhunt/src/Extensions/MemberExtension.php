@@ -231,7 +231,12 @@ class MemberExtension extends DataExtension
         self::set_job_applications();
         if (self::$_job_applications->count()) {
 
-            $result = self::$_job_applications->filter(['Status.AutoHide' => true, 'Archived' => false]);
+            $result = self::$_job_applications->filter([
+                'Status.AutoHide' => true,
+                'Archived' => false
+            ])->exclude([
+                'ApplicationDate' => null
+            ]);
             if ($result->count()) {
                 return $result;
             }

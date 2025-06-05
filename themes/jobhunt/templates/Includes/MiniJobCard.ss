@@ -15,11 +15,12 @@
                 <span
                     class="border border-1 m-0 px-1 bg-white text-$ColourStyle"
                     title="$Name">&#9679;</span><% end_with %>&nbsp;
-                <a href="$InternalLink" class="card-link quickfilter-role" data-appid="$ID">$Role</a>
+                <a href="$InternalLink" class="card-link quickfilter-role" data-appid="$ID"
+                   title="<%t Firesphere\JobHunt\Pages\KanbanPage.InternalLink "View application" %>">$Role</a>
             </h6>
             <a href="$Company.InternalLink" class="h6 card-subtitle mb-2 text-body-secondary quickfilter"
-               data-appid="$ID">$Company.Name</a>
-            <span class="card-text small">$ApplicationDate.Nice</span>
+               data-appid="$ID"  title="<%t Firesphere\JobHunt\Pages\KanbanPage.CompanyLink "Company name" %>">$Company.Name</a>
+            <span class="card-text small" title="<%t Firesphere\JobHunt\Pages\KanbanPage.ApplicationDate "Application date" %>">$ApplicationDate.Nice</span>
         </div>
         <% if $StatusUpdatesVisibleCount || $Interviews.Count()%>
             <div class="card-body">
