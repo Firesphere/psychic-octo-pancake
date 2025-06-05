@@ -39,5 +39,30 @@
                 </div>
             </div>
         </div>
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header"><i class="bi bi-newspaper"></i>&nbsp;Latest news</div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <% loop $LatestNews %>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <a href="$Link">
+                                    <% if $FeaturedImage %>
+                                        $FeaturedImage.FocusFill(50, 50)
+                                    <% else %>
+                                        <img src="https://placecats.com/50/50" alt="Placeholder cat" title="Placeholder cat image for $Title" />
+                                    <% end_if %>
+                                    <span class="ps-1">$Title</span>
+                                </a>
+                                <span class="small">$PublishDate.Nice</span>
+                            </li>
+                        <% end_loop %>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="$LatestNews.First.Parent.Link" title="All news"><i class="bi bi-newspaper"></i>&nbsp;All news</a>
+                </div>
+            </div>
+        </div>
     </div>
 <% end_with %>

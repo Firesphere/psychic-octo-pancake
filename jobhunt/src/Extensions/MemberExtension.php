@@ -2,6 +2,9 @@
 
 namespace Firesphere\JobHunt\Extensions;
 
+use Axllent\Weblog\Model\Blog;
+use Axllent\Weblog\Model\BlogPost;
+use Axllent\Weblog\Model\BlogPostController;
 use Firesphere\JobHunt\Models\BaseNote;
 use Firesphere\JobHunt\Models\ExcludedStatus;
 use Firesphere\JobHunt\Models\Interview;
@@ -326,5 +329,11 @@ class MemberExtension extends DataExtension
             }
         }
         return ArrayList::create([JobApplication::create()]);
+    }
+
+    public function getLatestNews()
+    {
+        return BlogPost::get()->limit(4)
+            ->sort(['PublishDate' => 'DESC']);
     }
 }
