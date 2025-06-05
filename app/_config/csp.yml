@@ -101,6 +101,7 @@ Firesphere\CSPHeaders\View\CSPBackend:
     img-src:
       allow:
         - piwik.firesphere.dev
+        - placecats.com
       self: true
     media-src:
       allow: [ ]
