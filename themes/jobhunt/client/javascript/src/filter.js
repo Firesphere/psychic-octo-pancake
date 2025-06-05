@@ -29,10 +29,13 @@ const searchResult = (field) => {
         .then(response => response.json())
         .then(response => {
             tablebody.innerHTML = '';
-            tablebody.insertAdjacentHTML('beforeend', response['result']);
-            Array.from(document.getElementsByClassName('pagination')).forEach(paginator => {
-                paginator.remove();
-            });
+            timer = setTimeout(() => {
+
+                tablebody.insertAdjacentHTML('beforeend', response['result']);
+                Array.from(document.getElementsByClassName('pagination')).forEach(paginator => {
+                    paginator.remove();
+                });
+            }, 50);
         });
 }
 export default () => {
@@ -66,19 +69,16 @@ export default () => {
                 }
                 tablebody.innerHTML = '';
                 tablebody.insertAdjacentHTML('beforeend',
-                    '<tr><td colspan="100" class="text-center p-3">\n' +
-                    '  <div class="spinner-border" role="status">\n' +
+                    '\n' +
+                    '  <div class="d-flex justify-content-center p-3 m-3"><div class="spinner-border" role="status">\n' +
                     '    <span class="visually-hidden">Loading...</span>\n' +
-                    '  </div>\n' +
-                    '</td></tr>');
+                    '  </div></div>');
                 if (field.value !== '') {
-                    timer = setTimeout(() => {
-                        searchResult(field)
-                    }, 500);
+                    searchResult(field)
                 } else {
                     timer = setTimeout(() => {
                         window.location.reload();
-                    }, 1500)
+                    }, 150)
                 }
             });
         });
