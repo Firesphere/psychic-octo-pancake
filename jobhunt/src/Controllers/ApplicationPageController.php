@@ -93,7 +93,7 @@ class ApplicationPageController extends \PageController
             }
         } else {
             $this->HasShowAll = $this->getRequest()->getVar('showall') ?? false;
-            if (Security::getCurrentUser()->HideClosed && !$this->getRequest()->getVar('showall')) {
+            if (Security::getCurrentUser()->HideClosed && !$this->HasShowAll) {
                 $closed = Status::get()->filter(['AutoHide' => true])->column('ID');
                 $this->filter['StatusID:Not'] = $closed;
             }
