@@ -34,7 +34,8 @@ class ApplicationPageController extends \PageController
         'application',
         'delete',
         'TagForm',
-        'tags'
+        'tags',
+        'drafts'
     ];
     public static $draftId;
     protected $HasFilter;
@@ -50,6 +51,26 @@ class ApplicationPageController extends \PageController
      * @var true
      */
     protected $FavSet;
+
+    /**
+     * @return mixed
+     */
+    public static function getDraftId()
+    {
+        if (!self::$draftId) {
+            self::$draftId = Status::get()->filter(['Status' => 'Draft'])->first()?->ID;
+        }
+
+        return self::$draftId;
+    }
+
+    /**
+     * @param mixed $draftId
+     */
+    public static function setDraftId($draftId): void
+    {
+        self::$draftId = $draftId;
+    }
 
     public function init()
     {

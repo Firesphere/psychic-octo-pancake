@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Forms;
 
+use Firesphere\JobHunt\Controllers\ApplicationPageController;
 use Firesphere\JobHunt\Models\ApplicationNote;
 use Firesphere\JobHunt\Models\Company;
 use Firesphere\JobHunt\Models\JobApplication;
@@ -51,8 +52,7 @@ class ApplicationForm extends Form
         $companyField->setAttribute("list", "companylist");
         $status->addExtraClass('form-select');
         $status->setEmptyString('-- Select application status --');
-        $draftStatus = $statusses->filter(['Status' => 'Draft'])->first()?->ID;
-        $status->setAttribute('data-draft', $draftStatus);
+        $status->setAttribute('data-draft', ApplicationPageController::getDraftId());
 
         $paylow->addExtraClass('col');
         $payUp->addExtraClass('col');
@@ -63,7 +63,7 @@ class ApplicationForm extends Form
         $reqFields = ['Company.Name', 'Role', 'StatusID'];
         if ($controller->getRequest()->isPOST()) {
             $statusVar = $controller->getRequest()->postVar('StatusID');
-            if ((int)$statusVar !== $draftStatus) {
+            if ((int)$statusVar !== ApplicationPageController::getDraftId()) {
                 $reqFields[] = 'ApplicationDate';
             }
         } else {

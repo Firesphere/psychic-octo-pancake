@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Models;
 
 use DOMDocument;
+use Firesphere\JobHunt\Controllers\ApplicationPageController;
 use Firesphere\JobHunt\Pages\ApplicationPage;
 use LeKoala\FormElements\BsTagsMultiField;
 use SilverStripe\Control\Controller;
@@ -169,7 +170,7 @@ class JobApplication extends DataObject
 
     public function getIsOld()
     {
-        if ($this->Status()->AutoHide || $this->Status()->Status === "Draft") {
+        if ($this->Status()->AutoHide || $this->Status()->ID === ApplicationPageController::getDraftId()) {
             return $this->Status()->getColourStyle();
         }
         $lastStatus = $this->StatusUpdates()->orderBy('Created ASC')->Last();
