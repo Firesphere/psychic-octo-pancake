@@ -13,3 +13,9 @@ SilverStripe\Assets\Image:
 Firesphere\OpenStreetmaps\Models\Location:
   extensions:
     - Firesphere\JobHunt\Extensions\OSMExtension
+DNADesign\Elemental\Models\ElementalArea:
+  extensions:
+    - Firesphere\JobHunt\Extensions\ElementExtension
+DNADesign\Elemental\Models\BaseElement:
+  extensions:
+    - Firesphere\JobHunt\Extensions\ElementExtension

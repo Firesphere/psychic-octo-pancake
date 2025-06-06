@@ -10,6 +10,7 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBBoolean;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\SiteConfig\SiteConfig;
@@ -19,6 +20,7 @@ use SilverStripe\SiteConfig\SiteConfig;
  *
  * @property string $Status
  * @property string $Colour
+ * @property string $Description
  * @property bool $AutoHide
  * @property int $SortOrder
  * @method DataList|JobApplication[] Applications()
@@ -30,10 +32,11 @@ class Status extends DataObject
     public static $id_map;
     private static $table_name = 'ApplicationStatus';
     private static $db = [
-        'Status'    => DBVarchar::class,
-        'Colour'    => DBVarchar::class,
-        'AutoHide'  => DBBoolean::class . '(false)',
-        'SortOrder' => DBInt::class,
+        'Status'      => DBVarchar::class,
+        'Colour'      => DBVarchar::class,
+        'Description' => DBHTMLText::class,
+        'AutoHide'    => DBBoolean::class . '(false)',
+        'SortOrder'   => DBInt::class,
     ];
     private static $has_many = [
         'Applications'     => JobApplication::class . '.Status',

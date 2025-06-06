@@ -55,8 +55,8 @@
     "extra": {
         "patches": {
             "dnadesign/silverstripe-elemental": [
-                "patches/dnadesign-silverstripe-elemental-src-models-elementalarea-php.patch",
-                "patches/dnadesign-silverstripe-elemental-src-models-baseelement-php.patch"
+                "patches/dnadesign-silverstripe-elemental-src-models-baseelement-php.patch",
+                "patches/dnadesign-silverstripe-elemental-src-models-elementalarea-php.patch"
             ]
         },
         "project-files": [
