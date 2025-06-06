@@ -50,6 +50,6 @@ RUN /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction --no
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get purge -y git unzip
 
-
+RUN mkdir /var/www/html/vendor/sunnysideup/elemental-toc/client
 # Hacky approach to ensuring apache has access to it's root folder
 RUN sed -i 's|set -e|set -e\n\n/var/www/html/vendor/bin/sake dev/build flush=all\n\ncomposer vendor-expose copy\n\n\nchown -R www-data:www-data /var/www/html\n |' /usr/local/bin/docker-php-entrypoint
