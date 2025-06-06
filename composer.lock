@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5536494af0f62ad4c20de366484c2bfd",
+    "content-hash": "d77409b53f87b29f1a6d374e33d3150b",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -7684,16 +7684,16 @@
         },
         {
             "name": "sunnysideup/elemental-toc",
-            "version": "1.0.3",
+            "version": "dev-tidyup/fixes",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sunnysideup/silverstripe-elemental-toc.git",
-                "reference": "72b93c2a080814b08e926470d4c7784991ea783c"
+                "url": "https://github.com/Firesphere/silverstripe-elemental-toc.git",
+                "reference": "bc7264ee3cc474ad6fbd3e1da508aba14ffe35c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sunnysideup/silverstripe-elemental-toc/zipball/72b93c2a080814b08e926470d4c7784991ea783c",
-                "reference": "72b93c2a080814b08e926470d4c7784991ea783c",
+                "url": "https://api.github.com/repos/Firesphere/silverstripe-elemental-toc/zipball/bc7264ee3cc474ad6fbd3e1da508aba14ffe35c5",
+                "reference": "bc7264ee3cc474ad6fbd3e1da508aba14ffe35c5",
                 "shasum": ""
             },
             "require": {
@@ -7701,17 +7701,11 @@
                 "silverstripe/framework": "^4.0 || ^5.0"
             },
             "type": "silverstripe-vendormodule",
-            "extra": {
-                "expose": [
-                    "client"
-                ]
-            },
             "autoload": {
                 "psr-4": {
                     "Sunnysideup\\ElementalToc\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7724,19 +7718,18 @@
             ],
             "description": "Add a Table of Contents (TOC) block to your Elemental Area",
             "keywords": [
+                "Blocks",
+                "CMS",
+                "Elemental",
+                "Silverstripe",
                 "Silverstripe-CMS",
                 "TOC",
-                "blocks",
-                "cms",
-                "elemental",
-                "silverstripe",
-                "table of contents"
+                "Table of Contents"
             ],
             "support": {
-                "issues": "https://github.com/sunnysideup/silverstripe-elemental-toc/issues",
-                "source": "https://github.com/sunnysideup/silverstripe-elemental-toc/tree/1.0.3"
+                "source": "https://github.com/Firesphere/silverstripe-elemental-toc/tree/tidyup/fixes"
             },
-            "time": "2023-10-26T01:45:02+00:00"
+            "time": "2025-06-06T23:09:32+00:00"
         },
         {
             "name": "symbiote/silverstripe-gridfieldextensions",
@@ -14525,7 +14518,8 @@
         "silverstripe/login-forms": 0,
         "silverstripe/recipe-cms": 0,
         "silverstripe/recipe-plugin": 0,
-        "silverstripe/vendor-plugin": 0
+        "silverstripe/vendor-plugin": 0,
+        "sunnysideup/elemental-toc": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

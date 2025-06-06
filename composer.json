@@ -41,7 +41,7 @@
         "silverstripe/totp-authenticator": "^5",
         "silverstripe/vendor-plugin": "~2@stable",
         "silverstripe/webauthn-authenticator": "^5",
-        "sunnysideup/elemental-toc": "^1.0",
+        "sunnysideup/elemental-toc": "dev-tidyup/fixes",
         "symbiote/silverstripe-gridfieldextensions": "^4.0",
         "symfony/mailjet-mailer": "^7.0",
         "wilr/silverstripe-googlesitemaps": "^3.0"
@@ -53,6 +53,12 @@
         "silverleague/ideannotator": "*",
         "symplify/vendor-patches": "^11.3"
     },
+    "repositories": [
+        {
+            "type": "github",
+            "url": "git@github.com:Firesphere/silverstripe-elemental-toc.git"
+        }
+    ],
     "extra": {
         "patches": {
             "dnadesign/silverstripe-elemental": [
