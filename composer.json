@@ -9,6 +9,7 @@
         "3dgoo/silverstripe-hcaptcha": "^2",
         "axllent/silverstripe-weblog": "^1.4.0",
         "axllent/silverstripe-weblog-categories": "^1.1",
+        "cweagans/composer-patches": "^1.7",
         "dnadesign/silverstripe-elemental": "^5.4",
         "dnadesign/silverstripe-elemental-virtual": "^2.2",
         "dynamic/silverstripe-country-dropdown-field": "^2.0",
@@ -40,10 +41,10 @@
         "silverstripe/totp-authenticator": "^5",
         "silverstripe/vendor-plugin": "~2@stable",
         "silverstripe/webauthn-authenticator": "^5",
+        "sunnysideup/elemental-toc": "^1.0",
         "symbiote/silverstripe-gridfieldextensions": "^4.0",
         "symfony/mailjet-mailer": "^7.0",
-        "wilr/silverstripe-googlesitemaps": "^3.0",
-        "cweagans/composer-patches": "^1.7"
+        "wilr/silverstripe-googlesitemaps": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.47",
