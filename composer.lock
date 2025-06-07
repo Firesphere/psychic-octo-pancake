@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d77409b53f87b29f1a6d374e33d3150b",
+    "content-hash": "033be90259b0b5119948ccb9c671cc93",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",

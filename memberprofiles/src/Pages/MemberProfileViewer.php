@@ -3,7 +3,6 @@
 namespace Symbiote\MemberProfiles\Pages;
 
 use PageController;
-
 use Exception;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\ORM\PaginatedList;

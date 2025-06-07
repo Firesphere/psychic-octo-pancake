@@ -11,7 +11,6 @@ use Firesphere\JobHunt\Models\Status;
  */
 class StatusElement extends ElementContent
 {
-
     private static $table_name = 'StatusElement';
 
     private static $singular_name = 'Status Element';

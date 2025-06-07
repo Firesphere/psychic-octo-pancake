@@ -101,7 +101,7 @@ class StatusUpdateForm extends Form
                 $application->StatusID = $data['StatusID'];
                 $application->write();
             }
-             /* */
+            /* */
         }
         $form->saveInto($update);
         $update->JobApplicationID = $appId;

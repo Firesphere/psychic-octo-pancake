@@ -77,13 +77,13 @@ class MemberProfilePageControllerExtension extends Extension
 
             return $this->owner;
         }
-//        if (!$user->inGroups(['administrators', 'subscriber'])) {
-//            $this->owner->flashMessage('You are not allowed to archive');
-//
-//            $this->owner->redirectBack();
-//
-//            return $this->owner;
-//        }
+        //        if (!$user->inGroups(['administrators', 'subscriber'])) {
+        //            $this->owner->flashMessage('You are not allowed to archive');
+        //
+        //            $this->owner->redirectBack();
+        //
+        //            return $this->owner;
+        //        }
 
         $postVars = $request->postVars();
 

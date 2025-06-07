@@ -4,7 +4,6 @@ namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\ApplicationNote;
-use Firesphere\JobHunt\Models\Company;
 use Firesphere\JobHunt\Models\Interview;
 use Firesphere\JobHunt\Models\InterviewNote;
 use Firesphere\JobHunt\Models\JobApplication;
@@ -14,8 +13,6 @@ use Firesphere\JobHunt\Models\Tag;
 use Firesphere\JobHunt\Pages\ApplicationPage;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
@@ -119,59 +116,12 @@ class ApplicationPageController extends \PageController
         }
     }
 
-    public function getCompanyList($cached = true)
-    {
-        if ($cached && $this->Companies) {
-            return $this->Companies;
-        }
-        /** @var MemberExtension|Member $user */
-        $user = Security::getCurrentUser();
-        if ($user->JobApplications()->Count()) {
-            $this->Companies = $this->CompaniesList
-                ->filter(['Applications.Archived' => false])
-                ->sort('Name ASC');
-
-            if ($this->getRequest()->getVar('company')) {
-                $companyID = $this->getRequest()->getVar('company');
-                $this->ActiveCompany = $this->Companies->filter(['ID' => $companyID])->first();
-            }
-
-            return $this->Companies;
-
-        }
-
-        return ArrayList::create();
-    }
-
-    public function getStatusFilters()
-    {
-        return Status::get();
-    }
-
-    public function getApplications()
-    {
-        $user = Security::getCurrentUser();
-
-        $applications = $user->JobApplications();
-        $applications = $applications->filter($this->filter)
-            ->exclude(['Archived' => true])
-            ->sort($this->sort);
-
-        $list = PaginatedList::create($applications, $this->getRequest());
-        if ($user->ViewStyle === 'Card') {
-            $list->setPageLength(12);
-        }
-
-        return $list;
-    }
-
     public function drafts()
     {
         $this->filter["Status.ID"] = self::getDraftId();
 
         return $this;
     }
-
 
     public function application()
     {

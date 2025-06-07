@@ -15,7 +15,6 @@ use SilverStripe\Core\Injector\Injector;
  */
 class ElementExtension extends Extension
 {
-
     public function onAfterWrite()
     {
         $caches = ['.ElementalArea', '.BaseElement'];

@@ -4,6 +4,7 @@ namespace Firesphere\JobHunt\Controllers;
 
 use Firesphere\JobHunt\Pages\KanbanPage;
 use Firesphere\JobHunt\Pages\ShareMyPage;
+use PageController;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -27,23 +28,24 @@ class ShareMyPageController extends KanbanPageController
     {
         $params = $this->getURLParams();
         if (!$params['Action'] || !$params['ID']) {
-            $this->redirect('/');
+            $this->httpError(403, 'Invalid action');
+            return;
         }
         \PageController::init();
         Requirements::block('_resources/themes/jobhunt/dist/js/kanban.js');
         if (Security::getCurrentUser()) {
             $this->redirect(KanbanPage::get()->first()->getAbsoluteLiveLink());
+            return;
         }
-        $member = $this->CurrentUser();
+        $member = $this->getUserForKey();
         if (!$member) {
-            return $this->redirect('/');
+            $this->httpError(403, '');
+            return;
         }
-        $firstName = $member->FirstName;
-        $this->dataRecord->Title = "Shared kanboard view for $firstName";
         return $this;
     }
 
-    public function CurrentUser()
+    public function getUserForKey()
     {
         $shareKey = $this->getRequest()->param('ID');
         if (!Security::getCurrentUser()) {

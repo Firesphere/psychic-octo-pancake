@@ -68,10 +68,10 @@ namespace {
                 $cFilter = [
                     'Applications.ID' => $userApplicationIds,
                 ];
-//                $countryname = Environment::getEnv("GEOIP_COUNTRY_CODE");
-//                if (!empty($countryname) && $countryname !== 'N/A') {
-//                    $cFilter['Country'] = [null, $countryname];
-//                }
+                //                $countryname = Environment::getEnv("GEOIP_COUNTRY_CODE");
+                //                if (!empty($countryname) && $countryname !== 'N/A') {
+                //                    $cFilter['Country'] = [null, $countryname];
+                //                }
                 $companies = Company::get()
                     ->filterAny($cFilter);
                 $this->CompanyCacheKey = sprintf("%d-%d", $user->ID, $companies->count());

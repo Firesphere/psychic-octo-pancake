@@ -2,6 +2,7 @@
     "name": "firesphere/jobhunt",
     "type": "silverstripe-recipe",
     "description": "Jobhunting helper to keep track of job applications",
+    "version": "10.0.1",
     "require": {
         "php": "^8.2",
         "ext-intl": "*",

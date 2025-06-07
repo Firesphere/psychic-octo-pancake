@@ -15,7 +15,6 @@ use SilverStripe\Security\Member;
  */
 class MemberExtension extends DataExtension
 {
-
     private static $db = [
         'Theme' => 'Enum("auto,default,cerulean,cosmo,cyborg,darkly,flatly,journal,litera,lumen,lux,materia,minty,morph,pulse,quartz,sandstone,simplex,sketchy,slate,solar,spacelab,superhero,united,vapor,yeti,zephyr","auto")'
     ];
