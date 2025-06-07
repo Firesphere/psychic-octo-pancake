@@ -8,14 +8,14 @@
                 <% end_if %>
             </div>
             <div class="col-md-{$Width1}">
-                <div class="featured-text-inverse text-$Content1Align">
+                <div class="featured-text-inverse text-$Content1Align pe-1">
                     <div class="text-black-50 mb-0">
                         $Content1
                     </div>
                 </div>
             </div>
             <div class="col-md-{$Width2}">
-                <div class="featured-text text-$Content2Align">
+                <div class="featured-text text-$Content2Align ps-1">
                     <div class="text-black-50 mb-0">
                         $Content2
                     </div>

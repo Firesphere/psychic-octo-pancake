@@ -47,8 +47,11 @@ class ControllerExtension extends Extension
 
     public function FlashMessagesPresent()
     {
-        $session = $this->owner->getRequest()->getSession();
+        if ($this->owner->getRequest()->hasSession()) {
+            $session = $this->owner->getRequest()->getSession();
 
-        return $session->get('flashmessages') ? true : false;
+            return $session->get('flashmessages') ? true : false;
+        }
+        return false;
     }
 }

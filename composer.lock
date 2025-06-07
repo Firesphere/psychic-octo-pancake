@@ -7688,12 +7688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Firesphere/silverstripe-elemental-toc.git",
-                "reference": "bc7264ee3cc474ad6fbd3e1da508aba14ffe35c5"
+                "reference": "d68e04b5cc8aac34683e7272fca4394d3b8dd1be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Firesphere/silverstripe-elemental-toc/zipball/bc7264ee3cc474ad6fbd3e1da508aba14ffe35c5",
-                "reference": "bc7264ee3cc474ad6fbd3e1da508aba14ffe35c5",
+                "url": "https://api.github.com/repos/Firesphere/silverstripe-elemental-toc/zipball/d68e04b5cc8aac34683e7272fca4394d3b8dd1be",
+                "reference": "d68e04b5cc8aac34683e7272fca4394d3b8dd1be",
                 "shasum": ""
             },
             "require": {
@@ -7729,7 +7729,7 @@
             "support": {
                 "source": "https://github.com/Firesphere/silverstripe-elemental-toc/tree/tidyup/fixes"
             },
-            "time": "2025-06-06T23:09:32+00:00"
+            "time": "2025-06-07T06:07:57+00:00"
         },
         {
             "name": "symbiote/silverstripe-gridfieldextensions",
