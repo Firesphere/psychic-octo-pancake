@@ -1,3 +1,6 @@
+<% if $NoPad %>
+    <input $AttributesHTML />
+<% else %>
 <div class="py-3">
     <% if $UseButtonTag %>
         <button $AttributesHTML.addExtraClass('btn btn-outline-primary')>
@@ -7,3 +10,4 @@
         <input $AttributesHTML />
     <% end_if %>
 </div>
+<% end_if %>
