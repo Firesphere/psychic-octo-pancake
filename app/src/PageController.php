@@ -3,6 +3,7 @@
 use Cashware\Bootswatcher\SiteConfigTheme;
 use Firesphere\AdblockWarning\Extensions\SiteConfigExtension;
 use Firesphere\JobHunt\Extensions\MemberExtension;
+use Firesphere\JobHunt\Forms\TagForm;
 use Firesphere\JobHunt\Models\Company;
 use Firesphere\ModuleHelpers\Extensions\PageControllerExtension;
 use SilverStripe\CMS\Controllers\ContentController;
@@ -39,6 +40,7 @@ class PageController extends ContentController
      * @var array
      */
     private static $allowed_actions = [
+        'TagForm'
     ];
 
     protected function init()
@@ -46,11 +48,11 @@ class PageController extends ContentController
         parent::init();
         Requirements::block("silverstripe/admin: thirdparty/jquery/jquery.js");
         Requirements::block("symbiote/silverstripe-memberprofiles: client/javascript/ConfirmedPasswordField.js");
+        Requirements::block('https://hcaptcha.com/1/api.js?hl=en');
         /** @var SiteConfigExtension|SiteConfigTheme $SiteConfig */
         Requirements::css('//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
         Requirements::css('_resources/themes/jobhunt/dist/css/main.css');
         Requirements::javascript('_resources/themes/jobhunt/dist/js/main.js');
-        Requirements::block('https://hcaptcha.com/1/api.js?hl=en');
         Requirements::javascript('_resources/themes/jobhunt/dist/api.js');
 
         if (Security::getCurrentUser()) {
@@ -83,5 +85,10 @@ class PageController extends ContentController
         }
 
         return sprintf('%s - %s', $year, $now);
+    }
+
+    public function TagForm()
+    {
+        return TagForm::create(-1);
     }
 }

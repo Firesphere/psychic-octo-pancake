@@ -1,7 +1,7 @@
 <% if not $ID %>
     <div class="card col mb-3">
         <div class="card-body">
-            <div class="card-text">No applications.</div>
+            <div class="card-text"><%t Firesphere\JobHunt\Pages\KanbanPage.NoApplications "No applications" %>.</div>
         </div>
     </div>
 <% else %>
@@ -10,7 +10,8 @@
             <h6 class="card-title">
                 <a href="#"
                    class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                   data-id="$ID" title="Favourite this application">
+                   data-id="$ID"
+                   title="<%t Firesphere\JobHunt\Pages\KanbanPage.Favourite "Favourite this application" %>">
                     <i class="bi bi-star<% if $Favourite %>-fill text-warning<% end_if %>"></i></a>&nbsp;<% with $Status %>
                 <span
                     class="border border-1 m-0 px-1 bg-white text-$ColourStyle"
@@ -19,8 +20,15 @@
                    title="<%t Firesphere\JobHunt\Pages\KanbanPage.InternalLink "View application" %>">$Role</a>
             </h6>
             <a href="$Company.InternalLink" class="h6 card-subtitle mb-2 text-body-secondary quickfilter"
-               data-appid="$ID"  title="<%t Firesphere\JobHunt\Pages\KanbanPage.CompanyLink "Company name" %>">$Company.Name</a>
-            <span class="card-text small" title="<%t Firesphere\JobHunt\Pages\KanbanPage.ApplicationDate "Application date" %>">$ApplicationDate.Nice</span>
+               data-appid="$ID"
+               title="<%t Firesphere\JobHunt\Pages\KanbanPage.CompanyLink "Company name" %>">$Company.Name</a>
+            <span class="card-text small"
+                  title="<%t Firesphere\JobHunt\Pages\KanbanPage.ApplicationDate "Application date" %>">$ApplicationDate.Nice</span>
+            <% if $Tags.Count %>
+                <span class="pull-right"
+                      title="Tags: <% loop $Tags %>$Title<% if not $IsLast %>, <% end_if %><% end_loop %>"><i
+                    class="bi bi-tag"></i></span>
+            <% end_if %>
         </div>
         <% if $StatusUpdatesVisibleCount || $Interviews.Count()%>
             <div class="card-body">

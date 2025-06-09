@@ -77,6 +77,7 @@
                        data-bs-target="#coverletter-$ID"><%t Firesphere\JobHunt\Pages\ApplicationPage.CoverLetter "Cover letter" %></a>
                 </div>
             <% end_if %>
+            <div class="col-12 m-1">$TagForm</div>
             <div class="col-12 m-1">
                 <div class="progress">
                     <% loop $TimeLine %>

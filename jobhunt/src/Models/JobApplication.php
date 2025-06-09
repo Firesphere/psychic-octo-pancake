@@ -4,6 +4,7 @@ namespace Firesphere\JobHunt\Models;
 
 use DOMDocument;
 use Firesphere\JobHunt\Controllers\ApplicationPageController;
+use Firesphere\JobHunt\Forms\TagForm;
 use Firesphere\JobHunt\Pages\ApplicationPage;
 use LeKoala\FormElements\BsTagsMultiField;
 use SilverStripe\Control\Controller;
@@ -103,29 +104,10 @@ class JobApplication extends DataObject
 
     public function TagForm()
     {
-        $fields = FieldList::create([
-            $fieldTag = BsTagsMultiField::create('Tags', 'Tags'),
-            HiddenField::create('ID', 'ID', $this->ID)
-        ]);
-
-        $page = ApplicationPage::get()->first();
-        $fieldTag->setAttribute('data-allow-new', "true");
-        $fieldTag->setAttribute('data-server', $page->Link('/tags'));
-        $fieldTag->setAttribute('data-separator', " |,|  ");
-        $fieldTag->setAttribute('data-config', [
-            'noCache'   => "false",
-            'addOnBlur' => "true",
-        ]);
-
-        $fieldTag->addCallbackMethod('onNewTag', function ($data) {
-            print_r('The data:' . $data);
-        });
-
-        $action = FieldList::create([
-            FormAction::create('submit', ':tick:')
-        ]);
-
-        $form = Form::create(Controller::curr(), 'TagForm', $fields, $action);
+        if (Controller::curr()->IsSharePage) {
+            return '';
+        }
+        $form = TagForm::create($this->ID);
         $form->setAttribute('id', uniqid('', false));
 
         return $form;

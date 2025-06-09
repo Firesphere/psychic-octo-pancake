@@ -46,15 +46,14 @@
             class="bi bi-eye-fill"></i></a></td>
     </tr>
     <tr class="$OddEven">
-        <td rowspan="3">
-            <% if $Link %>
-                <a href="$Link" target="_blank">Job description</a>
-            <% end_if %>
+        <td rowspan="4">
+            <% if $Link %><a href="$Link" target="_blank">Job description</a><% end_if %>
             <% if $PayUpper || $PayLower %><br/>Pay:<% end_if %>
             <% if $PayUpper %>
                 <% if $PayLower %>$PayLower - <% end_if %>$PayUpper
             <% end_if %>
             <% if not $PayUpper && $PayLower %>$PayLower<% end_if %>
+            $TagForm
         </td>
         <th class="col-1">Notes</th>
         <td colspan="5">
@@ -127,7 +126,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="8" class="bg-light-subtle py-2">
+        <td colspan="7" class="bg-light-subtle py-2">
             <div class="progress">
                 <% loop $TimeLine %>
                     <div class="progress-bar shadow-lg progress-bar-striped bg-$Colour border"
