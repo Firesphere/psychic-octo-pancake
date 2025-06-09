@@ -104,6 +104,9 @@ class JobApplication extends DataObject
 
     public function TagForm()
     {
+        if (Controller::curr()->IsSharePage) {
+            return '';
+        }
         $form = TagForm::create($this->ID);
         $form->setAttribute('id', uniqid('', false));
 
