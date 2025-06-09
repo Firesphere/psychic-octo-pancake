@@ -3,7 +3,6 @@
         <div class="col-sm-12 col-md-4 pb-3 d-flex">
             <div class="card  flex-grow-1">
                 <div class="card-header bg-$IsOld-subtle">
-                    <div class="d-flex justify-content-between">
                         <h4><a href="#"
                                class="js-fav pe-1 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                                data-id="$ID" title="Favourite this application">
@@ -14,8 +13,7 @@
                                 <a href="$InternalLink">$Name</a>
                             <% end_with %>
                         </h4>
-
-                    </div>
+                        $TagForm
                     <div class="d-flex justify-content-between">
                         <small class="pull-left">Application date: $ApplicationDate.Nice()</small>
                         <a href="$InternalLink" class="h4 mb-0" title="View application"><i

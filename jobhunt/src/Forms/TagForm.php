@@ -31,6 +31,7 @@ class TagForm extends Form
         $fieldTag->setConfig('noCache', "false");
         $fieldTag->setConfig('addOnBlur', "true");
         $fieldTag->setConfig('allowMultiple', "true");
+        $fieldTag->setAttribute('placeholder', 'Tags');
         if ($id !== -1) {
             $user = Security::getCurrentUser()->Tags();
             $fieldTag->setSource($user->map('ID', 'Title')->toArray());
