@@ -64,7 +64,7 @@ export default () => {
 
 }
 
-const bindActions = (list) => {
+export const bindActions = (list) => {
     list.forEach(action => {
         action.addEventListener('click', (e) => {
             e.preventDefault();

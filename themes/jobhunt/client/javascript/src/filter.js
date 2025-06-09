@@ -1,3 +1,5 @@
+import {bindActions} from './forms';
+
 const filters = [
     document.getElementById('show_rolefilter'),
     document.getElementById('show_companyfilter')
@@ -35,9 +37,25 @@ const searchResult = (field) => {
                 Array.from(document.getElementsByClassName('pagination')).forEach(paginator => {
                     paginator.remove();
                 });
+                let actions = Array.from(document.getElementsByClassName('js-formaction'));
+
+                bindActions(actions);
             }, 50);
         });
 }
+
+const showLoader = () => {
+    if (!window.shown) {
+        window.shown = true;
+        tablebody.innerHTML = '';
+        tablebody.insertAdjacentHTML('beforeend',
+            '\n' +
+            '  <div class="d-flex justify-content-center p-3 m-3"><div class="spinner-border" role="status">\n' +
+            '    <span class="visually-hidden">Loading...</span>\n' +
+            '  </div></div>');
+    }
+}
+
 export default () => {
     if (filterclears.length > 0 && filterclears[0]) {
         filterclears.forEach(clearer => {
@@ -67,14 +85,12 @@ export default () => {
                 if (typeof timer !== 'undefined') {
                     window.clearTimeout(timer);
                 }
-                tablebody.innerHTML = '';
-                tablebody.insertAdjacentHTML('beforeend',
-                    '\n' +
-                    '  <div class="d-flex justify-content-center p-3 m-3"><div class="spinner-border" role="status">\n' +
-                    '    <span class="visually-hidden">Loading...</span>\n' +
-                    '  </div></div>');
+                showLoader();
                 if (field.value !== '') {
-                    searchResult(field)
+                    timer = setTimeout(() => {
+                        searchResult(field);
+                        window.shown = false;
+                    }, 300);
                 } else {
                     timer = setTimeout(() => {
                         window.location.reload();
