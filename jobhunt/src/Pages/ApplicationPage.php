@@ -30,6 +30,10 @@ class ApplicationPage extends \Page
         parent::onBeforeWrite();
     }
 
+    public function getShareLink()
+    {
+        return ShareMyPage::my_share_link('table');
+    }
 
     public function getCompanyList($cached = true)
     {

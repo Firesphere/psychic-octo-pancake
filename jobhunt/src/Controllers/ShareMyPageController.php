@@ -2,6 +2,7 @@
 
 namespace Firesphere\JobHunt\Controllers;
 
+use Firesphere\JobHunt\Pages\ApplicationPage;
 use Firesphere\JobHunt\Pages\KanbanPage;
 use Firesphere\JobHunt\Pages\ShareMyPage;
 use PageController;
@@ -16,13 +17,19 @@ use SilverStripe\View\Requirements;
  * @method ShareMyPage data()
  * @mixin ShareMyPage
  */
-class ShareMyPageController extends KanbanPageController
+class ShareMyPageController extends PageController
 {
     private static $allowed_actions = [
         'board',
         'table'
     ];
     protected $IsSharePage = true;
+
+    public $filter = [
+        'Archived' => false
+    ];
+
+    public $sort = "ApplicationDate DESC";
 
     public function init()
     {
@@ -62,6 +69,18 @@ class ShareMyPageController extends KanbanPageController
 
     public function board()
     {
+        $page = KanbanPage::create();
+        $this->dataRecord = $page;
+        return $this;
+    }
+
+    public function table()
+    {
+        $page = ApplicationPage::get()->first();
+        $page->Title = "Application table for " . Security::getCurrentUser()->FirstName;
+        $this->dataRecord = $page;
+        $this->setFailover($page);
+
         return $this;
     }
 }

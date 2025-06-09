@@ -10,7 +10,7 @@ use SilverStripe\Security\Security;
  * Class \Firesphere\JobHunt\Pages\ShareMyPage
  *
  */
-class ShareMyPage extends KanbanPage
+class ShareMyPage extends Page
 {
     private static $controller_name = ShareMyPageController::class;
 

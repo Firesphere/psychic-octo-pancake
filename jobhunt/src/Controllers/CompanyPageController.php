@@ -36,8 +36,6 @@ class CompanyPageController extends \PageController
 
     public function details(HTTPRequest $request)
     {
-
-
         return $this;
     }
 

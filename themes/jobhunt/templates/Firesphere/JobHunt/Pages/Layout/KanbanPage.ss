@@ -9,7 +9,7 @@
 </div>
 <div class="row">
     <% if not $IsSharePage %>
-        <div class="mb-2 col-2">
+        <div class="mb-2 col-sm-6 col-md-2">
             <button type="button" class="btn-sm btn btn-primary js-formaction"
                     data-itemtype="application"
                     data-bs-toggle="modal"
@@ -17,7 +17,7 @@
                 <%t Firesphere\JobHunt\Pages\ApplicationPage.NewApplication "Add new application" %>
             </button>
         </div>
-        <div class="mb-2 col-3">
+        <div class="mb-2 col-sm-6 col-md-3">
             <label for="filter" class="visually-hidden">Filter</label>
             <div class="input-group">
                 <input id="filter" type="text" class="form-control col"
@@ -29,15 +29,15 @@
             </div>
         </div>
         <% if $CurrentUser.ShareBoard %>
-            <div class="mb-2 col-5" title="Click to copy">
+            <div class="mb-2 col-sm-6 col-md-3" title="Click to copy">
                 <%t Firesphere\JobHunt\Pages\KanbanPage.Share "Share your board, read-only" %>:<br/>
                 <a href="$ShareLink" class="js-copytext" title="Click to copy"><i
                     class="bi bi-clipboard-pulse js-copytext-icon"></i>
-                    $ShareLink</a>
+                    Click to copy</a>
             </div>
         <% end_if %>
     <% end_if %>
-    <div class="mb-2 col-2">
+    <div class="mb-2 col-md-2 col-sm-6">
         <div id="help">
             <a href="#kanban-help"
                data-bs-toggle="collapse"
