@@ -24,7 +24,9 @@ class FilterController extends Controller
             $this->httpError(403);
         }
 
-        $filter = [];
+        $filter = [
+            'Archived' => false,
+        ];
         if ($request->postVar('type') === 'companyfilter') {
             $filter['Company.Name:PartialMatch'] = $request->postVar('search');
         }
