@@ -33,6 +33,7 @@
         "phptek/sentry": "^5.0",
         "ramsey/uuid": "^4.7",
         "sheadawson/silverstripe-dependentdropdownfield": "^3.0",
+        "silvercommerce/contact-admin": "^1.5",
         "silverstripe/elemental-bannerblock": "^3.3",
         "silverstripe/elemental-fileblock": "^3.1",
         "silverstripe/login-forms": "~5@stable",

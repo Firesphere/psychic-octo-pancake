@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "033be90259b0b5119948ccb9c671cc93",
+    "content-hash": "5d42af01d0216f896c108b088e34cd07",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -291,6 +291,73 @@
                 }
             ],
             "time": "2023-12-20T15:40:13+00:00"
+        },
+        {
+            "name": "colymba/gridfield-bulk-editing-tools",
+            "version": "4.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe/silverstripe-gridfield-bulk-editing-tools.git",
+                "reference": "81fad341d96bad574b8be38eaa0ef126384bf18d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-gridfield-bulk-editing-tools/zipball/81fad341d96bad574b8be38eaa0ef126384bf18d",
+                "reference": "81fad341d96bad574b8be38eaa0ef126384bf18d",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/asset-admin": "^2",
+                "silverstripe/framework": "^5"
+            },
+            "require-dev": {
+                "phpstan/extension-installer": "^1.3",
+                "silverstripe/standards": "^1"
+            },
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "expose": [
+                    "client/dist",
+                    "client/lang"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Colymba\\BulkTools\\": "src/BulkTools/",
+                    "Colymba\\BulkUpload\\": "src/BulkUploader/",
+                    "Colymba\\BulkManager\\": "src/BulkManager/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Thierry Francois",
+                    "homepage": "http://t-f.io"
+                },
+                {
+                    "name": "SilverStripe",
+                    "homepage": "http://silverstripe.com"
+                },
+                {
+                    "name": "The SilverStripe Community",
+                    "homepage": "http://silverstripe.org"
+                }
+            ],
+            "description": "Silverstripe CMS GridField component to upload images/files and edit records in bulk",
+            "keywords": [
+                "Image upload",
+                "bulk upload",
+                "gridfield bulk upload",
+                "silverstripe"
+            ],
+            "support": {
+                "issues": "https://github.com/silverstripe/silverstripe-gridfield-bulk-editing-tools/issues",
+                "source": "https://github.com/silverstripe/silverstripe-gridfield-bulk-editing-tools/tree/4.1.3"
+            },
+            "time": "2025-05-19T02:09:03+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -782,6 +849,66 @@
                 "source": "https://github.com/defuse/php-encryption/tree/v2.4.0"
             },
             "time": "2023-06-19T06:10:36+00:00"
+        },
+        {
+            "name": "dft/silverstripe-modeladminplus",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dean-Forest-Tech/silverstripe-modeladminplus.git",
+                "reference": "3d0565bd2f0e97bbcad16134c4ca1b7b15e847fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dean-Forest-Tech/silverstripe-modeladminplus/zipball/3d0565bd2f0e97bbcad16134c4ca1b7b15e847fb",
+                "reference": "3d0565bd2f0e97bbcad16134c4ca1b7b15e847fb",
+                "shasum": ""
+            },
+            "require": {
+                "colymba/gridfield-bulk-editing-tools": "^3 || ^4",
+                "silverstripe/admin": "^1 || ^2",
+                "silverstripe/framework": "^4.6 || ^5.2",
+                "symbiote/silverstripe-gridfieldextensions": "^3 || ^4",
+                "tractorcow/silverstripe-autocomplete": "^4 || ^5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "expose": [
+                    "client/dist"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "DFT\\SilverStripe\\ModelAdminPlus\\": "src/",
+                    "DFT\\SilverStripe\\ModelAdminPlus\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dean Forest Tech",
+                    "homepage": "https://dean-forest-tech.uk"
+                }
+            ],
+            "description": "Adds some extra features to a standard ModelAdmin field",
+            "homepage": "https://github.com/Dean-Forest-Tech/silverstripe-modeladminplus",
+            "keywords": [
+                "admin",
+                "dataobject",
+                "modeladmin",
+                "silverstripe"
+            ],
+            "support": {
+                "issues": "https://github.com/Dean-Forest-Tech/silverstripe-modeladminplus/issues",
+                "source": "https://github.com/Dean-Forest-Tech/silverstripe-modeladminplus/tree/2.1.2"
+            },
+            "time": "2025-01-07T11:12:48+00:00"
         },
         {
             "name": "dnadesign/silverstripe-elemental",
@@ -3476,6 +3603,60 @@
             "time": "2025-03-24T10:02:05+00:00"
         },
         {
+            "name": "nathancox/hasoneautocompletefield",
+            "version": "2.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nathancox/silverstripe-hasoneautocompletefield.git",
+                "reference": "c52965fd3a9301e3e2670eefcafabc1877b0f4f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nathancox/silverstripe-hasoneautocompletefield/zipball/c52965fd3a9301e3e2670eefcafabc1877b0f4f9",
+                "reference": "c52965fd3a9301e3e2670eefcafabc1877b0f4f9",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "^4.0 || ^5.0"
+            },
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "expose": [
+                    "client/dist"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "NathanCox\\HasOneAutocompleteField\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nathan Cox",
+                    "email": "me@nathan.net.nz"
+                }
+            ],
+            "description": "A CMS form field for adding has_one relationships using autocomplete",
+            "homepage": "https://github.com/nathancox/silverstripe-hasoneautocompletefield",
+            "keywords": [
+                "cms",
+                "form",
+                "formfield",
+                "has_one",
+                "relation",
+                "silverstripe"
+            ],
+            "support": {
+                "issues": "https://github.com/nathancox/silverstripe-hasoneautocompletefield/issues",
+                "source": "https://github.com/nathancox/silverstripe-hasoneautocompletefield/tree/2.13.0"
+            },
+            "time": "2024-07-11T04:11:38+00:00"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v4.19.4",
             "source": {
@@ -5392,6 +5573,122 @@
                 "source": "https://github.com/sheadawson/silverstripe-dependentdropdownfield/tree/3.0.0"
             },
             "time": "2023-02-22T18:12:14+00:00"
+        },
+        {
+            "name": "silvercommerce/contact-admin",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silvercommerce/contact-admin.git",
+                "reference": "2e421d9c1cc0bd6d4c9c2c0858f8fc9052362b19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silvercommerce/contact-admin/zipball/2e421d9c1cc0bd6d4c9c2c0858f8fc9052362b19",
+                "reference": "2e421d9c1cc0bd6d4c9c2c0858f8fc9052362b19",
+                "shasum": ""
+            },
+            "require": {
+                "colymba/gridfield-bulk-editing-tools": "^3 || ^4",
+                "dft/silverstripe-modeladminplus": "^2",
+                "nathancox/hasoneautocompletefield": "^2",
+                "silvercommerce/versionhistoryfield": "^1",
+                "silverstripe/framework": "^5",
+                "silverstripe/tagfield": "^2 || ^3 "
+            },
+            "replace": {
+                "i-lateral/silverstripe-contacts": "self.version"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "expose": [
+                    "client/dist"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "SilverCommerce\\ContactAdmin\\": "src/",
+                    "SilverCommerce\\ContactAdmin\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "DFT",
+                    "homepage": "https://dean-forest-tech.uk"
+                }
+            ],
+            "description": "Contact management module, allowing import, export, management, grouping and tagging of contacts",
+            "homepage": "https://github.com/silvercommerce/contact-admin",
+            "keywords": [
+                "admin",
+                "contacts",
+                "management",
+                "silverstripe"
+            ],
+            "support": {
+                "issues": "https://github.com/silvercommerce/contact-admin/issues",
+                "source": "https://github.com/silvercommerce/contact-admin/tree/1.5.0"
+            },
+            "time": "2025-06-04T14:16:56+00:00"
+        },
+        {
+            "name": "silvercommerce/versionhistoryfield",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silvercommerce/versionhistoryfield.git",
+                "reference": "d433997869d9c48733cc7445d4d1742564d9525e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silvercommerce/versionhistoryfield/zipball/d433997869d9c48733cc7445d4d1742564d9525e",
+                "reference": "d433997869d9c48733cc7445d4d1742564d9525e",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "^4 || ^5",
+                "silverstripe/versioned": "^1 || ^2"
+            },
+            "suggest": {
+                "silverstripe/cms": "Add full content management support to your site"
+            },
+            "type": "silverstripe-vendormodule",
+            "autoload": {
+                "psr-4": {
+                    "SilverCommerce\\VersionHistoryField\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dean Forest Tech",
+                    "homepage": "https://dean-forest-tech.uk"
+                }
+            ],
+            "description": "Field that hows a simple version history of a versioned DataObject.",
+            "homepage": "https://github.com/silvercommerce/versionhistoryfield",
+            "keywords": [
+                "Forms",
+                "formfield",
+                "silverstripe",
+                "versioned"
+            ],
+            "support": {
+                "issues": "https://github.com/silvercommerce/versionhistoryfield/issues",
+                "source": "https://github.com/silvercommerce/versionhistoryfield/tree/1.1.1"
+            },
+            "time": "2025-01-27T16:28:23+00:00"
         },
         {
             "name": "silvershop/silverstripe-hasonefield",
@@ -10158,6 +10455,58 @@
                 }
             ],
             "time": "2025-04-04T09:48:44+00:00"
+        },
+        {
+            "name": "tractorcow/silverstripe-autocomplete",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tractorcow/silverstripe-autocomplete.git",
+                "reference": "ac134294ccfef18a0073d447c43a2f024ed27e85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tractorcow/silverstripe-autocomplete/zipball/ac134294ccfef18a0073d447c43a2f024ed27e85",
+                "reference": "ac134294ccfef18a0073d447c43a2f024ed27e85",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "^5"
+            },
+            "type": "silverstripe-vendormodule",
+            "extra": {
+                "expose": [
+                    "css",
+                    "javascript"
+                ],
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TractorCow\\AutoComplete\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Damian Mooyman",
+                    "email": "damian.mooyman@gmail.com",
+                    "homepage": "http://github.com/tractorcow",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Autocomplete text field for Silverstripe",
+            "keywords": [
+                "autocomplete",
+                "silverstripe"
+            ],
+            "support": {
+                "issues": "http://github.com/tractorcow/silverstripe-autocomplete/issues",
+                "source": "https://github.com/tractorcow/silverstripe-autocomplete/tree/5.0.0"
+            },
+            "time": "2023-04-13T20:31:40+00:00"
         },
         {
             "name": "ua-parser/uap-php",

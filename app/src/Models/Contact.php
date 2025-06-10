@@ -20,7 +20,7 @@ use SilverStripe\ORM\FieldType\DBVarchar;
  */
 class Contact extends DataObject
 {
-    private static $table_name = 'Contact';
+    private static $table_name = 'ContactSubmission';
 
     private static $db = [
         'Name'    => DBVarchar::class,
