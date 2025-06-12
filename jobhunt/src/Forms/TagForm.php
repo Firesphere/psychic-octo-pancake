@@ -28,6 +28,7 @@ class TagForm extends Form
             HiddenField::create('ID', 'ID', $id),
         ]);
         $fieldConfig = $fieldTag->getConfigAsJson();
+        $baseConf = json_decode($fieldConfig, 1);
         $myConfig = [
             'allowNew'      => "true",
             'Separator'     => " |,",
@@ -35,7 +36,8 @@ class TagForm extends Form
             'addOnBlur'     => "true",
             'allowMultiple' => "true",
         ];
-        $fieldTag->replaceConfig(array_merge(json_decode($fieldConfig, 1), $myConfig));
+        $mergedConf = array_merge($baseConf, $myConfig);
+        $fieldTag->replaceConfig($mergedConf);
         $fieldTag->setAttribute('placeholder', 'Tags');
         if ($id !== -1) {
             $user = Security::getCurrentUser()->Tags();
