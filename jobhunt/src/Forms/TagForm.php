@@ -35,7 +35,7 @@ class TagForm extends Form
             'addOnBlur'     => "true",
             'allowMultiple' => "true",
         ];
-        $fieldTag->replaceConfig(array_merge(json_decode($fieldConfig), $myConfig));
+        $fieldTag->replaceConfig(array_merge(json_decode($fieldConfig, 1), $myConfig));
         $fieldTag->setAttribute('placeholder', 'Tags');
         if ($id !== -1) {
             $user = Security::getCurrentUser()->Tags();
