@@ -87,7 +87,7 @@ class ApplicationPage extends \Page
     public function getApplicationsLink($segment = null)
     {
         if ($this instanceof ArchivePage) {
-            return $this->Parent()->Link($segment);
+            return ApplicationPage::get()->first()?->Link($segment);
         }
 
         return $this->Link($segment);
@@ -98,7 +98,7 @@ class ApplicationPage extends \Page
         if ($this instanceof ArchivePage) {
             return $this->Link();
         }
-        return ArchivePage::get()->first()->Link();
+        return ArchivePage::get()->first()?->Link();
     }
 
 }

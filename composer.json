@@ -4,7 +4,7 @@
     "description": "Jobhunting helper to keep track of job applications",
     "version": "10.0.1",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-intl": "*",
         "ext-libxml": "*",
         "3dgoo/silverstripe-hcaptcha": "^2",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8ef2cc66818cbb5e6f4ce900b94683d",
+    "content-hash": "f97d14cebaad1a99075946a879cedf54",
     "packages": [
         {
             "name": "3dgoo/silverstripe-hcaptcha",
@@ -6533,16 +6533,16 @@
         },
         {
             "name": "silverstripe/linkfield",
-            "version": "4.2.3",
+            "version": "4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-linkfield.git",
-                "reference": "9f19bae6b9f0b10953a4c448f28f9948f184d423"
+                "reference": "1de65480c522f77ae6da5eccfd93b8c201da67a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-linkfield/zipball/9f19bae6b9f0b10953a4c448f28f9948f184d423",
-                "reference": "9f19bae6b9f0b10953a4c448f28f9948f184d423",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-linkfield/zipball/1de65480c522f77ae6da5eccfd93b8c201da67a5",
+                "reference": "1de65480c522f77ae6da5eccfd93b8c201da67a5",
                 "shasum": ""
             },
             "require": {
@@ -6558,6 +6558,7 @@
                 "silverstripe/documentation-lint": "^1",
                 "silverstripe/frameworktest": "^1",
                 "silverstripe/recipe-testing": "^3",
+                "silverstripe/siteconfig": "^5",
                 "silverstripe/standards": "^1",
                 "squizlabs/php_codesniffer": "^3"
             },
@@ -6591,9 +6592,9 @@
             "description": "Link management for Silverstripe CMS",
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-linkfield/issues",
-                "source": "https://github.com/silverstripe/silverstripe-linkfield/tree/4.2.3"
+                "source": "https://github.com/silverstripe/silverstripe-linkfield/tree/4.2.4"
             },
-            "time": "2025-05-21T23:31:27+00:00"
+            "time": "2025-06-12T23:32:44+00:00"
         },
         {
             "name": "silverstripe/login-forms",
@@ -14873,7 +14874,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-intl": "*",
         "ext-libxml": "*"
     },
