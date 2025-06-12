@@ -36,7 +36,7 @@ class ApplicationPageController extends \PageController
     ];
     public static $draftId;
     protected $HasFilter;
-    protected $HasShowAll;
+    protected $HasShowAll = false;
     protected $SortDirection;
     protected $sort = ['ApplicationDate' => 'DESC', 'Created' => 'DESC'];
     protected $filter = [];
@@ -89,7 +89,7 @@ class ApplicationPageController extends \PageController
                 }
             }
         } else {
-            $this->HasShowAll = $this->getRequest()->getVar('showall') ?? false;
+            $this->HasShowAll = $this->getRequest()->getVar('showall') ?? $this->HasShowAll;
             if (Security::getCurrentUser()->HideClosed && !$this->HasShowAll) {
                 $closed = Status::get()->filter(['AutoHide' => true])->column('ID');
                 $this->filter['StatusID:Not'] = $closed;

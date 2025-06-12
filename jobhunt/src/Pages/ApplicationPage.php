@@ -3,6 +3,7 @@
 namespace Firesphere\JobHunt\Pages;
 
 use Firesphere\JobHunt\Controllers\ApplicationPageController;
+use Firesphere\JobHunt\Controllers\ArchivePageController;
 use Firesphere\JobHunt\Extensions\MemberExtension;
 use Firesphere\JobHunt\Models\Status;
 use SilverStripe\Control\Controller;
@@ -65,14 +66,14 @@ class ApplicationPage extends \Page
         return Status::get();
     }
 
-    public function getApplications()
+    public function getApplications($archived = false)
     {
         $controller = Controller::curr();
         $user = Security::getCurrentUser();
 
         $applications = $user->JobApplications();
         $applications = $applications->filter($controller->filter)
-            ->exclude(['Archived' => true])
+            ->exclude(['Archived' => !$archived])
             ->sort($controller->sort);
 
         $list = PaginatedList::create($applications, $controller->getRequest());
@@ -81,6 +82,23 @@ class ApplicationPage extends \Page
         }
 
         return $list;
+    }
+
+    public function getApplicationsLink($segment = null)
+    {
+        if ($this instanceof ArchivePage) {
+            return $this->Parent()->Link($segment);
+        }
+
+        return $this->Link($segment);
+    }
+
+    public function getArchivedLink()
+    {
+        if ($this instanceof ArchivePage) {
+            return $this->Link();
+        }
+        return $this->Children()->first()->Link();
     }
 
 }

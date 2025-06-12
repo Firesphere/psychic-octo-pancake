@@ -7,6 +7,7 @@ namespace {
     use Firesphere\CSPHeaders\Extensions\PageExtension;
     use Firesphere\CSPHeaders\Models\CSPDomain;
     use SilverStripe\CMS\Model\SiteTree;
+    use SilverStripe\ORM\DataObject;
     use SilverStripe\ORM\ManyManyList;
 
     /**
@@ -26,5 +27,7 @@ namespace {
         private static $db = [];
 
         private static $has_one = [];
+
+        private static $description = '';
     }
 }
