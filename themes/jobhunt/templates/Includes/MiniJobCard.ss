@@ -30,7 +30,7 @@
                     class="bi bi-tag"></i></span>
             <% end_if %>
         </div>
-        <% if $StatusUpdatesVisibleCount || $Interviews.Count()%>
+        <% if $StatusUpdatesVisibleCount || $Interviews.Count() %>
             <div class="card-body">
                 <% if $StatusUpdatesVisibleCount %>
                     <div class="p-0 row pb-1">
