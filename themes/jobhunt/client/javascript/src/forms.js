@@ -5,6 +5,7 @@ const myModalEl = document.getElementById('addItemModal');
 const actionTypeSpan = document.getElementById('modal-item-type');
 const actionTitleSpan = document.getElementById('modal-item-title');
 import {addFormHook, updateFormContent} from './formhooks';
+import { autofill } from '@mapbox/search-js-web'
 
 const endpoint = 'formhandling/'
 const typemap = {
@@ -48,6 +49,25 @@ const typemap = {
         'CloseForm',
         'close application'
     ]
+}
+export const initField = () => {
+    const addrField = document.getElementById('Address');
+    const countryField = document.getElementById('Country');
+    const cityField = document.getElementById('City');
+    const latField = document.getElementById('Latitude');
+    const lonField = document.getElementById('Longitude');
+    let search = autofill({
+        accessToken: window.mapbox_token,
+    });
+    search.addEventListener('retrieve', (event) => {
+        let properties = event.detail.features[0].properties;
+        let geometry = event.detail.features[0].geometry;
+        addrField.value = properties.full_address
+        countryField.value = properties.country;
+        cityField.value = properties.place_name;
+        latField.value = geometry.coordinates[1];
+        lonField.value = geometry.coordinates[0];
+    });
 }
 
 
@@ -107,7 +127,11 @@ export const bindActions = (list) => {
                             menubar: false,
                             statusbar: false
                         });
-
+                        // The mapbox field is broken at the moment.
+                        // const search = document.getElementById('InterviewForm_InterviewForm_Location');
+                        // if (search) {
+                        //     initField(search);
+                        // }
                         addFormHook();
                     } else {
                         updateFormContent();

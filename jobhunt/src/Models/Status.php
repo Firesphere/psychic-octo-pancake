@@ -176,7 +176,7 @@ class Status extends DataObject
     public function getColourStyle()
     {
         if (!$this->Colour) {
-            return static::$colourmap[$this->Status];
+            return static::$colourmap[$this->Status] ?? 'primary';
         }
 
         return $this->Colour;

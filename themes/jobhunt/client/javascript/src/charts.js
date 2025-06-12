@@ -4,6 +4,8 @@ import {Flow, SankeyController} from 'chartjs-chart-sankey';
 const moodchart = document.getElementById('moodchart');
 const sankeychart = document.getElementById('sankeychart');
 const applicationchart = document.getElementById('applicationchart');
+const responsechart = document.getElementById('responsechart');
+
 const moods = ['😖', '️☹️', '😐', '🙂', '😃']
 // Some sort of sane defaults for the colours
 let colors = {
@@ -100,6 +102,8 @@ let barOptions = {
         }
     },
 };
+
+
 const getColor = (key) => {
     key = `${key}.`.split('.');
     return colors[key[0]];
@@ -169,4 +173,26 @@ export default () => {
                 new Chart(applicationchart, barOptions);
             });
     }
+    if (responsechart) {
+        let base = window.location.href.split('?')[0];
+
+        console.log(base);
+        fetch (`${base}/getstats`, {
+            method: 'GET',
+            headers: {
+                'x-requested-with': 'XMLHttpRequest'
+            }
+        }).then(response => response.json())
+            .then(response => {
+                response['options'] = {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+                console.log(response);
+                new Chart(responsechart, response);
+            });
+        }
 }

@@ -52,6 +52,7 @@ class PageController extends ContentController
         /** @var SiteConfigExtension|SiteConfigTheme $SiteConfig */
         Requirements::css('//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
         Requirements::css('_resources/themes/jobhunt/dist/css/main.css');
+//        Requirements::css('//api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css');
         Requirements::javascript('_resources/themes/jobhunt/dist/js/main.js');
         Requirements::javascript('_resources/themes/jobhunt/dist/api.js');
 

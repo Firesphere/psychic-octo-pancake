@@ -63,6 +63,9 @@
     ],
     "extra": {
         "patches": {
+            "nathancox/hasoneautocompletefield": [
+                "patches/nathancox-hasoneautocompletefield-src-forms-hasoneautocompletefield-php.patch"
+            ],
             "dnadesign/silverstripe-elemental": [
                 "patches/dnadesign-silverstripe-elemental-src-models-baseelement-php.patch",
                 "patches/dnadesign-silverstripe-elemental-src-models-elementalarea-php.patch"

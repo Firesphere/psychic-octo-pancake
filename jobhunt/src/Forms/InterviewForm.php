@@ -7,6 +7,7 @@ use Firesphere\JobHunt\Models\InterviewNote;
 use Firesphere\JobHunt\Models\JobApplication;
 use Firesphere\JobHunt\Models\Status;
 use Firesphere\JobHunt\Models\StatusUpdate;
+use Firesphere\OpenStreetmaps\Forms\MapboxField;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\FieldList;
@@ -16,6 +17,7 @@ use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\Security\PermissionFailureException;
 use SilverStripe\Security\Security;
@@ -42,10 +44,12 @@ class InterviewForm extends Form
         $fields = FieldList::create([
             /** @var $dtField DatetimeField */
             $dtField = DatetimeField::create('DateTime', 'When is the interview'),
+//            $locField = MapboxField::create('Location', 'Where is the interview'),
             TextareaField::create('Note', 'Notes'),
             HiddenField::create($hiddenField, $hiddenField, $params['OtherID'])
         ]);
-
+//        $locField->addExtraClass('form-control');
+//        $locField->setAttribute('autocomplete', 'street-address');
         $dtField->setDescription('Please make sure to use the full year, month, day with leading zeroes, and 24 hour clock');
         $actions = FieldList::create([
             $formAction = FormAction::create('submit', 'Save')

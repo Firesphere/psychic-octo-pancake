@@ -17,6 +17,7 @@
     "vue-template-compiler": "*"
   },
   "dependencies": {
+    "@mapbox/search-js-web": "^1.1.0",
     "@popperjs/core": "^2",
     "@sentry/browser": "^8",
     "bootstrap": "^5",
