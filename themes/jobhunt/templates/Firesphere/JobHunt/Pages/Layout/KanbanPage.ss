@@ -56,7 +56,7 @@
 <div class="row">
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
         <div class="card mb-3">
-            <% include KanbanColumn ColumnTitle='Applied', ColumnCount=$CurrentUser.JobApplications.Filter('Status.Status', 'Applied'), ColumnDescription="Jobs you've applied for" %>
+            <% include KanbanColumn ColumnTitle='Applied', ColumnCount=$CurrentUser.ActiveApplications.Filter('Status.Status', 'Applied'), ColumnDescription="Jobs you've applied for" %>
             <div class="card-body">
                 <div class="tasks" id="Applied">
                     <% loop $CurrentUser.AppliedJobApplications %>
