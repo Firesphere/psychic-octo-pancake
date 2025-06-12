@@ -1,5 +1,4 @@
 <% loop $Applications %>
-
     <tr class="$EvenOdd table-group-divider">
         <td class="bg-$IsOld-subtle <% if $Status.Status == 'Draft' %>progress-bar-striped<% end_if %>">
             <div class="justify-content-start">
@@ -12,7 +11,6 @@
                                 <i class="bi bi-star<% if $Up.Favourite %>-fill text-warning<% end_if %>"></i>
                             </a>
                             <a href="$InternalLink">$Name</a>
-
                         </b>
                             <a href="#"
                                title="Edit company"

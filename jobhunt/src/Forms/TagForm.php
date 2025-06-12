@@ -22,15 +22,20 @@ class TagForm extends Form
     {
         $controller = Controller::curr();
         $fields = FieldList::create([
+            /** @var BsTagsMultiField $fieldTag */
             $fieldTag = BsTagsMultiField::create("Tags", ''),
             HiddenField::create("action_submit", '✅'),
             HiddenField::create('ID', 'ID', $id),
         ]);
-        $fieldTag->setConfig('allowNew', "true");
-        $fieldTag->setConfig('Separator', " |,");
-        $fieldTag->setConfig('noCache', "false");
-        $fieldTag->setConfig('addOnBlur', "true");
-        $fieldTag->setConfig('allowMultiple', "true");
+        $fieldConfig = $fieldTag->getConfigAsJson();
+        $myConfig = [
+            'allowNew'      => "true",
+            'Separator'     => " |,",
+            'noCache'       => "false",
+            'addOnBlur'     => "true",
+            'allowMultiple' => "true",
+        ];
+        $fieldTag->replaceConfig(array_merge(json_decode($fieldConfig), $myConfig));
         $fieldTag->setAttribute('placeholder', 'Tags');
         if ($id !== -1) {
             $user = Security::getCurrentUser()->Tags();

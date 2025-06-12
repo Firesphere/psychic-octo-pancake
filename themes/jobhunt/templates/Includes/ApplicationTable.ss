@@ -3,8 +3,8 @@
     <tr>
         <th scope="col" class="border-start col col-lg-3">
             <div class="d-flex justify-content-between">
-                <span class="
-<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>border-bottom border-primary h5 bold active<% end_if %>">
+                <span class="<% if $SortDirection == 'Company.NameASC' || $SortDirection == 'Company.NameDESC' %>
+                border-bottom border-primary h5 bold active<% end_if %>">
                     <a href="$Top.Link?sort[Company.Name]=<% if $SortDirection == 'Company.NameASC' %>DESC<% else %>ASC<% end_if %>"><i
                         class="bi bi-sort-alpha-down<% if $SortDirection == 'Company.NameDESC' %>-alt<% end_if %>"></i></a>
                 </span>
@@ -40,7 +40,7 @@
             <span class="<% if $SortDirection == 'ApplicationDateASC' || $SortDirection == 'ApplicationDateDESC' %>
                 border-bottom border-primary h5 active bold<% end_if %>">
                 <a href="$Top.Link?sort[ApplicationDate]=<% if $SortDirection == 'ApplicationDateASC' %>DESC<% else %>ASC<% end_if %>"><i
-                    class="bi bi-sort-numeric-down<% if $SortDirection == 'ApplicationDateASC' %><% else %>-alt<% end_if %>"></i></a>
+                    class="bi bi-sort-numeric-down<% if $SortDirection != 'ApplicationDateASC' %>-alt<% end_if %>"></i></a>
             </span>
                 <span>Application date</span>
                 <span></span>
@@ -53,6 +53,6 @@
     </tr>
     </thead>
     <tbody class="table-group-divider" id="applicationtable_body">
-    <% include ApplicationRow %>
+        <% include ApplicationRow %>
     </tbody>
 </table>
