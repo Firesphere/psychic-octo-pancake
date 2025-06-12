@@ -98,7 +98,7 @@ class ApplicationPage extends \Page
         if ($this instanceof ArchivePage) {
             return $this->Link();
         }
-        return $this->Children()->first()->Link();
+        return ArchivePage::get()->first()->Link();
     }
 
 }
