@@ -9,28 +9,28 @@
                         class="bi bi-sort-alpha-down<% if $SortDirection == 'Company.NameDESC' %>-alt<% end_if %>"></i></a>
                 </span>
                 <label for="companyfilter">Company</label>
-                <a href="#" class="bi bi-funnel" id="show_companyfilter"></a>
+                <a title="Company filter" href="#" class="bi bi-funnel" id="show_companyfilter"></a>
             </div>
             <div class="d-flex d-none" id="companyfilter_group">
                 <div class="input-group">
                     <input id="companyfilter" type="text" class="form-control col" placeholder="Quickfilter"
                            aria-placeholder="Quickfilter"/>
-                    <a href="#" class="btn btn-outline-secondary" type="button" id="clear_companyfilter"><i
+                    <a href="#" title="Clear company filters" class="btn btn-outline-secondary" type="button" id="clear_companyfilter"><i
                         class="bi bi-x"></i></a>
                 </div>
             </div>
         </th>
-        <th scope="col" colspan="3" class="col col-lg-2 border-start">
+        <th scope="col" colspan="3" class="col col-lg-3 border-start">
             <div class="d-flex justify-content-between">
                 <span></span>
                 <label for="rolefilter">Role</label>
-                <a href="#" class="bi bi-funnel" id="show_rolefilter"></a>
+                <a href="#" title="Role name filter" class="bi bi-funnel" id="show_rolefilter"></a>
             </div>
             <div class="d-flex d-none" id="rolefilter_group">
                 <div class="input-group">
                     <input id="rolefilter" type="text" class="form-control" placeholder="Quickfilter"
                            aria-placeholder="Quickfilter"/>
-                    <a href="#" class="btn btn-outline-secondary" type="button" id="clear_rolefilter"><i
+                    <a href="#" title="Clear role name filter" class="btn btn-outline-secondary" type="button" id="clear_rolefilter"><i
                         class="bi bi-x"></i></a>
                 </div>
             </div>

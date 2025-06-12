@@ -29,6 +29,7 @@
 <div class="row">
     <% if $CurrentUser.JobApplications.Count %>
         <% if not $IsSharePage %>
+            <% if $CurrentUser.ViewStyle != "Table" %>
             <div class="col-md-3 col-sm-6 col-12">
                 <label for="companyfilter">Company</label>
                 <div class="input-group">
@@ -51,6 +52,9 @@
                         class="bi bi-x"></i></a>
                 </div>
             </div>
+            <% else %>
+                <div class="col-md-6 d-none d-md-block">&nbsp;</div>
+            <% end_if %>
             <% if $CurrentUser.ShareBoard %>
                 <div class="mb-2 col-md-3 col-sm-12" title="Click to copy">
                     <%t Firesphere\JobHunt\Pages\ApplicationPage.Share "Share your applications, read-only" %>:<br/>
