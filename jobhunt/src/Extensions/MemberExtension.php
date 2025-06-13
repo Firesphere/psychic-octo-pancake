@@ -218,14 +218,27 @@ class MemberExtension extends DataExtension
                     'Status.Status' => [
                         'Applied',
                         'Interview',
-                        'Invited',
-                        'Accepted'
                     ]
                 ]);
             if ($result->count()) {
                 return $result;
             }
         }
+        return ArrayList::create([JobApplication::create()]);
+    }
+
+    public function getPositiveOutcomes()
+    {
+        self::set_job_applications();
+        if (self::$_job_applications->count()) {
+            return self::$_job_applications->filter([
+                'Status.Status' => [
+                    'Invited',
+                    'Accepted'
+                ]
+            ]);
+        }
+
         return ArrayList::create([JobApplication::create()]);
     }
 
