@@ -3,10 +3,7 @@
     "watch": "webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
     "watch-prod": "NODE_ENV=production webpack-modules --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
     "build": "webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "package": "NODE_ENV=production webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "lint": "yarn lint-js; yarn lint-sass",
-    "lint-js": "node_modules/.bin/eslint src/js",
-    "lint-sass": "node_modules/.bin/sass-lint -v"
+    "package": "NODE_ENV=production webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
     "exports-loader": "*",

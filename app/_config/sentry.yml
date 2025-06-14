@@ -3,7 +3,6 @@ Name: jobhunt-sentry
 After:
   - 'sentry-config'
 ---
-
 PhpTek\Sentry\Handler\SentryHandler:
   # One of the permitted severities: DEBUG|INFO|WARNING|ERROR|FATAL
   log_level: ERROR
