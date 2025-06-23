@@ -14,3 +14,15 @@ Heyday\ResponsiveImages\ResponsiveImageExtension:
         '(min-width: 600px)': [ 640, 360 ]
       default_arguments: [ 1280, 720 ]
       css_classes: img-fluid
+    ResponsiveSet2:
+      method: FitMax
+      arguments:
+        '(min-width: 1000px) and (min-device-pixel-ratio: 2.0)': [ 1920, 1920 ]
+        '(min-width: 1000px)': [ 1024, 1024 ]
+        '(min-width: 800px) and (min-device-pixel-ratio: 2.0)': [ 1366, 1366 ]
+        '(min-width: 800px)': [ 960, 960 ]
+        '(min-width: 600px) and (min-device-pixel-ratio: 2.0)': [ 1280, 1280 ]
+        '(min-width: 600px)': [ 640, 640 ]
+      default_arguments: [ 1280, 1280 ]
+      css_classes: img-fluid
+

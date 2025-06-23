@@ -6339,16 +6339,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "5.4.9",
+            "version": "5.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "e92dcaa8cf51e5ad81e1473c4fab6743f43f717a"
+                "reference": "c14dfa597301751e267aef3e75c2032a15425095"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/e92dcaa8cf51e5ad81e1473c4fab6743f43f717a",
-                "reference": "e92dcaa8cf51e5ad81e1473c4fab6743f43f717a",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/c14dfa597301751e267aef3e75c2032a15425095",
+                "reference": "c14dfa597301751e267aef3e75c2032a15425095",
                 "shasum": ""
             },
             "require": {
@@ -6471,9 +6471,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-framework/issues",
-                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.9"
+                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.10"
             },
-            "time": "2025-06-03T02:12:41+00:00"
+            "time": "2025-06-18T05:23:31+00:00"
         },
         {
             "name": "silverstripe/graphql",
@@ -6533,16 +6533,16 @@
         },
         {
             "name": "silverstripe/linkfield",
-            "version": "4.2.4",
+            "version": "4.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-linkfield.git",
-                "reference": "1de65480c522f77ae6da5eccfd93b8c201da67a5"
+                "reference": "0bf27e3c2faa06d14121fdce577dadfc87608f0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-linkfield/zipball/1de65480c522f77ae6da5eccfd93b8c201da67a5",
-                "reference": "1de65480c522f77ae6da5eccfd93b8c201da67a5",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-linkfield/zipball/0bf27e3c2faa06d14121fdce577dadfc87608f0c",
+                "reference": "0bf27e3c2faa06d14121fdce577dadfc87608f0c",
                 "shasum": ""
             },
             "require": {
@@ -6592,9 +6592,9 @@
             "description": "Link management for Silverstripe CMS",
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-linkfield/issues",
-                "source": "https://github.com/silverstripe/silverstripe-linkfield/tree/4.2.4"
+                "source": "https://github.com/silverstripe/silverstripe-linkfield/tree/4.2.5"
             },
-            "time": "2025-06-12T23:32:44+00:00"
+            "time": "2025-06-23T03:23:46+00:00"
         },
         {
             "name": "silverstripe/login-forms",
