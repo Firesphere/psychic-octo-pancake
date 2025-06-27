@@ -45,6 +45,7 @@
         "silverstripe/webauthn-authenticator": ">=5",
         "sunnysideup/elemental-toc": "dev-tidyup/fixes",
         "symbiote/silverstripe-gridfieldextensions": ">=4",
+        "symbiote/silverstripe-queuedjobs": "^5.3",
         "symfony/mailjet-mailer": "^7.0",
         "wilr/silverstripe-googlesitemaps": ">=3.0"
     },

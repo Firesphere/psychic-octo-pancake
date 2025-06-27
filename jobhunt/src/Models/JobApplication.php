@@ -6,12 +6,7 @@ use DOMDocument;
 use Firesphere\JobHunt\Controllers\ApplicationPageController;
 use Firesphere\JobHunt\Forms\TagForm;
 use Firesphere\JobHunt\Pages\ApplicationPage;
-use LeKoala\FormElements\BsTagsMultiField;
 use SilverStripe\Control\Controller;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\Form;
-use SilverStripe\Forms\FormAction;
-use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
@@ -23,7 +18,6 @@ use SilverStripe\ORM\FieldType\DBInt;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\Security\Member;
-use SilverStripe\View\ArrayData;
 
 /**
  * Class \Firesphere\JobHunt\Models\JobApplication
@@ -35,6 +29,7 @@ use SilverStripe\View\ArrayData;
  * @property int $PayUpper
  * @property int $PayLower
  * @property string $CoverLetter
+ * @property string $JobDescription
  * @property bool $Archived
  * @property string $ArchiveDate
  * @property bool $Favourite
@@ -69,6 +64,7 @@ class JobApplication extends DataObject
         'PayUpper'        => DBInt::class,
         'PayLower'        => DBInt::class,
         'CoverLetter'     => DBHTMLText::class,
+        'JobDescription'  => DBHTMLText::class,
         'Archived'        => DBBoolean::class,
         'ArchiveDate'     => DBDate::class,
         'Favourite'       => DBBoolean::class . '(false)',
@@ -155,14 +151,14 @@ class JobApplication extends DataObject
         if ($this->Status()->AutoHide || $this->Status()->ID === ApplicationPageController::getDraftId()) {
             return $this->Status()->getColourStyle();
         }
-        $lastStatus = $this->StatusUpdates()->orderBy('Created ASC')->Last();
+        /** @var StatusUpdate $lastStatus */
+        $lastStatus = $this->StatusUpdates()->orderBy('Created ASC')->last();
+        /** @var Interview $lastInterview */
         $lastInterview = $this->Interviews()->orderBy('DateTime ASC')->last();
         if ($lastStatus) {
-            /** @var int $lastStatus */
             $lastStatus = $lastStatus->dbObject('Created')->getTimestamp();
         }
         if ($lastInterview) {
-            /** @var int $lastInterview */
             $lastInterview = $lastInterview->dbObject('DateTime')->getTimestamp();
         }
 
