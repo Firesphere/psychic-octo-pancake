@@ -2314,12 +2314,12 @@
             "version": "3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WPP-Public/silverstripe-colorpalette.git",
+                "url": "https://github.com/WPP-Public/akqa-nz-silverstripe-colorpalette.git",
                 "reference": "76b144a1bfed0154a14d21881a493442752a7e13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPP-Public/silverstripe-colorpalette/zipball/76b144a1bfed0154a14d21881a493442752a7e13",
+                "url": "https://api.github.com/repos/WPP-Public/akqa-nz-silverstripe-colorpalette/zipball/76b144a1bfed0154a14d21881a493442752a7e13",
                 "reference": "76b144a1bfed0154a14d21881a493442752a7e13",
                 "shasum": ""
             },
@@ -2349,8 +2349,8 @@
             ],
             "description": "A color palette picker for SilverStripe CMS",
             "support": {
-                "issues": "https://github.com/WPP-Public/silverstripe-colorpalette/issues",
-                "source": "https://github.com/WPP-Public/silverstripe-colorpalette/tree/3.0.0"
+                "issues": "https://github.com/WPP-Public/akqa-nz-silverstripe-colorpalette/issues",
+                "source": "https://github.com/WPP-Public/akqa-nz-silverstripe-colorpalette/tree/3.0.0"
             },
             "time": "2023-12-21T00:36:40+00:00"
         },
@@ -2858,16 +2858,16 @@
         },
         {
             "name": "league/csv",
-            "version": "9.23.0",
+            "version": "9.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "774008ad8a634448e4f8e288905e070e8b317ff3"
+                "reference": "e0221a3f16aa2a823047d59fab5809d552e29bc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/774008ad8a634448e4f8e288905e070e8b317ff3",
-                "reference": "774008ad8a634448e4f8e288905e070e8b317ff3",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/e0221a3f16aa2a823047d59fab5809d552e29bc8",
+                "reference": "e0221a3f16aa2a823047d59fab5809d552e29bc8",
                 "shasum": ""
             },
             "require": {
@@ -2877,14 +2877,14 @@
             "require-dev": {
                 "ext-dom": "*",
                 "ext-xdebug": "*",
-                "friendsofphp/php-cs-fixer": "^3.69.0",
-                "phpbench/phpbench": "^1.4.0",
-                "phpstan/phpstan": "^1.12.18",
+                "friendsofphp/php-cs-fixer": "^3.75.0",
+                "phpbench/phpbench": "^1.4.1",
+                "phpstan/phpstan": "^1.12.27",
                 "phpstan/phpstan-deprecation-rules": "^1.2.1",
                 "phpstan/phpstan-phpunit": "^1.4.2",
                 "phpstan/phpstan-strict-rules": "^1.6.2",
-                "phpunit/phpunit": "^10.5.16 || ^11.5.7",
-                "symfony/var-dumper": "^6.4.8 || ^7.2.3"
+                "phpunit/phpunit": "^10.5.16 || ^11.5.22",
+                "symfony/var-dumper": "^6.4.8 || ^7.3.0"
             },
             "suggest": {
                 "ext-dom": "Required to use the XMLConverter and the HTMLConverter classes",
@@ -2945,20 +2945,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-28T06:52:04+00:00"
+            "time": "2025-06-25T14:53:51+00:00"
         },
         {
             "name": "league/flysystem",
-            "version": "3.29.1",
+            "version": "3.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "edc1bb7c86fab0776c3287dbd19b5fa278347319"
+                "reference": "2203e3151755d874bb2943649dae1eb8533ac93e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/edc1bb7c86fab0776c3287dbd19b5fa278347319",
-                "reference": "edc1bb7c86fab0776c3287dbd19b5fa278347319",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/2203e3151755d874bb2943649dae1eb8533ac93e",
+                "reference": "2203e3151755d874bb2943649dae1eb8533ac93e",
                 "shasum": ""
             },
             "require": {
@@ -2982,13 +2982,13 @@
                 "composer/semver": "^3.0",
                 "ext-fileinfo": "*",
                 "ext-ftp": "*",
-                "ext-mongodb": "^1.3",
+                "ext-mongodb": "^1.3|^2",
                 "ext-zip": "*",
                 "friendsofphp/php-cs-fixer": "^3.5",
                 "google/cloud-storage": "^1.23",
                 "guzzlehttp/psr7": "^2.6",
                 "microsoft/azure-storage-blob": "^1.1",
-                "mongodb/mongodb": "^1.2",
+                "mongodb/mongodb": "^1.2|^2",
                 "phpseclib/phpseclib": "^3.0.36",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.5.11|^10.0",
@@ -3026,22 +3026,22 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.29.1"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.30.0"
             },
-            "time": "2024-10-08T08:58:34+00:00"
+            "time": "2025-06-25T13:29:59+00:00"
         },
         {
             "name": "league/flysystem-local",
-            "version": "3.29.0",
+            "version": "3.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-local.git",
-                "reference": "e0e8d52ce4b2ed154148453d321e97c8e931bd27"
+                "reference": "6691915f77c7fb69adfb87dcd550052dc184ee10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-local/zipball/e0e8d52ce4b2ed154148453d321e97c8e931bd27",
-                "reference": "e0e8d52ce4b2ed154148453d321e97c8e931bd27",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-local/zipball/6691915f77c7fb69adfb87dcd550052dc184ee10",
+                "reference": "6691915f77c7fb69adfb87dcd550052dc184ee10",
                 "shasum": ""
             },
             "require": {
@@ -3075,9 +3075,9 @@
                 "local"
             ],
             "support": {
-                "source": "https://github.com/thephpleague/flysystem-local/tree/3.29.0"
+                "source": "https://github.com/thephpleague/flysystem-local/tree/3.30.0"
             },
-            "time": "2024-08-09T21:24:39+00:00"
+            "time": "2025-05-21T10:34:19+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -5220,21 +5220,20 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.8.1",
+            "version": "4.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "fdf4dd4e2ff1813111bd0ad58d7a1ddbb5b56c28"
+                "reference": "4e0e23cc785f0724a0e838279a9eb03f28b092a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/fdf4dd4e2ff1813111bd0ad58d7a1ddbb5b56c28",
-                "reference": "fdf4dd4e2ff1813111bd0ad58d7a1ddbb5b56c28",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/4e0e23cc785f0724a0e838279a9eb03f28b092a0",
+                "reference": "4e0e23cc785f0724a0e838279a9eb03f28b092a0",
                 "shasum": ""
             },
             "require": {
                 "brick/math": "^0.8.8 || ^0.9 || ^0.10 || ^0.11 || ^0.12 || ^0.13",
-                "ext-json": "*",
                 "php": "^8.0",
                 "ramsey/collection": "^1.2 || ^2.0"
             },
@@ -5293,9 +5292,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.8.1"
+                "source": "https://github.com/ramsey/uuid/tree/4.9.0"
             },
-            "time": "2025-06-01T06:28:46+00:00"
+            "time": "2025-06-25T14:20:11+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -5741,16 +5740,16 @@
         },
         {
             "name": "silverstripe/admin",
-            "version": "2.4.7",
+            "version": "2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-admin.git",
-                "reference": "37bd53d69c706f43ad31083f0a915bfdcb3c538e"
+                "reference": "b68f641a3baccca8eb29ed31fbd092bbca7b014a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-admin/zipball/37bd53d69c706f43ad31083f0a915bfdcb3c538e",
-                "reference": "37bd53d69c706f43ad31083f0a915bfdcb3c538e",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-admin/zipball/b68f641a3baccca8eb29ed31fbd092bbca7b014a",
+                "reference": "b68f641a3baccca8eb29ed31fbd092bbca7b014a",
                 "shasum": ""
             },
             "require": {
@@ -5806,9 +5805,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-admin/issues",
-                "source": "https://github.com/silverstripe/silverstripe-admin/tree/2.4.7"
+                "source": "https://github.com/silverstripe/silverstripe-admin/tree/2.4.8"
             },
-            "time": "2025-06-04T23:53:04+00:00"
+            "time": "2025-06-25T01:56:35+00:00"
         },
         {
             "name": "silverstripe/asset-admin",
@@ -11544,16 +11543,16 @@
         },
         {
             "name": "lekoala/silverstripe-debugbar",
-            "version": "3.1.2",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lekoala/silverstripe-debugbar.git",
-                "reference": "1605add5792c440f5c2c195979b7df3f5142215d"
+                "reference": "9e9365d6c4c1beef5cfb092a8122dac370a33895"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lekoala/silverstripe-debugbar/zipball/1605add5792c440f5c2c195979b7df3f5142215d",
-                "reference": "1605add5792c440f5c2c195979b7df3f5142215d",
+                "url": "https://api.github.com/repos/lekoala/silverstripe-debugbar/zipball/9e9365d6c4c1beef5cfb092a8122dac370a33895",
+                "reference": "9e9365d6c4c1beef5cfb092a8122dac370a33895",
                 "shasum": ""
             },
             "require": {
@@ -11604,9 +11603,9 @@
             ],
             "support": {
                 "issues": "https://github.com/lekoala/silverstripe-debugbar/issues",
-                "source": "https://github.com/lekoala/silverstripe-debugbar/tree/3.1.2"
+                "source": "https://github.com/lekoala/silverstripe-debugbar/tree/3.1.3"
             },
-            "time": "2025-05-07T15:09:18+00:00"
+            "time": "2025-06-27T11:55:05+00:00"
         },
         {
             "name": "myclabs/deep-copy",
