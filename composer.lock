@@ -1776,7 +1776,7 @@
             "source": {
                 "type": "git",
                 "url": "https://codeberg.org/Firesphere/silverstripe-magic-login.git",
-                "reference": "7c0cedb2819ed8f017f29524deef63c8c7aff5f4"
+                "reference": "7880d32140118899bab4f04e4dbdf0dfd7d3f579"
             },
             "require": {
                 "php": ">=8",
@@ -1798,7 +1798,7 @@
                 }
             ],
             "description": "Silverstripe login via magic email link",
-            "time": "2025-05-29T04:44:52+00:00"
+            "time": "2025-07-11T09:12:00+00:00"
         },
         {
             "name": "firesphere/module-helpers",
@@ -5521,16 +5521,16 @@
         },
         {
             "name": "sheadawson/silverstripe-dependentdropdownfield",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sheadawson/silverstripe-dependentdropdownfield.git",
-                "reference": "84678e79cad2e8734ad5319fdacc3105cc5a12e7"
+                "reference": "1b8ad1118c7c83c7f303301d8699c74a87c6e54f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sheadawson/silverstripe-dependentdropdownfield/zipball/84678e79cad2e8734ad5319fdacc3105cc5a12e7",
-                "reference": "84678e79cad2e8734ad5319fdacc3105cc5a12e7",
+                "url": "https://api.github.com/repos/sheadawson/silverstripe-dependentdropdownfield/zipball/1b8ad1118c7c83c7f303301d8699c74a87c6e54f",
+                "reference": "1b8ad1118c7c83c7f303301d8699c74a87c6e54f",
                 "shasum": ""
             },
             "require": {
@@ -5569,9 +5569,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sheadawson/silverstripe-dependentdropdownfield/issues",
-                "source": "https://github.com/sheadawson/silverstripe-dependentdropdownfield/tree/3.1.0"
+                "source": "https://github.com/sheadawson/silverstripe-dependentdropdownfield/tree/3.1.1"
             },
-            "time": "2025-07-02T23:31:55+00:00"
+            "time": "2025-07-09T23:30:38+00:00"
         },
         {
             "name": "silvercommerce/contact-admin",
@@ -6338,16 +6338,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "5.4.11",
+            "version": "5.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "e0c39675add7f6435edc8818730413708b86f356"
+                "reference": "831ea2bb23b4650c70105cb5ef5118a1c0dbd509"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/e0c39675add7f6435edc8818730413708b86f356",
-                "reference": "e0c39675add7f6435edc8818730413708b86f356",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/831ea2bb23b4650c70105cb5ef5118a1c0dbd509",
+                "reference": "831ea2bb23b4650c70105cb5ef5118a1c0dbd509",
                 "shasum": ""
             },
             "require": {
@@ -6470,9 +6470,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-framework/issues",
-                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.11"
+                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.12"
             },
-            "time": "2025-07-02T02:49:51+00:00"
+            "time": "2025-07-03T21:45:43+00:00"
         },
         {
             "name": "silverstripe/graphql",
@@ -10809,16 +10809,16 @@
         },
         {
             "name": "webonyx/graphql-php",
-            "version": "v15.20.0",
+            "version": "v15.21.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webonyx/graphql-php.git",
-                "reference": "60feb7ad5023c0ef411efbdf9792d3df5812e28f"
+                "reference": "1a7aac3b7f8d66fd52aa7d1b7eafad3dec1f9cb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/60feb7ad5023c0ef411efbdf9792d3df5812e28f",
-                "reference": "60feb7ad5023c0ef411efbdf9792d3df5812e28f",
+                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/1a7aac3b7f8d66fd52aa7d1b7eafad3dec1f9cb5",
+                "reference": "1a7aac3b7f8d66fd52aa7d1b7eafad3dec1f9cb5",
                 "shasum": ""
             },
             "require": {
@@ -10831,13 +10831,13 @@
                 "amphp/http-server": "^2.1",
                 "dms/phpunit-arraysubset-asserts": "dev-master",
                 "ergebnis/composer-normalize": "^2.28",
-                "friendsofphp/php-cs-fixer": "3.73.1",
+                "friendsofphp/php-cs-fixer": "3.82.2",
                 "mll-lab/php-cs-fixer-config": "5.11.0",
                 "nyholm/psr7": "^1.5",
                 "phpbench/phpbench": "^1.2",
                 "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "2.1.8",
-                "phpstan/phpstan-phpunit": "2.0.4",
+                "phpstan/phpstan": "2.1.17",
+                "phpstan/phpstan-phpunit": "2.0.6",
                 "phpstan/phpstan-strict-rules": "2.0.4",
                 "phpunit/phpunit": "^9.5 || ^10.5.21 || ^11",
                 "psr/http-message": "^1 || ^2",
@@ -10871,7 +10871,7 @@
             ],
             "support": {
                 "issues": "https://github.com/webonyx/graphql-php/issues",
-                "source": "https://github.com/webonyx/graphql-php/tree/v15.20.0"
+                "source": "https://github.com/webonyx/graphql-php/tree/v15.21.2"
             },
             "funding": [
                 {
@@ -10879,7 +10879,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-03-21T08:45:04+00:00"
+            "time": "2025-07-10T08:58:25+00:00"
         },
         {
             "name": "wilr/silverstripe-googlesitemaps",
@@ -11439,16 +11439,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.76.0",
+            "version": "v3.82.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "0e3c484cef0ae9314b0f85986a36296087432c40"
+                "reference": "684ed3ab41008a2a4848de8bde17eb168c596247"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/0e3c484cef0ae9314b0f85986a36296087432c40",
-                "reference": "0e3c484cef0ae9314b0f85986a36296087432c40",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/684ed3ab41008a2a4848de8bde17eb168c596247",
+                "reference": "684ed3ab41008a2a4848de8bde17eb168c596247",
                 "shasum": ""
             },
             "require": {
@@ -11532,7 +11532,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.76.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.82.2"
             },
             "funding": [
                 {
@@ -11540,7 +11540,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-30T14:15:06+00:00"
+            "time": "2025-07-08T21:13:15+00:00"
         },
         {
             "name": "lekoala/silverstripe-debugbar",
@@ -11610,16 +11610,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.13.1",
+            "version": "1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "1720ddd719e16cf0db4eb1c6eca108031636d46c"
+                "reference": "faed855a7b5f4d4637717c2b3863e277116beb36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/1720ddd719e16cf0db4eb1c6eca108031636d46c",
-                "reference": "1720ddd719e16cf0db4eb1c6eca108031636d46c",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/faed855a7b5f4d4637717c2b3863e277116beb36",
+                "reference": "faed855a7b5f4d4637717c2b3863e277116beb36",
                 "shasum": ""
             },
             "require": {
@@ -11658,7 +11658,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.1"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.3"
             },
             "funding": [
                 {
@@ -11666,7 +11666,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-04-29T12:36:36+00:00"
+            "time": "2025-07-05T12:25:42+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -14613,16 +14613,16 @@
         },
         {
             "name": "symplify/vendor-patches",
-            "version": "11.4.1",
+            "version": "11.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/vendor-patches.git",
-                "reference": "085a3a3e456e4d2d9a6b4fe02e86f92ce5b1fe35"
+                "reference": "04941b69734a93ef2736eac1db6d94b6eeee4d19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/085a3a3e456e4d2d9a6b4fe02e86f92ce5b1fe35",
-                "reference": "085a3a3e456e4d2d9a6b4fe02e86f92ce5b1fe35",
+                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/04941b69734a93ef2736eac1db6d94b6eeee4d19",
+                "reference": "04941b69734a93ef2736eac1db6d94b6eeee4d19",
                 "shasum": ""
             },
             "require": {
@@ -14640,7 +14640,7 @@
             "description": "Generate vendor patches for packages with single command",
             "support": {
                 "issues": "https://github.com/symplify/vendor-patches/issues",
-                "source": "https://github.com/symplify/vendor-patches/tree/11.4.1"
+                "source": "https://github.com/symplify/vendor-patches/tree/11.5.0"
             },
             "funding": [
                 {
@@ -14652,7 +14652,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-18T08:19:39+00:00"
+            "time": "2025-07-10T10:13:07+00:00"
         },
         {
             "name": "theseer/tokenizer",

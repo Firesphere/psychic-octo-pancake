@@ -10,6 +10,7 @@ en:
     NewApplication: 'Add new application'
     NoNotes: 'No notes'
     Notes: Notes
+    Share: 'Share your applications, read-only'
     StartAdding: 'Start adding applications'
     StatusUpdates: 'Status updates'
     minutes: minutes
@@ -18,7 +19,12 @@ en:
   Firesphere\JobHunt\Pages\ChartPage:
     Legend: Legend
   Firesphere\JobHunt\Pages\KanbanPage:
+    ApplicationDate: 'Application date'
+    CompanyLink: 'Company name'
+    Favourite: 'Favourite this application'
     Help: 'Kanban Help'
+    InternalLink: 'View application'
+    NoApplications: 'No applications'
     Share: 'Share your board, read-only'
     Warning: 'The Kanban board works better on full desktop/laptop/tablet screens'
   Firesphere\JobHunt\Pages\Page:

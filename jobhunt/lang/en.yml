@@ -1,6 +1,21 @@
 en:
   Firesphere\JobHunt\Admins\HuntAdmin:
     MENUTITLE: 'Job hunt'
+  Firesphere\JobHunt\Elements\LatestNewsElement:
+    BlockType: 'Latest News'
+    PLURALNAME: 'Latest news blocks'
+    PLURALS:
+      one: 'A Latest news block'
+      other: '{count} Latest news blocks'
+    SINGULARNAME: 'Latest news block'
+  Firesphere\JobHunt\Elements\StatusElement:
+    BlockType: Status
+    CLASS_DESCRIPTION: 'Element displaying statusses'
+    PLURALNAME: 'Status Elements'
+    PLURALS:
+      one: 'A Status Element'
+      other: '{count} Status Elements'
+    SINGULARNAME: 'Status Element'
   Firesphere\JobHunt\Extensions\ImageExtension:
     belongs_to_Company: Company
   Firesphere\JobHunt\Extensions\MemberExtension:
@@ -160,6 +175,7 @@ en:
     SINGULARNAME: Status
     db_AutoHide: 'Auto hide'
     db_Colour: Colour
+    db_Description: Description
     db_SortOrder: 'Sort order'
     db_Status: Status
     has_many_Applications: Applications
@@ -182,6 +198,7 @@ en:
       other: '{count} Tags'
     SINGULARNAME: Tag
     belongs_many_many_Applications: Applications
+    db_Segment: Segment
     db_Title: Title
     has_one_User: User
   Firesphere\JobHunt\Pages\ApplicationPage:
@@ -190,6 +207,12 @@ en:
       one: 'An Application Page'
       other: '{count} Application Pages'
     SINGULARNAME: 'Application Page'
+  Firesphere\JobHunt\Pages\ArchivePage:
+    PLURALNAME: 'Archive Pages'
+    PLURALS:
+      one: 'An Archive Page'
+      other: '{count} Archive Pages'
+    SINGULARNAME: 'Archive Page'
   Firesphere\JobHunt\Pages\CalendarPage:
     PLURALNAME: 'Calendar Pages'
     PLURALS:
@@ -208,6 +231,12 @@ en:
       one: 'A Company Page'
       other: '{count} Company Pages'
     SINGULARNAME: 'Company Page'
+  Firesphere\JobHunt\Pages\GlobalStatsPage:
+    PLURALNAME: 'Global Stats Pages'
+    PLURALS:
+      one: 'A Global Stats Page'
+      other: '{count} Global Stats Pages'
+    SINGULARNAME: 'Global Stats Page'
   Firesphere\JobHunt\Pages\HomePage:
     PLURALNAME: 'Home Pages'
     PLURALS:
