@@ -6332,16 +6332,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "5.4.22",
+            "version": "5.4.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "29c4bd738afad9e313faebf15f90f05365e26ee0"
+                "reference": "edecfbee3bcd11100860957479dda35840550cc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/29c4bd738afad9e313faebf15f90f05365e26ee0",
-                "reference": "29c4bd738afad9e313faebf15f90f05365e26ee0",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/edecfbee3bcd11100860957479dda35840550cc8",
+                "reference": "edecfbee3bcd11100860957479dda35840550cc8",
                 "shasum": ""
             },
             "require": {
@@ -6464,9 +6464,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-framework/issues",
-                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.22"
+                "source": "https://github.com/silverstripe/silverstripe-framework/tree/5.4.23"
             },
-            "time": "2025-11-03T23:45:33+00:00"
+            "time": "2025-11-26T20:07:37+00:00"
         },
         {
             "name": "silverstripe/graphql",
@@ -7293,16 +7293,16 @@
         },
         {
             "name": "silverstripe/tagfield",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-tagfield.git",
-                "reference": "3c59c3568aa842f174c639f16c9f9750598cdfd3"
+                "reference": "d19b300a894d29bc18263548d3b2c2d6f1e3f305"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-tagfield/zipball/3c59c3568aa842f174c639f16c9f9750598cdfd3",
-                "reference": "3c59c3568aa842f174c639f16c9f9750598cdfd3",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-tagfield/zipball/d19b300a894d29bc18263548d3b2c2d6f1e3f305",
+                "reference": "d19b300a894d29bc18263548d3b2c2d6f1e3f305",
                 "shasum": ""
             },
             "require": {
@@ -7348,9 +7348,9 @@
             ],
             "support": {
                 "issues": "http://github.com/silverstripe/silverstripe-tagfield/issues",
-                "source": "https://github.com/silverstripe/silverstripe-tagfield/tree/3.4.1"
+                "source": "https://github.com/silverstripe/silverstripe-tagfield/tree/3.4.2"
             },
-            "time": "2025-08-14T06:05:13+00:00"
+            "time": "2025-11-26T21:22:16+00:00"
         },
         {
             "name": "silverstripe/totp-authenticator",
@@ -7469,16 +7469,16 @@
         },
         {
             "name": "silverstripe/versioned",
-            "version": "2.4.6",
+            "version": "2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-versioned.git",
-                "reference": "27ac9700e84b9712dda983f325a733b98673d60a"
+                "reference": "8bd4a6cf1c1d94276724739a12e1a0eb7c70dc23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-versioned/zipball/27ac9700e84b9712dda983f325a733b98673d60a",
-                "reference": "27ac9700e84b9712dda983f325a733b98673d60a",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-versioned/zipball/8bd4a6cf1c1d94276724739a12e1a0eb7c70dc23",
+                "reference": "8bd4a6cf1c1d94276724739a12e1a0eb7c70dc23",
                 "shasum": ""
             },
             "require": {
@@ -7523,9 +7523,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silverstripe/silverstripe-versioned/issues",
-                "source": "https://github.com/silverstripe/silverstripe-versioned/tree/2.4.6"
+                "source": "https://github.com/silverstripe/silverstripe-versioned/tree/2.4.7"
             },
-            "time": "2025-11-03T23:45:36+00:00"
+            "time": "2025-11-26T20:22:42+00:00"
         },
         {
             "name": "silverstripe/versioned-admin",

@@ -6,6 +6,8 @@ after:
 Firesphere\HaveIBeenPwned\Services\HaveIBeenPwnedService:
   allow_pwnd: false
   save_pwnd: false
+SilverStripe\Security\Member:
+  lock_out_after_incorrect_logins: 30
 ---
 Only:
   environment: dev
