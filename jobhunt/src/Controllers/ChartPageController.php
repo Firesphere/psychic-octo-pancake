@@ -10,6 +10,7 @@ use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\GroupedList;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
+use SilverStripe\View\ArrayData;
 
 /**
  * Class \Firesphere\JobHunt\Controllers\SankeyPageController
@@ -49,7 +50,9 @@ class ChartPageController extends MoodPageController
         $appIds = $applications->column('ID');
         $appList = GroupedList::create($applications);
         $itemList['Applications'] = $appList->groupBy('getWeek');
-
+        if (!count($appIds)) {
+            $appIds = [0];
+        }
         $interviewList = Interview::get()->filter(['ApplicationID' => $appIds]);
         $itemList['Interviews'] = GroupedList::create($interviewList)->groupBy('getWeek');
         $closeList = $user->JobApplications()->filter(['Status.AutoHide' => true]);

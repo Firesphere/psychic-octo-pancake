@@ -1,0 +1,36 @@
+{
+    supervisor {
+                   php-fpm --nodaemonize {
+                                             dir /var/www/html/public
+                                         }
+               }
+}
+
+http://myjobs.quest:80 {
+    @read method GET HEAD
+    @aibots {
+                header_regexp User-Agent "(AI2Bot|Ai2Bot\-Dolma|aiHitBot|Amazonbot|anthropic\-ai|Applebot|Applebot\-Extended|Brightbot\ 1\.0|Bytespider|CCBot|ChatGPT\-User|Claude\-Web|ClaudeBot|cohere\-ai|cohere\-training\-data\-crawler|Cotoyogi|Crawlspace|Diffbot|DuckAssistBot|FacebookBot|Factset_spyderbot|FirecrawlAgent|FriendlyCrawler|Google\-CloudVertexBot|Google\-Extended|GoogleOther|GoogleOther\-Image|GoogleOther\-Video|GPTBot|iaskspider/2\.0|ICC\-Crawler|ImagesiftBot|img2dataset|imgproxy|ISSCyberRiskCrawler|Kangaroo\ Bot|meta\-externalagent|Meta\-ExternalAgent|meta\-externalfetcher|Meta\-ExternalFetcher|NovaAct|OAI\-SearchBot|omgili|omgilibot|Operator|PanguBot|Perplexity\-User|PerplexityBot|PetalBot|QualifiedBot|Scrapy|SemrushBot\-OCOB|SemrushBot\-SWA|Sidetrade\ indexer\ bot|TikTokSpider|Timpibot|VelenPublicWebCrawler|Webzio\-Extended|YouBot)"
+            }
+    handle @aibots {
+                       respond 402
+                   }
+    abort @aibots
+    @extensions path *.php
+    respond @extensions 418 {
+                                body "◥█̆̈◤࿉∥"
+                                close
+                            }
+
+    reverse_proxy @read srv-captain--iocane:42069 {
+                                                      @fallback status 421
+                                                      handle_response @fallback
+                                                  }
+
+    log {
+            output stdout
+        }
+    root * /var/www/html/public
+    encode zstd gzip
+    php_fastcgi 127.0.0.1:9000
+    file_server
+}
