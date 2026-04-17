@@ -46,7 +46,6 @@
         "sunnysideup/elemental-toc": "^2.0.0",
         "symbiote/silverstripe-gridfieldextensions": ">=4",
         "symfony/mailjet-mailer": "^7.0",
-        "webonyx/graphql-php": "15.30.2",
         "wilr/silverstripe-googlesitemaps": ">=3.0"
     },
     "require-dev": {
