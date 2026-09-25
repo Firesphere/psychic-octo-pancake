@@ -133,8 +133,8 @@ Firesphere\CSPHeaders\View\CSPBackend:
       blob: true
       self: true
     upgrade-insecure-requests: true
-  jsSRI: true
-  cssSRI: true
+  jsSRI: false
+  cssSRI: false
   useNonce: true
 ---
 Only:
