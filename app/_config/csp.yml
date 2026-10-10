@@ -134,7 +134,7 @@ Firesphere\CSPHeaders\View\CSPBackend:
       self: true
     upgrade-insecure-requests: true
   jsSRI: false
-  cssSRI: false
+  cssSRI: true
   useNonce: true
 ---
 Only:
