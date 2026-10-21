@@ -23,7 +23,6 @@ RUN install-php-extensions \
     exif \
     gmp \
     memcached \
-    apcu \
     @composer
 
 
