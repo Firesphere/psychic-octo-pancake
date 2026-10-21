@@ -2,7 +2,7 @@ FROM caddy:2-builder AS builder
 
 RUN xcaddy build --with github.com/baldinof/caddy-supervisor
 
-FROM php:8.3-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 

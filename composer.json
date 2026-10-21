@@ -18,7 +18,7 @@
         "elliotsawyer/silverstripe-matomo": ">=0.0.2",
         "eluceo/ical": "^2",
         "firesphere/adblockwarning": ">=1.0",
-        "firesphere/cspheaders": "dev-main",
+        "firesphere/cspheaders": "^2.0.0",
         "firesphere/datefilter": "dev-main",
         "firesphere/haveibeenpwnd": "dev-main",
         "firesphere/ical-feed": "dev-main",
