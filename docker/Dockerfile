@@ -8,7 +8,8 @@ ENV SS_DATABASE_USERNAME=${SS_DATABASE_USERNAME}
 ARG SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 ENV SS_DATABASE_PASSWORD=${SS_DATABASE_PASSWORD}
 
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/install-php-extensions
+COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y unzip git curl apt-transport-https lsb-release ca-certificates
 
