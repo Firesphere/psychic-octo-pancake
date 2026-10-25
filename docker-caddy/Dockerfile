@@ -34,7 +34,8 @@ RUN mkdir -p /var/www/html/public/assets
 RUN git config --global --add safe.directory /var/www/html
 # Buildkit is not supported yet
 # RUN --mount=type=cache,target=/var/cache/composer /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction --no-progress
-RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader
+# RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader
+RUN --mount=type=cache,target=/var/cache/composer /usr/local/bin/composer install --no-dev --prefer-dist --no-interaction --no-progress
 RUN composer vendor-expose copy
 RUN chown -R www-data:www-data /var/www/html
 
