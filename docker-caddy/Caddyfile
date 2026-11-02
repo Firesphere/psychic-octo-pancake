@@ -21,7 +21,7 @@ http://myjobs.quest:80 {
                                 close
                             }
 
-    reverse_proxy @read srv-captain--iocane:42069 {
+    reverse_proxy @read srv-captain--iocaine:42069 {
                                                       @fallback status 421
                                                       handle_response @fallback
                                                   }
